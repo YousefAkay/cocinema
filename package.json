@@ -1,0 +1,14 @@
+{
+     "name": "cocinema",
+     "version": "0.1.0",
+     "description": "A content-based movie recommender using plot embeddings and cosine similarity. One AI call per movie, everything else computed client-side.",
+     "type": "module",
+     "main": "src/testOmdb.js",
+     "scripts": {
+          "test:omdb": "node src/testOmdb.js"
+     },
+     "license": "MIT",
+     "dependencies": {
+          "dotenv": "^17.4.2"
+     }
+}
