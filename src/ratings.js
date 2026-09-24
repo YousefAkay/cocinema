@@ -1,10 +1,10 @@
 const ratings = new Map();
 
-function saveRating(movieId, score) {
+export function saveRating(movieId, score) {
   ratings.set(movieId, score);
 }
 
-function getAllRatings() {
+export function getAllRatings() {
   const entries = Array.from(ratings);
   const formatted = entries.map(([movieId, score]) => ({ id: movieId, score: score }));
   return formatted;

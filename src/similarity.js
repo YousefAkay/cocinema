@@ -1,17 +1,17 @@
-function dotProduct(a, b) {
+export function dotProduct(a, b) {
   const products = a.map((value, index) => value * b[index]);
   const total = products.reduce((sum, current) => sum + current, 0);
   return total;
 }
 
-function magnitude(vector) {
+export function magnitude(vector) {
   const squared = vector.map((value) => value * value);
    const sumOfSquares = squared.reduce((sum, current) => sum + current, 0);
   const squareRoot = Math.sqrt(sumOfSquares);
   return squareRoot;
 }
 
-function cosineSimilarity(a, b) {
+export function cosineSimilarity(a, b) {
   const dot = dotProduct(a, b);
   const magA = magnitude(a);
   const magB = magnitude(b);

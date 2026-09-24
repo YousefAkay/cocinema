@@ -16,7 +16,6 @@ export function renderMovieCard(movie) {
   return card;
 }
 
-
 export function renderRatingWidget(movieId, current) {
   const container = document.createElement('div');
   container.className = 'rating-widget';
