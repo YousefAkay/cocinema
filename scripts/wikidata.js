@@ -1,45 +1,60 @@
+const USER_AGENT = 'CoCinema/0.3 (akyousef10@gmail.com)';
+const GENRE_DELAY_MS = 1500;
+const MAX_ATTEMPTS = 4;
+const RETRYABLE_STATUSES = new Set([429, 500, 502, 503, 504]);
+
 function parseResults(data) {
   const bindings = data.results.bindings;
 
-  const parsed = bindings.map(entry => {
-    return {
-      id: entry.item.value,
-      title: entry.itemLabel.value,
-    };
-  }
-);
-
-  return parsed;
+  return bindings.map(entry => ({
+    id: entry.item.value,
+    title: entry.itemLabel.value,
+  }));
 }
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export async function getMoviesByActor(actorId) {
-  const query = `
-    SELECT DISTINCT ?item ?itemLabel WHERE {
-      ?item wdt:P31 wd:Q11424.
-      ?item wdt:P161 wd:${actorId}.
-      SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
-    }`;
+async function fetchWithRetry(url) {
+  let backoffMs = 1000;
 
-    const encodedQuery = encodeURIComponent(query);
-    const url = `https://query.wikidata.org/sparql?query=${encodedQuery}&format=json`;
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    let res;
 
-const res = await fetch(url, {
-  headers: {
-  'Accept': 'application/sparql-results+json',
-    'User-Agent': 'Cosinema/0.1, email: akyousef10@gmail.com'
-  }} 
-);
-  if (!res.ok) {
+    try {
+      res = await fetch(url, {
+        headers: {
+          'Accept': 'application/sparql-results+json',
+          'User-Agent': USER_AGENT
+        }
+      });
+    } catch (networkError) {
+      console.log(`Network error on attempt ${attempt}/${MAX_ATTEMPTS} (${networkError.message}), waiting ${backoffMs}ms...`);
+      await sleep(backoffMs);
+      backoffMs *= 2;
+      continue;
+    }
+
+    if (res.ok) {
+      return await res.json();
+    }
+
+    if (RETRYABLE_STATUSES.has(res.status)) {
+      const retryAfter = res.headers.get('Retry-After');
+      const headerMs = retryAfter !== null ? Number(retryAfter) * 1000 : NaN;
+      const waitMs = (Number.isNaN(headerMs) || headerMs <= 0) ? backoffMs : headerMs;
+
+      console.log(`Wikidata ${res.status} on attempt ${attempt}/${MAX_ATTEMPTS}, waiting ${waitMs}ms...`);
+      await sleep(waitMs);
+      backoffMs *= 2;
+      continue;
+    }
+
     throw new Error(`WikiData request failed: ${res.status} ${res.statusText}`);
-  
   }
 
-  const data = await res.json();
-  return parseResults(data);
+  throw new Error(`WikiData request failed: still failing after ${MAX_ATTEMPTS} attempts`);
 }
 
 export async function getMoviesByGenre(genreId, limit) {
@@ -51,59 +66,55 @@ export async function getMoviesByGenre(genreId, limit) {
     }
     LIMIT ${limit}`;
 
-  const encodedQuery = encodeURIComponent(query);
-  const url = `https://query.wikidata.org/sparql?query=${encodedQuery}&format=json`;
-
-  const res = await fetch(url, {
-    headers: {
-      'Accept': 'application/sparql-results+json',
-      'User-Agent': 'Cosinema/0.1, email: akyousef10@gmail.com'
-    }
-  });
-
-  if (!res.ok) {
-    throw new Error(`WikiData request failed: ${res.status} ${res.statusText}`);
-  }
-
-  const data = await res.json();
+  const url = `https://query.wikidata.org/sparql?query=${encodeURIComponent(query)}&format=json`;
+  const data = await fetchWithRetry(url);
   return parseResults(data);
 }
 
 export async function getCatalogMovies() {
   const genreIds = [
-  'Q157443',   // comedy
-  'Q200092',   // horror
-  'Q471839',   // science fiction
-  'Q130232',   // drama
-  'Q188473',   // action
-  'Q2484376',  // thriller
-  'Q1054574',  // romance
-  'Q202866',   // animated
-  'Q319221',   // adventure
-  'Q157394',   // fantasy
-  'Q959790',   // crime
-  'Q93204',    // documentary
-  'Q645928',   // biographical
-  'Q369747',   // war
-  'Q172980',   // western
-  'Q1200678',  // mystery
-  'Q2143665',  // children's
-  'Q1146335',  // teen
-  'Q842256',   // musical
-  'Q860626',   // romantic comedy
-  'Q17013749', // historical
-];
-  
+    'Q157443',   // comedy
+    'Q200092',   // horror
+    'Q471839',   // science fiction
+    'Q130232',   // drama
+    'Q188473',   // action
+    'Q2484376',  // thriller
+    'Q1054574',  // romance
+    'Q202866',   // animated
+    'Q319221',   // adventure
+    'Q157394',   // fantasy
+    'Q959790',   // crime
+    'Q93204',    // documentary
+    'Q645928',   // biographical
+    'Q369747',   // war
+    'Q172980',   // western
+    'Q1200678',  // mystery
+    'Q2143665',  // children's
+    'Q1146335',  // teen
+    'Q842256',   // musical
+    'Q860626',   // romantic comedy
+    'Q17013749', // historical
+  ];
+
   let allMovies = [];
 
-  for (const genreId of genreIds) {
-    const movies = await getMoviesByGenre(genreId, 10);
-    allMovies = allMovies.concat(movies);
-    await sleep(500);
+   for (const genreId of genreIds) {
+    try {
+      const movies = await getMoviesByGenre(genreId, 10);
+      allMovies = allMovies.concat(movies);
+      console.log(`Genre ${genreId}: ${movies.length} movies`);
+    } catch (error) {
+      console.error(`Skipping genre ${genreId}: ${error.message}`);
+    }
+    await sleep(GENRE_DELAY_MS);
+  }
+
+  if (allMovies.length === 0) {
+    throw new Error('Every genre query failed; Wikidata may be down. Try again later.');
   }
 
   const cleanMovies = allMovies.filter(movie => !/^Q\d+$/.test(movie.title));
-return dedupeMovies(cleanMovies);
+  return dedupeMovies(cleanMovies);
 }
 
 function dedupeMovies(movies) {
