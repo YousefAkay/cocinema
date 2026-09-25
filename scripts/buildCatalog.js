@@ -3,6 +3,7 @@ import { getCatalogMovies } from './wikidata.js';
 import { omdbGet } from './omdb.js';
 import { getEmbedding } from './embeddings.js';
 
+
 const RAW_PATH = 'data/movies-raw.json';
 const CATALOG_PATH = 'data/catalog.json';
 const ENRICH_DELAY_MS = 500;
@@ -71,6 +72,8 @@ async function main() {
 
   return enrichedMovies;
 }
+
+
 
 main()
   .then(data => console.log(`Wrote ${data.length} movies to ${CATALOG_PATH}`))

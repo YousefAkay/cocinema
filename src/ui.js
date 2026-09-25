@@ -4,8 +4,13 @@ export function renderMovieCard(movie) {
   const card = document.createElement('div');
   card.className = 'movie-card';
 
-  const img = document.createElement('img');
-  img.src = movie.poster;
+   const img = document.createElement('img');
+   if (movie.poster) {
+     img.src = movie.poster;
+     img.alt = movie.title;
+   } else {
+     img.alt = 'No poster available';
+   }
 
   const title = document.createElement('p');
   title.textContent = movie.title;
