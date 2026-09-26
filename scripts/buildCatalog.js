@@ -7,6 +7,7 @@ import { getEmbedding } from './embeddings.js';
 const RAW_PATH = 'data/movies-raw.json';
 const CATALOG_PATH = 'data/catalog.json';
 const ENRICH_DELAY_MS = 500;
+const ONBOARDING_PATH = 'data/onboarding.json';
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -29,17 +30,31 @@ async function main() {
   fs.mkdirSync('data', { recursive: true });
 
   const movies = await loadMovies();
+  const onboarding = JSON.parse(fs.readFileSync(ONBOARDING_PATH, 'utf8'));
+
+  const onboardingMovies = onboarding.flatMap(genre => genre.movies)
+  console.log(`Loaded ${onboardingMovies.length} onboarding movies from ${ONBOARDING_PATH}`);
+  
+  const allMovies = [...movies, ...onboardingMovies];
+  console.log(`Total movies to enrich: ${allMovies.length}`);
+
+  const uniqueMovies = Array.from(new Map(allMovies.map(movie => [movie.id, movie])).values());
+  console.log(`Unique movies to enrich: ${uniqueMovies.length}`);
 
   const enrichedMovies = [];
   let skipped = 0;
   let failed = 0;
 
-  for (const movie of movies) {
+  for (const movie of uniqueMovies) {
     try {
-      const data = await omdbGet({ t: movie.title, plot: 'full' });
+      const params = { t: movie.title, plot: 'full' };
+      if (movie.year) {
+        params.y = movie.year;
+      }
+      const data = await omdbGet(params);
 
       if (!data.Plot || data.Plot === 'N/A') {
-        console.log(`Skipping "${movie.title}": no plot available`);
+        console.warn(`Skipping "${movie.title}": no plot available`);
         skipped++;
         continue;
       }
@@ -62,6 +77,12 @@ async function main() {
       await sleep(ENRICH_DELAY_MS);
     }
   }
+  
+  const enrichedIds = new Set(enrichedMovies.map(m => m.id));
+      const missing = onboardingMovies.filter(m => !enrichedIds.has(m.id));
+      for (const missingMovie of missing) {
+        console.warn(`Missing onboarding movie: ${missingMovie.title} (${missingMovie.id})`);
+      }
 
   if (enrichedMovies.length === 0) {
     throw new Error('No movies were enriched; refusing to overwrite catalog.json');

@@ -99,7 +99,7 @@
     "genre": "Western",
     "movies": [
       { "id": "http://www.wikidata.org/entity/Q571032", "title": "Django Unchained", "year": 2012 },
-      { "id": "http://www.wikidata.org/entity/Q41483", "title": "The Good, the Bad and the Ugly", "year": 1966 },
+      { "id": "http://www.wikidata.org/entity/Q41483", "title": "The Good, the Bad and the Ugly"},
       { "id": "http://www.wikidata.org/entity/Q232000", "title": "Butch Cassidy and the Sundance Kid", "year": 1969 },
       { "id": "http://www.wikidata.org/entity/Q245208", "title": "High Noon", "year": 1952 }
     ]
