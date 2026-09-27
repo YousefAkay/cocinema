@@ -1,4 +1,4 @@
-const USER_AGENT = 'CoCinema/0.3 (akyousef10@gmail.com)';
+const USER_AGENT = 'CoCinema/1.3 (akyousef10@gmail.com)';
 const GENRE_DELAY_MS = 1500;
 const MAX_ATTEMPTS = 4;
 const RETRYABLE_STATUSES = new Set([429, 500, 502, 503, 504]);
@@ -58,13 +58,20 @@ async function fetchWithRetry(url) {
 }
 
 export async function getMoviesByGenre(genreId, limit) {
-  const query = `
-    SELECT DISTINCT ?item ?itemLabel WHERE {
-      ?item wdt:P31 wd:Q11424.
-      ?item wdt:P136 wd:${genreId}.
+    const query = `
+    SELECT ?item ?itemLabel ?links WHERE {
+      {
+        SELECT ?item ?links WHERE {
+          ?item wdt:P31 wd:Q11424.
+          ?item wdt:P136 wd:${genreId}.
+          ?item wikibase:sitelinks ?links.
+        }
+        ORDER BY DESC(?links)
+        LIMIT ${limit}
+      }
       SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
     }
-    LIMIT ${limit}`;
+    ORDER BY DESC(?links)`;
 
   const url = `https://query.wikidata.org/sparql?query=${encodeURIComponent(query)}&format=json`;
   const data = await fetchWithRetry(url);
@@ -84,7 +91,6 @@ export async function getCatalogMovies() {
     'Q319221',   // adventure
     'Q157394',   // fantasy
     'Q959790',   // crime
-    'Q93204',    // documentary
     'Q645928',   // biographical
     'Q369747',   // war
     'Q172980',   // western
@@ -100,7 +106,7 @@ export async function getCatalogMovies() {
 
    for (const genreId of genreIds) {
     try {
-      const movies = await getMoviesByGenre(genreId, 10);
+      const movies = await getMoviesByGenre(genreId, 50);
       allMovies = allMovies.concat(movies);
       console.log(`Genre ${genreId}: ${movies.length} movies`);
     } catch (error) {

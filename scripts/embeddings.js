@@ -17,7 +17,8 @@ export async function getEmbedding(text) {
     },
     body: JSON.stringify({
       model: "text-embedding-3-small",
-      input: text
+      input: text,
+      dimensions: 512
     })
   });
 
@@ -26,12 +27,5 @@ export async function getEmbedding(text) {
   }
 
   const data = await res.json();
-  return data.data[0].embedding;
+  return data.data[0].embedding.map(n => Number(n.toFixed(4)));
 }
-
-/*
-getEmbedding("A test plot about space travel")
-  .then(vector => console.log(vector))
-  .catch(err => console.error('Something went wrong:', err.message));
-  */
- 

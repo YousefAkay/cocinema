@@ -79,4 +79,12 @@ function showResults() {
   resultsScreen.append(renderResults(ranked.map(result => result.movie)));
 }
 
-showCurrentMovie();
+const landingScreen = document.getElementById('landing-screen');
+const startButton = document.getElementById('start-button');
+
+startButton.addEventListener('click', function() {
+  landingScreen.style.display = 'none';
+  ratingScreen.style.display = '';
+  document.body.classList.add('started');
+  showCurrentMovie();
+});
