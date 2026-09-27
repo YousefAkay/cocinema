@@ -21,7 +21,7 @@ export function renderMovieCard(movie) {
   return card;
 }
 
-export function renderRatingWidget(movieId, current) {
+export function renderRatingWidget(movieId, current, onConfirm) {
   const container = document.createElement('div');
   container.className = 'rating-widget';
 
@@ -52,7 +52,13 @@ export function renderRatingWidget(movieId, current) {
   const confirmBtn = document.createElement('button');
   confirmBtn.textContent = 'Confirm';
   confirmBtn.addEventListener('click', function() {
-    saveRating(movieId, selected);
+    if (!selected) {
+      return; 
+    }
+
+     saveRating(movieId, selected);
+     onConfirm();
+
   });
   container.appendChild(confirmBtn);
 
