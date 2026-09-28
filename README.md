@@ -1,0 +1,100 @@
+# CoCinema
+
+**Rate a handful of movies you've seen. CoCinema finds films whose stories match your taste.**
+
+🎬 **Live:** [cocinema-pi.vercel.app](https://cocinema-pi.vercel.app)
+
+![CoCinema results screen](docs/screenshot.png)
+
+---
+
+## How it works
+
+CoCinema is a **content-based recommender**. Every movie's plot is turned into an embedding (a list of numbers where similar stories get similar numbers). Your ratings are combined into a single "taste profile", and every movie is ranked by how closely it points in the same direction.
+
+**AI is used in exactly one place, offline.** Each plot is embedded once, at build time. Every live recommendation is deterministic maths running in your browser: no AI calls, no backend, no API keys in the client.
+
+```mermaid
+flowchart LR
+    subgraph Build["Build time (Node.js, runs once on my machine)"]
+        W[Wikidata<br/>SPARQL] --> B[buildCatalog.js]
+        O[OMDb API<br/>plot + poster] --> B
+        E[OpenAI<br/>embeddings] --> B
+        B --> C[(catalog.json)]
+    end
+    subgraph Runtime["Runtime (browser, no secrets)"]
+        C --> R[recommend.js]
+        U[Your ratings] --> R
+        R --> S[Ranked results]
+    end
+```
+
+### The recommendation maths
+
+1. **Mean-centre your ratings.** Each rating becomes a weight: how far it sits above or below *your own* average. A 7 from a harsh rater counts as a like; a 7 from someone who rates everything 9 counts as a dislike.
+2. **Build a taste profile.** Multiply each rated movie's embedding by its weight and add them up. Movies you loved pull the profile toward them; movies you disliked push it away.
+3. **Rank by cosine similarity.** Compare the profile to every unrated movie. Cosine similarity measures the *angle* between two vectors, so it captures what a story is about regardless of plot length.
+
+### The data pipeline
+
+- **Discovery:** the most popular films per genre from Wikidata, ranked by how many Wikipedia language editions cover them (sitelinks). A subquery sorts and limits *before* fetching labels, so each genre query stays fast.
+- **Enrichment:** plot and poster from OMDb. A title-match guard rejects wrong matches (e.g. a "Making of…" featurette returned instead of the film).
+- **Embeddings:** OpenAI `text-embedding-3-small`, reduced to 512 dimensions and rounded to 4 decimals. That's about 5 KB per movie instead of 30 KB, with no visible change in rankings.
+- **Resilience:** the build is resumable. It reuses already-enriched movies, saves progress every 25, and stops cleanly at OMDb's daily limit so the next run picks up where it left off.
+
+Current catalog: **576 movies** across 20 genres.
+
+---
+
+## Tech stack
+
+- **Frontend:** plain JavaScript (ES modules), HTML, CSS. No framework, no build step.
+- **Build scripts:** Node.js
+- **Data:** Wikidata (CC0), OMDb API, OpenAI Embeddings API
+- **Hosting:** Vercel (static)
+
+## Project structure
+
+```
+scripts/            build time: runs locally, uses API keys
+  wikidata.js       discover popular movies per genre (SPARQL)
+  omdb.js           fetch plot + poster
+  embeddings.js     plot → 512-number embedding
+  buildCatalog.js   orchestrates everything → data/catalog.json
+data/
+  catalog.json      the only bridge between build time and runtime
+  onboarding.json   hand-picked movies shown on the rating screen
+src/                runtime: static files served to the browser
+  main.js           screen flow and rating state
+  recommend.js      taste profile + ranking
+  similarity.js     dot product, magnitude, cosine similarity
+  ratings.js        stores ratings
+  ui.js             builds DOM elements
+```
+
+## Running locally
+
+```bash
+npm install
+
+# Only needed to rebuild the catalog. The site itself needs no keys.
+# Create a .env file in the project root:
+#   OMDB_API_KEY=your_key
+#   OPENAI_API_KEY=your_key
+node scripts/buildCatalog.js
+
+# Serve the site
+npx serve . -l tcp://127.0.0.1:3000
+# then open http://127.0.0.1:3000/src/
+```
+
+## Roadmap
+
+- Movie detail pages: description, trailer, where to watch
+- Shuffled onboarding from a larger pool, so repeat visits feel fresh
+- "Why this pick" explanations, decomposing each score into your ratings' contributions
+- Co-watch mode: two people rate, and CoCinema finds films you'd both enjoy
+
+## Credits
+
+Movie data from [Wikidata](https://www.wikidata.org) (CC0) and the [OMDb API](https://www.omdbapi.com). Embeddings by [OpenAI](https://platform.openai.com).
