@@ -4,7 +4,7 @@
 
 🎬 **Live:** [cocinema-pi.vercel.app](https://cocinema-pi.vercel.app)
 
-![CoCinema results screen](docs/screenshot.png)
+<img alt="CoCinema results screen" src="https://github.com/user-attachments/assets/b0fb8f75-71fa-410e-bae9-6c4375838fae" />
 
 ---
 
