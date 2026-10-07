@@ -1,38 +1,17 @@
 // Headless browser check at phone size. Serves the repo on 127.0.0.1 only and drives the real page.
 // Uses the Chrome that is already installed (no browser download).
-import http from 'node:http';
-import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
+import { shots, startServer, createRecorder } from './helpers.mjs';
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const shots = path.join(root, 'screenshots');
-fs.mkdirSync(shots, { recursive: true });
-
-const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json' };
-
-const server = http.createServer((req, res) => {
-  const urlPath = decodeURIComponent(new URL(req.url, 'http://127.0.0.1').pathname);
-  const file = path.join(root, urlPath.endsWith('/') ? urlPath + 'index.html' : urlPath);
-  if (!file.startsWith(root) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) {
-    res.writeHead(404).end();
-    return;
-  }
-  res.writeHead(200, { 'Content-Type': TYPES[path.extname(file)] || 'application/octet-stream' });
-  fs.createReadStream(file).pipe(res);
-});
-await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
-const base = `http://127.0.0.1:${server.address().port}/src/`;
-
-const results = [];
-function check(name, ok, detail = '') {
-  results.push({ name, ok });
-  console.log(`${ok ? 'PASS' : 'FAIL'}  ${name}${detail ? ` (${detail})` : ''}`);
-}
+const server = await startServer();
+const base = server.base;
+const { check, results, summary } = createRecorder();
 
 const browser = await chromium.launch({ channel: 'chrome' });
-const context = await browser.newContext({ viewport: { width: 375, height: 667 }, hasTouch: true, isMobile: true });
+// The service worker is switched off here so Playwright's request interception sees every request;
+// e2e/offline.mjs covers the worker.
+const context = await browser.newContext({ viewport: { width: 375, height: 667 }, hasTouch: true, isMobile: true, serviceWorkers: 'block' });
 const page = await context.newPage();
 const problems = [];
 page.on('pageerror', error => problems.push(error.message));
@@ -62,7 +41,7 @@ async function currentFilm(p = page) {
 
 // One brand-new browser profile (empty storage), straight to its first film.
 async function firstFilmInFreshSession() {
-  const fresh = await browser.newContext({ viewport: { width: 375, height: 667 } });
+  const fresh = await browser.newContext({ viewport: { width: 375, height: 667 }, serviceWorkers: 'block' });
   const freshPage = await fresh.newPage();
   await freshPage.goto(base);
   await freshPage.waitForSelector('#start-button:not([disabled])');
@@ -378,6 +357,6 @@ try {
   server.close();
 }
 
-const failed = results.filter(result => !result.ok).length;
-console.log(`\n${results.length - failed}/${results.length} checks passed. Screenshots in ${shots}`);
+const failed = summary();
+console.log(`Screenshots in ${shots}`);
 process.exit(failed === 0 ? 0 : 1);

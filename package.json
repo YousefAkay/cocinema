@@ -7,7 +7,7 @@
           "build:catalog": "node scripts/buildCatalog.js",
           "test": "node --test \"tests/**/*.test.js\"",
           "evaluate": "node scripts/evaluate.js",
-          "test:e2e": "node e2e/run.mjs"
+          "test:e2e": "node e2e/run.mjs && node e2e/offline.mjs"
      },
      "license": "MIT",
      "dependencies": {

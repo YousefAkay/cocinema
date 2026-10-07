@@ -11,6 +11,7 @@ import { parseHash, shortId } from './route.js';
 import { renderDetail, renderNotFound, renderStreaming, showStreamingLoading } from './detail.js';
 import { loadAvailability, streamingView } from './availability.js';
 import { buildSession, newSeed } from './shuffle.js';
+import { registerServiceWorker, watchOnlineStatus } from './offline.js';
 
 const TOP_COUNT = 5;
 const RESULT_COUNT = 25;
@@ -430,3 +431,6 @@ async function loadData() {
 
 retryButton.addEventListener('click', loadData);
 loadData();
+
+watchOnlineStatus(document.getElementById('offline-notice'));
+registerServiceWorker();

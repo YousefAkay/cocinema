@@ -744,3 +744,19 @@ img {
   padding: 12px 2px;
   color: var(--accent-hover);
 }
+
+.offline-notice {
+  position: fixed;
+  top: 6px;
+  left: 50%;
+  z-index: 10;
+  transform: translateX(-50%);
+  max-width: calc(100% - 32px);
+  padding: 3px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  pointer-events: none;
+}
