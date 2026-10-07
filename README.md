@@ -59,8 +59,15 @@ Each entry in `data/catalog.json`:
 | `runtime` | string (e.g. `"142 min"`) or null | OMDb |
 | `director` | string or null | OMDb |
 | `rated` | string (e.g. `"R"`) or null | OMDb |
+| `genres` | string[] (from the 20 tracked genres) | Wikidata |
+| `sitelinks` | number (Wikipedia language editions) | Wikidata |
+| `year` | number (earliest release year) | Wikidata |
 
-`rottenTomatoes`, `runtime`, `director` and `rated` are added by `node scripts/backfill.js`, which is resumable and skips entries it has already filled.
+`rottenTomatoes`, `runtime`, `director` and `rated` are added by `node scripts/backfill.js`, which is resumable and skips entries it has already filled. `genres`, `sitelinks` and `year` are added by `scripts/fetchMeta.js` and `scripts/mergeMeta.js`.
+
+### Data verification
+
+Every catalog entry is checked against OMDb by title and year. A record is accepted only if the normalized title matches and OMDb's year is within one year of the Wikidata year (`data/overrides.json` lists the few exceptions). The plot stored in the catalog is then compared with OMDb's plot by shared-word overlap. Similar plots are verified; clearly different plots mean the entry holds another film's content, and `scripts/repairCatalog.js` replaces its plot, poster, metadata and embedding. Progress is kept in `data/verify-progress.json`. No IMDb ids are stored.
 
 ---
 

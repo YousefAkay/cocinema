@@ -16,7 +16,9 @@ export async function omdbGet(params = {}) {
   }
   const res = await fetch(url);
   if (!res.ok) {
-    throw new Error(`OMDb request failed: ${res.status} ${res.statusText}`);
+    // OMDb reports its daily limit as a 401 with the reason in the body.
+    const body = await res.json().catch(() => ({}));
+    throw new Error(body.Error || `OMDb request failed: ${res.status} ${res.statusText}`);
   }
   const data = await res.json();
   if (data.Response === 'False') {

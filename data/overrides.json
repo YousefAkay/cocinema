@@ -1,0 +1,10 @@
+{
+  "http://www.wikidata.org/entity/Q39571": {
+    "omdbYear": 1990,
+    "note": "OMDb dates My Neighbor Totoro 1990, Wikidata says 1988"
+  },
+  "http://www.wikidata.org/entity/Q54152472": {
+    "omdbTitle": "Luis & the Aliens",
+    "note": "OMDb spells the title with an ampersand"
+  }
+}
