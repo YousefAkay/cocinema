@@ -15,6 +15,9 @@ export function cosineSimilarity(a, b) {
   const dot = dotProduct(a, b);
   const magA = magnitude(a);
   const magB = magnitude(b);
+  if (magA === 0 || magB === 0) {
+    return 0;
+  }
   return dot / (magA * magB);
 }
 

@@ -136,15 +136,3 @@ function dedupeMovies(movies) {
 
   return unique;
 }
-
-/*** getCatalogMovies(10)
-  .then(data => console.log(JSON.stringify(data, null, 2)))
-  .catch(err => console.error('Something went wrong:', err.message));
-
-/***getMoviesByGenre('Q157443', 10)
-  .then(data => console.log(JSON.stringify(data, null, 2)))
-  .catch(err => console.error('Something went wrong:', err.message));
-  
-  getMoviesByActor('Q')
-  .then(data => console.log(JSON.stringify(data, null, 2)))
-  .catch(err => console.error('Something went wrong:', err.message));*/

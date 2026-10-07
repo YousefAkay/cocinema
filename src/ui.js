@@ -4,18 +4,25 @@ export function renderMovieCard(movie) {
   const card = document.createElement('div');
   card.className = 'movie-card';
 
-   const img = document.createElement('img');
-   if (movie.poster) {
-     img.src = movie.poster;
-     img.alt = movie.title;
-   } else {
-     img.alt = 'No poster available';
-   }
-
   const title = document.createElement('p');
   title.textContent = movie.title;
 
-  card.appendChild(img);
+  function posterPlaceholder() {
+    const placeholder = document.createElement('div');
+    placeholder.className = 'poster-placeholder';
+    placeholder.textContent = movie.title;
+    return placeholder;
+  }
+
+  if (movie.poster) {
+    const img = document.createElement('img');
+    img.alt = movie.title;
+    img.addEventListener('error', () => img.replaceWith(posterPlaceholder()));
+    img.src = movie.poster;
+    card.appendChild(img);
+  } else {
+    card.appendChild(posterPlaceholder());
+  }
   card.appendChild(title);
 
   return card;
@@ -44,16 +51,24 @@ export function renderRatingWidget(movieId, current, onConfirm) {
       btn.classList.add('selected');
       selectedButton = btn;
       selected = i;
+      hint.hidden = true;
     });
 
     container.appendChild(btn);
   }
 
+  const hint = document.createElement('p');
+  hint.className = 'rating-hint';
+  hint.textContent = 'Pick a score first';
+  hint.hidden = true;
+  container.appendChild(hint);
+
   const confirmBtn = document.createElement('button');
   confirmBtn.textContent = 'Confirm';
   confirmBtn.addEventListener('click', function() {
     if (!selected) {
-      return; 
+      hint.hidden = false;
+      return;
     }
 
      saveRating(movieId, selected);

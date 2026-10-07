@@ -38,8 +38,3 @@ export function recommend(ratings, catalog, n) {
 
 return recommendations;
 }
-
-// console.log(movieIdToMovieMap.size);             // 3
-// console.log(movieIdToMovieMap.get(2).title);     // "Inception"
-
- // return weightedRatings.map(item => item.weight);

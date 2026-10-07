@@ -3,9 +3,8 @@
      "version": "0.1.0",
      "description": "A content-based movie recommender using plot embeddings and cosine similarity. One AI call per movie, everything else computed client-side.",
      "type": "module",
-     "main": "src/testOmdb.js",
      "scripts": {
-          "test:omdb": "node src/testOmdb.js"
+          "build:catalog": "node scripts/buildCatalog.js"
      },
      "license": "MIT",
      "dependencies": {
