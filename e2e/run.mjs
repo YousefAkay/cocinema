@@ -237,6 +237,81 @@ try {
   await page.waitForSelector('.top-pick');
   check('Back from "Movie not found" returns to results', await page.locator('#results-screen').isVisible());
 
+  // Streaming availability on the film page
+  await page.locator('.top-pick h3 a').first().click();
+  await page.waitForSelector('#detail-screen .detail');
+  const streamUrl = page.url();
+  const streamId = `http://www.wikidata.org/entity/${streamUrl.split('/').pop()}`;
+  const realData = await page.evaluate(() => fetch('../data/availability.json').then(response => response.json()));
+
+  await page.waitForSelector('.country-block');
+  const blockNames = await page.locator('.country-name').allInnerTexts();
+  check('a film with data shows Canada, United States and United Kingdom blocks', blockNames.join('|') === 'Canada|United States|United Kingdom', blockNames.join('|'));
+  const blockText = await page.locator('.country-block').allInnerTexts();
+  check('each block lists services or says "Not found"', blockText.every(text => /Included with|Rent or buy on|Not found/.test(text)), blockText[1].replace(/\n/g, ' / '));
+  const credit = await page.locator('.streaming-credit').innerText();
+  check('attribution line names Watchmode and the plain-English date', /^Streaming data by Watchmode, as of \d{1,2} [A-Z][a-z]+ \d{4}$/.test(credit), credit);
+  const creditLink = page.locator('.streaming-credit-link');
+  check('Watchmode links to watchmode.com and opens safely',
+    (await creditLink.getAttribute('href')) === 'https://www.watchmode.com' && (await creditLink.getAttribute('rel')) === 'noopener noreferrer' && (await creditLink.getAttribute('target')) === '_blank');
+  check('the JustWatch links stay underneath under "Check on JustWatch"',
+    (await page.locator('.detail h4', { hasText: 'Check on JustWatch' }).count()) === 1 && (await page.locator('.where-to-watch a').count()) === 3);
+  check('no horizontal scroll with streaming data', await noSideScroll());
+  const smallStream = await page.$$eval('#detail-screen a, #detail-screen button', nodes => nodes.filter(node => node.getBoundingClientRect().height < 44).length);
+  check('streaming section keeps 44px tap targets', smallStream === 0, `${smallStream} too small`);
+  await page.locator('.detail-section').last().scrollIntoViewIfNeeded();
+  await page.locator('.detail-section').last().screenshot({ path: path.join(shots, '8-streaming-section.png') });
+
+  async function reopenWith(handler, label) {
+    await page.route('**/availability.json', handler);
+    await page.reload();
+    await page.waitForSelector('#detail-heading');
+    return label;
+  }
+  const justWatchOnly = async () => (await page.locator('.where-to-watch a').count()) === 3 && (await page.locator('.country-block').count()) === 0;
+
+  await reopenWith(route => route.fulfill({ contentType: 'application/json', body: JSON.stringify({ fetchedAt: realData.fetchedAt, films: {} }) }));
+  await page.waitForFunction(() => !document.querySelector('.streaming-loading'));
+  check('a film with no entry silently falls back to the JustWatch links', await justWatchOnly() && (await page.locator('.streaming-services').evaluate(node => getComputedStyle(node).display)) === 'none');
+  await page.unroute('**/availability.json');
+
+  await reopenWith(route => route.abort());
+  await page.waitForFunction(() => !document.querySelector('.streaming-loading'));
+  check('if availability.json fails to load the page still renders, with JustWatch links',
+    await justWatchOnly() && (await page.locator('.detail-plot').innerText()).length > 50 && (await page.locator('#detail-heading').innerText()).length > 0);
+  await page.unroute('**/availability.json');
+
+  await reopenWith(route => route.fulfill({ contentType: 'application/json', body: JSON.stringify({ ...realData, fetchedAt: '2020-01-01' }) }));
+  await page.waitForSelector('.streaming-stale');
+  check('a snapshot older than 30 days hides the services and shows only JustWatch with a note', await justWatchOnly() && /out of date/.test(await page.locator('.streaming-stale').innerText()));
+  await page.unroute('**/availability.json');
+
+  const tricky = {
+    fetchedAt: realData.fetchedAt,
+    films: { [streamId]: {
+      matched: true,
+      CA: { subscription: ['Amazon Prime Video (Via A Remarkably Long Channel Name Subscription Add-on For Everyone)', 'X'.repeat(80)], rentOrBuy: ['<b>Evil</b>', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'] },
+      US: { subscription: [], rentOrBuy: [] },
+      GB: { subscription: ['BFI Player'], rentOrBuy: [] },
+    } },
+  };
+  await reopenWith(async route => {
+    await new Promise(resolve => setTimeout(resolve, 1200));
+    await route.fulfill({ contentType: 'application/json', body: JSON.stringify(tricky) });
+  });
+  const sawLoading = await page.locator('.streaming-loading').count() > 0;
+  await page.waitForSelector('.country-block');
+  check('a slow load shows a small loading line first', sawLoading);
+  const trickyText = await page.locator('#streaming-services').innerText();
+  check('long names wrap, long lists are shortened, markup stays text, US shows "Not found"',
+    trickyText.includes('<b>Evil</b>') && trickyText.includes('and 3 more') && trickyText.includes('Not found') && (await page.locator('#streaming-services b').count()) === 0 && await noSideScroll());
+  await page.screenshot({ path: path.join(shots, '9-streaming-long-names.png'), fullPage: true });
+  await page.unroute('**/availability.json');
+
+  await page.reload();
+  await page.getByRole('button', { name: /Back/ }).click();
+  await page.waitForSelector('.top-pick');
+
   // Rate 5 more, with a refresh in the middle and one skip
   const before = await topTitles();
   await page.getByRole('button', { name: 'Rate 5 more' }).click();

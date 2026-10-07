@@ -112,6 +112,14 @@ export function renderDetail(movie, context) {
   watch.append(externalLink(trailerSearchUrl(movie), 'Search for the trailer on YouTube', 'detail-link trailer-link'));
 
   watch.append(element('h3', '', 'Where to watch'));
+
+  // Streaming service names from the availability snapshot are filled in here after the page
+  // is shown; if there is nothing to show, this stays empty and hidden.
+  const services = element('div', 'streaming-services');
+  services.id = 'streaming-services';
+  watch.append(services);
+
+  watch.append(element('h4', '', 'Check on JustWatch'));
   const links = element('div', 'where-to-watch');
   for (const { country, url } of whereToWatchLinks(movie)) {
     links.append(externalLink(url, country, 'detail-link'));
@@ -119,11 +127,6 @@ export function renderDetail(movie, context) {
   watch.append(links);
   watch.append(element('p', 'detail-help',
     'These open a JustWatch search for the title. They are search links, not a guarantee the film is available.'));
-
-  // Streaming service names from a data file will be added here later.
-  const services = element('div', 'streaming-services');
-  services.id = 'streaming-services';
-  watch.append(services);
 
   page.append(watch);
   return page;
@@ -143,4 +146,42 @@ function backButton(onBack) {
   const button = element('button', 'back-button', '← Back');
   button.addEventListener('click', onBack);
   return button;
+}
+
+export function showStreamingLoading(slot) {
+  slot.replaceChildren(element('p', 'streaming-loading detail-help', 'Checking streaming services…'));
+}
+
+// view comes from streamingView(): { mode: 'none' | 'stale' | 'show', blocks, asOf }.
+export function renderStreaming(slot, view) {
+  if (view.mode === 'none') {
+    slot.replaceChildren();
+    return;
+  }
+
+  if (view.mode === 'stale') {
+    slot.replaceChildren(element('p', 'streaming-stale detail-help',
+      'The streaming data is out of date, so only the JustWatch links are shown.'));
+    return;
+  }
+
+  const parts = view.blocks.map(block => {
+    const box = element('div', 'country-block');
+    box.append(element('h4', 'country-name', block.name));
+    for (const line of block.lines) {
+      const row = element('p', 'country-line');
+      if (line.label) {
+        row.append(element('span', 'country-label', `${line.label} `));
+      }
+      row.append(document.createTextNode(line.text));
+      box.append(row);
+    }
+    return box;
+  });
+
+  const credit = element('p', 'streaming-credit detail-help', 'Streaming data by ');
+  const link = externalLink('https://www.watchmode.com', 'Watchmode', 'streaming-credit-link');
+  credit.append(link, document.createTextNode(view.asOf ? `, as of ${view.asOf}` : ''));
+
+  slot.replaceChildren(...parts, credit);
 }

@@ -57,6 +57,7 @@ export function buildPools(catalog, progress, existing, targetSize = TARGET_SIZE
     }
   }
 
+  const catalogYear = new Map(catalog.map(movie => [movie.id, movie.year]));
   const verified = verifiedIds(catalog, progress);
   const handPicked = existing.map(entry => entry.movies.filter(movie => movie.handPicked));
   const taken = new Set(handPicked.flat().map(movie => movie.id));
@@ -71,7 +72,10 @@ export function buildPools(catalog, progress, existing, targetSize = TARGET_SIZE
   const report = [];
   const pools = existing.map((entry, index) => {
     const label = onboardingLabel(entry.genre);
-    const kept = handPicked[index].map(movie => ({ id: movie.id, title: movie.title, year: movie.year, handPicked: true }));
+    // A hand-picked year stays as written; one that is missing comes from the catalog.
+    const kept = handPicked[index].map(movie => ({
+      id: movie.id, title: movie.title, year: movie.year ?? catalogYear.get(movie.id), handPicked: true,
+    }));
     const added = [];
 
     for (const movie of eligible) {

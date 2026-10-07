@@ -14,7 +14,7 @@
 - **Where a film sits for you:** the top 5 show their rank ("#3 of 561 films"), and the rest of the list and every film page show "Top N% for your taste", the film's place among all unrated films. It ranks films against each other and is not the chance you will like one.
 - **Fresh every visit:** each genre has a pool of up to 8 well-known films, and the order of genres and films is shuffled per session from a saved seed, so a refresh resumes on exactly the same film.
 - **Rate 5 more:** five well-known films you have not rated or skipped, at most two per genre, to sharpen the list.
-- **Film pages:** tap any result for its poster, genres, runtime, director, age rating, Rotten Tomatoes score, full plot, a breakdown of how each film you rated pushed this one up or down, a YouTube trailer search and JustWatch search links for Canada, the US and the UK (search links, not a guarantee of availability).
+- **Film pages:** tap any result for its poster, genres, runtime, director, age rating, Rotten Tomatoes score, full plot, a breakdown of how each film you rated pushed this one up or down, a YouTube trailer search, which services include it or rent or sell it in Canada, the US and the UK (from a dated Watchmode snapshot), and JustWatch search links for each (search links, not a guarantee of availability).
 - **Keeps your place:** ratings and position are saved in the browser, so a refresh resumes where you were.
 
 ## How it works
@@ -120,6 +120,7 @@ src/                runtime: static files served to the browser
   links.js          trailer and where-to-watch search URLs
   route.js          hash route helpers
   detail.js         the film page
+  availability.js   loads the streaming snapshot, checks its age, builds the country text
   ui.js             builds DOM elements (text only, never HTML from data)
 tests/              node:test unit tests (npm test)
 e2e/                headless browser check at 375px (npm run test:e2e)
@@ -131,11 +132,15 @@ e2e/                headless browser check at 375px (npm run test:e2e)
 
 ### Streaming availability
 
-`node scripts/watchmode.js` looks up where each film can be watched in Canada, the United States and the United Kingdom and writes service names (subscription, and rent or buy) to `data/availability.json`. It uses 2 credits per film (one search, one sources call for all three countries), is resumable, and stops at a credit cap (`--max-credits`, default 2000) or when Watchmode reports a limit. Films are matched by name and Wikidata year, and no IMDb or other external ids are used or stored. Films with no match are stored as empty so the film page can fall back to the JustWatch search links.
+`node scripts/watchmode.js` looks up where each film can be watched in Canada, the United States and the United Kingdom and writes service names (subscription, and rent or buy) to `data/availability.json`. It uses 2 credits per film (one search, one sources call for all three countries), is resumable, and stops at a credit cap (`--max-credits`, default 2000) or when Watchmode reports a limit. Films are matched by name and Wikidata year, and no IMDb or other external ids are used or stored. Films with no match are stored as empty.
 
-This is a snapshot, not live data. Under Watchmode's free plan the cached data must be **refreshed or deleted within 30 days** of the fetch date, which is recorded in `fetchedAt` at the top of the file. The key goes in `.env` as `WATCHMODE_API_KEY` and is never printed or committed.
+The film page loads this file only when a film is opened. If the file is missing, fails to load, has no entry for the film, or is more than 30 days old, the page shows only the JustWatch search links (with a short note when the data is out of date).
 
-Streaming data by [Watchmode](https://api.watchmode.com).
+This is a snapshot, not live data. Under Watchmode's free plan the cached data must be **refreshed or deleted within 30 days** of the fetch date. The current snapshot was fetched on **7 October 2026**, so refresh or delete it by **6 November 2026**. The date is recorded in `fetchedAt` at the top of the file and shown on each film page as "Streaming data by Watchmode, as of ...".
+
+To refresh: delete `data/availability.json` and run `node scripts/watchmode.js` (it skips films already stored, so deleting the file is what makes it fetch everything again). The key goes in `.env` as `WATCHMODE_API_KEY` and is never printed or committed.
+
+Streaming data by [Watchmode](https://www.watchmode.com).
 
 ### Routing
 

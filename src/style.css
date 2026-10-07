@@ -704,3 +704,43 @@ img {
   font-weight: 500;
   line-height: 1.3;
 }
+
+.detail h4 {
+  margin: 16px 0 6px;
+  font-size: 0.95rem;
+}
+
+.streaming-services {
+  margin-bottom: 8px;
+}
+
+.country-block {
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.country-block .country-name {
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+}
+
+.country-line {
+  margin: 2px 0 0;
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
+.country-label {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.streaming-credit-link {
+  display: inline-block;
+  margin: -12px 0;
+  padding: 12px 2px;
+  color: var(--accent-hover);
+}

@@ -8,7 +8,8 @@ import { EXTRA_COUNT, pickNextCandidate } from './candidates.js';
 import { topPercent } from './percentile.js';
 import { titleWithYear, genreOrder } from './format.js';
 import { parseHash, shortId } from './route.js';
-import { renderDetail, renderNotFound } from './detail.js';
+import { renderDetail, renderNotFound, renderStreaming, showStreamingLoading } from './detail.js';
+import { loadAvailability, streamingView } from './availability.js';
 import { buildSession, newSeed } from './shuffle.js';
 
 const TOP_COUNT = 5;
@@ -296,11 +297,28 @@ function showDetail(qid) {
       onBack: leaveDetail,
     }));
     document.title = `${titleWithYear(movie)} · CoCinema`;
+    fillStreaming(movie);
   }
 
   const heading = document.getElementById('detail-heading');
   if (heading) {
     heading.focus({ preventScroll: true });
+  }
+}
+
+// Streaming services load on their own after the page is up, so a slow or missing file never
+// blocks or breaks the film page. Any problem leaves only the JustWatch links.
+async function fillStreaming(movie) {
+  const slot = document.getElementById('streaming-services');
+  if (!slot) return;
+  showStreamingLoading(slot);
+  try {
+    const data = await loadAvailability();
+    if (slot.isConnected) {
+      renderStreaming(slot, streamingView(data, movie.id));
+    }
+  } catch (error) {
+    slot.replaceChildren();
   }
 }
 

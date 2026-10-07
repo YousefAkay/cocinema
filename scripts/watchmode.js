@@ -223,6 +223,14 @@ async function main() {
   const remaining = catalog.filter(movie => !(movie.id in output.films)).length;
   console.log('');
   console.log(`Fetched this run: ${done}, credits used this run: ${credits}, films still to do overall: ${remaining}`);
+  const titleOf = new Map(catalog.map(movie => [movie.id, `${movie.title} (${movie.year})`]));
+  const stored = Object.entries(output.films);
+  const noMatch = stored.filter(([, entry]) => !entry.matched).map(([id]) => titleOf.get(id));
+  const noSources = stored
+    .filter(([, entry]) => entry.matched && REGIONS.every(region => entry[region].subscription.length + entry[region].rentOrBuy.length === 0))
+    .map(([id]) => titleOf.get(id));
+  console.log(`No match (${noMatch.length}): ${noMatch.join('; ') || 'none'}`);
+  console.log(`Matched but no sources anywhere (${noSources.length}): ${noSources.join('; ') || 'none'}`);
   console.log(`Films with sources per country this run: CA ${countryMatches.CA}, US ${countryMatches.US}, GB ${countryMatches.GB}`);
   if (done > 0) {
     const average = credits / done;
