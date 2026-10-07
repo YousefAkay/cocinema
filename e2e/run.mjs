@@ -34,7 +34,7 @@ async function topTitles() {
 }
 
 async function currentFilm(p = page) {
-  const label = await p.locator('#rating-screen > p:first-child').innerText();
+  const label = await p.locator('#rating-screen > h1').innerText();
   const title = await p.locator('#rating-screen .movie-card p').innerText();
   return `${label} | ${title}`;
 }
@@ -295,7 +295,7 @@ try {
   const before = await topTitles();
   await page.getByRole('button', { name: 'Rate 5 more' }).click();
   await page.waitForSelector('#rating-screen .rating-widget');
-  const firstLabel = await page.locator('#rating-screen > p:first-child').innerText();
+  const firstLabel = await page.locator('#rating-screen > h1').innerText();
   check('extra flow starts at "1 of 5"', /1 of 5/i.test(firstLabel), firstLabel);
   check('the rating step is scrolled to the top', await page.evaluate(() => window.scrollY === 0));
   await page.waitForTimeout(500);
@@ -307,11 +307,11 @@ try {
   await rateCurrent(2);
 
   const midTitle = await page.locator('#rating-screen .movie-card p').innerText();
-  const midLabel = await page.locator('#rating-screen > p:first-child').innerText();
+  const midLabel = await page.locator('#rating-screen > h1').innerText();
   await page.reload();
   await page.waitForSelector('#rating-screen .rating-widget');
   const afterTitle = await page.locator('#rating-screen .movie-card p').innerText();
-  const afterLabel = await page.locator('#rating-screen > p:first-child').innerText();
+  const afterLabel = await page.locator('#rating-screen > h1').innerText();
   check('refresh mid-flow resumes on the same film and step', afterTitle === midTitle && afterLabel === midLabel && /3 of 5/i.test(afterLabel), `${afterLabel}: ${afterTitle}`);
 
   for (const score of [8, 3, 10]) {

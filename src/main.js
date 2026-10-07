@@ -69,7 +69,9 @@ function showRatingStep({ label, movie, onConfirm, onSkip }) {
   ratingScreen.innerHTML = '';
   window.scrollTo(0, 0);
 
-  const progress = document.createElement('p');
+  // The step label is the page's heading; focus moves to it so a screen reader announces the new step.
+  const progress = document.createElement('h1');
+  progress.tabIndex = -1;
   progress.textContent = label;
 
   const skipButton = document.createElement('button');
@@ -82,6 +84,7 @@ function showRatingStep({ label, movie, onConfirm, onSkip }) {
     renderRatingWidget(movie.id, null, onConfirm),
     skipButton,
   );
+  progress.focus({ preventScroll: true });
 }
 
 function skipMovie(movie) {
@@ -228,9 +231,16 @@ function showResults(notice, restoreScroll = false) {
   const allScores = everyUnrated.map(result => result.score);
   const ranked = everyUnrated.slice(0, RESULT_COUNT);
 
+  const pageHeading = document.createElement('h1');
+  pageHeading.className = 'visually-hidden';
+  pageHeading.tabIndex = -1;
+  pageHeading.textContent = 'Your recommendations';
+  resultsScreen.append(pageHeading);
+
   if (ranked.length === 0) {
     addParagraph(resultsScreen, '', 'Rate at least 3 movies (with different scores) to get recommendations.');
     addButton(resultsScreen, 'start-over', 'Start over', startOver);
+    pageHeading.focus({ preventScroll: true });
     return;
   }
 
@@ -271,6 +281,8 @@ function showResults(notice, restoreScroll = false) {
 
   if (restoreScroll) {
     window.scrollTo(0, resultsScrollY);
+  } else {
+    topHeading.focus({ preventScroll: true });
   }
 }
 
@@ -374,6 +386,7 @@ function startOver() {
   history.replaceState(null, '', location.pathname + location.search);
   document.title = 'CoCinema';
   showOnly(landingScreen);
+  landingScreen.querySelector('h1').focus({ preventScroll: true });
 }
 
 const startButton = document.getElementById('start-button');

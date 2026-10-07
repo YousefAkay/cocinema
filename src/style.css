@@ -9,6 +9,9 @@
   --text-muted: #8b8ba0;
   --accent: #7c5cff;
   --accent-hover: #9479ff;
+  --accent-fill: #6c4cf0;
+  --accent-fill-hover: #5f3fe0;
+  --focus-ring: #c9bcff;
   --accent-glow: rgba(124, 92, 255, 0.35);
   --radius: 12px;
   --poster-ratio: 2 / 3;
@@ -54,8 +57,8 @@ button {
 }
 
 button:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
 }
 
 img {
@@ -99,7 +102,7 @@ img {
   padding: 16px 40px;
   border: none;
   border-radius: 999px;
-  background: var(--accent);
+  background: var(--accent-fill);
   color: #fff;
   font-size: 1.05rem;
   font-weight: 700;
@@ -108,7 +111,7 @@ img {
 }
 
 #start-button:hover {
-  background: var(--accent-hover);
+  background: var(--accent-fill-hover);
   transform: translateY(-2px);
 }
 
@@ -122,7 +125,7 @@ img {
   padding: 16px 16px 48px;
 }
 
-#rating-screen > p:first-child {
+#rating-screen > h1 {
   margin: 0;
   padding: 6px 14px;
   border: 1px solid var(--border);
@@ -192,7 +195,7 @@ img {
 
 .rating-widget button.selected,
 .rating-widget button.selected:hover {
-  background: var(--accent);
+  background: var(--accent-fill);
   border-color: var(--accent);
   color: #fff;
   box-shadow: 0 0 0 4px var(--accent-glow);
@@ -206,13 +209,13 @@ img {
   padding: 14px;
   border: none;
   border-radius: 999px;
-  background: var(--accent);
+  background: var(--accent-fill);
   color: #fff;
   font-weight: 700;
 }
 
 .rating-widget button:last-child:hover {
-  background: var(--accent-hover);
+  background: var(--accent-fill-hover);
 }
 
 #rating-screen > button {
@@ -399,7 +402,7 @@ img {
   display: inline-block;
   padding: 2px 10px;
   border-radius: 999px;
-  background: var(--accent);
+  background: var(--accent-fill);
   color: #fff;
   font-size: 0.85rem;
   font-weight: 700;
@@ -443,14 +446,14 @@ img {
   padding: 10px 28px;
   border: none;
   border-radius: 999px;
-  background: var(--accent);
+  background: var(--accent-fill);
   color: #fff;
   font-weight: 700;
   box-shadow: 0 8px 24px var(--accent-glow);
 }
 
 .rate-more:hover {
-  background: var(--accent-hover);
+  background: var(--accent-fill-hover);
 }
 
 @media (max-width: 480px) {
@@ -467,7 +470,7 @@ img {
 }
 
 .movie-link:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 3px solid var(--focus-ring);
   outline-offset: 4px;
   border-radius: var(--radius);
 }
@@ -492,7 +495,7 @@ img {
 }
 
 .top-pick:has(h3 a:focus-visible) {
-  outline: 2px solid var(--accent);
+  outline: 3px solid var(--focus-ring);
 }
 
 #detail-screen {
@@ -563,7 +566,7 @@ img {
   margin: 8px 0 0;
   padding: 4px 14px;
   border-radius: 999px;
-  background: var(--accent);
+  background: var(--accent-fill);
   color: #fff;
   font-weight: 700;
 }
@@ -674,12 +677,12 @@ img {
 }
 
 .detail-link:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 3px solid var(--focus-ring);
   outline-offset: 2px;
 }
 
 .trailer-link {
-  background: var(--accent);
+  background: var(--accent-fill);
   border-color: var(--accent);
   color: #fff;
   font-weight: 600;
@@ -759,4 +762,21 @@ img {
   color: var(--text-muted);
   font-size: 0.75rem;
   pointer-events: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Headings that only receive focus from script (to announce a new screen) need no ring. */
+[tabindex="-1"]:focus {
+  outline: none;
 }

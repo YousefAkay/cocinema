@@ -82,6 +82,8 @@ export function renderTopPick(result, rank, total, whyLine) {
 export function renderRatingWidget(movieId, current, onConfirm) {
   const container = document.createElement('div');
   container.className = 'rating-widget';
+  container.setAttribute('role', 'group');
+  container.setAttribute('aria-label', 'Your score from 1 to 10');
 
   let selected = current;
   let selectedButton = null;
@@ -89,6 +91,7 @@ export function renderRatingWidget(movieId, current, onConfirm) {
   for (let i = 1; i <= 10; i++) {
     const btn = document.createElement('button');
     btn.textContent = i;
+    btn.setAttribute('aria-pressed', i === current ? 'true' : 'false');
 
     if (i === current) {
       btn.classList.add('selected');
@@ -98,8 +101,10 @@ export function renderRatingWidget(movieId, current, onConfirm) {
     btn.addEventListener('click', function() {
       if (selectedButton) {
         selectedButton.classList.remove('selected');
+        selectedButton.setAttribute('aria-pressed', 'false');
       }
       btn.classList.add('selected');
+      btn.setAttribute('aria-pressed', 'true');
       selectedButton = btn;
       selected = i;
       hint.hidden = true;
@@ -110,6 +115,7 @@ export function renderRatingWidget(movieId, current, onConfirm) {
 
   const hint = document.createElement('p');
   hint.className = 'rating-hint';
+  hint.setAttribute('role', 'alert');
   hint.textContent = 'Pick a score first';
   hint.hidden = true;
   container.appendChild(hint);
