@@ -2,12 +2,12 @@
 // latest deploy; the large data files are stale-while-revalidate so they open instantly and
 // still refresh in the background. Other origins (posters, fonts) are never touched.
 
-const CACHE_NAME = 'cocinema-v2';
+const CACHE_NAME = 'cocinema-v3';
 const NETWORK_TIMEOUT_MS = 4000;
 
 // Everything the app needs to start, relative to this file (/src/).
 const SHELL = [
-  './', './index.html', './style.css',
+  './', './index.html', './style.css', './logo.svg',
   './main.js', './ui.js', './ratings.js', './recommend.js', './similarity.js', './why.js',
   './candidates.js', './percentile.js', './format.js', './links.js', './route.js',
   './detail.js', './availability.js', './shuffle.js', './offline.js', './progress.js', './evaluation-stats.js', './landing-posters.js',
@@ -18,7 +18,8 @@ const SHELL = [
 // manifest and icons are only for installing the app).
 const OPTIONAL = [
   '../data/catalog.json', '../data/onboarding.json', '../data/availability.json',
-  './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './favicon.svg',
+  './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png',
+  './icons/apple-touch-icon.png', './favicon.svg', './favicon.ico',
 ];
 
 self.addEventListener('install', event => {

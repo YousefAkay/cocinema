@@ -23,8 +23,10 @@ test('the page has a description, theme colour, canonical URL and icons', () => 
   assert.equal(meta('name', 'theme-color'), '#7c3aed');
   assert.match(html, /<link rel="canonical" href="https:\/\/cocinema-pi\.vercel\.app\/">/);
   assert.match(html, /<link rel="manifest" href="manifest\.webmanifest">/);
-  assert.match(html, /<link rel="apple-touch-icon" href="icons\/apple-touch-icon\.png">/);
-  assert.match(html, /<link rel="icon" href="favicon\.svg"/);
+  assert.match(html, /<link rel="apple-touch-icon" href="icons\/apple-touch-icon\.png" sizes="180x180">/);
+  assert.match(html, /<link rel="icon" href="favicon\.svg" type="image\/svg\+xml" sizes="any">/);
+  assert.match(html, /<link rel="icon" href="favicon\.ico" type="image\/x-icon" sizes="16x16 32x32 48x48">/);
+  assert.match(html, /<link rel="icon" href="\/favicon\.ico">/);
 });
 
 test('Open Graph and Twitter tags are complete and the image is an absolute URL that exists', () => {
