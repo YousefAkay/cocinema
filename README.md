@@ -129,6 +129,14 @@ e2e/                headless browser check at 375px (npm run test:e2e)
 
 `data/onboarding.json` holds 15 genre pools of up to 8 films. The 46 original hand-picked films are marked `handPicked` and always stay. `node scripts/buildOnboarding.js` tops each pool up with the best-known catalog films (most Wikipedia language editions) that are verified, have a poster, plot, year and embedding, and have a title that appears only once in the catalog. A film joins the pool of its rarest onboarding genre in the catalog, so it is not always counted as drama, and no film is in two pools. Pools are short until catalog verification finishes, so **rerun the script after `node scripts/verifyCatalog.js` has checked every entry**.
 
+### Streaming availability
+
+`node scripts/watchmode.js` looks up where each film can be watched in Canada, the United States and the United Kingdom and writes service names (subscription, and rent or buy) to `data/availability.json`. It uses 2 credits per film (one search, one sources call for all three countries), is resumable, and stops at a credit cap (`--max-credits`, default 2000) or when Watchmode reports a limit. Films are matched by name and Wikidata year, and no IMDb or other external ids are used or stored. Films with no match are stored as empty so the film page can fall back to the JustWatch search links.
+
+This is a snapshot, not live data. Under Watchmode's free plan the cached data must be **refreshed or deleted within 30 days** of the fetch date, which is recorded in `fetchedAt` at the top of the file. The key goes in `.env` as `WATCHMODE_API_KEY` and is never printed or committed.
+
+Streaming data by [Watchmode](https://api.watchmode.com).
+
 ### Routing
 
 There is one HTML page. The film page is a fourth screen shown at `#/movie/<Wikidata id>` (for example `#/movie/Q104123`). `main.js` listens for `hashchange` and also routes once on load, after the saved ratings have been restored, so a film URL works after a refresh and Back returns to the results at the same scroll position. An unknown id shows a "Movie not found" screen with a way back.
