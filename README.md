@@ -89,6 +89,20 @@ Method: for each genre with at least 25 films, a synthetic user is generated 50 
 
 Limitation: these are synthetic users whose taste is defined by Wikidata genre labels, and a film can carry several labels. The numbers show that the recommender picks up a genre signal from ratings. They say nothing about accuracy for real people, and results vary a lot by genre (from about 1.5x for drama to about 11x for westerns).
 
+### How many ratings are enough?
+
+`node scripts/evaluate.js --compare` runs the same simulated users with 6, 8, 10, 12 and 15 ratings in total (about half liked, a third disliked, the rest neutral). Each simulated user is drawn once at the largest size and the smaller totals use the first films of it, so the rows are directly comparable.
+
+| Ratings | Precision@10 | Lift over chance | Hidden liked film (mean percentile) | Hidden film in top 20 |
+| --- | --- | --- | --- | --- |
+| 6 | 0.509 | 3.8x | 68.5 | 12.8% |
+| 8 | 0.543 | 4.1x | 70.7 | 15.0% |
+| 10 | 0.559 | 4.2x | 71.5 | 15.5% |
+| 12 | 0.589 | 4.5x | 73.3 | 17.9% |
+| 15 | 0.613 | 4.7x | 74.3 | 18.4% |
+
+Picks get steadily better as ratings are added, with no sharp jump anywhere, and 6 ratings already do clearly better than chance. This is the same synthetic setup as above (simulated genre tastes built from Wikidata genre labels), so it describes how recommendations improve with more ratings, not how accurate they are for real people. The 12-rating row uses these nested simulated users, so it differs slightly from the standard run's 4.46x. The headline lift quoted on the landing page comes from the standard run, which writes `src/evaluation-stats.js` so the page and this section cannot disagree.
+
 ## Tech stack
 
 - **Frontend:** plain JavaScript (ES modules), HTML, CSS. No framework, no build step.
