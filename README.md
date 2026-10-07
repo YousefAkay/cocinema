@@ -8,6 +8,14 @@
 
 ---
 
+## Features
+
+- **Rate and get picks:** rate films from 15 genres, skip any you have not seen, and get a ranked list. The top 5 come with a one-line reason ("Because you rated ..."), and the rest follow in a compact grid.
+- **Where a film sits for you:** each result shows "Top N% for your taste", the film's place among every unrated film in the catalog. It ranks films against each other and is not the chance you will like one.
+- **Rate 5 more:** five well-known films you have not rated or skipped, at most two per genre, to sharpen the list.
+- **Film pages:** tap any result for its poster, genres, runtime, director, age rating, Rotten Tomatoes score, full plot, a breakdown of how each film you rated pushed this one up or down, a YouTube trailer search and JustWatch search links for Canada, the US and the UK (search links, not a guarantee of availability).
+- **Keeps your place:** ratings and position are saved in the browser, so a refresh resumes where you were.
+
 ## How it works
 
 CoCinema is a **content-based recommender**. Every movie's plot is turned into an embedding (a list of numbers where similar stories get similar numbers). Your ratings are combined into a single "taste profile", and every movie is ranked by how closely it points in the same direction.
@@ -98,12 +106,25 @@ data/
   catalog.json      the only bridge between build time and runtime
   onboarding.json   hand-picked movies shown on the rating screen
 src/                runtime: static files served to the browser
-  main.js           screen flow and rating state
-  recommend.js      taste profile + ranking
+  main.js           screens, hash routing and the rating flows
+  recommend.js      taste profile, ranking and the per-film explanation
   similarity.js     dot product, magnitude, cosine similarity
-  ratings.js        stores ratings
-  ui.js             builds DOM elements
+  ratings.js        the only file that touches localStorage (ratings, skips, position)
+  candidates.js     picks films for "Rate 5 more"
+  why.js            builds the "Because you rated ..." sentence
+  percentile.js     "Top N%" among all unrated films
+  format.js         titles with years, genre ordering
+  links.js          trailer and where-to-watch search URLs
+  route.js          hash route helpers
+  detail.js         the film page
+  ui.js             builds DOM elements (text only, never HTML from data)
+tests/              node:test unit tests (npm test)
+e2e/                headless browser check at 375px (npm run test:e2e)
 ```
+
+### Routing
+
+There is one HTML page. The film page is a fourth screen shown at `#/movie/<Wikidata id>` (for example `#/movie/Q104123`). `main.js` listens for `hashchange` and also routes once on load, after the saved ratings have been restored, so a film URL works after a refresh and Back returns to the results at the same scroll position. An unknown id shows a "Movie not found" screen with a way back.
 
 ## Running locally
 
@@ -128,9 +149,8 @@ npx serve . -l tcp://127.0.0.1:3000
 
 ## Roadmap
 
-- Movie detail pages: description, trailer, where to watch
+- Streaming service names on film pages, from a data file
 - Shuffled onboarding from a larger pool, so repeat visits feel fresh
-- "Why this pick" explanations, decomposing each score into your ratings' contributions
 - Co-watch mode: two people rate, and CoCinema finds films you'd both enjoy
 
 ## Credits

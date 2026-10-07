@@ -1,3 +1,5 @@
+import { titleWithYear } from './format.js';
+
 const ENOUGH_OF_POSITIVE = 0.7;
 const MAX_TITLES = 3;
 const MEANINGFUL_NEGATIVE = 0.15;
@@ -31,12 +33,12 @@ export function buildWhyLine(contributions) {
     }
   }
 
-  let line = `Because you rated ${joinList(chosen.map(item => `"${item.title}" ${item.score}`))}`;
+  let line = `Because you rated ${joinList(chosen.map(item => `"${titleWithYear(item)}" ${item.score}`))}`;
 
   const negatives = contributions.filter(item => item.contribution < 0);
   const worst = negatives[negatives.length - 1];
   if (worst && -worst.contribution >= MEANINGFUL_NEGATIVE * positiveTotal) {
-    line += `; held back by your ${worst.score} for "${worst.title}"`;
+    line += `; held back by your ${worst.score} for "${titleWithYear(worst)}"`;
   }
 
   return `${line}.`;

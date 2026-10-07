@@ -1,6 +1,8 @@
 import { saveRating } from "./ratings.js";
+import { titleWithYear } from './format.js';
+import { movieHash } from './route.js';
 
-function renderPoster(movie) {
+export function renderPoster(movie) {
   function posterPlaceholder() {
     const placeholder = document.createElement('div');
     placeholder.className = 'poster-placeholder';
@@ -19,23 +21,32 @@ function renderPoster(movie) {
   return img;
 }
 
-export function renderMovieCard(movie) {
+// A poster and a caption. With linkTo (a movie), the whole card is a link to that film's page.
+export function renderMovieCard(movie, linkTo = null) {
   const card = document.createElement('div');
   card.className = 'movie-card';
 
   const title = document.createElement('p');
-  title.textContent = movie.title;
+  title.textContent = titleWithYear(movie);
 
   card.appendChild(renderPoster(movie));
   card.appendChild(title);
 
-  return card;
+  if (!linkTo) {
+    return card;
+  }
+
+  const link = document.createElement('a');
+  link.className = 'movie-link';
+  link.href = movieHash(linkTo.id);
+  link.appendChild(card);
+  return link;
 }
 
-// A larger result card for the top picks: poster, title, year, match and the "why" line.
-// Everything goes in with textContent, so titles are never parsed as HTML.
-export function renderTopPick(result, rank, whyLine) {
-  const { movie, score } = result;
+// A larger result card for the top picks: poster, title, year, rank, place in the catalog and
+// the "why" line. Everything goes in with textContent, so titles are never parsed as HTML.
+export function renderTopPick(result, rank, whyLine, percent) {
+  const { movie } = result;
   const card = document.createElement('article');
   card.className = 'top-pick';
 
@@ -43,15 +54,18 @@ export function renderTopPick(result, rank, whyLine) {
   body.className = 'top-pick-body';
 
   const heading = document.createElement('h3');
-  heading.textContent = movie.title;
+  const link = document.createElement('a');
+  link.href = movieHash(movie.id);
+  link.textContent = titleWithYear(movie);
+  heading.append(link);
 
   const meta = document.createElement('p');
   meta.className = 'top-pick-meta';
-  meta.textContent = movie.year ? `#${rank} · ${movie.year}` : `#${rank}`;
+  meta.textContent = `#${rank}`;
 
   const match = document.createElement('p');
   match.className = 'top-pick-match';
-  match.textContent = `${Math.max(0, Math.round(score * 100))}% match`;
+  match.textContent = `Top ${percent}% for your taste`;
 
   const why = document.createElement('p');
   why.className = 'top-pick-why';
@@ -119,7 +133,7 @@ export function renderResults(list, startRank = 1) {
   container.className = 'movie-result';
   container.style.counterReset = `rank ${startRank - 1}`;
   for (const movie of list) {
-    container.appendChild(renderMovieCard(movie));
+    container.appendChild(renderMovieCard(movie, movie));
   }
   return container;
 }

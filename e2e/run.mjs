@@ -84,7 +84,7 @@ try {
   check('every why line is non-empty and names only movies the user rated', named, whys[0]);
 
   const matches = await page.locator('.top-pick-match').allInnerTexts();
-  check('scores read as whole-number "N% match"', matches.length === 5 && matches.every(text => /^\d+% match$/.test(text)), matches.join(', '));
+  check('catalog-relative figure reads "Top N% for your taste"', matches.length === 5 && matches.every(text => /^Top \d+% for your taste$/.test(text) && !text.startsWith('Top 0%')), matches.join(', '));
 
   const restCount = await page.locator('.more-picks .movie-card').count();
   check('the rest of the list renders', restCount >= 10, `${restCount} cards`);
@@ -95,6 +95,90 @@ try {
 
   await page.screenshot({ path: path.join(shots, '2-results-top.png') });
   await page.screenshot({ path: path.join(shots, '3-results-full.png'), fullPage: true });
+
+  // Detail page
+  async function openDetailFromTop(index) {
+    await page.locator('.top-pick h3 a').nth(index).click();
+    await page.waitForSelector('#detail-screen .detail');
+  }
+  const detailText = selector => page.locator(selector).first().innerText();
+
+  let opened = -1;
+  let scrollBefore = 0;
+  for (const index of [4, 3, 2]) {
+    await page.locator('.top-pick h3 a').nth(index).scrollIntoViewIfNeeded();
+    scrollBefore = await page.evaluate(() => window.scrollY);
+    await openDetailFromTop(index);
+    if (await page.locator('.detail-rt').count() > 0) { opened = index; break; }
+    await page.goBack();
+    await page.waitForSelector('.top-pick');
+  }
+  check('clicking a top card opens #/movie/Q... and shows the page', opened >= 0 && /#\/movie\/Q\d+$/.test(page.url()), page.url());
+
+  const heading = await detailText('#detail-heading');
+  check('page title reflects the film and focus is on the heading',
+    (await page.title()).startsWith(heading) && await page.evaluate(() => document.activeElement?.id === 'detail-heading'), await page.title());
+  check('poster (or placeholder) is shown', (await page.locator('.detail-poster img, .detail-poster .poster-placeholder').count()) === 1);
+  check('Rotten Tomatoes line is shown and nothing prints null',
+    /^Rotten Tomatoes: \d+%$/.test(await detailText('.detail-rt')) && !(await page.locator('#detail-screen').innerText()).includes('null'));
+  check('full plot is shown', (await detailText('.detail-plot')).length > 50);
+  check('"Top N% for your taste" is shown', /^Top \d+% for your taste$/.test(await detailText('.detail-match')));
+
+  const values = (await page.locator('.contrib-value').allInnerTexts()).map(text => Number(text.replace('−', '-')));
+  const totalText = await detailText('.contrib-total');
+  const total = Number(totalText.replace('Total: ', '').replace('−', '-'));
+  const sumOfParts = values.reduce((sum, value) => sum + value, 0);
+  check('breakdown lists every rated film and the parts add up to the total',
+    values.length === 15 && Math.abs(sumOfParts - total) < 0.001, `${values.length} rows, sum ${sumOfParts.toFixed(4)}, ${totalText}`);
+
+  const trailer = page.locator('.trailer-link');
+  const trailerHref = await trailer.getAttribute('href');
+  check('trailer link is a YouTube search that opens safely in a new tab',
+    trailerHref.startsWith('https://www.youtube.com/results?search_query=') && trailerHref.endsWith('trailer')
+      && (await trailer.getAttribute('target')) === '_blank' && (await trailer.getAttribute('rel')) === 'noopener%20noreferrer'.replace('%20', ' '), trailerHref);
+
+  const watch = await page.locator('.where-to-watch a').evaluateAll(links => links.map(a => ({ href: a.href, target: a.target, rel: a.rel })));
+  check('three where-to-watch links with the right country codes',
+    watch.length === 3 && ['/ca/search?q=', '/us/search?q=', '/uk/search?q='].every((part, i) => watch[i].href.includes(`justwatch.com${part}`))
+      && watch.every(link => link.target === '_blank' && link.rel === 'noopener noreferrer'), watch.map(link => link.href).join(' '));
+  check('streaming-services slot exists for later', (await page.locator('#streaming-services').count()) === 1);
+
+  check('no horizontal scroll on the detail page', await noSideScroll());
+  const smallTargets = await page.$$eval('#detail-screen a, #detail-screen button', nodes => nodes.filter(node => node.getBoundingClientRect().height < 44).length);
+  check('detail links and buttons are at least 44px tall', smallTargets === 0, `${smallTargets} too small`);
+  await page.screenshot({ path: path.join(shots, '6-detail-top.png') });
+  await page.screenshot({ path: path.join(shots, '7-detail-full.png'), fullPage: true });
+
+  await page.goBack();
+  await page.waitForSelector('.top-pick');
+  const scrollAfter = await page.evaluate(() => window.scrollY);
+  check('browser Back returns to results and restores the scroll position',
+    (await page.locator('#results-screen').isVisible()) && !page.url().includes('#/movie') && scrollBefore > 100 && Math.abs(scrollAfter - scrollBefore) < 80, `${scrollBefore} -> ${scrollAfter}`);
+
+  await page.locator('.more-picks a').first().click();
+  await page.waitForSelector('#detail-screen .detail');
+  check('a film from the compact grid opens its page too', /#\/movie\/Q\d+$/.test(page.url()));
+  await page.getByRole('button', { name: /Back/ }).click();
+  await page.waitForSelector('.top-pick');
+  check('the in-page Back button returns to results', (await page.locator('#results-screen').isVisible()) && !page.url().includes('#/movie'));
+
+  await openDetailFromTop(0);
+  const detailUrl = page.url();
+  const detailHeading = await detailText('#detail-heading');
+  await page.reload();
+  await page.waitForSelector('#detail-screen .detail');
+  check('opening a detail URL directly after a reload works, with the breakdown',
+    page.url() === detailUrl && (await detailText('#detail-heading')) === detailHeading && (await page.locator('.contrib-row').count()) === 15);
+  await page.getByRole('button', { name: /Back/ }).click();
+  await page.waitForSelector('.top-pick');
+  check('Back after a direct open still returns to results', (await page.locator('#results-screen').isVisible()) && !page.url().includes('#/movie'));
+
+  await page.evaluate(() => { location.hash = '#/movie/Q0'; });
+  await page.waitForSelector('#detail-heading');
+  check('an unknown id shows "Movie not found" with a way back', (await detailText('#detail-heading')) === 'Movie not found' && (await page.getByRole('button', { name: /Back/ }).count()) === 1);
+  await page.getByRole('button', { name: /Back/ }).click();
+  await page.waitForSelector('.top-pick');
+  check('Back from "Movie not found" returns to results', await page.locator('#results-screen').isVisible());
 
   // Rate 5 more, with a refresh in the middle and one skip
   const before = await topTitles();

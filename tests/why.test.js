@@ -48,3 +48,12 @@ test('titles with quotes and markup come through as plain text, unchanged', () =
   assert.equal(line, `Because you rated "${title}" 9.`);
   assert.equal(typeof line, 'string');
 });
+
+test('years are shown next to titles, so two films with one title can be told apart', () => {
+  const line = buildWhyLine([
+    { id: 'a', title: 'The Lion King', year: 1994, score: 10, contribution: 0.3 },
+    { id: 'b', title: 'The Lion King', year: 2019, score: 9, contribution: 0.3 },
+    { id: 'c', title: 'Heat', year: 1995, score: 2, contribution: -0.2 },
+  ]);
+  assert.equal(line, 'Because you rated "The Lion King (1994)" 10 and "The Lion King (2019)" 9; held back by your 2 for "Heat (1995)".');
+});

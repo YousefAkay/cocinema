@@ -5,6 +5,10 @@ import {
 import { recommend, explainMatch } from './recommend.js';
 import { buildWhyLine } from './why.js';
 import { EXTRA_COUNT, pickNextCandidate } from './candidates.js';
+import { topPercent } from './percentile.js';
+import { titleWithYear, genreOrder } from './format.js';
+import { parseHash, shortId } from './route.js';
+import { renderDetail, renderNotFound } from './detail.js';
 
 const TOP_COUNT = 5;
 const RESULT_COUNT = 25;
@@ -12,6 +16,8 @@ const RESULT_COUNT = 25;
 let catalog = [];
 let onboarding = [];
 let catalogById = new Map();
+let moviesByQid = new Map();
+let genreRank = [];
 
 async function fetchJson(path) {
   const response = await fetch(path);
@@ -28,15 +34,33 @@ async function fetchJson(path) {
 let genreIndex = 0;
 let movieIndex = 0;
 let extra = null;
+let started = false;
+let resultsScrollY = 0;
+let cameFromResults = false;
 
 const landingScreen = document.getElementById('landing-screen');
 const ratingScreen = document.getElementById('rating-screen');
 const resultsScreen = document.getElementById('results-screen');
+const detailScreen = document.getElementById('detail-screen');
+
+function showOnly(screen) {
+  for (const candidate of [landingScreen, ratingScreen, resultsScreen, detailScreen]) {
+    candidate.style.display = candidate === screen ? '' : 'none';
+  }
+  document.body.classList.toggle('started', screen !== landingScreen);
+}
+
+// Remember where the results list was scrolled when a film is opened from it.
+resultsScreen.addEventListener('click', event => {
+  if (event.target.closest('a[href^="#/movie/"]')) {
+    resultsScrollY = window.scrollY;
+    cameFromResults = true;
+  }
+});
 
 // One rating step: a progress label, the movie, the rating buttons and "Haven't seen it".
 function showRatingStep({ label, movie, onConfirm, onSkip }) {
-  ratingScreen.style.display = '';
-  resultsScreen.style.display = 'none';
+  showOnly(ratingScreen);
   ratingScreen.innerHTML = '';
   window.scrollTo(0, 0);
 
@@ -186,14 +210,18 @@ function addButton(parent, className, text, onClick) {
   return button;
 }
 
-function showResults(notice) {
-  ratingScreen.style.display = 'none';
-  resultsScreen.style.display = '';
+function showResults(notice, restoreScroll = false) {
+  showOnly(resultsScreen);
   resultsScreen.innerHTML = '';
-  window.scrollTo(0, 0);
+  if (!restoreScroll) {
+    window.scrollTo(0, 0);
+  }
 
   const ratings = getAllRatings();
-  const ranked = recommend(ratings, catalog, RESULT_COUNT);
+  // Score every unrated film once, so each shown film can be placed among all of them.
+  const everyUnrated = recommend(ratings, catalog, catalog.length);
+  const allScores = everyUnrated.map(result => result.score);
+  const ranked = everyUnrated.slice(0, RESULT_COUNT);
 
   if (ranked.length === 0) {
     addParagraph(resultsScreen, '', 'Rate at least 3 movies (with different scores) to get recommendations.');
@@ -209,14 +237,15 @@ function showResults(notice) {
   topSection.className = 'top-picks';
   const topHeading = document.createElement('h2');
   topHeading.textContent = 'Your top picks';
+  topHeading.tabIndex = -1;
   topSection.append(topHeading);
 
   ranked.slice(0, TOP_COUNT).forEach((result, index) => {
     const why = buildWhyLine(explainMatch(result.movie.id, ratings, catalog));
-    topSection.append(renderTopPick(result, index + 1, why));
+    topSection.append(renderTopPick(result, index + 1, why, topPercent(result.score, allScores)));
   });
   addParagraph(topSection, 'match-note',
-    'Match shows how closely a film’s story points the same way as your taste. It is not the chance you will like it.');
+    'Top N% ranks each film against the rest of the catalog for you. It is not the chance you will like it.');
   resultsScreen.append(topSection);
 
   const rest = ranked.slice(TOP_COUNT);
@@ -234,19 +263,93 @@ function showResults(notice) {
   addButton(actions, 'rate-more', `Rate ${EXTRA_COUNT} more`, startExtra);
   addButton(actions, 'start-over', 'Start over', startOver);
   resultsScreen.append(actions);
+
+  if (restoreScroll) {
+    window.scrollTo(0, resultsScrollY);
+  }
 }
+
+// A film's own page, at #/movie/<id>. Renders from the saved ratings, so it works after a reload.
+function showDetail(qid) {
+  const movie = moviesByQid.get(qid);
+  showOnly(detailScreen);
+  detailScreen.innerHTML = '';
+  window.scrollTo(0, 0);
+
+  if (!movie) {
+    detailScreen.append(renderNotFound(leaveDetail));
+    document.title = 'Movie not found · CoCinema';
+  } else {
+    const ratings = getAllRatings();
+    const everyUnrated = recommend(ratings, catalog, catalog.length);
+    const entry = everyUnrated.find(result => result.movie.id === movie.id);
+    const own = ratings.find(rating => rating.id === movie.id);
+
+    detailScreen.append(renderDetail(movie, {
+      percent: entry ? topPercent(entry.score, everyUnrated.map(result => result.score)) : null,
+      userScore: own ? own.score : null,
+      contributions: explainMatch(movie.id, ratings, catalog),
+      genreOrder: genreRank,
+      onBack: leaveDetail,
+    }));
+    document.title = `${titleWithYear(movie)} · CoCinema`;
+  }
+
+  const heading = document.getElementById('detail-heading');
+  if (heading) {
+    heading.focus({ preventScroll: true });
+  }
+}
+
+function leaveDetail() {
+  if (cameFromResults) {
+    history.back();
+    return;
+  }
+  history.replaceState(null, '', location.pathname + location.search);
+  route();
+}
+
+function showHome() {
+  document.title = 'CoCinema';
+  if (!started) {
+    showOnly(landingScreen);
+    return;
+  }
+  if (extra) {
+    resumeExtra();
+  } else if (genreIndex >= onboarding.length) {
+    showResults(undefined, cameFromResults);
+    resultsScreen.querySelector('h2')?.focus({ preventScroll: true });
+  } else {
+    showCurrentMovie();
+  }
+}
+
+function route() {
+  const target = parseHash(location.hash);
+  if (target.type === 'movie') {
+    showDetail(target.qid);
+  } else {
+    showHome();
+  }
+}
+
+window.addEventListener('hashchange', route);
 
 function startOver() {
   clearSavedState();
   genreIndex = 0;
   movieIndex = 0;
   extra = null;
-  resultsScreen.style.display = 'none';
+  started = false;
+  cameFromResults = false;
   resultsScreen.innerHTML = '';
-  ratingScreen.style.display = 'none';
   ratingScreen.innerHTML = '';
-  document.body.classList.remove('started');
-  landingScreen.style.display = '';
+  detailScreen.innerHTML = '';
+  history.replaceState(null, '', location.pathname + location.search);
+  document.title = 'CoCinema';
+  showOnly(landingScreen);
 }
 
 const startButton = document.getElementById('start-button');
@@ -263,9 +366,7 @@ startButton.addEventListener('click', function() {
   if (startButton.disabled) {
     return;
   }
-  landingScreen.style.display = 'none';
-  ratingScreen.style.display = '';
-  document.body.classList.add('started');
+  started = true;
   showCurrentMovie();
 });
 
@@ -287,6 +388,8 @@ async function loadData() {
   }
 
   catalogById = new Map(catalog.map(movie => [movie.id, movie]));
+  moviesByQid = new Map(catalog.map(movie => [shortId(movie.id), movie]));
+  genreRank = genreOrder(catalog, onboarding);
   startButton.disabled = false;
 
   const saved = loadSavedState(new Set(catalogById.keys()), onboarding.length);
@@ -294,10 +397,9 @@ async function loadData() {
     genreIndex = saved.genreIndex;
     movieIndex = saved.movieIndex;
     extra = saved.extra;
-    landingScreen.style.display = 'none';
-    document.body.classList.add('started');
-    showCurrentMovie();
+    started = true;
   }
+  route();
 }
 
 retryButton.addEventListener('click', loadData);

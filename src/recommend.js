@@ -84,6 +84,7 @@ export function explainMatch(movieId, ratings, catalog) {
     .map(item => ({
       id: item.id,
       title: movieIdToMovieMap.get(item.id).title,
+      year: movieIdToMovieMap.get(item.id).year,
       score: item.score,
       weight: item.weight,
       contribution: item.weight * dotProduct(item.embedding, movie.embedding) / denominator,
