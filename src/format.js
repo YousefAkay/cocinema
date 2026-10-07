@@ -2,6 +2,12 @@
 const ONBOARDING_ALIASES = { 'sci-fi': 'science fiction', animation: 'animated' };
 export const MAX_GENRES = 3;
 
+// The catalog label for an onboarding genre name ("Sci-fi" is "science fiction" in the catalog).
+export function onboardingLabel(name) {
+  const lower = name.toLowerCase();
+  return ONBOARDING_ALIASES[lower] || lower;
+}
+
 export function titleWithYear(movie) {
   return movie.year ? `${movie.title} (${movie.year})` : movie.title;
 }
@@ -17,12 +23,7 @@ export function genreOrder(catalog, onboarding) {
     }
   }
 
-  const topLevel = new Set(
-    onboarding.map(entry => {
-      const name = entry.genre.toLowerCase();
-      return ONBOARDING_ALIASES[name] || name;
-    }),
-  );
+  const topLevel = new Set(onboarding.map(entry => onboardingLabel(entry.genre)));
 
   const byCommonness = (a, b) => (counts.get(b) - counts.get(a)) || a.localeCompare(b);
   const known = [...counts.keys()];

@@ -695,3 +695,12 @@ img {
     gap: 12px;
   }
 }
+
+.movie-card p.movie-card-note,
+.movie-result .movie-card p.movie-card-note {
+  margin: 2px 0 0;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.3;
+}

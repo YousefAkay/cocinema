@@ -11,7 +11,8 @@
 ## Features
 
 - **Rate and get picks:** rate films from 15 genres, skip any you have not seen, and get a ranked list. The top 5 come with a one-line reason ("Because you rated ..."), and the rest follow in a compact grid.
-- **Where a film sits for you:** each result shows "Top N% for your taste", the film's place among every unrated film in the catalog. It ranks films against each other and is not the chance you will like one.
+- **Where a film sits for you:** the top 5 show their rank ("#3 of 561 films"), and the rest of the list and every film page show "Top N% for your taste", the film's place among all unrated films. It ranks films against each other and is not the chance you will like one.
+- **Fresh every visit:** each genre has a pool of up to 8 well-known films, and the order of genres and films is shuffled per session from a saved seed, so a refresh resumes on exactly the same film.
 - **Rate 5 more:** five well-known films you have not rated or skipped, at most two per genre, to sharpen the list.
 - **Film pages:** tap any result for its poster, genres, runtime, director, age rating, Rotten Tomatoes score, full plot, a breakdown of how each film you rated pushed this one up or down, a YouTube trailer search and JustWatch search links for Canada, the US and the UK (search links, not a guarantee of availability).
 - **Keeps your place:** ratings and position are saved in the browser, so a refresh resumes where you were.
@@ -102,6 +103,7 @@ scripts/            build time: runs locally, uses API keys
   omdb.js           fetch plot + poster
   embeddings.js     plot → 512-number embedding
   buildCatalog.js   orchestrates everything → data/catalog.json
+  buildOnboarding.js  regenerates the onboarding pools from the verified catalog
 data/
   catalog.json      the only bridge between build time and runtime
   onboarding.json   hand-picked movies shown on the rating screen
@@ -109,7 +111,8 @@ src/                runtime: static files served to the browser
   main.js           screens, hash routing and the rating flows
   recommend.js      taste profile, ranking and the per-film explanation
   similarity.js     dot product, magnitude, cosine similarity
-  ratings.js        the only file that touches localStorage (ratings, skips, position)
+  ratings.js        the only file that touches localStorage (ratings, skips, position, seed)
+  shuffle.js        seeded Fisher-Yates shuffle and the per-session onboarding order
   candidates.js     picks films for "Rate 5 more"
   why.js            builds the "Because you rated ..." sentence
   percentile.js     "Top N%" among all unrated films
@@ -121,6 +124,10 @@ src/                runtime: static files served to the browser
 tests/              node:test unit tests (npm test)
 e2e/                headless browser check at 375px (npm run test:e2e)
 ```
+
+### Onboarding pools
+
+`data/onboarding.json` holds 15 genre pools of up to 8 films. The 46 original hand-picked films are marked `handPicked` and always stay. `node scripts/buildOnboarding.js` tops each pool up with the best-known catalog films (most Wikipedia language editions) that are verified, have a poster, plot, year and embedding, and have a title that appears only once in the catalog. A film joins the pool of its rarest onboarding genre in the catalog, so it is not always counted as drama, and no film is in two pools. Pools are short until catalog verification finishes, so **rerun the script after `node scripts/verifyCatalog.js` has checked every entry**.
 
 ### Routing
 

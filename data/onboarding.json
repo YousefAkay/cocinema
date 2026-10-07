@@ -2,122 +2,666 @@
   {
     "genre": "Comedy",
     "movies": [
-      { "id": "http://www.wikidata.org/entity/Q679611", "title": "Superbad", "year": 2007 },
-      { "id": "http://www.wikidata.org/entity/Q105031", "title": "Home Alone", "year": 1990 },
-      { "id": "http://www.wikidata.org/entity/Q219315", "title": "The Hangover", "year": 2009 }
+      {
+        "id": "http://www.wikidata.org/entity/Q679611",
+        "title": "Superbad",
+        "year": 2007,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q105031",
+        "title": "Home Alone",
+        "year": 1990,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q219315",
+        "title": "The Hangover",
+        "year": 2009,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q46717",
+        "title": "Pirates of the Caribbean: The Curse of the Black Pearl",
+        "year": 2003
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q54274",
+        "title": "Pirates of the Caribbean: At World's End",
+        "year": 2007
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q182153",
+        "title": "Cars",
+        "year": 2006
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q19355",
+        "title": "Life Is Beautiful",
+        "year": 1997
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q171669",
+        "title": "One Flew Over the Cuckoo's Nest",
+        "year": 1975
+      }
     ]
   },
   {
     "genre": "Horror",
     "movies": [
-      { "id": "http://www.wikidata.org/entity/Q25136484", "title": "It", "year": 2017 },
-      { "id": "http://www.wikidata.org/entity/Q25136235", "title": "Get Out", "year": 2017 },
-      { "id": "http://www.wikidata.org/entity/Q47524071", "title": "Hereditary", "year": 2018 }
+      {
+        "id": "http://www.wikidata.org/entity/Q25136484",
+        "title": "It",
+        "year": 2017,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q25136235",
+        "title": "Get Out",
+        "year": 2017,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q47524071",
+        "title": "Hereditary",
+        "year": 2018,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q133654",
+        "title": "The Silence of the Lambs",
+        "year": 1991
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q162255",
+        "title": "The Terminator",
+        "year": 1984
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q103569",
+        "title": "Alien",
+        "year": 1979
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q163038",
+        "title": "Psycho",
+        "year": 1960
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q2579784",
+        "title": "Gravity",
+        "year": 2013
+      }
     ]
   },
   {
     "genre": "Sci-fi",
     "movies": [
-      { "id": "http://www.wikidata.org/entity/Q13417189", "title": "Interstellar", "year": 2014 },
-      { "id": "http://www.wikidata.org/entity/Q83495", "title": "The Matrix", "year": 1999 },
-      { "id": "http://www.wikidata.org/entity/Q25188", "title": "Inception", "year": 2010 }
+      {
+        "id": "http://www.wikidata.org/entity/Q13417189",
+        "title": "Interstellar",
+        "year": 2014,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q83495",
+        "title": "The Matrix",
+        "year": 1999,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q25188",
+        "title": "Inception",
+        "year": 2010,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q24871",
+        "title": "Avatar",
+        "year": 2009
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q91540",
+        "title": "Back to the Future",
+        "year": 1985
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q17738",
+        "title": "Star Wars: Episode IV - A New Hope",
+        "year": 1977
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q182218",
+        "title": "The Avengers",
+        "year": 2012
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q170564",
+        "title": "Terminator 2: Judgment Day",
+        "year": 1991
+      }
     ]
   },
   {
     "genre": "Drama",
     "movies": [
-      { "id": "http://www.wikidata.org/entity/Q172241", "title": "The Shawshank Redemption", "year": 1994 },
-      { "id": "http://www.wikidata.org/entity/Q190050", "title": "Fight Club", "year": 1999 },
-      { "id": "http://www.wikidata.org/entity/Q134773", "title": "Forrest Gump", "year": 1994 }
+      {
+        "id": "http://www.wikidata.org/entity/Q172241",
+        "title": "The Shawshank Redemption",
+        "year": 1994,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q190050",
+        "title": "Fight Club",
+        "year": 1999,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q134773",
+        "title": "Forrest Gump",
+        "year": 1994,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q106316",
+        "title": "Dead Poets Society",
+        "year": 1989
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q164103",
+        "title": "A Beautiful Mind",
+        "year": 2001
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q25139",
+        "title": "American Beauty",
+        "year": 1999
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q160060",
+        "title": "The King's Speech",
+        "year": 2010
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q3023357",
+        "title": "12 Years a Slave",
+        "year": 2013
+      }
     ]
   },
   {
     "genre": "Action",
     "movies": [
-      { "id": "http://www.wikidata.org/entity/Q105598", "title": "Die Hard", "year": 1988 },
-      { "id": "http://www.wikidata.org/entity/Q15732802", "title": "John Wick", "year": 2014 },
-      { "id": "http://www.wikidata.org/entity/Q108006", "title": "Speed", "year": 1994 }
+      {
+        "id": "http://www.wikidata.org/entity/Q105598",
+        "title": "Die Hard",
+        "year": 1988,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q15732802",
+        "title": "John Wick",
+        "year": 2014,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q108006",
+        "title": "Speed",
+        "year": 1994,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q174284",
+        "title": "Raiders of the Lost Ark",
+        "year": 1981
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q180098",
+        "title": "Ben-Hur",
+        "year": 1959
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q4941",
+        "title": "Skyfall",
+        "year": 2012
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q23010088",
+        "title": "Spider-Man: Homecoming",
+        "year": 2017
+      }
     ]
   },
   {
     "genre": "Thriller",
     "movies": [
-      { "id": "http://www.wikidata.org/entity/Q183081", "title": "No Country for Old Men", "year": 2007 },
-      { "id": "http://www.wikidata.org/entity/Q61448040", "title": "Parasite", "year": 2019 },
-      { "id": "http://www.wikidata.org/entity/Q132351", "title": "The Usual Suspects", "year": 1995 }
+      {
+        "id": "http://www.wikidata.org/entity/Q183081",
+        "title": "No Country for Old Men",
+        "year": 2007,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q61448040",
+        "title": "Parasite",
+        "year": 2019,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q132351",
+        "title": "The Usual Suspects",
+        "year": 1995,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q5890",
+        "title": "V for Vendetta",
+        "year": 2005
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q108839994",
+        "title": "Oppenheimer",
+        "year": 2023
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q102754",
+        "title": "Dr. No",
+        "year": 1962
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q189330",
+        "title": "The Dark Knight Rises",
+        "year": 2012
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q18602670",
+        "title": "Spectre",
+        "year": 2015
+      }
     ]
   },
   {
     "genre": "Romance",
     "movies": [
-      { "id": "http://www.wikidata.org/entity/Q44578", "title": "Titanic", "year": 1997 },
-      { "id": "http://www.wikidata.org/entity/Q223374", "title": "The Notebook", "year": 2004 },
-      { "id": "http://www.wikidata.org/entity/Q304030", "title": "Eat Pray Love", "year": 2010 }
+      {
+        "id": "http://www.wikidata.org/entity/Q44578",
+        "title": "Titanic",
+        "year": 1997,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q223374",
+        "title": "The Notebook",
+        "year": 2004,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q304030",
+        "title": "Eat Pray Love",
+        "year": 2010,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q125076",
+        "title": "Slumdog Millionaire",
+        "year": 2008
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q160618",
+        "title": "Brokeback Mountain",
+        "year": 2005
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q160071",
+        "title": "Twilight",
+        "year": 2008
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q193835",
+        "title": "Good Will Hunting",
+        "year": 1997
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q26698156",
+        "title": "The Shape of Water",
+        "year": 2017
+      }
     ]
   },
   {
     "genre": "Animation",
     "movies": [
-      { "id": "http://www.wikidata.org/entity/Q36479", "title": "The Lion King", "year": 1994 },
-      { "id": "http://www.wikidata.org/entity/Q170035", "title": "Ratatouille", "year": 2007 },
-      { "id": "http://www.wikidata.org/entity/Q213012", "title": "Open Season", "year": 2006 }
+      {
+        "id": "http://www.wikidata.org/entity/Q36479",
+        "title": "The Lion King",
+        "year": 1994,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q170035",
+        "title": "Ratatouille",
+        "year": 2007,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q213012",
+        "title": "Open Season",
+        "year": 2006,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q115859490",
+        "title": "Sonic the Hedgehog 3",
+        "year": 2024
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q29825830",
+        "title": "Trolls World Tour",
+        "year": 2020
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q14451258",
+        "title": "Justin and the Knights of Valour",
+        "year": 2013
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q106299119",
+        "title": "Ron's Gone Wrong",
+        "year": 2021
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q110271518",
+        "title": "Teenage Mutant Ninja Turtles: Mutant Mayhem",
+        "year": 2023
+      }
     ]
   },
   {
     "genre": "Adventure",
     "movies": [
-      { "id": "http://www.wikidata.org/entity/Q167726", "title": "Jurassic Park", "year": 1993 },
-      { "id": "http://www.wikidata.org/entity/Q128518", "title": "Gladiator", "year": 2000 },
-      { "id": "http://www.wikidata.org/entity/Q387601", "title": "Night at the Museum", "year": 2006 }
+      {
+        "id": "http://www.wikidata.org/entity/Q167726",
+        "title": "Jurassic Park",
+        "year": 1993,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q128518",
+        "title": "Gladiator",
+        "year": 2000,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q387601",
+        "title": "Night at the Museum",
+        "year": 2006,
+        "handPicked": true
+      }
     ]
   },
   {
     "genre": "Fantasy",
     "movies": [
-      { "id": "http://www.wikidata.org/entity/Q161087", "title": "Pirates of the Caribbean: Dead Man's Chest", "year": 2006 },
-      { "id": "http://www.wikidata.org/entity/Q127367", "title": "The Lord of the Rings: The Fellowship of the Ring", "year": 2001 },
-      { "id": "http://www.wikidata.org/entity/Q102448", "title": "Harry Potter and the Prisoner of Azkaban", "year": 2004 }
+      {
+        "id": "http://www.wikidata.org/entity/Q161087",
+        "title": "Pirates of the Caribbean: Dead Man's Chest",
+        "year": 2006,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q127367",
+        "title": "The Lord of the Rings: The Fellowship of the Ring",
+        "year": 2001,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q102448",
+        "title": "Harry Potter and the Prisoner of Azkaban",
+        "year": 2004,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q164963",
+        "title": "The Lord of the Rings: The Two Towers",
+        "year": 2002
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q161678",
+        "title": "Harry Potter and the Deathly Hallows: Part 1",
+        "year": 2010
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q208263",
+        "title": "The Green Mile",
+        "year": 1999
+      }
     ]
   },
   {
     "genre": "Crime",
     "movies": [
-      { "id": "http://www.wikidata.org/entity/Q47703", "title": "The Godfather", "year": 1972 },
-      { "id": "http://www.wikidata.org/entity/Q184768", "title": "The Godfather Part II", "year": 1974 },
-      { "id": "http://www.wikidata.org/entity/Q172975", "title": "The Departed", "year": 2006 }
+      {
+        "id": "http://www.wikidata.org/entity/Q47703",
+        "title": "The Godfather",
+        "year": 1972,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q184768",
+        "title": "The Godfather Part II",
+        "year": 1974,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q172975",
+        "title": "The Departed",
+        "year": 2006,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q104123",
+        "title": "Pulp Fiction",
+        "year": 1994
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q163872",
+        "title": "The Dark Knight",
+        "year": 2008
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q166262",
+        "title": "Batman Begins",
+        "year": 2005
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q184843",
+        "title": "Blade Runner",
+        "year": 1982
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q47221",
+        "title": "Taxi Driver",
+        "year": 1976
+      }
     ]
   },
   {
     "genre": "War",
     "movies": [
-      { "id": "http://www.wikidata.org/entity/Q182692", "title": "Apocalypse Now", "year": 1979 },
-      { "id": "http://www.wikidata.org/entity/Q165817", "title": "Saving Private Ryan", "year": 1998 },
-      { "id": "http://www.wikidata.org/entity/Q848785", "title": "Jarhead", "year": 2005 }
+      {
+        "id": "http://www.wikidata.org/entity/Q182692",
+        "title": "Apocalypse Now",
+        "year": 1979,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q165817",
+        "title": "Saving Private Ryan",
+        "year": 1998,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q848785",
+        "title": "Jarhead",
+        "year": 2005,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q132689",
+        "title": "Casablanca",
+        "year": 1942
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q483941",
+        "title": "Schindler's List",
+        "year": 1993
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q2875",
+        "title": "Gone with the Wind",
+        "year": 1939
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q162729",
+        "title": "Braveheart",
+        "year": 1995
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q131390",
+        "title": "300",
+        "year": 2006
+      }
     ]
   },
   {
     "genre": "Western",
     "movies": [
-      { "id": "http://www.wikidata.org/entity/Q571032", "title": "Django Unchained", "year": 2012 },
-      { "id": "http://www.wikidata.org/entity/Q41483", "title": "The Good, the Bad and the Ugly"},
-      { "id": "http://www.wikidata.org/entity/Q232000", "title": "Butch Cassidy and the Sundance Kid", "year": 1969 },
-      { "id": "http://www.wikidata.org/entity/Q245208", "title": "High Noon", "year": 1952 }
+      {
+        "id": "http://www.wikidata.org/entity/Q571032",
+        "title": "Django Unchained",
+        "year": 2012,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q41483",
+        "title": "The Good, the Bad and the Ugly",
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q232000",
+        "title": "Butch Cassidy and the Sundance Kid",
+        "year": 1969,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q245208",
+        "title": "High Noon",
+        "year": 1952,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q230552",
+        "title": "Back to the Future Part III",
+        "year": 1990
+      }
     ]
   },
   {
     "genre": "Mystery",
     "movies": [
-      { "id": "http://www.wikidata.org/entity/Q3404003", "title": "Prisoners", "year": 2013 },
-      { "id": "http://www.wikidata.org/entity/Q210364", "title": "Shutter Island", "year": 2010 },
-      { "id": "http://www.wikidata.org/entity/Q160560", "title": "The Da Vinci Code", "year": 2006 }
+      {
+        "id": "http://www.wikidata.org/entity/Q3404003",
+        "title": "Prisoners",
+        "year": 2013,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q210364",
+        "title": "Shutter Island",
+        "year": 2010,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q160560",
+        "title": "The Da Vinci Code",
+        "year": 2006,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q24815",
+        "title": "Citizen Kane",
+        "year": 1941
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q46551",
+        "title": "The Prestige",
+        "year": 2006
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q202326",
+        "title": "The Godfather Part III",
+        "year": 1990
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q181086",
+        "title": "A Clockwork Orange",
+        "year": 1971
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q72962",
+        "title": "Reservoir Dogs",
+        "year": 1992
+      }
     ]
   },
   {
     "genre": "Musical",
     "movies": [
-      { "id": "http://www.wikidata.org/entity/Q25019036", "title": "La La Land", "year": 2016 },
-      { "id": "http://www.wikidata.org/entity/Q60072", "title": "The Sound of Music", "year": 1965 },
-      { "id": "http://www.wikidata.org/entity/Q267721", "title": "Grease", "year": 1978 }
+      {
+        "id": "http://www.wikidata.org/entity/Q25019036",
+        "title": "La La Land",
+        "year": 2016,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q60072",
+        "title": "The Sound of Music",
+        "year": 1965,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q267721",
+        "title": "Grease",
+        "year": 1978,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q190086",
+        "title": "Some Like It Hot",
+        "year": 1959
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q150804",
+        "title": "The Pianist",
+        "year": 2002
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q55436290",
+        "title": "Barbie",
+        "year": 2023
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q736731",
+        "title": "The Three Caballeros",
+        "year": 1944
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q229633",
+        "title": "3 Idiots",
+        "year": 2009
+      }
     ]
   }
 ]

@@ -51,8 +51,43 @@ async function rateCurrent(score) {
 }
 
 async function topTitles() {
-  return page.locator('.top-pick h3, .more-picks .movie-card p').allInnerTexts();
+  return page.locator('.top-pick h3, .more-picks .movie-card p:not(.movie-card-note)').allInnerTexts();
 }
+
+async function currentFilm(p = page) {
+  const label = await p.locator('#rating-screen > p:first-child').innerText();
+  const title = await p.locator('#rating-screen .movie-card p').innerText();
+  return `${label} | ${title}`;
+}
+
+// One brand-new browser profile (empty storage), straight to its first film.
+async function firstFilmInFreshSession() {
+  const fresh = await browser.newContext({ viewport: { width: 375, height: 667 } });
+  const freshPage = await fresh.newPage();
+  await freshPage.goto(base);
+  await freshPage.waitForSelector('#start-button:not([disabled])');
+  await freshPage.click('#start-button');
+  await freshPage.waitForSelector('#rating-screen .movie-card p');
+  const film = await currentFilm(freshPage);
+  await fresh.close();
+  return film;
+}
+
+// Rates every onboarding step, returning the order the films were shown in.
+async function completeOnboarding() {
+  const order = [];
+  let step = 0;
+  while (await page.locator('#rating-screen').isVisible()) {
+    order.push(await currentFilm());
+    await rateCurrent(scoreCycle[step % scoreCycle.length]);
+    step++;
+    if (step > 60) break;
+  }
+  await page.waitForSelector('.top-pick');
+  return order;
+}
+
+const storedSeed = () => page.evaluate(() => JSON.parse(localStorage.getItem('cocinema:v3')).seed);
 
 const noSideScroll = () => page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth);
 
@@ -61,16 +96,32 @@ try {
   await page.waitForSelector('#start-button:not([disabled])');
   await page.screenshot({ path: path.join(shots, '1-landing.png') });
 
+  // Shuffled onboarding: each fresh profile gets its own random seed, so across 6 fresh
+  // sessions the first film should vary. All 6 matching has a chance of about 1 in 10^9.
+  const firstFilms = [];
+  for (let attempt = 0; attempt < 6; attempt++) firstFilms.push(await firstFilmInFreshSession());
+  check('fresh sessions do not all start on the same film', new Set(firstFilms).size > 1, `${new Set(firstFilms).size} different of 6`);
+
   // Onboarding
   await page.click('#start-button');
-  let step = 0;
-  while (await page.locator('#rating-screen').isVisible()) {
-    await rateCurrent(scoreCycle[step % scoreCycle.length]);
-    step++;
-    if (step > 60) break;
-  }
-  await page.waitForSelector('.top-pick');
-  check('onboarding completes and shows results', await page.locator('#results-screen').isVisible(), `${step} ratings`);
+  await page.waitForSelector('#rating-screen .movie-card p');
+  const firstFilm = await currentFilm();
+  const firstSeed = await storedSeed();
+  check('the seed is saved as soon as onboarding starts', Number.isInteger(firstSeed));
+
+  await page.reload();
+  await page.waitForSelector('#rating-screen .movie-card p');
+  check('refresh on the very first film resumes on the same film', (await currentFilm()) === firstFilm, firstFilm);
+
+  await page.getByRole('button', { name: "Haven't seen it" }).click();
+  await page.waitForFunction(old => !document.querySelector('#rating-screen .movie-card p')?.innerText.includes(old), firstFilm.split(' | ')[1]);
+  const afterSkip = await currentFilm();
+  await page.reload();
+  await page.waitForSelector('#rating-screen .movie-card p');
+  check('refresh after skipping a film resumes on the same film and genre', (await currentFilm()) === afterSkip, afterSkip);
+
+  const order1 = await completeOnboarding();
+  check('onboarding completes and shows results', await page.locator('#results-screen').isVisible(), `${order1.length} films shown`);
 
   // Results
   const topCount = await page.locator('.top-pick').count();
@@ -83,8 +134,14 @@ try {
   });
   check('every why line is non-empty and names only movies the user rated', named, whys[0]);
 
-  const matches = await page.locator('.top-pick-match').allInnerTexts();
-  check('catalog-relative figure reads "Top N% for your taste"', matches.length === 5 && matches.every(text => /^Top \d+% for your taste$/.test(text) && !text.startsWith('Top 0%')), matches.join(', '));
+  const ranks = await page.locator('.top-pick-match').allInnerTexts();
+  const parsed = ranks.map(text => /^#(\d) of (\d+) films$/.exec(text));
+  check('top cards read "#N of M films" with N from 1 to 5',
+    parsed.every(Boolean) && parsed.map(m => Number(m[1])).join() === '1,2,3,4,5' && parsed.every(m => Number(m[2]) > 100 && m[2] === parsed[0][2]), ranks.join(', '));
+  check('the top cards do not show the "Top N%" figure', !(await page.locator('.top-pick').allInnerTexts()).some(text => /Top \d+%/.test(text)));
+
+  const notes = await page.locator('.more-picks .movie-card-note').allInnerTexts();
+  check('compact grid cards show "Top N% for your taste"', notes.length >= 10 && notes.every(text => /^Top \d+% for your taste$/.test(text) && !text.startsWith('Top 0%')), notes.slice(0, 3).join(', '));
 
   const restCount = await page.locator('.more-picks .movie-card').count();
   check('the rest of the list renders', restCount >= 10, `${restCount} cards`);
@@ -225,9 +282,17 @@ try {
   check('Start over returns to the landing screen', await page.locator('#landing-screen').isVisible());
   await page.reload();
   await page.waitForSelector('#start-button:not([disabled])');
-  const saved = await page.evaluate(() => localStorage.getItem('cocinema:v2'));
+  const saved = await page.evaluate(() => localStorage.getItem('cocinema:v3'));
   check('after Start over and a refresh, nothing is resumed', (await page.locator('#landing-screen').isVisible()) && saved === null);
   await page.screenshot({ path: path.join(shots, '5-after-start-over.png') });
+
+  // A new session after Start over: new seed, new order.
+  await page.click('#start-button');
+  await page.waitForSelector('#rating-screen .movie-card p');
+  const secondSeed = await storedSeed();
+  const order2 = await completeOnboarding();
+  check('Start over gives a new seed and a different order', secondSeed !== firstSeed && JSON.stringify(order1) !== JSON.stringify(order2), `${firstSeed} -> ${secondSeed}`);
+  check('the second session also reaches results', (await page.locator('.top-pick').count()) === 5);
 
   check('no console errors or page errors', problems.length === 0, problems.join(' | '));
 } catch (error) {

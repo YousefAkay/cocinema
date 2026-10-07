@@ -1,16 +1,18 @@
 import { EXTRA_COUNT } from './candidates.js';
 
-const STORAGE_KEY = 'cocinema:v2';
+const STORAGE_KEY = 'cocinema:v3';
 
 const ratings = new Map();
 const skipped = new Set();
 let position = { genreIndex: 0, movieIndex: 0 };
 let extra = null;
+let seed = null;
 
 function persist() {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify({
       ratings: Array.from(ratings),
+      seed,
       skipped: Array.from(skipped),
       genreIndex: position.genreIndex,
       movieIndex: position.movieIndex,
@@ -41,6 +43,12 @@ export function getSkippedIds() {
   return Array.from(skipped);
 }
 
+// The number the onboarding order is built from, so a refresh rebuilds the same order.
+export function saveSeed(value) {
+  seed = value;
+  persist();
+}
+
 export function savePosition(genreIndex, movieIndex) {
   position = { genreIndex, movieIndex };
   persist();
@@ -53,6 +61,10 @@ export function saveExtra(state) {
   persist();
 }
 
+function validSeed(value) {
+  return Number.isInteger(value) && value >= 0 && value <= 4294967295;
+}
+
 function validExtra(value, validIds) {
   if (value === null) return true;
   if (!value || typeof value !== 'object') return false;
@@ -62,7 +74,7 @@ function validExtra(value, validIds) {
   return value.shown.every(id => typeof id === 'string' && validIds.has(id));
 }
 
-// Returns the saved { genreIndex, movieIndex, extra } and refills the ratings, or null
+// Returns the saved { seed, genreIndex, movieIndex, extra } and refills the ratings, or null
 // if nothing usable was saved. Anything malformed is ignored as a whole.
 export function loadSavedState(validIds, genreCount) {
   let saved;
@@ -76,6 +88,7 @@ export function loadSavedState(validIds, genreCount) {
     return null;
   }
   const { genreIndex, movieIndex } = saved;
+  if (!validSeed(saved.seed)) return null;
   if (!Number.isInteger(genreIndex) || genreIndex < 0 || genreIndex > genreCount) return null;
   if (!Number.isInteger(movieIndex) || movieIndex < 0) return null;
 
@@ -100,7 +113,8 @@ export function loadSavedState(validIds, genreCount) {
   for (const id of saved.skipped) skipped.add(id);
   position = { genreIndex, movieIndex };
   extra = saved.extra;
-  return { genreIndex, movieIndex, extra };
+  seed = saved.seed;
+  return { seed, genreIndex, movieIndex, extra };
 }
 
 export function clearSavedState() {
@@ -108,6 +122,7 @@ export function clearSavedState() {
   skipped.clear();
   position = { genreIndex: 0, movieIndex: 0 };
   extra = null;
+  seed = null;
   try {
     localStorage.removeItem(STORAGE_KEY);
   } catch (e) {

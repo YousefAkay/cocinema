@@ -1,10 +1,10 @@
 import test, { beforeEach } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  saveRating, getAllRatings, markSkipped, getSkippedIds, savePosition, saveExtra, loadSavedState, clearSavedState,
+  saveRating, getAllRatings, markSkipped, getSkippedIds, savePosition, saveExtra, saveSeed, loadSavedState, clearSavedState,
 } from '../src/ratings.js';
 
-const KEY = 'cocinema:v2';
+const KEY = 'cocinema:v3';
 const ids = new Set(['a', 'b', 'c']);
 let store;
 
@@ -28,22 +28,23 @@ beforeEach(() => {
 });
 
 test('saveRating and savePosition write one JSON record under the versioned key', () => {
+  saveSeed(123);
   saveRating('a', 7);
   savePosition(2, 1);
-  assert.deepEqual(JSON.parse(store[KEY]), { ratings: [['a', 7]], skipped: [], genreIndex: 2, movieIndex: 1, extra: null });
+  assert.deepEqual(JSON.parse(store[KEY]), { ratings: [['a', 7]], seed: 123, skipped: [], genreIndex: 2, movieIndex: 1, extra: null });
   assert.deepEqual(getAllRatings(), [{ id: 'a', score: 7 }]);
 });
 
 test('a saved state loads back with its ratings and position', () => {
-  store[KEY] = JSON.stringify({ ratings: [['a', 7], ['b', 3]], skipped: ['c'], genreIndex: 2, movieIndex: 1, extra: null });
-  assert.deepEqual(loadSavedState(ids, 5), { genreIndex: 2, movieIndex: 1, extra: null });
+  store[KEY] = JSON.stringify({ ratings: [['a', 7], ['b', 3]], seed: 42, skipped: ['c'], genreIndex: 2, movieIndex: 1, extra: null });
+  assert.deepEqual(loadSavedState(ids, 5), { seed: 42, genreIndex: 2, movieIndex: 1, extra: null });
   assert.deepEqual(getSkippedIds(), ['c']);
   assert.deepEqual(getAllRatings(), [{ id: 'a', score: 7 }, { id: 'b', score: 3 }]);
 });
 
 test('a position at the end (genreIndex equal to the genre count) is accepted', () => {
-  store[KEY] = JSON.stringify({ ratings: [], skipped: [], genreIndex: 5, movieIndex: 0, extra: null });
-  assert.deepEqual(loadSavedState(ids, 5), { genreIndex: 5, movieIndex: 0, extra: null });
+  store[KEY] = JSON.stringify({ ratings: [], seed: 0, skipped: [], genreIndex: 5, movieIndex: 0, extra: null });
+  assert.deepEqual(loadSavedState(ids, 5), { seed: 0, genreIndex: 5, movieIndex: 0, extra: null });
 });
 
 test('nothing saved gives null', () => {
@@ -51,12 +52,18 @@ test('nothing saved gives null', () => {
 });
 
 test('invalid saves are ignored whole and leave the ratings empty', () => {
-  const good = { skipped: [], genreIndex: 0, movieIndex: 0, extra: null };
+  const good = { seed: 7, skipped: [], genreIndex: 0, movieIndex: 0, extra: null };
   const bad = {
     'not JSON': 'garbage{',
     'not an object': '42',
     'null': 'null',
     'ratings not an array': JSON.stringify({ ratings: 'x', ...good }),
+    'missing seed': JSON.stringify({ ratings: [], skipped: [], genreIndex: 0, movieIndex: 0, extra: null }),
+    'fractional seed': JSON.stringify({ ratings: [], ...good, seed: 1.5 }),
+    'negative seed': JSON.stringify({ ratings: [], ...good, seed: -1 }),
+    'seed too large': JSON.stringify({ ratings: [], ...good, seed: 4294967296 }),
+    'string seed': JSON.stringify({ ratings: [], ...good, seed: '7' }),
+    'null seed': JSON.stringify({ ratings: [], ...good, seed: null }),
     'missing positions': JSON.stringify({ ratings: [], skipped: [] }),
     'missing skipped list': JSON.stringify({ ratings: [], genreIndex: 0, movieIndex: 0, extra: null }),
     'skipped has an unknown id': JSON.stringify({ ratings: [], ...good, skipped: ['zzz'] }),
@@ -92,12 +99,13 @@ test('an extra flow in progress is saved and loaded back', () => {
   markSkipped('c');
   saveExtra({ rated: 2, shown: ['a', 'b'] });
   assert.deepEqual(JSON.parse(store[KEY]).extra, { rated: 2, shown: ['a', 'b'] });
-  store[KEY] = JSON.stringify({ ratings: [], skipped: [], genreIndex: 5, movieIndex: 0, extra: { rated: 2, shown: ['a', 'b'] } });
-  assert.deepEqual(loadSavedState(ids, 5), { genreIndex: 5, movieIndex: 0, extra: { rated: 2, shown: ['a', 'b'] } });
+  store[KEY] = JSON.stringify({ ratings: [], seed: 9, skipped: [], genreIndex: 5, movieIndex: 0, extra: { rated: 2, shown: ['a', 'b'] } });
+  assert.deepEqual(loadSavedState(ids, 5), { seed: 9, genreIndex: 5, movieIndex: 0, extra: { rated: 2, shown: ['a', 'b'] } });
 });
 
-test('an old version-1 save is ignored, not loaded', () => {
+test('older saves (versions 1 and 2) are ignored, not loaded', () => {
   store['cocinema:v1'] = JSON.stringify({ ratings: [['a', 7]], genreIndex: 2, movieIndex: 1 });
+  store['cocinema:v2'] = JSON.stringify({ ratings: [['a', 7]], skipped: [], genreIndex: 2, movieIndex: 1, extra: null });
   assert.equal(loadSavedState(ids, 5), null);
   assert.deepEqual(getAllRatings(), []);
 });

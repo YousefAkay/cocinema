@@ -22,7 +22,7 @@ export function renderPoster(movie) {
 }
 
 // A poster and a caption. With linkTo (a movie), the whole card is a link to that film's page.
-export function renderMovieCard(movie, linkTo = null) {
+export function renderMovieCard(movie, linkTo = null, note = null) {
   const card = document.createElement('div');
   card.className = 'movie-card';
 
@@ -31,6 +31,13 @@ export function renderMovieCard(movie, linkTo = null) {
 
   card.appendChild(renderPoster(movie));
   card.appendChild(title);
+
+  if (note) {
+    const caption = document.createElement('p');
+    caption.className = 'movie-card-note';
+    caption.textContent = note;
+    card.appendChild(caption);
+  }
 
   if (!linkTo) {
     return card;
@@ -43,9 +50,9 @@ export function renderMovieCard(movie, linkTo = null) {
   return link;
 }
 
-// A larger result card for the top picks: poster, title, year, rank, place in the catalog and
+// A larger result card for the top picks: poster, title with year, rank among all candidates and
 // the "why" line. Everything goes in with textContent, so titles are never parsed as HTML.
-export function renderTopPick(result, rank, whyLine, percent) {
+export function renderTopPick(result, rank, total, whyLine) {
   const { movie } = result;
   const card = document.createElement('article');
   card.className = 'top-pick';
@@ -59,19 +66,15 @@ export function renderTopPick(result, rank, whyLine, percent) {
   link.textContent = titleWithYear(movie);
   heading.append(link);
 
-  const meta = document.createElement('p');
-  meta.className = 'top-pick-meta';
-  meta.textContent = `#${rank}`;
-
   const match = document.createElement('p');
   match.className = 'top-pick-match';
-  match.textContent = `Top ${percent}% for your taste`;
+  match.textContent = `#${rank} of ${total} films`;
 
   const why = document.createElement('p');
   why.className = 'top-pick-why';
   why.textContent = whyLine;
 
-  body.append(heading, meta, match, why);
+  body.append(heading, match, why);
   card.append(renderPoster(movie), body);
   return card;
 }
@@ -132,8 +135,8 @@ export function renderResults(list, startRank = 1) {
   const container = document.createElement('div');
   container.className = 'movie-result';
   container.style.counterReset = `rank ${startRank - 1}`;
-  for (const movie of list) {
-    container.appendChild(renderMovieCard(movie, movie));
+  for (const { movie, percent } of list) {
+    container.appendChild(renderMovieCard(movie, movie, `Top ${percent}% for your taste`));
   }
   return container;
 }

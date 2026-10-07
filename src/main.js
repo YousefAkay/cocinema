@@ -1,6 +1,6 @@
 import { renderMovieCard, renderRatingWidget, renderResults, renderTopPick } from './ui.js';
 import {
-  getAllRatings, getSkippedIds, markSkipped, savePosition, saveExtra, loadSavedState, clearSavedState,
+  getAllRatings, getSkippedIds, markSkipped, savePosition, saveExtra, saveSeed, loadSavedState, clearSavedState,
 } from './ratings.js';
 import { recommend, explainMatch } from './recommend.js';
 import { buildWhyLine } from './why.js';
@@ -9,12 +9,15 @@ import { topPercent } from './percentile.js';
 import { titleWithYear, genreOrder } from './format.js';
 import { parseHash, shortId } from './route.js';
 import { renderDetail, renderNotFound } from './detail.js';
+import { buildSession, newSeed } from './shuffle.js';
 
 const TOP_COUNT = 5;
 const RESULT_COUNT = 25;
 
 let catalog = [];
 let onboarding = [];
+let seed = newSeed();
+let session = [];
 let catalogById = new Map();
 let moviesByQid = new Map();
 let genreRank = [];
@@ -103,12 +106,12 @@ function showCurrentMovie() {
     return;
   }
 
-  if (genreIndex >= onboarding.length) {
+  if (genreIndex >= session.length) {
     showResults();
     return;
   }
 
-  const genre = onboarding[genreIndex];
+  const genre = session[genreIndex];
   if (movieIndex >= genre.movies.length) {
     nextGenre();
     return;
@@ -121,7 +124,7 @@ function showCurrentMovie() {
   }
 
   showRatingStep({
-    label: `${genre.genre} · ${genreIndex + 1} / ${onboarding.length}`,
+    label: `${genre.genre} · ${genreIndex + 1} / ${session.length}`,
     movie,
     onConfirm: nextGenre,
     onSkip: () => skipMovie(movie),
@@ -242,7 +245,7 @@ function showResults(notice, restoreScroll = false) {
 
   ranked.slice(0, TOP_COUNT).forEach((result, index) => {
     const why = buildWhyLine(explainMatch(result.movie.id, ratings, catalog));
-    topSection.append(renderTopPick(result, index + 1, why, topPercent(result.score, allScores)));
+    topSection.append(renderTopPick(result, index + 1, everyUnrated.length, why));
   });
   addParagraph(topSection, 'match-note',
     'Top N% ranks each film against the rest of the catalog for you. It is not the chance you will like it.');
@@ -254,7 +257,7 @@ function showResults(notice, restoreScroll = false) {
     restSection.className = 'more-picks';
     const restHeading = document.createElement('h2');
     restHeading.textContent = 'More to explore';
-    restSection.append(restHeading, renderResults(rest.map(result => result.movie), TOP_COUNT + 1));
+    restSection.append(restHeading, renderResults(rest.map(result => ({ movie: result.movie, percent: topPercent(result.score, allScores) })), TOP_COUNT + 1));
     resultsScreen.append(restSection);
   }
 
@@ -318,7 +321,7 @@ function showHome() {
   }
   if (extra) {
     resumeExtra();
-  } else if (genreIndex >= onboarding.length) {
+  } else if (genreIndex >= session.length) {
     showResults(undefined, cameFromResults);
     resultsScreen.querySelector('h2')?.focus({ preventScroll: true });
   } else {
@@ -344,6 +347,8 @@ function startOver() {
   extra = null;
   started = false;
   cameFromResults = false;
+  seed = newSeed();
+  session = buildSession(onboarding, seed);
   resultsScreen.innerHTML = '';
   ratingScreen.innerHTML = '';
   detailScreen.innerHTML = '';
@@ -367,6 +372,7 @@ startButton.addEventListener('click', function() {
     return;
   }
   started = true;
+  saveSeed(seed);
   showCurrentMovie();
 });
 
@@ -394,11 +400,13 @@ async function loadData() {
 
   const saved = loadSavedState(new Set(catalogById.keys()), onboarding.length);
   if (saved) {
+    seed = saved.seed;
     genreIndex = saved.genreIndex;
     movieIndex = saved.movieIndex;
     extra = saved.extra;
     started = true;
   }
+  session = buildSession(onboarding, seed);
   route();
 }
 
