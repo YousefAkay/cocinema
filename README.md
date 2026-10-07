@@ -10,7 +10,7 @@
 
 ## Features
 
-- **Rate and get picks:** rate films from 15 genres, skip any you have not seen, and get a ranked list. The top 5 come with a one-line reason ("Because you rated ..."), and the rest follow in a compact grid.
+- **Quick or Full:** a landing page asks how many films you want to rate (nothing is pre-selected). Quick covers 10 of the 15 genres (a different 10 each session), Full covers all 15. Either way you can skip a film you have not seen and get a ranked list. The top 5 come with a one-line reason ("Because you rated ..."), and the rest follow in a compact grid.
 - **Where a film sits for you:** the top 5 show their rank ("#3 of 561 films"), and the rest of the list and every film page show "Top N% for your taste", the film's place among all unrated films. It ranks films against each other and is not the chance you will like one.
 - **Fresh every visit:** each genre has a pool of up to 8 well-known films, and the order of genres and films is shuffled per session from a saved seed, so a refresh resumes on exactly the same film.
 - **Rate 5 more:** five well-known films you have not rated or skipped, at most two per genre, to sharpen the list.
@@ -137,6 +137,10 @@ src/                runtime: static files served to the browser
   detail.js         the film page
   availability.js   loads the streaming snapshot, checks its age, builds the country text
   sw.js             service worker: offline support
+  progress.js       which genre and film the visitor is on, counted in genres
+  evaluation-stats.js  headline numbers written by scripts/evaluate.js (read by the landing page)
+  landing-posters.js   the films in the landing poster strip (written by scripts/buildLandingPosters.js)
+  fonts/            self-hosted Instrument Serif and Manrope, with their licences
   offline.js        registers the worker, shows the offline notice
   ui.js             builds DOM elements (text only, never HTML from data)
 tests/              node:test unit tests (npm test)
@@ -159,6 +163,15 @@ To refresh: delete `data/availability.json` and run `node scripts/watchmode.js` 
 
 Streaming data by [Watchmode](https://www.watchmode.com).
 
+### Fonts
+
+The two typefaces are self-hosted in `src/fonts/` (Latin subset, `font-display: swap`, the two main ones preloaded and saved by the service worker so the page looks right offline). Nothing is requested from Google.
+
+| File | Typeface | Licence |
+| --- | --- | --- |
+| `instrument-serif-regular-latin.woff2`, `instrument-serif-italic-latin.woff2` | Instrument Serif (headline, big numbers) | SIL Open Font License 1.1, see `src/fonts/OFL-instrument-serif.txt` |
+| `manrope-variable-latin.woff2` | Manrope, one variable file covering weights 400 to 800 (everything else) | SIL Open Font License 1.1, see `src/fonts/OFL-manrope.txt` |
+
 ### Offline use
 
 After one successful visit the app opens and works with no connection: the landing screen, onboarding, results, film pages, the catalog and the saved streaming snapshot. A service worker (`src/sw.js`) keeps one cache with a version name (`cocinema-v1`); bumping that name on a deploy makes every phone drop the old cache and fetch everything fresh.
@@ -172,7 +185,7 @@ The worker is registered only on https or 127.0.0.1, inside a try/catch, so the 
 ### Known limits
 
 - Posters are linked from another site and need a connection; offline you see placeholder cards.
-- The Inter font and the posters are third-party requests, so those sites can see a visitor's IP address like any site would. The app itself has no analytics and no account, and ratings and the taste profile stay on the device.
+- Posters are linked from another site, which can see a visitor's IP address like any site would. Fonts are self-hosted, so no request leaves the app for fonts. The app has no account, and ratings and the taste profile stay on the device.
 - Streaming availability is a dated snapshot that must be refreshed or deleted within 30 days, and the JustWatch links are searches, not guarantees.
 - The evaluation uses synthetic genre-based personas and says nothing about accuracy for real people.
 - Not every catalog entry has been checked against its year yet (the verify script is part way through), so a few entries can still hold another film's plot or details. "Deep Impact" is a known example.
@@ -197,6 +210,7 @@ npm test
 npm run evaluate
 npm run test:e2e   # headless Chrome at 375px: app, offline mode and an accessibility scan; saves screenshots to screenshots/
 npm run build:assets   # redraws the icons and link-preview image
+npm run build:landing  # re-picks the landing poster strip from the verified catalog
 
 # Serve the site
 npx serve . -l tcp://127.0.0.1:3000

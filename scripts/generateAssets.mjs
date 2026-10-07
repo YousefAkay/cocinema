@@ -10,9 +10,9 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const out = path.join(root, 'src');
 fs.mkdirSync(path.join(out, 'icons'), { recursive: true });
 
-const VIOLET = '#7c5cff';
-const VIOLET_LIGHT = '#9479ff';
-const DARK = '#0b0b10';
+const VIOLET = '#7c3aed';
+const VIOLET_LIGHT = '#b79cff';
+const DARK = '#0b0a12';
 
 // A film frame with a play triangle. `content` scales the drawing inside the square so the
 // maskable version keeps everything inside the safe zone.

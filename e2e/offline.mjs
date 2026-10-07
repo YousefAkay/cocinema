@@ -1,6 +1,11 @@
 // Offline checks: load once online, go offline, and use the whole app; then simulate a new deploy.
 import { chromium } from 'playwright';
-import { startServer, createRecorder, chooseAndStart } from './helpers.mjs';
+import fs from 'node:fs';
+import path from 'node:path';
+import { startServer, createRecorder, chooseAndStart, root, shots } from './helpers.mjs';
+
+// The cache name the shipped worker uses, so these checks follow it when it is bumped.
+const CACHE = /const CACHE_NAME = '([^']+)';/.exec(fs.readFileSync(`${root}/src/sw.js`, 'utf8'))[1];
 
 const server = await startServer();
 const { check, summary } = createRecorder();
@@ -28,11 +33,11 @@ try {
   const scope = await page.evaluate(async () => (await navigator.serviceWorker.ready).scope);
   check('the service worker registers and activates, controlling the whole site', scope === `${server.origin}/`, scope);
   await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
-  check('the cache is created under one versioned name', (await cacheNames(page)).join() === 'cocinema-v1', (await cacheNames(page)).join());
-  const cachedPaths = await page.evaluate(async () => (await (await caches.open('cocinema-v1')).keys()).map(request => new URL(request.url).pathname));
+  check('the cache is created under one versioned name', (await cacheNames(page)).join() === CACHE, (await cacheNames(page)).join());
+  const cachedPaths = await page.evaluate(async name => (await (await caches.open(name)).keys()).map(request => new URL(request.url).pathname), CACHE);
   const needed = ['/src/main.js', '/src/style.css', '/src/detail.js', '/data/catalog.json', '/data/onboarding.json', '/data/availability.json'];
   check('app code and all three data files were saved', needed.every(path => cachedPaths.includes(path)), `${cachedPaths.length} files`);
-  check('no poster or font from another origin was cached', cachedPaths.length > 0 && !(await page.evaluate(async () => (await (await caches.open('cocinema-v1')).keys()).some(request => new URL(request.url).origin !== location.origin))));
+  check('no poster or font from another origin was cached', cachedPaths.length > 0 && !(await page.evaluate(async name => (await (await caches.open(name)).keys()).some(request => new URL(request.url).origin !== location.origin), CACHE)));
 
   // Offline: landing
   await context.setOffline(true);
@@ -41,6 +46,21 @@ try {
   await page.locator('.length-card:has(input[value="15"])').click();
   await page.waitForSelector('#start-button:not([disabled])');
   check('offline: the landing page loads and, after choosing a length, Get started is enabled', await page.locator('#landing-screen').isVisible());
+  const offlineFonts = await page.evaluate(async () => {
+    await document.fonts.ready;
+    return [...document.fonts].filter(face => face.status === 'loaded').map(face => `${face.family} ${face.style}`);
+  });
+  check('offline: the self-hosted fonts still render (Manrope and both Instrument Serif styles)',
+    offlineFonts.some(name => name.startsWith('Manrope')) && offlineFonts.some(name => name.includes('Instrument Serif') && name.endsWith('normal'))
+      && offlineFonts.some(name => name.includes('Instrument Serif') && name.endsWith('italic')), offlineFonts.join('; '));
+  const offlineStrip = await page.evaluate(() => ({
+    tiles: document.querySelectorAll('.strip-tile').length,
+    broken: [...document.querySelectorAll('.strip-tile img')].filter(image => image.complete && image.naturalWidth > 0).length === 0
+      && [...document.querySelectorAll('.strip-tile img')].every(image => !(image.complete && image.naturalWidth === 0)),
+    labels: [...document.querySelectorAll('.strip-tile span')].every(label => label.textContent.length > 3),
+  }));
+  check('offline: the poster strip shows plain tiles with titles, no broken images', offlineStrip.tiles === 24 && offlineStrip.broken && offlineStrip.labels);
+  await page.screenshot({ path: path.join(shots, '13-landing-offline.png') });
   check('offline: the notice appears', await page.locator('#offline-notice').isVisible() && (await page.locator('#offline-notice').innerText()) === 'Offline - using saved data');
 
   // Offline: the site root redirects into the app
@@ -84,6 +104,10 @@ try {
   await page.waitForFunction(() => document.getElementById('offline-notice').hidden);
   check('back online: the notice goes away', !(await page.locator('#offline-notice').isVisible()));
 
+  // A phone that still has the cache from the previous release
+  await page.evaluate(async () => { await (await caches.open('cocinema-v1')).put('/old-file', new Response('stale')); });
+  check('a leftover cache from an earlier release exists before the update', (await cacheNames(page)).includes('cocinema-v1'));
+
   // A new deploy: the cache name changes, the old cache goes, files are fetched again
   const before = server.state.counts.get('/src/main.js') || 0;
   server.state.swVersion = 'cocinema-v2-test';
@@ -91,7 +115,7 @@ try {
   for (let attempt = 0; attempt < 60 && (await cacheNames(page)).join() !== 'cocinema-v2-test'; attempt++) {
     await page.waitForTimeout(250);
   }
-  check('an update deletes the old cache and keeps only the new one', (await cacheNames(page)).join() === 'cocinema-v2-test', (await cacheNames(page)).join());
+  check('an update deletes the old caches (including a leftover v1) and keeps only the new one', (await cacheNames(page)).join() === 'cocinema-v2-test', (await cacheNames(page)).join());
   const fetched = (server.state.counts.get('/src/main.js') || 0) - before;
   const newPaths = await page.evaluate(async () => (await (await caches.open('cocinema-v2-test')).keys()).map(request => new URL(request.url).pathname));
   check('an update fetches the files again into the new cache', fetched >= 1 && newPaths.includes('/src/main.js') && newPaths.includes('/data/catalog.json'), `${fetched} new request(s), ${newPaths.length} files`);

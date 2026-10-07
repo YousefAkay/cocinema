@@ -39,7 +39,7 @@ export async function startServer() {
       headers['Cache-Control'] = 'public, max-age=0, must-revalidate';
       headers['Service-Worker-Allowed'] = '/';
       let body = fs.readFileSync(file, 'utf8');
-      if (state.swVersion) body = body.replace("'cocinema-v1'", `'${state.swVersion}'`);
+      if (state.swVersion) body = body.replace(/const CACHE_NAME = '[^']+';/, `const CACHE_NAME = '${state.swVersion}';`);
       res.writeHead(200, headers).end(body);
       return;
     }

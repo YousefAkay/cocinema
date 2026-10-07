@@ -2,7 +2,7 @@
 // latest deploy; the large data files are stale-while-revalidate so they open instantly and
 // still refresh in the background. Other origins (posters, fonts) are never touched.
 
-const CACHE_NAME = 'cocinema-v1';
+const CACHE_NAME = 'cocinema-v2';
 const NETWORK_TIMEOUT_MS = 4000;
 
 // Everything the app needs to start, relative to this file (/src/).
@@ -10,7 +10,9 @@ const SHELL = [
   './', './index.html', './style.css',
   './main.js', './ui.js', './ratings.js', './recommend.js', './similarity.js', './why.js',
   './candidates.js', './percentile.js', './format.js', './links.js', './route.js',
-  './detail.js', './availability.js', './shuffle.js', './offline.js', './progress.js', './evaluation-stats.js',
+  './detail.js', './availability.js', './shuffle.js', './offline.js', './progress.js', './evaluation-stats.js', './landing-posters.js',
+  './fonts/manrope-variable-latin.woff2', './fonts/instrument-serif-regular-latin.woff2',
+  './fonts/instrument-serif-italic-latin.woff2',
 ];
 // Cached when available; a miss is not fatal (availability.json may not exist yet, and the
 // manifest and icons are only for installing the app).
@@ -56,6 +58,16 @@ async function staleWhileRevalidate(request) {
   return (await refresh) || Response.error();
 }
 
+// Fonts never change under the same name, so the saved copy is used straight away.
+async function cacheFirst(request) {
+  const cache = await caches.open(CACHE_NAME);
+  const cached = await cache.match(request);
+  if (cached) return cached;
+  const response = await fetch(request);
+  if (response.ok) cache.put(request, response.clone());
+  return response;
+}
+
 function withTimeout(promise, ms) {
   return Promise.race([promise, new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), ms))]);
 }
@@ -95,5 +107,9 @@ self.addEventListener('fetch', event => {
   // The worker file itself is always fetched fresh by the browser.
   if (url.pathname === self.location.pathname) return;
 
+  if (url.pathname.includes('/fonts/')) {
+    event.respondWith(cacheFirst(request).catch(() => Response.error()));
+    return;
+  }
   event.respondWith(isData(url) ? staleWhileRevalidate(request) : networkFirst(request));
 });

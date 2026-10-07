@@ -20,7 +20,7 @@ function pngSize(relativePath) {
 
 test('the page has a description, theme colour, canonical URL and icons', () => {
   assert.ok(meta('name', 'description').length > 40);
-  assert.equal(meta('name', 'theme-color'), '#7c5cff');
+  assert.equal(meta('name', 'theme-color'), '#7c3aed');
   assert.match(html, /<link rel="canonical" href="https:\/\/cocinema-pi\.vercel\.app\/">/);
   assert.match(html, /<link rel="manifest" href="manifest\.webmanifest">/);
   assert.match(html, /<link rel="apple-touch-icon" href="icons\/apple-touch-icon\.png">/);
@@ -43,7 +43,7 @@ test('Open Graph and Twitter tags are complete and the image is an absolute URL 
 
 test('the link-preview wording makes no claim the app cannot keep', () => {
   const text = [meta('name', 'description'), meta('property', 'og:description'), meta('name', 'twitter:description')].join(' ').toLowerCase();
-  assert.ok(!/no tracking|anonymous|private by design/.test(text));
+  assert.ok(!/no tracking|anonymous|private by design|analytics|tracker/.test(text));
   assert.ok(text.includes('no account'));
 });
 
@@ -51,8 +51,8 @@ test('the manifest names the app and points at real icons of the stated sizes', 
   assert.equal(manifest.name, 'CoCinema');
   assert.equal(manifest.short_name, 'CoCinema');
   assert.equal(manifest.display, 'standalone');
-  assert.equal(manifest.background_color, '#0b0b10');
-  assert.equal(manifest.theme_color, '#7c5cff');
+  assert.equal(manifest.background_color, '#0b0a12');
+  assert.equal(manifest.theme_color, '#7c3aed');
   assert.ok(fs.existsSync(new URL(manifest.start_url, src)) || manifest.start_url === './');
   assert.ok(manifest.icons.some(icon => icon.purpose === 'maskable'));
   for (const icon of manifest.icons) {

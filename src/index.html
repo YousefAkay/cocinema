@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CoCinema</title>
-  <meta name="description" content="A movie recommender that runs in your browser. Rate a few films and get picks that match your taste, with no account and no analytics. Your taste profile is computed on your device.">
-  <meta name="theme-color" content="#7c5cff">
+  <meta name="description" content="A movie recommender that runs in your browser. Rate a few films and get picks that match your taste, with no account. Your taste profile is computed on your device.">
+  <meta name="theme-color" content="#7c3aed">
   <link rel="canonical" href="https://cocinema-pi.vercel.app/">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -15,7 +15,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CoCinema">
   <meta property="og:title" content="CoCinema: movie picks that match your taste">
-  <meta property="og:description" content="Rate a few movies and get recommendations. It runs in your browser with no account and no analytics, and your taste profile is computed on your device.">
+  <meta property="og:description" content="Rate a few movies and get recommendations. It runs in your browser with no account, and your taste profile is computed on your device.">
   <meta property="og:url" content="https://cocinema-pi.vercel.app/">
   <meta property="og:image" content="https://cocinema-pi.vercel.app/src/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -23,8 +23,10 @@
   <meta property="og:image:alt" content="CoCinema: rate a few movies, get picks that match your taste.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="CoCinema: movie picks that match your taste">
-  <meta name="twitter:description" content="Rate a few movies and get recommendations. It runs in your browser with no account and no analytics, and your taste profile is computed on your device.">
+  <meta name="twitter:description" content="Rate a few movies and get recommendations. It runs in your browser with no account, and your taste profile is computed on your device.">
   <meta name="twitter:image" content="https://cocinema-pi.vercel.app/src/og-image.png">
+  <link rel="preload" href="fonts/manrope-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/instrument-serif-regular-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -33,25 +35,104 @@
     <div id="offline-notice" class="offline-notice" role="status" hidden>Offline - using saved data</div>
 
     <div id="landing-screen">
-      <h1 tabindex="-1">CoCinema</h1>
-      <p>Rate a handful of movies you've seen. CoCinema reads the plots of what you loved (and what you didn't), then finds films whose stories match your taste.</p>
-      <p id="load-error" role="alert" hidden></p>
-      <fieldset class="length-choice" id="length-choice">
-        <legend>How many films do you want to rate?</legend>
-        <label class="length-card">
-          <input type="radio" name="length" value="10" autocomplete="off">
-          <span class="length-title">Quick</span>
-          <span class="length-detail">10 films, about a minute</span>
-        </label>
-        <label class="length-card">
-          <input type="radio" name="length" value="15" autocomplete="off">
-          <span class="length-title">Full</span>
-          <span class="length-detail">15 films, about two minutes, sharper first picks</span>
-        </label>
-      </fieldset>
-      <button id="retry-button" hidden>Retry</button>
-      <button id="start-button" disabled>Get started</button>
-      <p id="length-status" class="length-status" role="status">Choose a length to begin</p>
+      <div class="landing-wrap">
+        <header class="topbar">
+          <div class="brand">
+            <svg viewBox="0 0 512 512" aria-hidden="true" focusable="false">
+              <defs><linearGradient id="logo-gradient" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9479ff"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs>
+              <rect width="512" height="512" rx="112" fill="url(#logo-gradient)"/>
+              <rect x="118" y="146" width="276" height="220" rx="30" fill="none" stroke="#fff" stroke-width="22"/>
+              <polygon points="226,204 226,308 316,256" fill="#fff"/>
+            </svg>
+            <span>CoCinema</span>
+          </div>
+          <nav aria-label="Site">
+            <a href="#how" id="how-link">How it works</a>
+            <a href="https://github.com/YousefAkay/cocinema" target="_blank" rel="noopener noreferrer">Open source on GitHub</a>
+          </nav>
+        </header>
+
+        <section class="hero" aria-labelledby="hero-title">
+          <p class="pill">A movie recommender that runs on your device</p>
+          <h1 id="hero-title" tabindex="-1">Your taste, <em>decoded.</em></h1>
+          <p class="subline">Rate a handful of films you know. CoCinema maps your taste against <span data-fill="films">many</span> movies and shows exactly why each pick fits you, all on your device, with no account.</p>
+
+          <div class="hero-actions">
+            <p id="load-error" role="alert" hidden></p>
+            <button id="retry-button" hidden>Retry</button>
+            <fieldset class="length-choice" id="length-choice">
+              <legend>How many films do you want to rate?</legend>
+              <label class="length-card">
+                <input type="radio" name="length" value="10" autocomplete="off">
+                <span class="length-title">Quick</span>
+                <span class="length-detail">10 films, about a minute</span>
+              </label>
+              <label class="length-card">
+                <input type="radio" name="length" value="15" autocomplete="off">
+                <span class="length-title">Full</span>
+                <span class="length-detail">15 films, about two minutes, sharper first picks</span>
+              </label>
+            </fieldset>
+            <button id="start-button" disabled>Get started</button>
+            <p id="length-status" class="length-status" role="status">Choose a length to begin</p>
+          </div>
+        </section>
+      </div>
+
+      <div class="poster-strip" aria-hidden="true">
+        <div class="poster-track" id="poster-track"></div>
+      </div>
+
+      <section class="how landing-wrap" id="how" aria-labelledby="how-title">
+        <h2 id="how-title">How it works</h2>
+        <ol class="how-grid">
+          <li class="how-card">
+            <span class="numeral" aria-hidden="true">1</span>
+            <h3>Rate a few films</h3>
+            <p>Score movies you have seen from 1 to 10. Not seen one? Skip it. Quick mode covers 10 genres, Full covers all 15.</p>
+          </li>
+          <li class="how-card">
+            <span class="numeral" aria-hidden="true">2</span>
+            <h3>Your taste becomes a map</h3>
+            <p>Each film's plot was turned into <span data-fill="dimensions">many</span> numbers once, in advance. Your ratings blend them into a taste profile, built in your browser.</p>
+          </li>
+          <li class="how-card">
+            <span class="numeral" aria-hidden="true">3</span>
+            <h3>Get picks with reasons</h3>
+            <p>See your top five, then the rest. Every pick shows which of your ratings drove it, and where to stream it in Canada, the US and the UK.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="stats" aria-labelledby="stats-title">
+        <div class="landing-wrap">
+          <h2 id="stats-title" class="visually-hidden">CoCinema in numbers</h2>
+          <div class="stats-grid">
+            <div class="stat">
+              <p class="stat-number" data-fill="films">&ndash;</p>
+              <p class="stat-caption">films in the catalog</p>
+            </div>
+            <div class="stat">
+              <p class="stat-number" data-fill="dimensions">&ndash;</p>
+              <p class="stat-caption">dimensions of taste per film</p>
+            </div>
+            <div class="stat">
+              <p class="stat-number"><span data-fill="lift">&ndash;</span><sup aria-hidden="true">*</sup></p>
+              <p class="stat-caption">better than chance at finding your genre</p>
+            </div>
+            <div class="stat">
+              <p class="stat-number">0</p>
+              <p class="stat-caption">accounts or sign-ups needed</p>
+            </div>
+          </div>
+          <p class="stats-footnote">* Measured with simulated taste profiles, not a study of real viewers.</p>
+        </div>
+      </section>
+
+      <footer class="landing-footer landing-wrap">
+        <p>Built by Yousef. Film data from Wikidata and OMDb; plot embeddings computed once, offline.</p>
+        <a href="https://github.com/YousefAkay/cocinema" target="_blank" rel="noopener noreferrer">Source code on GitHub</a>
+      </footer>
     </div>
 
     <div id="rating-screen" style="display: none;">

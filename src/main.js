@@ -13,6 +13,8 @@ import { loadAvailability, streamingView } from './availability.js';
 import { buildSession, newSeed, isValidLength } from './shuffle.js';
 import { registerServiceWorker, watchOnlineStatus } from './offline.js';
 import { resolveStep, progressLabel } from './progress.js';
+import { EVALUATION } from './evaluation-stats.js';
+import { LANDING_POSTERS } from './landing-posters.js';
 
 const TOP_COUNT = 5;
 const RESULT_COUNT = 25;
@@ -395,6 +397,64 @@ function startOver() {
   landingScreen.querySelector('h1').focus({ preventScroll: true });
 }
 
+// ---- Landing page extras ----
+
+// The decorative poster strip. The list is shown twice so the drift loops without a jump; each
+// tile has its title underneath, so a poster that cannot load leaves a plain tile, not a broken image.
+function renderPosterStrip() {
+  const track = document.getElementById('poster-track');
+  if (!track) return;
+  for (const film of [...LANDING_POSTERS, ...LANDING_POSTERS]) {
+    const tile = document.createElement('div');
+    tile.className = 'strip-tile';
+
+    const label = document.createElement('span');
+    label.textContent = `${film.title} (${film.year})`;
+
+    const image = document.createElement('img');
+    image.alt = '';
+    image.loading = 'lazy';
+    image.decoding = 'async';
+    image.addEventListener('error', () => image.remove());
+    image.src = film.poster;
+
+    tile.append(label, image);
+    track.append(tile);
+  }
+}
+
+function fillLandingNumber(name, text) {
+  document.querySelectorAll(`[data-fill="${name}"]`).forEach(node => { node.textContent = text; });
+}
+
+// Numbers on the landing page come from the data itself, so they cannot go out of date.
+function fillLandingNumbers() {
+  fillLandingNumber('films', String(catalog.length));
+  fillLandingNumber('dimensions', String(catalog[0] && catalog[0].embedding ? catalog[0].embedding.length : ''));
+}
+
+renderPosterStrip();
+// The "better than chance" figure is the lift from the latest evaluation run (src/evaluation-stats.js).
+fillLandingNumber('lift', `${EVALUATION.lift.toFixed(1)}x`);
+
+document.getElementById('how-link').addEventListener('click', event => {
+  event.preventDefault();
+  const section = document.getElementById('how');
+  const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  section.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
+  // Moving focus while a smooth scroll is running can cut the scroll short, so wait for it to end.
+  const heading = document.getElementById('how-title');
+  heading.tabIndex = -1;
+  let focused = false;
+  const focusHeading = () => {
+    if (focused) return;
+    focused = true;
+    heading.focus({ preventScroll: true });
+  };
+  window.addEventListener('scrollend', focusHeading, { once: true });
+  setTimeout(focusHeading, calm ? 0 : 1200);
+});
+
 const startButton = document.getElementById('start-button');
 const retryButton = document.getElementById('retry-button');
 const loadError = document.getElementById('load-error');
@@ -468,6 +528,7 @@ async function loadData() {
   moviesByQid = new Map(catalog.map(movie => [shortId(movie.id), movie]));
   genreRank = genreOrder(catalog, onboarding);
   dataLoaded = true;
+  fillLandingNumbers();
   updateStartState();
 
   const saved = loadSavedState(new Set(catalogById.keys()));

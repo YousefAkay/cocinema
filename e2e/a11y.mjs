@@ -114,7 +114,11 @@ try {
   check('landing: nothing is chosen and Get started is disabled until a choice is made',
     (await kbPage.locator('input[name="length"]:checked').count()) === 0 && await kbPage.locator('#start-button').isDisabled());
   await kbPage.keyboard.press('Tab');
-  check('landing: the first Tab stops on the first length option', (await focused()) === 'input:10', await focused());
+  check('landing: Tab starts with the "How it works" link', (await focused()) === 'a:How it works', await focused());
+  await kbPage.keyboard.press('Tab');
+  check('landing: then the GitHub link', (await focused()).startsWith('a:Open source'), await focused());
+  await kbPage.keyboard.press('Tab');
+  check('landing: then the first length option', (await focused()) === 'input:10', await focused());
   await kbPage.keyboard.press('ArrowDown');
   check('landing: the arrow key moves to Full and chooses it', (await focused()) === 'input:15' && await kbPage.locator('input[value="15"]').isChecked());
   await kbPage.keyboard.press('ArrowUp');
