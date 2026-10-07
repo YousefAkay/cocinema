@@ -16,6 +16,7 @@
 - **Rate 5 more:** five well-known films you have not rated or skipped, at most two per genre, to sharpen the list.
 - **Film pages:** tap any result for its poster, genres, runtime, director, age rating, Rotten Tomatoes score, full plot, a breakdown of how each film you rated pushed this one up or down, a YouTube trailer search, which services include it or rent or sell it in Canada, the US and the UK (from a dated Watchmode snapshot), and JustWatch search links for each (search links, not a guarantee of availability).
 - **Keeps your place:** ratings and position are saved in the browser, so a refresh resumes where you were.
+- **Works offline and installs to the home screen** after one visit, and is checked with an automated accessibility scan.
 
 ## How it works
 
@@ -121,6 +122,8 @@ src/                runtime: static files served to the browser
   route.js          hash route helpers
   detail.js         the film page
   availability.js   loads the streaming snapshot, checks its age, builds the country text
+  sw.js             service worker: offline support
+  offline.js        registers the worker, shows the offline notice
   ui.js             builds DOM elements (text only, never HTML from data)
 tests/              node:test unit tests (npm test)
 e2e/                headless browser check at 375px (npm run test:e2e)
@@ -142,6 +145,24 @@ To refresh: delete `data/availability.json` and run `node scripts/watchmode.js` 
 
 Streaming data by [Watchmode](https://www.watchmode.com).
 
+### Offline use
+
+After one successful visit the app opens and works with no connection: the landing screen, onboarding, results, film pages, the catalog and the saved streaming snapshot. A service worker (`src/sw.js`) keeps one cache with a version name (`cocinema-v1`); bumping that name on a deploy makes every phone drop the old cache and fetch everything fresh.
+
+- **Code (HTML, JS, CSS) is network-first.** With signal you always get the latest deploy, with a 4 second wait before falling back to the saved copy. The cost is a small delay on a slow connection.
+- **Data files (`catalog.json`, `onboarding.json`, `availability.json`) are stale-while-revalidate.** They open instantly from the cache and refresh in the background. The cost is that a visitor can see data one visit behind, which is fine for a catalog that changes rarely.
+- **Other sites are never cached.** Posters and the font come from other origins and are left alone, so offline the cards show placeholders.
+
+The worker is registered only on https or 127.0.0.1, inside a try/catch, so the app works the same without it. `vercel.json` serves `sw.js` uncached and allows it to control the whole site (the app lives under `/src/` and `/` redirects there). A small "Offline - using saved data" notice appears while the browser is offline.
+
+### Known limits
+
+- Posters are linked from another site and need a connection; offline you see placeholder cards.
+- The Inter font and the posters are third-party requests, so those sites can see a visitor's IP address like any site would. The app itself has no analytics and no account, and ratings and the taste profile stay on the device.
+- Streaming availability is a dated snapshot that must be refreshed or deleted within 30 days, and the JustWatch links are searches, not guarantees.
+- The evaluation uses synthetic genre-based personas and says nothing about accuracy for real people.
+- Not every catalog entry has been checked against its year yet (the verify script is part way through), so a few entries can still hold another film's plot or details. "Deep Impact" is a known example.
+
 ### Routing
 
 There is one HTML page. The film page is a fourth screen shown at `#/movie/<Wikidata id>` (for example `#/movie/Q104123`). `main.js` listens for `hashchange` and also routes once on load, after the saved ratings have been restored, so a film URL works after a refresh and Back returns to the results at the same scroll position. An unknown id shows a "Movie not found" screen with a way back.
@@ -160,7 +181,8 @@ node scripts/buildCatalog.js
 # Run the unit tests and the synthetic evaluation
 npm test
 npm run evaluate
-npm run test:e2e   # headless Chrome at 375px; saves screenshots to screenshots/
+npm run test:e2e   # headless Chrome at 375px: app, offline mode and an accessibility scan; saves screenshots to screenshots/
+npm run build:assets   # redraws the icons and link-preview image
 
 # Serve the site
 npx serve . -l tcp://127.0.0.1:3000
