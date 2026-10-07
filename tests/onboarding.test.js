@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { buildPools, primaryGenre, TARGET_SIZE } from '../scripts/buildOnboarding.js';
+import { buildPools, primaryGenre, isUnambiguous, TARGET_SIZE } from '../scripts/buildOnboarding.js';
 
 const film = (id, title, genres, extra = {}) => ({
   id, title, genres, year: 2000, plot: 'a plot', poster: 'http://x/p.jpg', embedding: [1, 2], sitelinks: 10, ...extra,
@@ -76,6 +76,34 @@ test('pools stop at the target size and report short pools', () => {
 
 test('the output is deterministic', () => {
   assert.deepEqual(buildPools(catalog, progress, existing), buildPools([...catalog].reverse(), progress, existing));
+});
+
+test('a film with more than 2 onboarding genres is never auto-added, but a hand-picked one stays', () => {
+  const three = [
+    ...existing,
+    { genre: 'Comedy', movies: [{ id: 'h3', title: 'Hand Comedy', year: 1970, handPicked: true }] },
+  ];
+  const withAmbiguous = [
+    ...catalog,
+    film('h3', 'Hand Comedy', ['comedy']),
+    film('a1', 'Ambiguous', ['drama', 'western', 'comedy'], { sitelinks: 100 }),
+    film('a2', 'Two Genres', ['drama', 'comedy'], { sitelinks: 5 }),
+  ];
+  const ok = { ...progress, a1: { status: 'VERIFIED' }, a2: { status: 'VERIFIED' }, h3: { status: 'VERIFIED' } };
+  const ids = buildPools(withAmbiguous, ok, three).pools.flatMap(pool => pool.movies.map(movie => movie.id));
+  assert.ok(!ids.includes('a1'), 'three onboarding genres is too ambiguous');
+  assert.ok(ids.includes('a2'), 'two onboarding genres is fine');
+});
+
+test('isUnambiguous allows 1 or 2 onboarding genres and ignores other genres', () => {
+  const labels = new Set(['drama', 'western', 'comedy']);
+  assert.equal(isUnambiguous({ genres: ['drama'] }, labels), true);
+  assert.equal(isUnambiguous({ genres: ['drama', 'teen', 'historical'] }, labels), true);
+  assert.equal(isUnambiguous({ genres: ['drama', 'western'] }, labels), true);
+  assert.equal(isUnambiguous({ genres: ['drama', 'western', 'comedy'] }, labels), false);
+  assert.equal(isUnambiguous({ genres: ['teen'] }, labels), false);
+  assert.equal(isUnambiguous({ genres: [] }, labels), false);
+  assert.equal(isUnambiguous({}, labels), false);
 });
 
 // The committed file.

@@ -21,16 +21,6 @@
         "handPicked": true
       },
       {
-        "id": "http://www.wikidata.org/entity/Q46717",
-        "title": "Pirates of the Caribbean: The Curse of the Black Pearl",
-        "year": 2003
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q54274",
-        "title": "Pirates of the Caribbean: At World's End",
-        "year": 2007
-      },
-      {
         "id": "http://www.wikidata.org/entity/Q182153",
         "title": "Cars",
         "year": 2006
@@ -44,6 +34,16 @@
         "id": "http://www.wikidata.org/entity/Q171669",
         "title": "One Flew Over the Cuckoo's Nest",
         "year": 1975
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q484048",
+        "title": "Amélie",
+        "year": 2001
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q48673898",
+        "title": "Green Book",
+        "year": 2018
       }
     ]
   },
@@ -69,29 +69,29 @@
         "handPicked": true
       },
       {
-        "id": "http://www.wikidata.org/entity/Q133654",
-        "title": "The Silence of the Lambs",
-        "year": 1991
+        "id": "http://www.wikidata.org/entity/Q151895",
+        "title": "Nosferatu",
+        "year": 1922
       },
       {
-        "id": "http://www.wikidata.org/entity/Q162255",
-        "title": "The Terminator",
-        "year": 1984
+        "id": "http://www.wikidata.org/entity/Q219424",
+        "title": "Scary Movie",
+        "year": 2000
       },
       {
-        "id": "http://www.wikidata.org/entity/Q103569",
-        "title": "Alien",
-        "year": 1979
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q163038",
-        "title": "Psycho",
-        "year": 1960
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q2579784",
-        "title": "Gravity",
+        "id": "http://www.wikidata.org/entity/Q5540479",
+        "title": "The Conjuring",
         "year": 2013
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q7561043",
+        "title": "Final Destination",
+        "year": 2000
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q219810",
+        "title": "Zombieland",
+        "year": 2009
       }
     ]
   },
@@ -117,29 +117,29 @@
         "handPicked": true
       },
       {
-        "id": "http://www.wikidata.org/entity/Q24871",
-        "title": "Avatar",
+        "id": "http://www.wikidata.org/entity/Q14171368",
+        "title": "Avengers: Age of Ultron",
+        "year": 2015
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q184605",
+        "title": "2012",
         "year": 2009
       },
       {
-        "id": "http://www.wikidata.org/entity/Q91540",
-        "title": "Back to the Future",
-        "year": 1985
+        "id": "http://www.wikidata.org/entity/Q109331",
+        "title": "Back to the Future Part II",
+        "year": 1989
       },
       {
-        "id": "http://www.wikidata.org/entity/Q17738",
-        "title": "Star Wars: Episode IV - A New Hope",
-        "year": 1977
+        "id": "http://www.wikidata.org/entity/Q11621",
+        "title": "E.T. the Extra-Terrestrial",
+        "year": 1982
       },
       {
-        "id": "http://www.wikidata.org/entity/Q182218",
-        "title": "The Avengers",
-        "year": 2012
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q170564",
-        "title": "Terminator 2: Judgment Day",
-        "year": 1991
+        "id": "http://www.wikidata.org/entity/Q151599",
+        "title": "Metropolis",
+        "year": 1927
       }
     ]
   },
@@ -264,21 +264,6 @@
         "id": "http://www.wikidata.org/entity/Q108839994",
         "title": "Oppenheimer",
         "year": 2023
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q102754",
-        "title": "Dr. No",
-        "year": 1962
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q189330",
-        "title": "The Dark Knight Rises",
-        "year": 2012
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q18602670",
-        "title": "Spectre",
-        "year": 2015
       }
     ]
   },
@@ -304,19 +289,9 @@
         "handPicked": true
       },
       {
-        "id": "http://www.wikidata.org/entity/Q125076",
-        "title": "Slumdog Millionaire",
-        "year": 2008
-      },
-      {
         "id": "http://www.wikidata.org/entity/Q160618",
         "title": "Brokeback Mountain",
         "year": 2005
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q160071",
-        "title": "Twilight",
-        "year": 2008
       },
       {
         "id": "http://www.wikidata.org/entity/Q193835",
@@ -324,9 +299,19 @@
         "year": 1997
       },
       {
-        "id": "http://www.wikidata.org/entity/Q26698156",
-        "title": "The Shape of Water",
-        "year": 2017
+        "id": "http://www.wikidata.org/entity/Q15079318",
+        "title": "The Theory of Everything",
+        "year": 2014
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q207954",
+        "title": "Pretty Woman",
+        "year": 1990
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q892735",
+        "title": "The Great Gatsby",
+        "year": 2013
       }
     ]
   },
@@ -352,29 +337,29 @@
         "handPicked": true
       },
       {
-        "id": "http://www.wikidata.org/entity/Q115859490",
-        "title": "Sonic the Hedgehog 3",
-        "year": 2024
+        "id": "http://www.wikidata.org/entity/Q111918018",
+        "title": "PAW Patrol: The Mighty Movie",
+        "year": 2023
       },
       {
-        "id": "http://www.wikidata.org/entity/Q29825830",
-        "title": "Trolls World Tour",
-        "year": 2020
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q14451258",
-        "title": "Justin and the Knights of Valour",
-        "year": 2013
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q106299119",
-        "title": "Ron's Gone Wrong",
+        "id": "http://www.wikidata.org/entity/Q105560479",
+        "title": "Back to the Outback",
         "year": 2021
       },
       {
-        "id": "http://www.wikidata.org/entity/Q110271518",
-        "title": "Teenage Mutant Ninja Turtles: Mutant Mayhem",
-        "year": 2023
+        "id": "http://www.wikidata.org/entity/Q12047658",
+        "title": "Walking with Dinosaurs",
+        "year": 2013
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q98079445",
+        "title": "Bigfoot Family",
+        "year": 2020
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q24905214",
+        "title": "The Glassworker",
+        "year": 2024
       }
     ]
   },
@@ -423,16 +408,6 @@
         "handPicked": true
       },
       {
-        "id": "http://www.wikidata.org/entity/Q164963",
-        "title": "The Lord of the Rings: The Two Towers",
-        "year": 2002
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q161678",
-        "title": "Harry Potter and the Deathly Hallows: Part 1",
-        "year": 2010
-      },
-      {
         "id": "http://www.wikidata.org/entity/Q208263",
         "title": "The Green Mile",
         "year": 1999
@@ -459,31 +434,6 @@
         "title": "The Departed",
         "year": 2006,
         "handPicked": true
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q104123",
-        "title": "Pulp Fiction",
-        "year": 1994
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q163872",
-        "title": "The Dark Knight",
-        "year": 2008
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q166262",
-        "title": "Batman Begins",
-        "year": 2005
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q184843",
-        "title": "Blade Runner",
-        "year": 1982
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q47221",
-        "title": "Taxi Driver",
-        "year": 1976
       }
     ]
   },
@@ -509,29 +459,14 @@
         "handPicked": true
       },
       {
-        "id": "http://www.wikidata.org/entity/Q132689",
-        "title": "Casablanca",
-        "year": 1942
-      },
-      {
         "id": "http://www.wikidata.org/entity/Q483941",
         "title": "Schindler's List",
         "year": 1993
       },
       {
-        "id": "http://www.wikidata.org/entity/Q2875",
-        "title": "Gone with the Wind",
-        "year": 1939
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q162729",
-        "title": "Braveheart",
-        "year": 1995
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q131390",
-        "title": "300",
-        "year": 2006
+        "id": "http://www.wikidata.org/entity/Q105702",
+        "title": "Dr. Strangelove",
+        "year": 1964
       }
     ]
   },
@@ -560,11 +495,6 @@
         "title": "High Noon",
         "year": 1952,
         "handPicked": true
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q230552",
-        "title": "Back to the Future Part III",
-        "year": 1990
       }
     ]
   },
@@ -595,23 +525,8 @@
         "year": 1941
       },
       {
-        "id": "http://www.wikidata.org/entity/Q46551",
-        "title": "The Prestige",
-        "year": 2006
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q202326",
-        "title": "The Godfather Part III",
-        "year": 1990
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q181086",
-        "title": "A Clockwork Orange",
-        "year": 1971
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q72962",
-        "title": "Reservoir Dogs",
+        "id": "http://www.wikidata.org/entity/Q221202",
+        "title": "Home Alone 2: Lost in New York",
         "year": 1992
       }
     ]
@@ -636,31 +551,6 @@
         "title": "Grease",
         "year": 1978,
         "handPicked": true
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q190086",
-        "title": "Some Like It Hot",
-        "year": 1959
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q150804",
-        "title": "The Pianist",
-        "year": 2002
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q55436290",
-        "title": "Barbie",
-        "year": 2023
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q736731",
-        "title": "The Three Caballeros",
-        "year": 1944
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q229633",
-        "title": "3 Idiots",
-        "year": 2009
       }
     ]
   }

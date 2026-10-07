@@ -12,6 +12,7 @@ const ONBOARDING_PATH = 'data/onboarding.json';
 const PROGRESS_PATH = 'data/verify-progress.json';
 export const TARGET_SIZE = 8;
 export const MIN_SIZE = 7;
+export const MAX_ONBOARDING_GENRES = 2;
 
 // Verified by the verify script, or a mismatch the repair script has since fixed.
 function verifiedIds(catalog, progress) {
@@ -36,6 +37,14 @@ export function primaryGenre(movie, onboardingLabels, genreCounts) {
     .sort((a, b) => genreCounts.get(a) - genreCounts.get(b) || a.localeCompare(b))[0] || null;
 }
 
+// A film is only auto-added when its genre is clear: it carries one or two of the onboarding
+// genres. Films tagged with three or more (adventure, fantasy, action, drama, ...) could
+// belong anywhere, so they are only ever in a pool if hand-picked.
+export function isUnambiguous(movie, onboardingLabels) {
+  const count = (movie.genres || []).filter(genre => onboardingLabels.has(genre)).length;
+  return count >= 1 && count <= MAX_ONBOARDING_GENRES;
+}
+
 // existing: onboarding pools whose hand-picked films carry handPicked: true. Returns { pools, report }.
 export function buildPools(catalog, progress, existing, targetSize = TARGET_SIZE) {
   const labels = new Set(existing.map(entry => onboardingLabel(entry.genre)));
@@ -55,7 +64,8 @@ export function buildPools(catalog, progress, existing, targetSize = TARGET_SIZE
   const eligible = catalog
     .filter(movie => verified.has(movie.id) && movie.poster && movie.plot && movie.year
       && Array.isArray(movie.embedding) && movie.embedding.length > 0
-      && titleCounts.get(movie.title) === 1 && !taken.has(movie.id))
+      && titleCounts.get(movie.title) === 1 && !taken.has(movie.id)
+      && isUnambiguous(movie, labels))
     .sort((a, b) => (b.sitelinks || 0) - (a.sitelinks || 0) || a.id.localeCompare(b.id));
 
   const report = [];
