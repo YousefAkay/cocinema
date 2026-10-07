@@ -1,8 +1,10 @@
 import test, { beforeEach } from 'node:test';
 import assert from 'node:assert/strict';
-import { saveRating, getAllRatings, savePosition, loadSavedState, clearSavedState } from '../src/ratings.js';
+import {
+  saveRating, getAllRatings, markSkipped, getSkippedIds, savePosition, saveExtra, loadSavedState, clearSavedState,
+} from '../src/ratings.js';
 
-const KEY = 'cocinema:v1';
+const KEY = 'cocinema:v2';
 const ids = new Set(['a', 'b', 'c']);
 let store;
 
@@ -28,19 +30,20 @@ beforeEach(() => {
 test('saveRating and savePosition write one JSON record under the versioned key', () => {
   saveRating('a', 7);
   savePosition(2, 1);
-  assert.deepEqual(JSON.parse(store[KEY]), { ratings: [['a', 7]], genreIndex: 2, movieIndex: 1 });
+  assert.deepEqual(JSON.parse(store[KEY]), { ratings: [['a', 7]], skipped: [], genreIndex: 2, movieIndex: 1, extra: null });
   assert.deepEqual(getAllRatings(), [{ id: 'a', score: 7 }]);
 });
 
 test('a saved state loads back with its ratings and position', () => {
-  store[KEY] = JSON.stringify({ ratings: [['a', 7], ['b', 3]], genreIndex: 2, movieIndex: 1 });
-  assert.deepEqual(loadSavedState(ids, 5), { genreIndex: 2, movieIndex: 1 });
+  store[KEY] = JSON.stringify({ ratings: [['a', 7], ['b', 3]], skipped: ['c'], genreIndex: 2, movieIndex: 1, extra: null });
+  assert.deepEqual(loadSavedState(ids, 5), { genreIndex: 2, movieIndex: 1, extra: null });
+  assert.deepEqual(getSkippedIds(), ['c']);
   assert.deepEqual(getAllRatings(), [{ id: 'a', score: 7 }, { id: 'b', score: 3 }]);
 });
 
 test('a position at the end (genreIndex equal to the genre count) is accepted', () => {
-  store[KEY] = JSON.stringify({ ratings: [], genreIndex: 5, movieIndex: 0 });
-  assert.deepEqual(loadSavedState(ids, 5), { genreIndex: 5, movieIndex: 0 });
+  store[KEY] = JSON.stringify({ ratings: [], skipped: [], genreIndex: 5, movieIndex: 0, extra: null });
+  assert.deepEqual(loadSavedState(ids, 5), { genreIndex: 5, movieIndex: 0, extra: null });
 });
 
 test('nothing saved gives null', () => {
@@ -48,17 +51,25 @@ test('nothing saved gives null', () => {
 });
 
 test('invalid saves are ignored whole and leave the ratings empty', () => {
-  const good = { genreIndex: 0, movieIndex: 0 };
+  const good = { skipped: [], genreIndex: 0, movieIndex: 0, extra: null };
   const bad = {
     'not JSON': 'garbage{',
     'not an object': '42',
     'null': 'null',
     'ratings not an array': JSON.stringify({ ratings: 'x', ...good }),
-    'missing positions': JSON.stringify({ ratings: [] }),
-    'negative genreIndex': JSON.stringify({ ratings: [], genreIndex: -1, movieIndex: 0 }),
-    'genreIndex too large': JSON.stringify({ ratings: [], genreIndex: 6, movieIndex: 0 }),
-    'fractional movieIndex': JSON.stringify({ ratings: [], genreIndex: 0, movieIndex: 1.5 }),
-    'negative movieIndex': JSON.stringify({ ratings: [], genreIndex: 0, movieIndex: -2 }),
+    'missing positions': JSON.stringify({ ratings: [], skipped: [] }),
+    'missing skipped list': JSON.stringify({ ratings: [], genreIndex: 0, movieIndex: 0, extra: null }),
+    'skipped has an unknown id': JSON.stringify({ ratings: [], ...good, skipped: ['zzz'] }),
+    'extra before onboarding is finished': JSON.stringify({ ratings: [], ...good, extra: { rated: 1, shown: ['a'] } }),
+    'extra with rated out of range': JSON.stringify({ ratings: [], ...good, genreIndex: 5, extra: { rated: 5, shown: ['a'] } }),
+    'extra with no shown films': JSON.stringify({ ratings: [], ...good, genreIndex: 5, extra: { rated: 0, shown: [] } }),
+    'extra with an unknown shown id': JSON.stringify({ ratings: [], ...good, genreIndex: 5, extra: { rated: 0, shown: ['zzz'] } }),
+    'extra with a repeated shown id': JSON.stringify({ ratings: [], ...good, genreIndex: 5, extra: { rated: 0, shown: ['a', 'a'] } }),
+    'extra of the wrong type': JSON.stringify({ ratings: [], ...good, genreIndex: 5, extra: 'yes' }),
+    'negative genreIndex': JSON.stringify({ ratings: [], ...good, genreIndex: -1 }),
+    'genreIndex too large': JSON.stringify({ ratings: [], ...good, genreIndex: 6 }),
+    'fractional movieIndex': JSON.stringify({ ratings: [], ...good, movieIndex: 1.5 }),
+    'negative movieIndex': JSON.stringify({ ratings: [], ...good, movieIndex: -2 }),
     'rating entry wrong shape': JSON.stringify({ ratings: [['a']], ...good }),
     'rating entry not an array': JSON.stringify({ ratings: ['a'], ...good }),
     'unknown movie id': JSON.stringify({ ratings: [['zzz', 5]], ...good }),
@@ -75,6 +86,20 @@ test('invalid saves are ignored whole and leave the ratings empty', () => {
     assert.equal(loadSavedState(ids, 5), null, name);
     assert.deepEqual(getAllRatings(), [], `${name}: ratings must stay empty`);
   }
+});
+
+test('an extra flow in progress is saved and loaded back', () => {
+  markSkipped('c');
+  saveExtra({ rated: 2, shown: ['a', 'b'] });
+  assert.deepEqual(JSON.parse(store[KEY]).extra, { rated: 2, shown: ['a', 'b'] });
+  store[KEY] = JSON.stringify({ ratings: [], skipped: [], genreIndex: 5, movieIndex: 0, extra: { rated: 2, shown: ['a', 'b'] } });
+  assert.deepEqual(loadSavedState(ids, 5), { genreIndex: 5, movieIndex: 0, extra: { rated: 2, shown: ['a', 'b'] } });
+});
+
+test('an old version-1 save is ignored, not loaded', () => {
+  store['cocinema:v1'] = JSON.stringify({ ratings: [['a', 7]], genreIndex: 2, movieIndex: 1 });
+  assert.equal(loadSavedState(ids, 5), null);
+  assert.deepEqual(getAllRatings(), []);
 });
 
 test('clearSavedState removes the save and empties the ratings', () => {

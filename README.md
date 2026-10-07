@@ -119,6 +119,7 @@ node scripts/buildCatalog.js
 # Run the unit tests and the synthetic evaluation
 npm test
 npm run evaluate
+npm run test:e2e   # headless Chrome at 375px; saves screenshots to screenshots/
 
 # Serve the site
 npx serve . -l tcp://127.0.0.1:3000
