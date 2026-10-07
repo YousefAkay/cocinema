@@ -44,6 +44,24 @@ flowchart LR
 
 Current catalog: **576 movies** across 20 genres.
 
+### Catalog schema
+
+Each entry in `data/catalog.json`:
+
+| Field | Type | Source |
+| --- | --- | --- |
+| `id` | string (Wikidata entity URL) | Wikidata |
+| `title` | string | OMDb |
+| `plot` | string | OMDb |
+| `poster` | string or null | OMDb |
+| `embedding` | number[512] | OpenAI |
+| `rottenTomatoes` | string (e.g. `"87%"`) or null | OMDb |
+| `runtime` | string (e.g. `"142 min"`) or null | OMDb |
+| `director` | string or null | OMDb |
+| `rated` | string (e.g. `"R"`) or null | OMDb |
+
+`rottenTomatoes`, `runtime`, `director` and `rated` are added by `node scripts/backfill.js`, which is resumable and skips entries it has already filled.
+
 ---
 
 ## Tech stack

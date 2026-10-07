@@ -1,0 +1,8332 @@
+{
+ "http://www.wikidata.org/entity/Q104123": {
+  "year": 1994,
+  "sitelinks": 107,
+  "genreIds": [
+   "Q959790",
+   "Q2484376",
+   "Q130232",
+   "Q188473",
+   "Q157443"
+  ],
+  "genres": [
+   "crime",
+   "thriller",
+   "drama",
+   "action",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q91540": {
+  "year": 1985,
+  "sitelinks": 103,
+  "genreIds": [
+   "Q1146335",
+   "Q471839",
+   "Q319221",
+   "Q157443"
+  ],
+  "genres": [
+   "teen",
+   "science fiction",
+   "adventure",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q170564": {
+  "year": 1991,
+  "sitelinks": 92,
+  "genreIds": [
+   "Q2484376",
+   "Q130232",
+   "Q188473",
+   "Q471839",
+   "Q319221",
+   "Q157443"
+  ],
+  "genres": [
+   "thriller",
+   "drama",
+   "action",
+   "science fiction",
+   "adventure",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q46717": {
+  "year": 2003,
+  "sitelinks": 90,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q188473",
+   "Q157443"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "action",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q54274": {
+  "year": 2007,
+  "sitelinks": 85,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q188473",
+   "Q157443"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "action",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q161087": {
+  "year": 2006,
+  "sitelinks": 84,
+  "genreIds": [
+   "Q188473",
+   "Q157394",
+   "Q319221",
+   "Q157443"
+  ],
+  "genres": [
+   "action",
+   "fantasy",
+   "adventure",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q182153": {
+  "year": 2006,
+  "sitelinks": 83,
+  "genreIds": [
+   "Q157443"
+  ],
+  "genres": [
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q105031": {
+  "year": 1990,
+  "sitelinks": 82,
+  "genreIds": [
+   "Q319221",
+   "Q157443"
+  ],
+  "genres": [
+   "adventure",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q109116": {
+  "year": 1940,
+  "sitelinks": 81,
+  "genreIds": [
+   "Q369747",
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "war",
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q153723": {
+  "year": 2009,
+  "sitelinks": 80,
+  "genreIds": [
+   "Q17013749",
+   "Q369747",
+   "Q2484376",
+   "Q130232",
+   "Q188473",
+   "Q319221",
+   "Q157443"
+  ],
+  "genres": [
+   "historical",
+   "war",
+   "thriller",
+   "drama",
+   "action",
+   "adventure",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q19355": {
+  "year": 1997,
+  "sitelinks": 80,
+  "genreIds": [
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q484048": {
+  "year": 2001,
+  "sitelinks": 78,
+  "genreIds": [
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q171669": {
+  "year": 1975,
+  "sitelinks": 78,
+  "genreIds": [
+   "Q157443"
+  ],
+  "genres": [
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q208108": {
+  "year": 2002,
+  "sitelinks": 76,
+  "genreIds": [
+   "Q645928",
+   "Q959790",
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "biographical",
+   "crime",
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q1392744": {
+  "year": 2013,
+  "sitelinks": 75,
+  "genreIds": [
+   "Q645928",
+   "Q959790",
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "biographical",
+   "crime",
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q13255497": {
+  "year": 2014,
+  "sitelinks": 74,
+  "genreIds": [
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q183555": {
+  "year": 2011,
+  "sitelinks": 74,
+  "genreIds": [
+   "Q188473",
+   "Q157394",
+   "Q319221",
+   "Q157443"
+  ],
+  "genres": [
+   "action",
+   "fantasy",
+   "adventure",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q171861": {
+  "year": 2011,
+  "sitelinks": 73,
+  "genreIds": [
+   "Q1054574",
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "romance",
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q214801": {
+  "year": 1998,
+  "sitelinks": 73,
+  "genreIds": [
+   "Q130232",
+   "Q157443",
+   "Q471839"
+  ],
+  "genres": [
+   "drama",
+   "comedy",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q5887360": {
+  "year": 2014,
+  "sitelinks": 72,
+  "genreIds": [
+   "Q959790",
+   "Q157443",
+   "Q471839"
+  ],
+  "genres": [
+   "crime",
+   "comedy",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q109331": {
+  "year": 1989,
+  "sitelinks": 72,
+  "genreIds": [
+   "Q1146335",
+   "Q471839",
+   "Q157443"
+  ],
+  "genres": [
+   "teen",
+   "science fiction",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q105702": {
+  "year": 1964,
+  "sitelinks": 72,
+  "genreIds": [
+   "Q369747",
+   "Q157443"
+  ],
+  "genres": [
+   "war",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q48673898": {
+  "year": 2018,
+  "sitelinks": 71,
+  "genreIds": [
+   "Q645928",
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "biographical",
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q22665878": {
+  "year": 2017,
+  "sitelinks": 71,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q188473",
+   "Q157443",
+   "Q471839"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "action",
+   "comedy",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q209538": {
+  "year": 2013,
+  "sitelinks": 71,
+  "genreIds": [
+   "Q188473",
+   "Q471839",
+   "Q319221",
+   "Q157443"
+  ],
+  "genres": [
+   "action",
+   "science fiction",
+   "adventure",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q202508": {
+  "year": 1999,
+  "sitelinks": 71,
+  "genreIds": [
+   "Q188473",
+   "Q157394",
+   "Q157443",
+   "Q200092"
+  ],
+  "genres": [
+   "action",
+   "fantasy",
+   "comedy",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q13619743": {
+  "year": 2015,
+  "sitelinks": 70,
+  "genreIds": [
+   "Q2143665",
+   "Q157443"
+  ],
+  "genres": [
+   "children's",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q736731": {
+  "year": 1944,
+  "sitelinks": 70,
+  "genreIds": [
+   "Q842256",
+   "Q2143665",
+   "Q157394",
+   "Q157443"
+  ],
+  "genres": [
+   "musical",
+   "children's",
+   "fantasy",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q204191": {
+  "year": 1946,
+  "sitelinks": 70,
+  "genreIds": [
+   "Q130232",
+   "Q157394",
+   "Q157443"
+  ],
+  "genres": [
+   "drama",
+   "fantasy",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q201293": {
+  "year": 1953,
+  "sitelinks": 70,
+  "genreIds": [
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q55436290": {
+  "year": 2023,
+  "sitelinks": 70,
+  "genreIds": [
+   "Q842256",
+   "Q1146335",
+   "Q1054574",
+   "Q157394",
+   "Q319221",
+   "Q157443"
+  ],
+  "genres": [
+   "musical",
+   "teen",
+   "romance",
+   "fantasy",
+   "adventure",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q5901134": {
+  "year": 2015,
+  "sitelinks": 69,
+  "genreIds": [
+   "Q319221",
+   "Q188473",
+   "Q157443",
+   "Q471839"
+  ],
+  "genres": [
+   "adventure",
+   "action",
+   "comedy",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q200299": {
+  "year": 1950,
+  "sitelinks": 68,
+  "genreIds": [
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q20001199": {
+  "year": 2017,
+  "sitelinks": 67,
+  "genreIds": [
+   "Q319221",
+   "Q471839",
+   "Q157443"
+  ],
+  "genres": [
+   "adventure",
+   "science fiction",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q221202": {
+  "year": 1992,
+  "sitelinks": 67,
+  "genreIds": [
+   "Q1200678",
+   "Q157443"
+  ],
+  "genres": [
+   "mystery",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q186323": {
+  "year": 2006,
+  "sitelinks": 67,
+  "genreIds": [
+   "Q157443"
+  ],
+  "genres": [
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q230552": {
+  "year": 1990,
+  "sitelinks": 66,
+  "genreIds": [
+   "Q172980",
+   "Q1146335",
+   "Q157443",
+   "Q471839"
+  ],
+  "genres": [
+   "western",
+   "teen",
+   "comedy",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q219421": {
+  "year": 1994,
+  "sitelinks": 66,
+  "genreIds": [
+   "Q157394",
+   "Q157443"
+  ],
+  "genres": [
+   "fantasy",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q233464": {
+  "year": 1977,
+  "sitelinks": 65,
+  "genreIds": [
+   "Q860626",
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "romantic comedy",
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q229633": {
+  "year": 2009,
+  "sitelinks": 65,
+  "genreIds": [
+   "Q842256",
+   "Q1054574",
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "musical",
+   "romance",
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q22957393": {
+  "year": 2018,
+  "sitelinks": 64,
+  "genreIds": [
+   "Q319221",
+   "Q188473",
+   "Q471839",
+   "Q157443"
+  ],
+  "genres": [
+   "adventure",
+   "action",
+   "science fiction",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q426828": {
+  "year": 2001,
+  "sitelinks": 64,
+  "genreIds": [
+   "Q1200678",
+   "Q157394",
+   "Q2484376",
+   "Q130232",
+   "Q157443",
+   "Q200092",
+   "Q471839"
+  ],
+  "genres": [
+   "mystery",
+   "fantasy",
+   "thriller",
+   "drama",
+   "comedy",
+   "horror",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q106506": {
+  "year": 1997,
+  "sitelinks": 64,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q188473",
+   "Q471839",
+   "Q157443"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "action",
+   "science fiction",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q209170": {
+  "year": 1964,
+  "sitelinks": 64,
+  "genreIds": [
+   "Q842256",
+   "Q157394",
+   "Q157443"
+  ],
+  "genres": [
+   "musical",
+   "fantasy",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q189889": {
+  "year": 2002,
+  "sitelinks": 64,
+  "genreIds": [
+   "Q842256",
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "musical",
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q51416": {
+  "year": 1997,
+  "sitelinks": 64,
+  "genreIds": [
+   "Q188473",
+   "Q157443",
+   "Q471839"
+  ],
+  "genres": [
+   "action",
+   "comedy",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q10350033": {
+  "year": 2017,
+  "sitelinks": 64,
+  "genreIds": [
+   "Q157394",
+   "Q157443"
+  ],
+  "genres": [
+   "fantasy",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q133654": {
+  "year": 1991,
+  "sitelinks": 102,
+  "genreIds": [
+   "Q959790",
+   "Q2484376",
+   "Q130232",
+   "Q200092"
+  ],
+  "genres": [
+   "crime",
+   "thriller",
+   "drama",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q162255": {
+  "year": 1984,
+  "sitelinks": 100,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q2484376",
+   "Q130232",
+   "Q188473",
+   "Q471839",
+   "Q200092"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "thriller",
+   "drama",
+   "action",
+   "science fiction",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q182692": {
+  "year": 1979,
+  "sitelinks": 84,
+  "genreIds": [
+   "Q369747",
+   "Q319221",
+   "Q2484376",
+   "Q130232",
+   "Q188473",
+   "Q200092"
+  ],
+  "genres": [
+   "war",
+   "adventure",
+   "thriller",
+   "drama",
+   "action",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q103569": {
+  "year": 1979,
+  "sitelinks": 83,
+  "genreIds": [
+   "Q1200678",
+   "Q157394",
+   "Q319221",
+   "Q2484376",
+   "Q188473",
+   "Q471839",
+   "Q200092"
+  ],
+  "genres": [
+   "mystery",
+   "fantasy",
+   "adventure",
+   "thriller",
+   "action",
+   "science fiction",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q163038": {
+  "year": 1960,
+  "sitelinks": 78,
+  "genreIds": [
+   "Q1200678",
+   "Q959790",
+   "Q200092",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "mystery",
+   "crime",
+   "horror",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q2579784": {
+  "year": 2013,
+  "sitelinks": 77,
+  "genreIds": [
+   "Q2484376",
+   "Q130232",
+   "Q200092",
+   "Q471839"
+  ],
+  "genres": [
+   "thriller",
+   "drama",
+   "horror",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q186341": {
+  "year": 1980,
+  "sitelinks": 75,
+  "genreIds": [
+   "Q1200678",
+   "Q2484376",
+   "Q130232",
+   "Q200092"
+  ],
+  "genres": [
+   "mystery",
+   "thriller",
+   "drama",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q190908": {
+  "year": 1995,
+  "sitelinks": 73,
+  "genreIds": [
+   "Q1200678",
+   "Q959790",
+   "Q2484376",
+   "Q130232",
+   "Q188473",
+   "Q200092"
+  ],
+  "genres": [
+   "mystery",
+   "crime",
+   "thriller",
+   "drama",
+   "action",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q180214": {
+  "year": 2010,
+  "sitelinks": 74,
+  "genreIds": [
+   "Q2484376",
+   "Q130232",
+   "Q200092"
+  ],
+  "genres": [
+   "thriller",
+   "drama",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q190525": {
+  "year": 2000,
+  "sitelinks": 72,
+  "genreIds": [
+   "Q1200678",
+   "Q959790",
+   "Q2484376",
+   "Q130232",
+   "Q200092"
+  ],
+  "genres": [
+   "mystery",
+   "crime",
+   "thriller",
+   "drama",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q189505": {
+  "year": 1975,
+  "sitelinks": 72,
+  "genreIds": [
+   "Q319221",
+   "Q2484376",
+   "Q471839",
+   "Q200092"
+  ],
+  "genres": [
+   "adventure",
+   "thriller",
+   "science fiction",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q210364": {
+  "year": 2010,
+  "sitelinks": 71,
+  "genreIds": [
+   "Q1200678",
+   "Q959790",
+   "Q319221",
+   "Q2484376",
+   "Q130232",
+   "Q188473",
+   "Q200092"
+  ],
+  "genres": [
+   "mystery",
+   "crime",
+   "adventure",
+   "thriller",
+   "drama",
+   "action",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q104814": {
+  "year": 1986,
+  "sitelinks": 70,
+  "genreIds": [
+   "Q369747",
+   "Q319221",
+   "Q2484376",
+   "Q188473",
+   "Q471839",
+   "Q200092"
+  ],
+  "genres": [
+   "war",
+   "adventure",
+   "thriller",
+   "action",
+   "science fiction",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q183063": {
+  "year": 1999,
+  "sitelinks": 68,
+  "genreIds": [
+   "Q1200678",
+   "Q2484376",
+   "Q130232",
+   "Q200092"
+  ],
+  "genres": [
+   "mystery",
+   "thriller",
+   "drama",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q486239": {
+  "year": 2003,
+  "sitelinks": 67,
+  "genreIds": [
+   "Q959790",
+   "Q200092"
+  ],
+  "genres": [
+   "crime",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q200804": {
+  "year": 1987,
+  "sitelinks": 66,
+  "genreIds": [
+   "Q319221",
+   "Q2484376",
+   "Q188473",
+   "Q471839",
+   "Q200092"
+  ],
+  "genres": [
+   "adventure",
+   "thriller",
+   "action",
+   "science fiction",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q192686": {
+  "year": 2012,
+  "sitelinks": 65,
+  "genreIds": [
+   "Q319221",
+   "Q2484376",
+   "Q188473",
+   "Q471839",
+   "Q200092"
+  ],
+  "genres": [
+   "adventure",
+   "thriller",
+   "action",
+   "science fiction",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q274167": {
+  "year": 1973,
+  "sitelinks": 63,
+  "genreIds": [
+   "Q1200678",
+   "Q2484376",
+   "Q130232",
+   "Q200092"
+  ],
+  "genres": [
+   "mystery",
+   "thriller",
+   "drama",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q272608": {
+  "year": 2001,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q1200678",
+   "Q157394",
+   "Q959790",
+   "Q1054574",
+   "Q2484376",
+   "Q130232",
+   "Q200092"
+  ],
+  "genres": [
+   "mystery",
+   "fantasy",
+   "crime",
+   "romance",
+   "thriller",
+   "drama",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q212689": {
+  "year": 2007,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q130232",
+   "Q188473",
+   "Q200092"
+  ],
+  "genres": [
+   "drama",
+   "action",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q116928": {
+  "year": 2009,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q1146335",
+   "Q157394",
+   "Q1054574",
+   "Q130232",
+   "Q188473",
+   "Q200092"
+  ],
+  "genres": [
+   "teen",
+   "fantasy",
+   "romance",
+   "drama",
+   "action",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q64211112": {
+  "year": 2022,
+  "sitelinks": 61,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q188473",
+   "Q200092",
+   "Q471839"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "action",
+   "horror",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q27411": {
+  "year": 1996,
+  "sitelinks": 61,
+  "genreIds": [
+   "Q1146335",
+   "Q1200678",
+   "Q157443",
+   "Q200092"
+  ],
+  "genres": [
+   "teen",
+   "mystery",
+   "comedy",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q151895": {
+  "year": 1922,
+  "sitelinks": 60,
+  "genreIds": [
+   "Q130232",
+   "Q200092"
+  ],
+  "genres": [
+   "drama",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q221103": {
+  "year": 1978,
+  "sitelinks": 60,
+  "genreIds": [
+   "Q1146335",
+   "Q1200678",
+   "Q959790",
+   "Q2484376",
+   "Q130232",
+   "Q200092"
+  ],
+  "genres": [
+   "teen",
+   "mystery",
+   "crime",
+   "thriller",
+   "drama",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q110043": {
+  "year": 1963,
+  "sitelinks": 60,
+  "genreIds": [
+   "Q1200678",
+   "Q319221",
+   "Q2484376",
+   "Q130232",
+   "Q188473",
+   "Q200092"
+  ],
+  "genres": [
+   "mystery",
+   "adventure",
+   "thriller",
+   "drama",
+   "action",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q25136484": {
+  "year": 2017,
+  "sitelinks": 59,
+  "genreIds": [
+   "Q1200678",
+   "Q157394",
+   "Q2484376",
+   "Q200092"
+  ],
+  "genres": [
+   "mystery",
+   "fantasy",
+   "thriller",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q660950": {
+  "year": 1986,
+  "sitelinks": 59,
+  "genreIds": [
+   "Q1200678",
+   "Q959790",
+   "Q1054574",
+   "Q2484376",
+   "Q130232",
+   "Q200092"
+  ],
+  "genres": [
+   "mystery",
+   "crime",
+   "romance",
+   "thriller",
+   "drama",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q201819": {
+  "year": 2009,
+  "sitelinks": 59,
+  "genreIds": [
+   "Q319221",
+   "Q2484376",
+   "Q130232",
+   "Q188473",
+   "Q200092",
+   "Q471839"
+  ],
+  "genres": [
+   "adventure",
+   "thriller",
+   "drama",
+   "action",
+   "horror",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q320461": {
+  "year": 2001,
+  "sitelinks": 58,
+  "genreIds": [
+   "Q157394",
+   "Q188473",
+   "Q200092"
+  ],
+  "genres": [
+   "fantasy",
+   "action",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q153484": {
+  "year": 2002,
+  "sitelinks": 57,
+  "genreIds": [
+   "Q188473",
+   "Q471839",
+   "Q200092"
+  ],
+  "genres": [
+   "action",
+   "science fiction",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q212041": {
+  "year": 2007,
+  "sitelinks": 57,
+  "genreIds": [
+   "Q842256",
+   "Q959790",
+   "Q1054574",
+   "Q2484376",
+   "Q130232",
+   "Q200092"
+  ],
+  "genres": [
+   "musical",
+   "crime",
+   "romance",
+   "thriller",
+   "drama",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q211009": {
+  "year": 2004,
+  "sitelinks": 57,
+  "genreIds": [
+   "Q1200678",
+   "Q157394",
+   "Q319221",
+   "Q2484376",
+   "Q188473",
+   "Q200092"
+  ],
+  "genres": [
+   "mystery",
+   "fantasy",
+   "adventure",
+   "thriller",
+   "action",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q28196": {
+  "year": 2013,
+  "sitelinks": 57,
+  "genreIds": [
+   "Q319221",
+   "Q200092",
+   "Q471839",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "adventure",
+   "horror",
+   "science fiction",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q25136235": {
+  "year": 2017,
+  "sitelinks": 56,
+  "genreIds": [
+   "Q1200678",
+   "Q200092",
+   "Q2484376"
+  ],
+  "genres": [
+   "mystery",
+   "horror",
+   "thriller"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q5540479": {
+  "year": 2013,
+  "sitelinks": 56,
+  "genreIds": [
+   "Q200092",
+   "Q2484376"
+  ],
+  "genres": [
+   "horror",
+   "thriller"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q155018": {
+  "year": 1986,
+  "sitelinks": 56,
+  "genreIds": [
+   "Q1200678",
+   "Q959790",
+   "Q200092",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "mystery",
+   "crime",
+   "horror",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q240713": {
+  "year": 2008,
+  "sitelinks": 56,
+  "genreIds": [
+   "Q157394",
+   "Q200092",
+   "Q188473"
+  ],
+  "genres": [
+   "fantasy",
+   "horror",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q219424": {
+  "year": 2000,
+  "sitelinks": 56,
+  "genreIds": [
+   "Q1146335",
+   "Q200092"
+  ],
+  "genres": [
+   "teen",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q210756": {
+  "year": 1982,
+  "sitelinks": 56,
+  "genreIds": [
+   "Q1200678",
+   "Q200092",
+   "Q2484376",
+   "Q130232",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "mystery",
+   "horror",
+   "thriller",
+   "drama",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q318910": {
+  "year": 1994,
+  "sitelinks": 56,
+  "genreIds": [
+   "Q157394",
+   "Q200092",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "fantasy",
+   "horror",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q309048": {
+  "year": 1933,
+  "sitelinks": 56,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q200092",
+   "Q471839",
+   "Q130232"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "horror",
+   "science fiction",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q7561043": {
+  "year": 2000,
+  "sitelinks": 55,
+  "genreIds": [
+   "Q1146335",
+   "Q200092",
+   "Q2484376"
+  ],
+  "genres": [
+   "teen",
+   "horror",
+   "thriller"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q224647": {
+  "year": 1997,
+  "sitelinks": 55,
+  "genreIds": [
+   "Q1200678",
+   "Q157394",
+   "Q200092",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "mystery",
+   "fantasy",
+   "horror",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q623051": {
+  "year": 1968,
+  "sitelinks": 54,
+  "genreIds": [
+   "Q1200678",
+   "Q200092",
+   "Q471839",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "mystery",
+   "horror",
+   "science fiction",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q219810": {
+  "year": 2009,
+  "sitelinks": 54,
+  "genreIds": [
+   "Q200092"
+  ],
+  "genres": [
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q208592": {
+  "year": 1999,
+  "sitelinks": 54,
+  "genreIds": [
+   "Q157394",
+   "Q1200678",
+   "Q200092"
+  ],
+  "genres": [
+   "fantasy",
+   "mystery",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q24871": {
+  "year": 2009,
+  "sitelinks": 122,
+  "genreIds": [
+   "Q319221",
+   "Q471839",
+   "Q188473"
+  ],
+  "genres": [
+   "adventure",
+   "science fiction",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q83495": {
+  "year": 1999,
+  "sitelinks": 114,
+  "genreIds": [
+   "Q2484376",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "thriller",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q167726": {
+  "year": 1993,
+  "sitelinks": 99,
+  "genreIds": [
+   "Q319221",
+   "Q2484376",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "adventure",
+   "thriller",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q13417189": {
+  "year": 2014,
+  "sitelinks": 98,
+  "genreIds": [
+   "Q319221",
+   "Q471839",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "adventure",
+   "science fiction",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q25188": {
+  "year": 2010,
+  "sitelinks": 97,
+  "genreIds": [
+   "Q1200678",
+   "Q319221",
+   "Q471839",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "mystery",
+   "adventure",
+   "science fiction",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q17738": {
+  "year": 1977,
+  "sitelinks": 96,
+  "genreIds": [
+   "Q319221",
+   "Q471839",
+   "Q188473"
+  ],
+  "genres": [
+   "adventure",
+   "science fiction",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q182218": {
+  "year": 2012,
+  "sitelinks": 96,
+  "genreIds": [
+   "Q319221",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "adventure",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q165713": {
+  "year": 1999,
+  "sitelinks": 91,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q23780914": {
+  "year": 2018,
+  "sitelinks": 86,
+  "genreIds": [
+   "Q319221",
+   "Q471839",
+   "Q188473"
+  ],
+  "genres": [
+   "adventure",
+   "science fiction",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q42051": {
+  "year": 2005,
+  "sitelinks": 86,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q471839",
+   "Q188473"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "science fiction",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q184843": {
+  "year": 1982,
+  "sitelinks": 84,
+  "genreIds": [
+   "Q959790",
+   "Q2484376",
+   "Q130232",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "crime",
+   "thriller",
+   "drama",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q181795": {
+  "year": 1980,
+  "sitelinks": 84,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q484442": {
+  "year": 2002,
+  "sitelinks": 84,
+  "genreIds": [
+   "Q471839",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "science fiction",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q181803": {
+  "year": 1983,
+  "sitelinks": 83,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q14171368": {
+  "year": 2015,
+  "sitelinks": 82,
+  "genreIds": [
+   "Q471839"
+  ],
+  "genres": [
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q181069": {
+  "year": 2002,
+  "sitelinks": 82,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q275120": {
+  "year": 2011,
+  "sitelinks": 79,
+  "genreIds": [
+   "Q369747",
+   "Q319221",
+   "Q471839",
+   "Q188473"
+  ],
+  "genres": [
+   "war",
+   "adventure",
+   "science fiction",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q217020": {
+  "year": 2011,
+  "sitelinks": 78,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q23780734": {
+  "year": 2018,
+  "sitelinks": 77,
+  "genreIds": [
+   "Q319221",
+   "Q471839",
+   "Q188473"
+  ],
+  "genres": [
+   "adventure",
+   "science fiction",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q6074": {
+  "year": 2015,
+  "sitelinks": 75,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q471839",
+   "Q188473"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "science fiction",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q205028": {
+  "year": 2010,
+  "sitelinks": 74,
+  "genreIds": [
+   "Q319221",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "adventure",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q18406872": {
+  "year": 2016,
+  "sitelinks": 73,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q471839",
+   "Q188473"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "science fiction",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q212965": {
+  "year": 2012,
+  "sitelinks": 73,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q130232",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "drama",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q184605": {
+  "year": 2009,
+  "sitelinks": 73,
+  "genreIds": [
+   "Q471839"
+  ],
+  "genres": [
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q18547944": {
+  "year": 2015,
+  "sitelinks": 72,
+  "genreIds": [
+   "Q319221",
+   "Q471839",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "adventure",
+   "science fiction",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q181086": {
+  "year": 1971,
+  "sitelinks": 72,
+  "genreIds": [
+   "Q1200678",
+   "Q959790",
+   "Q2484376",
+   "Q130232",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "mystery",
+   "crime",
+   "thriller",
+   "drama",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q105387": {
+  "year": 1996,
+  "sitelinks": 71,
+  "genreIds": [
+   "Q319221",
+   "Q2484376",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "adventure",
+   "thriller",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q1765358": {
+  "year": 2014,
+  "sitelinks": 71,
+  "genreIds": [
+   "Q319221",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "adventure",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q60834962": {
+  "year": 2021,
+  "sitelinks": 70,
+  "genreIds": [
+   "Q319221",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "adventure",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q190145": {
+  "year": 2004,
+  "sitelinks": 70,
+  "genreIds": [
+   "Q2484376",
+   "Q130232",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "thriller",
+   "drama",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q27985819": {
+  "year": 2019,
+  "sitelinks": 70,
+  "genreIds": [
+   "Q319221",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "adventure",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q3604746": {
+  "year": 2022,
+  "sitelinks": 70,
+  "genreIds": [
+   "Q319221",
+   "Q130232",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "adventure",
+   "drama",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q68934496": {
+  "year": 2021,
+  "sitelinks": 70,
+  "genreIds": [
+   "Q319221",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "adventure",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q11621": {
+  "year": 1982,
+  "sitelinks": 69,
+  "genreIds": [
+   "Q2143665",
+   "Q130232",
+   "Q471839"
+  ],
+  "genres": [
+   "children's",
+   "drama",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q622769": {
+  "year": 2013,
+  "sitelinks": 69,
+  "genreIds": [
+   "Q2484376",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "thriller",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q151599": {
+  "year": 1927,
+  "sitelinks": 68,
+  "genreIds": [
+   "Q471839",
+   "Q130232"
+  ],
+  "genres": [
+   "science fiction",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q44578": {
+  "year": 1997,
+  "sitelinks": 137,
+  "genreIds": [
+   "Q17013749",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q47703": {
+  "year": 1972,
+  "sitelinks": 132,
+  "genreIds": [
+   "Q17013749",
+   "Q959790",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "crime",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q128518": {
+  "year": 2000,
+  "sitelinks": 108,
+  "genreIds": [
+   "Q17013749",
+   "Q319221",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "historical",
+   "adventure",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q172241": {
+  "year": 1994,
+  "sitelinks": 107,
+  "genreIds": [
+   "Q959790",
+   "Q130232"
+  ],
+  "genres": [
+   "crime",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q163872": {
+  "year": 2008,
+  "sitelinks": 107,
+  "genreIds": [
+   "Q959790",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "crime",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q132689": {
+  "year": 1942,
+  "sitelinks": 107,
+  "genreIds": [
+   "Q369747",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "war",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q483941": {
+  "year": 1993,
+  "sitelinks": 102,
+  "genreIds": [
+   "Q17013749",
+   "Q369747",
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "war",
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q190050": {
+  "year": 1999,
+  "sitelinks": 102,
+  "genreIds": [
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q2875": {
+  "year": 1939,
+  "sitelinks": 97,
+  "genreIds": [
+   "Q17013749",
+   "Q369747",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "war",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q41483": {
+  "year": 1966,
+  "sitelinks": 95,
+  "genreIds": [
+   "Q172980",
+   "Q369747",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "western",
+   "war",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q162729": {
+  "year": 1995,
+  "sitelinks": 92,
+  "genreIds": [
+   "Q369747",
+   "Q645928",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "war",
+   "biographical",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q125076": {
+  "year": 2008,
+  "sitelinks": 89,
+  "genreIds": [
+   "Q959790",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "crime",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q184768": {
+  "year": 1974,
+  "sitelinks": 86,
+  "genreIds": [
+   "Q17013749",
+   "Q1200678",
+   "Q959790",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "historical",
+   "mystery",
+   "crime",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q165817": {
+  "year": 1998,
+  "sitelinks": 86,
+  "genreIds": [
+   "Q369747",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "war",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q164103": {
+  "year": 2001,
+  "sitelinks": 86,
+  "genreIds": [
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q106316": {
+  "year": 1989,
+  "sitelinks": 86,
+  "genreIds": [
+   "Q1146335",
+   "Q130232"
+  ],
+  "genres": [
+   "teen",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q166262": {
+  "year": 2005,
+  "sitelinks": 85,
+  "genreIds": [
+   "Q319221",
+   "Q959790",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "adventure",
+   "crime",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q160618": {
+  "year": 2005,
+  "sitelinks": 85,
+  "genreIds": [
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q24815": {
+  "year": 1941,
+  "sitelinks": 84,
+  "genreIds": [
+   "Q1200678",
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "mystery",
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q131390": {
+  "year": 2006,
+  "sitelinks": 83,
+  "genreIds": [
+   "Q369747",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "war",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q108839994": {
+  "year": 2023,
+  "sitelinks": 81,
+  "genreIds": [
+   "Q17013749",
+   "Q645928",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "biographical",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q190086": {
+  "year": 1959,
+  "sitelinks": 81,
+  "genreIds": [
+   "Q842256",
+   "Q959790",
+   "Q130232"
+  ],
+  "genres": [
+   "musical",
+   "crime",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q172975": {
+  "year": 2006,
+  "sitelinks": 80,
+  "genreIds": [
+   "Q1200678",
+   "Q959790",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "mystery",
+   "crime",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q228186": {
+  "year": 1962,
+  "sitelinks": 79,
+  "genreIds": [
+   "Q319221",
+   "Q369747",
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "adventure",
+   "war",
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q183081": {
+  "year": 2007,
+  "sitelinks": 79,
+  "genreIds": [
+   "Q172980",
+   "Q1200678",
+   "Q319221",
+   "Q959790",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "western",
+   "mystery",
+   "adventure",
+   "crime",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q47221": {
+  "year": 1976,
+  "sitelinks": 79,
+  "genreIds": [
+   "Q959790",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "crime",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q25139": {
+  "year": 1999,
+  "sitelinks": 79,
+  "genreIds": [
+   "Q130232"
+  ],
+  "genres": [
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q3023357": {
+  "year": 2013,
+  "sitelinks": 78,
+  "genreIds": [
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q180098": {
+  "year": 1959,
+  "sitelinks": 78,
+  "genreIds": [
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q160060": {
+  "year": 2010,
+  "sitelinks": 78,
+  "genreIds": [
+   "Q17013749",
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q150804": {
+  "year": 2002,
+  "sitelinks": 78,
+  "genreIds": [
+   "Q842256",
+   "Q17013749",
+   "Q369747",
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "musical",
+   "historical",
+   "war",
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q208263": {
+  "year": 1999,
+  "sitelinks": 77,
+  "genreIds": [
+   "Q157394",
+   "Q130232"
+  ],
+  "genres": [
+   "fantasy",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q46551": {
+  "year": 2006,
+  "sitelinks": 77,
+  "genreIds": [
+   "Q1200678",
+   "Q157394",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "mystery",
+   "fantasy",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q2345": {
+  "year": 1957,
+  "sitelinks": 76,
+  "genreIds": [
+   "Q130232"
+  ],
+  "genres": [
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q127367": {
+  "year": 2001,
+  "sitelinks": 97,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q188473"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q164963": {
+  "year": 2002,
+  "sitelinks": 88,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q188473"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q161678": {
+  "year": 2010,
+  "sitelinks": 83,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q188473"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q174284": {
+  "year": 1981,
+  "sitelinks": 80,
+  "genreIds": [
+   "Q188473"
+  ],
+  "genres": [
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q105598": {
+  "year": 1988,
+  "sitelinks": 78,
+  "genreIds": [
+   "Q188473"
+  ],
+  "genres": [
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q4941": {
+  "year": 2012,
+  "sitelinks": 78,
+  "genreIds": [
+   "Q188473"
+  ],
+  "genres": [
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q102754": {
+  "year": 1962,
+  "sitelinks": 76,
+  "genreIds": [
+   "Q319221",
+   "Q2484376",
+   "Q188473"
+  ],
+  "genres": [
+   "adventure",
+   "thriller",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q23010088": {
+  "year": 2017,
+  "sitelinks": 75,
+  "genreIds": [
+   "Q188473"
+  ],
+  "genres": [
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q571032": {
+  "year": 2012,
+  "sitelinks": 74,
+  "genreIds": [
+   "Q17013749",
+   "Q172980",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "historical",
+   "western",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q186587": {
+  "year": 2004,
+  "sitelinks": 75,
+  "genreIds": [
+   "Q369747",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "war",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q5890": {
+  "year": 2005,
+  "sitelinks": 98,
+  "genreIds": [
+   "Q2484376"
+  ],
+  "genres": [
+   "thriller"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q61448040": {
+  "year": 2019,
+  "sitelinks": 81,
+  "genreIds": [
+   "Q2484376"
+  ],
+  "genres": [
+   "thriller"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q42759035": {
+  "year": 2019,
+  "sitelinks": 77,
+  "genreIds": [
+   "Q959790",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "crime",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q202326": {
+  "year": 1990,
+  "sitelinks": 76,
+  "genreIds": [
+   "Q1200678",
+   "Q959790",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "mystery",
+   "crime",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q18002795": {
+  "year": 2015,
+  "sitelinks": 73,
+  "genreIds": [
+   "Q172980",
+   "Q645928",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "western",
+   "biographical",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q42047": {
+  "year": 1990,
+  "sitelinks": 73,
+  "genreIds": [
+   "Q17013749",
+   "Q645928",
+   "Q959790",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "biographical",
+   "crime",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q47075": {
+  "year": 1983,
+  "sitelinks": 72,
+  "genreIds": [
+   "Q959790",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "crime",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q151904": {
+  "year": 2006,
+  "sitelinks": 71,
+  "genreIds": [
+   "Q959790",
+   "Q319221",
+   "Q2484376",
+   "Q188473"
+  ],
+  "genres": [
+   "crime",
+   "adventure",
+   "thriller",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q189330": {
+  "year": 2012,
+  "sitelinks": 71,
+  "genreIds": [
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q26698156": {
+  "year": 2017,
+  "sitelinks": 70,
+  "genreIds": [
+   "Q157394",
+   "Q1054574",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "fantasy",
+   "romance",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q18602670": {
+  "year": 2015,
+  "sitelinks": 70,
+  "genreIds": [
+   "Q319221",
+   "Q2484376",
+   "Q188473"
+  ],
+  "genres": [
+   "adventure",
+   "thriller",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q72962": {
+  "year": 1992,
+  "sitelinks": 70,
+  "genreIds": [
+   "Q1200678",
+   "Q959790",
+   "Q319221",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "mystery",
+   "crime",
+   "adventure",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q182212": {
+  "year": 2007,
+  "sitelinks": 68,
+  "genreIds": [
+   "Q2484376",
+   "Q130232",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "thriller",
+   "drama",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q229808": {
+  "year": 2012,
+  "sitelinks": 67,
+  "genreIds": [
+   "Q1146335",
+   "Q2484376",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "teen",
+   "thriller",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q160071": {
+  "year": 2008,
+  "sitelinks": 74,
+  "genreIds": [
+   "Q1146335",
+   "Q157394",
+   "Q1054574",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "teen",
+   "fantasy",
+   "romance",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q63026": {
+  "year": 1996,
+  "sitelinks": 72,
+  "genreIds": [
+   "Q369747",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "war",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q60072": {
+  "year": 1965,
+  "sitelinks": 71,
+  "genreIds": [
+   "Q842256",
+   "Q645928",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "musical",
+   "biographical",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q193835": {
+  "year": 1997,
+  "sitelinks": 70,
+  "genreIds": [
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q108297": {
+  "year": 1960,
+  "sitelinks": 67,
+  "genreIds": [
+   "Q17013749",
+   "Q369747",
+   "Q645928",
+   "Q1054574",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "historical",
+   "war",
+   "biographical",
+   "romance",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q202548": {
+  "year": 1958,
+  "sitelinks": 66,
+  "genreIds": [
+   "Q1200678",
+   "Q1054574",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "mystery",
+   "romance",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q273978": {
+  "year": 2000,
+  "sitelinks": 66,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q1054574",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "romance",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q15079318": {
+  "year": 2014,
+  "sitelinks": 65,
+  "genreIds": [
+   "Q17013749",
+   "Q645928",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "biographical",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q204212": {
+  "year": 1940,
+  "sitelinks": 63,
+  "genreIds": [
+   "Q1200678",
+   "Q1054574",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "mystery",
+   "romance",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q183239": {
+  "year": 2008,
+  "sitelinks": 63,
+  "genreIds": [
+   "Q157394",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "fantasy",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q172271": {
+  "year": 2014,
+  "sitelinks": 63,
+  "genreIds": [
+   "Q1146335",
+   "Q157394",
+   "Q319221",
+   "Q1054574",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "teen",
+   "fantasy",
+   "adventure",
+   "romance",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q25136757": {
+  "year": 2017,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q27188178": {
+  "year": 2019,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q842256",
+   "Q157394",
+   "Q319221",
+   "Q1054574",
+   "Q188473"
+  ],
+  "genres": [
+   "musical",
+   "fantasy",
+   "adventure",
+   "romance",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q488655": {
+  "year": 1993,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q860626",
+   "Q157394",
+   "Q1054574",
+   "Q471839",
+   "Q157443"
+  ],
+  "genres": [
+   "romantic comedy",
+   "fantasy",
+   "romance",
+   "science fiction",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q208266": {
+  "year": 1985,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q645928",
+   "Q319221",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "biographical",
+   "adventure",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q110138": {
+  "year": 1986,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q1054574",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "romance",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q3521099": {
+  "year": 2014,
+  "sitelinks": 61,
+  "genreIds": [
+   "Q959790",
+   "Q319221",
+   "Q1054574",
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "crime",
+   "adventure",
+   "romance",
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q207954": {
+  "year": 1990,
+  "sitelinks": 61,
+  "genreIds": [
+   "Q1054574"
+  ],
+  "genres": [
+   "romance"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q201215": {
+  "year": 1964,
+  "sitelinks": 61,
+  "genreIds": [
+   "Q842256",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "musical",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q323827": {
+  "year": 1965,
+  "sitelinks": 61,
+  "genreIds": [
+   "Q369747",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "war",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q892735": {
+  "year": 2013,
+  "sitelinks": 60,
+  "genreIds": [
+   "Q17013749",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q207588": {
+  "year": 1953,
+  "sitelinks": 60,
+  "genreIds": [
+   "Q369747",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "war",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q193573": {
+  "year": 2001,
+  "sitelinks": 60,
+  "genreIds": [
+   "Q842256",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "musical",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q19946102": {
+  "year": 2017,
+  "sitelinks": 60,
+  "genreIds": [
+   "Q842256",
+   "Q157394",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "musical",
+   "fantasy",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q160215": {
+  "year": 2005,
+  "sitelinks": 59,
+  "genreIds": [
+   "Q319221",
+   "Q1054574",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "adventure",
+   "romance",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q159063": {
+  "year": 2008,
+  "sitelinks": 59,
+  "genreIds": [
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q49003": {
+  "year": 1990,
+  "sitelinks": 59,
+  "genreIds": [
+   "Q157394",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "fantasy",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q221594": {
+  "year": 1997,
+  "sitelinks": 59,
+  "genreIds": [
+   "Q1054574",
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "romance",
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q270385": {
+  "year": 2005,
+  "sitelinks": 58,
+  "genreIds": [
+   "Q130232",
+   "Q1054574"
+  ],
+  "genres": [
+   "drama",
+   "romance"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q223374": {
+  "year": 2004,
+  "sitelinks": 58,
+  "genreIds": [
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q217182": {
+  "year": 1990,
+  "sitelinks": 58,
+  "genreIds": [
+   "Q157394",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "fantasy",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q570567": {
+  "year": 1972,
+  "sitelinks": 57,
+  "genreIds": [
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q194413": {
+  "year": 2001,
+  "sitelinks": 57,
+  "genreIds": [
+   "Q369747",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "war",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q273704": {
+  "year": 1961,
+  "sitelinks": 56,
+  "genreIds": [
+   "Q842256",
+   "Q959790",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "musical",
+   "crime",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q272036": {
+  "year": 1927,
+  "sitelinks": 56,
+  "genreIds": [
+   "Q369747",
+   "Q1054574",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "war",
+   "romance",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q217010": {
+  "year": 2010,
+  "sitelinks": 56,
+  "genreIds": [
+   "Q1146335",
+   "Q157394",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "teen",
+   "fantasy",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q115859490": {
+  "year": 2024,
+  "sitelinks": 50,
+  "genreIds": [
+   "Q319221",
+   "Q202866",
+   "Q188473",
+   "Q157443",
+   "Q471839"
+  ],
+  "genres": [
+   "adventure",
+   "animated",
+   "action",
+   "comedy",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q29825830": {
+  "year": 2020,
+  "sitelinks": 41,
+  "genreIds": [
+   "Q842256",
+   "Q319221",
+   "Q202866",
+   "Q157443"
+  ],
+  "genres": [
+   "musical",
+   "adventure",
+   "animated",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q14451258": {
+  "year": 2013,
+  "sitelinks": 39,
+  "genreIds": [
+   "Q2143665",
+   "Q157394",
+   "Q319221",
+   "Q202866"
+  ],
+  "genres": [
+   "children's",
+   "fantasy",
+   "adventure",
+   "animated"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q106299119": {
+  "year": 2021,
+  "sitelinks": 38,
+  "genreIds": [
+   "Q319221",
+   "Q202866",
+   "Q157443",
+   "Q471839"
+  ],
+  "genres": [
+   "adventure",
+   "animated",
+   "comedy",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q110271518": {
+  "year": 2023,
+  "sitelinks": 31,
+  "genreIds": [
+   "Q319221",
+   "Q202866",
+   "Q188473",
+   "Q157443"
+  ],
+  "genres": [
+   "adventure",
+   "animated",
+   "action",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q111918018": {
+  "year": 2023,
+  "sitelinks": 26,
+  "genreIds": [
+   "Q319221",
+   "Q202866"
+  ],
+  "genres": [
+   "adventure",
+   "animated"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q28233477": {
+  "year": 2017,
+  "sitelinks": 25,
+  "genreIds": [
+   "Q319221",
+   "Q202866",
+   "Q1054574",
+   "Q157443"
+  ],
+  "genres": [
+   "adventure",
+   "animated",
+   "romance",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q616842": {
+  "year": 1996,
+  "sitelinks": 24,
+  "genreIds": [
+   "Q959790",
+   "Q319221",
+   "Q202866",
+   "Q157443"
+  ],
+  "genres": [
+   "crime",
+   "adventure",
+   "animated",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q105560479": {
+  "year": 2021,
+  "sitelinks": 21,
+  "genreIds": [
+   "Q319221",
+   "Q202866"
+  ],
+  "genres": [
+   "adventure",
+   "animated"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q98079445": {
+  "year": 2020,
+  "sitelinks": 21,
+  "genreIds": [
+   "Q202866"
+  ],
+  "genres": [
+   "animated"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q12047658": {
+  "year": 2013,
+  "sitelinks": 21,
+  "genreIds": [
+   "Q2143665",
+   "Q202866"
+  ],
+  "genres": [
+   "children's",
+   "animated"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q24905214": {
+  "year": 2024,
+  "sitelinks": 19,
+  "genreIds": [
+   "Q202866",
+   "Q1054574"
+  ],
+  "genres": [
+   "animated",
+   "romance"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q2840289": {
+  "year": 2013,
+  "sitelinks": 18,
+  "genreIds": [
+   "Q157394",
+   "Q202866",
+   "Q1054574"
+  ],
+  "genres": [
+   "fantasy",
+   "animated",
+   "romance"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q975962": {
+  "year": 2003,
+  "sitelinks": 18,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q202866",
+   "Q188473"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "animated",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q467516": {
+  "year": 1999,
+  "sitelinks": 17,
+  "genreIds": [
+   "Q842256",
+   "Q157394",
+   "Q202866"
+  ],
+  "genres": [
+   "musical",
+   "fantasy",
+   "animated"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q116005474": {
+  "year": 2023,
+  "sitelinks": 16,
+  "genreIds": [
+   "Q319221",
+   "Q202866",
+   "Q157443"
+  ],
+  "genres": [
+   "adventure",
+   "animated",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q7732986": {
+  "year": 1962,
+  "sitelinks": 16,
+  "genreIds": [
+   "Q157394",
+   "Q202866",
+   "Q319221",
+   "Q471839"
+  ],
+  "genres": [
+   "fantasy",
+   "animated",
+   "adventure",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q1889303": {
+  "year": 2011,
+  "sitelinks": 16,
+  "genreIds": [
+   "Q202866",
+   "Q319221",
+   "Q157394",
+   "Q157443"
+  ],
+  "genres": [
+   "animated",
+   "adventure",
+   "fantasy",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q1011848": {
+  "year": 2002,
+  "sitelinks": 16,
+  "genreIds": [
+   "Q202866",
+   "Q319221",
+   "Q157443"
+  ],
+  "genres": [
+   "animated",
+   "adventure",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q54152472": {
+  "year": 2018,
+  "sitelinks": 13,
+  "genreIds": [
+   "Q319221",
+   "Q202866",
+   "Q157443"
+  ],
+  "genres": [
+   "adventure",
+   "animated",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q2593047": {
+  "year": 1994,
+  "sitelinks": 13,
+  "genreIds": [
+   "Q1200678",
+   "Q157394",
+   "Q202866",
+   "Q130232"
+  ],
+  "genres": [
+   "mystery",
+   "fantasy",
+   "animated",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q73481216": {
+  "year": 2020,
+  "sitelinks": 12,
+  "genreIds": [
+   "Q2143665",
+   "Q157394",
+   "Q202866"
+  ],
+  "genres": [
+   "children's",
+   "fantasy",
+   "animated"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q66715823": {
+  "year": 2020,
+  "sitelinks": 12,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q202866"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "animated"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q104898246": {
+  "year": 2021,
+  "sitelinks": 11,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q202866",
+   "Q157443"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "animated",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q2058447": {
+  "year": 2004,
+  "sitelinks": 11,
+  "genreIds": [
+   "Q157394",
+   "Q202866",
+   "Q319221",
+   "Q188473"
+  ],
+  "genres": [
+   "fantasy",
+   "animated",
+   "adventure",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q114842711": {
+  "year": 2022,
+  "sitelinks": 10,
+  "genreIds": [
+   "Q202866",
+   "Q157443"
+  ],
+  "genres": [
+   "animated",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q111210475": {
+  "year": 2023,
+  "sitelinks": 10,
+  "genreIds": [
+   "Q188473",
+   "Q471839",
+   "Q202866"
+  ],
+  "genres": [
+   "action",
+   "science fiction",
+   "animated"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q65127310": {
+  "year": 2019,
+  "sitelinks": 10,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q202866"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "animated"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q4115183": {
+  "year": 2002,
+  "sitelinks": 10,
+  "genreIds": [
+   "Q645928",
+   "Q202866"
+  ],
+  "genres": [
+   "biographical",
+   "animated"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q121879464": {
+  "year": 2023,
+  "sitelinks": 9,
+  "genreIds": [
+   "Q202866"
+  ],
+  "genres": [
+   "animated"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q116784048": {
+  "year": 2023,
+  "sitelinks": 9,
+  "genreIds": [
+   "Q202866"
+  ],
+  "genres": [
+   "animated"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q41252539": {
+  "year": 2017,
+  "sitelinks": 9,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q202866",
+   "Q157443"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "animated",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q31271159": {
+  "year": 2018,
+  "sitelinks": 9,
+  "genreIds": [
+   "Q319221",
+   "Q202866"
+  ],
+  "genres": [
+   "adventure",
+   "animated"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q30051739": {
+  "year": 2017,
+  "sitelinks": 9,
+  "genreIds": [
+   "Q319221",
+   "Q202866"
+  ],
+  "genres": [
+   "adventure",
+   "animated"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q122363694": {
+  "year": 2023,
+  "sitelinks": 8,
+  "genreIds": [
+   "Q202866",
+   "Q157443"
+  ],
+  "genres": [
+   "animated",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q120647361": {
+  "year": 2023,
+  "sitelinks": 8,
+  "genreIds": [
+   "Q202866",
+   "Q130232"
+  ],
+  "genres": [
+   "animated",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q114860269": {
+  "year": 2022,
+  "sitelinks": 8,
+  "genreIds": [
+   "Q202866"
+  ],
+  "genres": [
+   "animated"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q99521078": {
+  "year": 2020,
+  "sitelinks": 8,
+  "genreIds": [
+   "Q202866"
+  ],
+  "genres": [
+   "animated"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q81695664": {
+  "year": 2019,
+  "sitelinks": 8,
+  "genreIds": [
+   "Q2143665",
+   "Q202866",
+   "Q130232"
+  ],
+  "genres": [
+   "children's",
+   "animated",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q65091690": {
+  "year": 2017,
+  "sitelinks": 8,
+  "genreIds": [
+   "Q2143665",
+   "Q202866"
+  ],
+  "genres": [
+   "children's",
+   "animated"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q7757074": {
+  "year": 1985,
+  "sitelinks": 7,
+  "genreIds": [
+   "Q202866",
+   "Q200092"
+  ],
+  "genres": [
+   "animated",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q390552": {
+  "year": 2000,
+  "sitelinks": 7,
+  "genreIds": [
+   "Q2143665",
+   "Q202866"
+  ],
+  "genres": [
+   "children's",
+   "animated"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q102244": {
+  "year": 2002,
+  "sitelinks": 94,
+  "genreIds": [
+   "Q2143665",
+   "Q157394",
+   "Q319221"
+  ],
+  "genres": [
+   "children's",
+   "fantasy",
+   "adventure"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q131074": {
+  "year": 2003,
+  "sitelinks": 93,
+  "genreIds": [
+   "Q157394",
+   "Q319221"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q102448": {
+  "year": 2004,
+  "sitelinks": 90,
+  "genreIds": [
+   "Q2143665",
+   "Q157394",
+   "Q319221"
+  ],
+  "genres": [
+   "children's",
+   "fantasy",
+   "adventure"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q102225": {
+  "year": 2005,
+  "sitelinks": 90,
+  "genreIds": [
+   "Q2143665",
+   "Q157394",
+   "Q319221"
+  ],
+  "genres": [
+   "children's",
+   "fantasy",
+   "adventure"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q232009": {
+  "year": 2011,
+  "sitelinks": 81,
+  "genreIds": [
+   "Q157394",
+   "Q319221"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q80379": {
+  "year": 2012,
+  "sitelinks": 74,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q188473"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q152780": {
+  "year": 2012,
+  "sitelinks": 73,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q130232"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q189540": {
+  "year": 1954,
+  "sitelinks": 73,
+  "genreIds": [
+   "Q319221",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "adventure",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q161687": {
+  "year": 2009,
+  "sitelinks": 89,
+  "genreIds": [
+   "Q157394"
+  ],
+  "genres": [
+   "fantasy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q102235": {
+  "year": 2007,
+  "sitelinks": 88,
+  "genreIds": [
+   "Q157394"
+  ],
+  "genres": [
+   "fantasy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q270470": {
+  "year": 1953,
+  "sitelinks": 75,
+  "genreIds": [
+   "Q2143665",
+   "Q842256",
+   "Q157394"
+  ],
+  "genres": [
+   "children's",
+   "musical",
+   "fantasy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q842306": {
+  "year": 1942,
+  "sitelinks": 73,
+  "genreIds": [
+   "Q842256",
+   "Q157394"
+  ],
+  "genres": [
+   "musical",
+   "fantasy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q174385": {
+  "year": 2010,
+  "sitelinks": 72,
+  "genreIds": [
+   "Q157394"
+  ],
+  "genres": [
+   "fantasy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q20502242": {
+  "year": 2017,
+  "sitelinks": 71,
+  "genreIds": [
+   "Q369747",
+   "Q157394",
+   "Q319221",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "war",
+   "fantasy",
+   "adventure",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q719915": {
+  "year": 2013,
+  "sitelinks": 70,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q188473"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q39571": {
+  "year": 1988,
+  "sitelinks": 70,
+  "genreIds": [
+   "Q2143665",
+   "Q157394"
+  ],
+  "genres": [
+   "children's",
+   "fantasy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q1201853": {
+  "year": 2013,
+  "sitelinks": 68,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q919649": {
+  "year": 2014,
+  "sitelinks": 67,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q188473"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q208269": {
+  "year": 2004,
+  "sitelinks": 67,
+  "genreIds": [
+   "Q860626",
+   "Q157394",
+   "Q471839"
+  ],
+  "genres": [
+   "romantic comedy",
+   "fantasy",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q193695": {
+  "year": 1939,
+  "sitelinks": 67,
+  "genreIds": [
+   "Q842256",
+   "Q157394",
+   "Q319221",
+   "Q130232"
+  ],
+  "genres": [
+   "musical",
+   "fantasy",
+   "adventure",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q218235": {
+  "year": 2005,
+  "sitelinks": 66,
+  "genreIds": [
+   "Q842256",
+   "Q157394"
+  ],
+  "genres": [
+   "musical",
+   "fantasy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q484675": {
+  "year": 1994,
+  "sitelinks": 73,
+  "genreIds": [
+   "Q1200678",
+   "Q959790",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "mystery",
+   "crime",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q160560": {
+  "year": 2006,
+  "sitelinks": 70,
+  "genreIds": [
+   "Q1200678",
+   "Q959790",
+   "Q130232"
+  ],
+  "genres": [
+   "mystery",
+   "crime",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q220741": {
+  "year": 2002,
+  "sitelinks": 68,
+  "genreIds": [
+   "Q959790",
+   "Q130232"
+  ],
+  "genres": [
+   "crime",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q154581": {
+  "year": 2002,
+  "sitelinks": 68,
+  "genreIds": [
+   "Q17013749",
+   "Q1200678",
+   "Q959790",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "historical",
+   "mystery",
+   "crime",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q155476": {
+  "year": 2001,
+  "sitelinks": 67,
+  "genreIds": [
+   "Q959790",
+   "Q2484376",
+   "Q188473"
+  ],
+  "genres": [
+   "crime",
+   "thriller",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q109135": {
+  "year": 1996,
+  "sitelinks": 64,
+  "genreIds": [
+   "Q959790",
+   "Q130232"
+  ],
+  "genres": [
+   "crime",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q104137": {
+  "year": 1992,
+  "sitelinks": 64,
+  "genreIds": [
+   "Q172980",
+   "Q959790",
+   "Q130232"
+  ],
+  "genres": [
+   "western",
+   "crime",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q208572": {
+  "year": 1998,
+  "sitelinks": 64,
+  "genreIds": [
+   "Q959790",
+   "Q130232"
+  ],
+  "genres": [
+   "crime",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q61117344": {
+  "year": 2022,
+  "sitelinks": 64,
+  "genreIds": [
+   "Q959790",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "crime",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q34414": {
+  "year": 1954,
+  "sitelinks": 63,
+  "genreIds": [
+   "Q1200678",
+   "Q959790",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "mystery",
+   "crime",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q206388": {
+  "year": 1984,
+  "sitelinks": 63,
+  "genreIds": [
+   "Q17013749",
+   "Q172980",
+   "Q959790",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "historical",
+   "western",
+   "crime",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q192115": {
+  "year": 2005,
+  "sitelinks": 63,
+  "genreIds": [
+   "Q1200678",
+   "Q319221",
+   "Q959790",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "mystery",
+   "adventure",
+   "crime",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q135465": {
+  "year": 1950,
+  "sitelinks": 63,
+  "genreIds": [
+   "Q959790",
+   "Q130232"
+  ],
+  "genres": [
+   "crime",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q222720": {
+  "year": 1996,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q1200678",
+   "Q959790",
+   "Q2484376",
+   "Q130232",
+   "Q188473",
+   "Q157443"
+  ],
+  "genres": [
+   "mystery",
+   "crime",
+   "thriller",
+   "drama",
+   "action",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q211372": {
+  "year": 1954,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q959790",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "crime",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q192934": {
+  "year": 2009,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q1200678",
+   "Q959790",
+   "Q130232"
+  ],
+  "genres": [
+   "mystery",
+   "crime",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q188000": {
+  "year": 2004,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q959790",
+   "Q130232"
+  ],
+  "genres": [
+   "crime",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q337078": {
+  "year": 1998,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q959790",
+   "Q157443"
+  ],
+  "genres": [
+   "crime",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q146673": {
+  "year": 1992,
+  "sitelinks": 61,
+  "genreIds": [
+   "Q1200678",
+   "Q959790",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "mystery",
+   "crime",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q401976": {
+  "year": 2011,
+  "sitelinks": 61,
+  "genreIds": [
+   "Q959790",
+   "Q188473"
+  ],
+  "genres": [
+   "crime",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q185888": {
+  "year": 2010,
+  "sitelinks": 74,
+  "genreIds": [
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q190956": {
+  "year": 1984,
+  "sitelinks": 72,
+  "genreIds": [
+   "Q842256",
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "musical",
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q182944": {
+  "year": 1998,
+  "sitelinks": 72,
+  "genreIds": [
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q202211": {
+  "year": 1982,
+  "sitelinks": 68,
+  "genreIds": [
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q201924": {
+  "year": 2004,
+  "sitelinks": 65,
+  "genreIds": [
+   "Q17013749",
+   "Q319221",
+   "Q645928",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "adventure",
+   "biographical",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q59653": {
+  "year": 2012,
+  "sitelinks": 65,
+  "genreIds": [
+   "Q17013749",
+   "Q645928",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "biographical",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q14918344": {
+  "year": 2014,
+  "sitelinks": 64,
+  "genreIds": [
+   "Q17013749",
+   "Q369747",
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "war",
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q212775": {
+  "year": 1987,
+  "sitelinks": 64,
+  "genreIds": [
+   "Q17013749",
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q18154496": {
+  "year": 2015,
+  "sitelinks": 63,
+  "genreIds": [
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q27894574": {
+  "year": 2018,
+  "sitelinks": 63,
+  "genreIds": [
+   "Q842256",
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "musical",
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q152857": {
+  "year": 2004,
+  "sitelinks": 63,
+  "genreIds": [
+   "Q17013749",
+   "Q369747",
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "war",
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q595": {
+  "year": 2011,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q645928",
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "biographical",
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q201687": {
+  "year": 2008,
+  "sitelinks": 61,
+  "genreIds": [
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q21010856": {
+  "year": 2016,
+  "sitelinks": 60,
+  "genreIds": [
+   "Q369747",
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "war",
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q269912": {
+  "year": 2007,
+  "sitelinks": 60,
+  "genreIds": [
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q220780": {
+  "year": 1980,
+  "sitelinks": 60,
+  "genreIds": [
+   "Q17013749",
+   "Q645928",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "historical",
+   "biographical",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q207921": {
+  "year": 1981,
+  "sitelinks": 60,
+  "genreIds": [
+   "Q17013749",
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q51668": {
+  "year": 2004,
+  "sitelinks": 60,
+  "genreIds": [
+   "Q17013749",
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q162277": {
+  "year": 2004,
+  "sitelinks": 59,
+  "genreIds": [
+   "Q645928",
+   "Q369747",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "biographical",
+   "war",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q18067135": {
+  "year": 2015,
+  "sitelinks": 58,
+  "genreIds": [
+   "Q17013749",
+   "Q369747",
+   "Q645928"
+  ],
+  "genres": [
+   "historical",
+   "war",
+   "biographical"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q223884": {
+  "year": 2004,
+  "sitelinks": 59,
+  "genreIds": [
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q220515": {
+  "year": 2006,
+  "sitelinks": 58,
+  "genreIds": [
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q174371": {
+  "year": 2010,
+  "sitelinks": 58,
+  "genreIds": [
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q32433": {
+  "year": 2012,
+  "sitelinks": 58,
+  "genreIds": [
+   "Q17013749",
+   "Q369747",
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "war",
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q2937646": {
+  "year": 2013,
+  "sitelinks": 57,
+  "genreIds": [
+   "Q645928",
+   "Q130232",
+   "Q188473",
+   "Q2484376"
+  ],
+  "genres": [
+   "biographical",
+   "drama",
+   "action",
+   "thriller"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q16970789": {
+  "year": 2014,
+  "sitelinks": 57,
+  "genreIds": [
+   "Q369747",
+   "Q645928",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "war",
+   "biographical",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q272860": {
+  "year": 1980,
+  "sitelinks": 57,
+  "genreIds": [
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q217220": {
+  "year": 1970,
+  "sitelinks": 57,
+  "genreIds": [
+   "Q645928",
+   "Q369747",
+   "Q130232"
+  ],
+  "genres": [
+   "biographical",
+   "war",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q220910": {
+  "year": 1995,
+  "sitelinks": 56,
+  "genreIds": [
+   "Q645928",
+   "Q959790",
+   "Q1200678",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "biographical",
+   "crime",
+   "mystery",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q220955": {
+  "year": 2000,
+  "sitelinks": 55,
+  "genreIds": [
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q181776": {
+  "year": 1967,
+  "sitelinks": 55,
+  "genreIds": [
+   "Q645928",
+   "Q959790",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "biographical",
+   "crime",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q108525": {
+  "year": 1987,
+  "sitelinks": 55,
+  "genreIds": [
+   "Q17013749",
+   "Q645928",
+   "Q959790",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "historical",
+   "biographical",
+   "crime",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q188718": {
+  "year": 1957,
+  "sitelinks": 71,
+  "genreIds": [
+   "Q369747",
+   "Q130232"
+  ],
+  "genres": [
+   "war",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q183066": {
+  "year": 2008,
+  "sitelinks": 69,
+  "genreIds": [
+   "Q369747",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "war",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q20456": {
+  "year": 1990,
+  "sitelinks": 69,
+  "genreIds": [
+   "Q369747",
+   "Q172980",
+   "Q319221",
+   "Q130232"
+  ],
+  "genres": [
+   "war",
+   "western",
+   "adventure",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q207698": {
+  "year": 2005,
+  "sitelinks": 67,
+  "genreIds": [
+   "Q17013749",
+   "Q369747",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "historical",
+   "war",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q190643": {
+  "year": 1986,
+  "sitelinks": 66,
+  "genreIds": [
+   "Q369747",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "war",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q207130": {
+  "year": 2003,
+  "sitelinks": 65,
+  "genreIds": [
+   "Q17013749",
+   "Q369747",
+   "Q319221",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "historical",
+   "war",
+   "adventure",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q21935651": {
+  "year": 2017,
+  "sitelinks": 64,
+  "genreIds": [
+   "Q17013749",
+   "Q369747",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "war",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q74958": {
+  "year": 2006,
+  "sitelinks": 64,
+  "genreIds": [
+   "Q369747",
+   "Q319221",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "war",
+   "adventure",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q243439": {
+  "year": 1987,
+  "sitelinks": 63,
+  "genreIds": [
+   "Q369747",
+   "Q130232"
+  ],
+  "genres": [
+   "war",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q201674": {
+  "year": 1978,
+  "sitelinks": 63,
+  "genreIds": [
+   "Q369747",
+   "Q130232"
+  ],
+  "genres": [
+   "war",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q272599": {
+  "year": 1930,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q369747",
+   "Q130232"
+  ],
+  "genres": [
+   "war",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q244963": {
+  "year": 1982,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q369747",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "war",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q62721520": {
+  "year": 2019,
+  "sitelinks": 61,
+  "genreIds": [
+   "Q369747",
+   "Q130232"
+  ],
+  "genres": [
+   "war",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q471716": {
+  "year": 1975,
+  "sitelinks": 60,
+  "genreIds": [
+   "Q17013749",
+   "Q369747",
+   "Q319221",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "war",
+   "adventure",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q191543": {
+  "year": 2009,
+  "sitelinks": 60,
+  "genreIds": [
+   "Q369747",
+   "Q319221",
+   "Q2484376",
+   "Q130232",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "war",
+   "adventure",
+   "thriller",
+   "drama",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q19590955": {
+  "year": 2016,
+  "sitelinks": 58,
+  "genreIds": [
+   "Q369747",
+   "Q157394",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "war",
+   "fantasy",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q216006": {
+  "year": 2006,
+  "sitelinks": 58,
+  "genreIds": [
+   "Q1146335",
+   "Q369747",
+   "Q157394",
+   "Q130232"
+  ],
+  "genres": [
+   "teen",
+   "war",
+   "fantasy",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q1626186": {
+  "year": 2007,
+  "sitelinks": 56,
+  "genreIds": [
+   "Q369747",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "war",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q221491": {
+  "year": 1998,
+  "sitelinks": 57,
+  "genreIds": [
+   "Q369747",
+   "Q130232"
+  ],
+  "genres": [
+   "war",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q76479": {
+  "year": 1964,
+  "sitelinks": 65,
+  "genreIds": [
+   "Q172980",
+   "Q188473"
+  ],
+  "genres": [
+   "western",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q168154": {
+  "year": 1968,
+  "sitelinks": 63,
+  "genreIds": [
+   "Q172980",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "western",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q153677": {
+  "year": 1965,
+  "sitelinks": 63,
+  "genreIds": [
+   "Q172980",
+   "Q188473"
+  ],
+  "genres": [
+   "western",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q19069": {
+  "year": 1960,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q172980",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "western",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q18225084": {
+  "year": 2015,
+  "sitelinks": 59,
+  "genreIds": [
+   "Q959790",
+   "Q172980",
+   "Q1200678",
+   "Q2484376",
+   "Q188473"
+  ],
+  "genres": [
+   "crime",
+   "western",
+   "mystery",
+   "thriller",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q244315": {
+  "year": 2007,
+  "sitelinks": 60,
+  "genreIds": [
+   "Q17013749",
+   "Q172980",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "western",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q326114": {
+  "year": 2010,
+  "sitelinks": 56,
+  "genreIds": [
+   "Q319221",
+   "Q172980",
+   "Q130232"
+  ],
+  "genres": [
+   "adventure",
+   "western",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q746029": {
+  "year": 2007,
+  "sitelinks": 55,
+  "genreIds": [
+   "Q959790",
+   "Q172980",
+   "Q130232"
+  ],
+  "genres": [
+   "crime",
+   "western",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q245208": {
+  "year": 1952,
+  "sitelinks": 54,
+  "genreIds": [
+   "Q172980"
+  ],
+  "genres": [
+   "western"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q994481": {
+  "year": 1969,
+  "sitelinks": 53,
+  "genreIds": [
+   "Q172980"
+  ],
+  "genres": [
+   "western"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q232000": {
+  "year": 1969,
+  "sitelinks": 53,
+  "genreIds": [
+   "Q645928",
+   "Q172980"
+  ],
+  "genres": [
+   "biographical",
+   "western"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q66316924": {
+  "year": 2023,
+  "sitelinks": 51,
+  "genreIds": [
+   "Q959790",
+   "Q172980",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "crime",
+   "western",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q276769": {
+  "year": 1956,
+  "sitelinks": 51,
+  "genreIds": [
+   "Q172980",
+   "Q369747",
+   "Q130232"
+  ],
+  "genres": [
+   "western",
+   "war",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q251997": {
+  "year": 1931,
+  "sitelinks": 51,
+  "genreIds": [
+   "Q172980",
+   "Q130232"
+  ],
+  "genres": [
+   "western",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q50714": {
+  "year": 1939,
+  "sitelinks": 50,
+  "genreIds": [
+   "Q172980",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "western",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q913324": {
+  "year": 1994,
+  "sitelinks": 49,
+  "genreIds": [
+   "Q369747",
+   "Q172980",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "war",
+   "western",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q156069": {
+  "year": 2007,
+  "sitelinks": 49,
+  "genreIds": [
+   "Q172980",
+   "Q188473",
+   "Q471839",
+   "Q200092"
+  ],
+  "genres": [
+   "western",
+   "action",
+   "science fiction",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q548919": {
+  "year": 2013,
+  "sitelinks": 48,
+  "genreIds": [
+   "Q172980",
+   "Q188473",
+   "Q157443"
+  ],
+  "genres": [
+   "western",
+   "action",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q309621": {
+  "year": 1998,
+  "sitelinks": 48,
+  "genreIds": [
+   "Q319221",
+   "Q172980",
+   "Q188473"
+  ],
+  "genres": [
+   "adventure",
+   "western",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q949228": {
+  "year": 1975,
+  "sitelinks": 48,
+  "genreIds": [
+   "Q842256",
+   "Q319221",
+   "Q172980",
+   "Q1054574",
+   "Q130232",
+   "Q188473",
+   "Q157443"
+  ],
+  "genres": [
+   "musical",
+   "adventure",
+   "western",
+   "romance",
+   "drama",
+   "action",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q756416": {
+  "year": 1995,
+  "sitelinks": 47,
+  "genreIds": [
+   "Q172980"
+  ],
+  "genres": [
+   "western"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q196004": {
+  "year": 1996,
+  "sitelinks": 47,
+  "genreIds": [
+   "Q959790",
+   "Q319221",
+   "Q172980",
+   "Q2484376",
+   "Q188473",
+   "Q157443",
+   "Q200092"
+  ],
+  "genres": [
+   "crime",
+   "adventure",
+   "western",
+   "thriller",
+   "action",
+   "comedy",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q740528": {
+  "year": 1999,
+  "sitelinks": 45,
+  "genreIds": [
+   "Q172980",
+   "Q188473",
+   "Q157443"
+  ],
+  "genres": [
+   "western",
+   "action",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q669592": {
+  "year": 1956,
+  "sitelinks": 45,
+  "genreIds": [
+   "Q172980",
+   "Q130232"
+  ],
+  "genres": [
+   "western",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q251559": {
+  "year": 1948,
+  "sitelinks": 45,
+  "genreIds": [
+   "Q172980",
+   "Q130232"
+  ],
+  "genres": [
+   "western",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q1045165": {
+  "year": 1953,
+  "sitelinks": 45,
+  "genreIds": [
+   "Q172980",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "western",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q85323337": {
+  "year": 2021,
+  "sitelinks": 44,
+  "genreIds": [
+   "Q172980",
+   "Q130232"
+  ],
+  "genres": [
+   "western",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q547189": {
+  "year": 1995,
+  "sitelinks": 44,
+  "genreIds": [
+   "Q157394",
+   "Q172980",
+   "Q130232"
+  ],
+  "genres": [
+   "fantasy",
+   "western",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q849475": {
+  "year": 2000,
+  "sitelinks": 44,
+  "genreIds": [
+   "Q172980",
+   "Q188473",
+   "Q157443"
+  ],
+  "genres": [
+   "western",
+   "action",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q128493": {
+  "year": 2010,
+  "sitelinks": 43,
+  "genreIds": [
+   "Q959790",
+   "Q319221",
+   "Q172980",
+   "Q1200678",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "crime",
+   "adventure",
+   "western",
+   "mystery",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q13582568": {
+  "year": 2014,
+  "sitelinks": 41,
+  "genreIds": [
+   "Q172980",
+   "Q157443"
+  ],
+  "genres": [
+   "western",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q691611": {
+  "year": 2005,
+  "sitelinks": 41,
+  "genreIds": [
+   "Q319221",
+   "Q172980",
+   "Q130232",
+   "Q188473",
+   "Q157443",
+   "Q471839"
+  ],
+  "genres": [
+   "adventure",
+   "western",
+   "drama",
+   "action",
+   "comedy",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q555687": {
+  "year": 1962,
+  "sitelinks": 41,
+  "genreIds": [
+   "Q172980",
+   "Q130232"
+  ],
+  "genres": [
+   "western",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q477630": {
+  "year": 1976,
+  "sitelinks": 41,
+  "genreIds": [
+   "Q172980"
+  ],
+  "genres": [
+   "western"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q388950": {
+  "year": 2007,
+  "sitelinks": 40,
+  "genreIds": [
+   "Q645928",
+   "Q172980",
+   "Q130232"
+  ],
+  "genres": [
+   "biographical",
+   "western",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q1008351": {
+  "year": 1959,
+  "sitelinks": 40,
+  "genreIds": [
+   "Q172980",
+   "Q1054574"
+  ],
+  "genres": [
+   "western",
+   "romance"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q957323": {
+  "year": 1974,
+  "sitelinks": 40,
+  "genreIds": [
+   "Q172980",
+   "Q157443"
+  ],
+  "genres": [
+   "western",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q162518": {
+  "year": 1962,
+  "sitelinks": 40,
+  "genreIds": [
+   "Q172980",
+   "Q130232"
+  ],
+  "genres": [
+   "western",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q1420651": {
+  "year": 1993,
+  "sitelinks": 39,
+  "genreIds": [
+   "Q645928",
+   "Q172980",
+   "Q130232"
+  ],
+  "genres": [
+   "biographical",
+   "western",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q725578": {
+  "year": 2011,
+  "sitelinks": 39,
+  "genreIds": [
+   "Q172980",
+   "Q2484376",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "western",
+   "thriller",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q675520": {
+  "year": 1994,
+  "sitelinks": 39,
+  "genreIds": [
+   "Q172980",
+   "Q157443"
+  ],
+  "genres": [
+   "western",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q59318": {
+  "year": 1954,
+  "sitelinks": 38,
+  "genreIds": [
+   "Q172980",
+   "Q130232"
+  ],
+  "genres": [
+   "western",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q103474": {
+  "year": 1968,
+  "sitelinks": 90,
+  "genreIds": [
+   "Q1200678"
+  ],
+  "genres": [
+   "mystery"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q132351": {
+  "year": 1995,
+  "sitelinks": 67,
+  "genreIds": [
+   "Q1200678",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "mystery",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q200396": {
+  "year": 2009,
+  "sitelinks": 66,
+  "genreIds": [
+   "Q1200678",
+   "Q319221",
+   "Q188473"
+  ],
+  "genres": [
+   "mystery",
+   "adventure",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q20382729": {
+  "year": 2016,
+  "sitelinks": 66,
+  "genreIds": [
+   "Q1200678",
+   "Q2484376",
+   "Q130232",
+   "Q471839"
+  ],
+  "genres": [
+   "mystery",
+   "thriller",
+   "drama",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q271830": {
+  "year": 1949,
+  "sitelinks": 63,
+  "genreIds": [
+   "Q1200678",
+   "Q319221",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "mystery",
+   "adventure",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q209481": {
+  "year": 1999,
+  "sitelinks": 63,
+  "genreIds": [
+   "Q1200678",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "mystery",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q206576": {
+  "year": 2011,
+  "sitelinks": 63,
+  "genreIds": [
+   "Q1200678",
+   "Q319221",
+   "Q130232"
+  ],
+  "genres": [
+   "mystery",
+   "adventure",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q243643": {
+  "year": 2011,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q1200678",
+   "Q319221",
+   "Q188473"
+  ],
+  "genres": [
+   "mystery",
+   "adventure",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q107226": {
+  "year": 2007,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q1200678",
+   "Q2484376",
+   "Q188473"
+  ],
+  "genres": [
+   "mystery",
+   "thriller",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q105624": {
+  "year": 2002,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q1200678",
+   "Q2484376",
+   "Q188473"
+  ],
+  "genres": [
+   "mystery",
+   "thriller",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q21500755": {
+  "year": 2017,
+  "sitelinks": 61,
+  "genreIds": [
+   "Q1200678",
+   "Q471839",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "mystery",
+   "science fiction",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q644987": {
+  "year": 1974,
+  "sitelinks": 61,
+  "genreIds": [
+   "Q1200678",
+   "Q130232"
+  ],
+  "genres": [
+   "mystery",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q475693": {
+  "year": 2003,
+  "sitelinks": 61,
+  "genreIds": [
+   "Q1200678",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "mystery",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q223139": {
+  "year": 1959,
+  "sitelinks": 60,
+  "genreIds": [
+   "Q1200678",
+   "Q959790",
+   "Q319221",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "mystery",
+   "crime",
+   "adventure",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q205447": {
+  "year": 2001,
+  "sitelinks": 60,
+  "genreIds": [
+   "Q1200678",
+   "Q319221",
+   "Q188473",
+   "Q157443"
+  ],
+  "genres": [
+   "mystery",
+   "adventure",
+   "action",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q42198": {
+  "year": 1995,
+  "sitelinks": 60,
+  "genreIds": [
+   "Q1200678",
+   "Q959790",
+   "Q319221",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "mystery",
+   "crime",
+   "adventure",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q18199330": {
+  "year": 2016,
+  "sitelinks": 66,
+  "genreIds": [
+   "Q319221",
+   "Q157394",
+   "Q2143665",
+   "Q130232"
+  ],
+  "genres": [
+   "adventure",
+   "fantasy",
+   "children's",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q853718": {
+  "year": 1947,
+  "sitelinks": 65,
+  "genreIds": [
+   "Q157394",
+   "Q842256",
+   "Q2143665",
+   "Q860626"
+  ],
+  "genres": [
+   "fantasy",
+   "musical",
+   "children's",
+   "romantic comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q869741": {
+  "year": 1948,
+  "sitelinks": 61,
+  "genreIds": [
+   "Q842256",
+   "Q2143665"
+  ],
+  "genres": [
+   "musical",
+   "children's"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q207659": {
+  "year": 1996,
+  "sitelinks": 59,
+  "genreIds": [
+   "Q157394",
+   "Q2143665",
+   "Q157443"
+  ],
+  "genres": [
+   "fantasy",
+   "children's",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q454398": {
+  "year": 2011,
+  "sitelinks": 57,
+  "genreIds": [
+   "Q157394",
+   "Q2143665",
+   "Q157443"
+  ],
+  "genres": [
+   "fantasy",
+   "children's",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q867283": {
+  "year": 1999,
+  "sitelinks": 54,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q2143665",
+   "Q130232",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "children's",
+   "drama",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q1043614": {
+  "year": 2007,
+  "sitelinks": 53,
+  "genreIds": [
+   "Q842256",
+   "Q2143665",
+   "Q130232"
+  ],
+  "genres": [
+   "musical",
+   "children's",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q327685": {
+  "year": 2010,
+  "sitelinks": 52,
+  "genreIds": [
+   "Q2143665",
+   "Q130232"
+  ],
+  "genres": [
+   "children's",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q244398": {
+  "year": 2007,
+  "sitelinks": 51,
+  "genreIds": [
+   "Q157394",
+   "Q2143665",
+   "Q130232"
+  ],
+  "genres": [
+   "fantasy",
+   "children's",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q213773": {
+  "year": 2006,
+  "sitelinks": 51,
+  "genreIds": [
+   "Q2143665",
+   "Q157443"
+  ],
+  "genres": [
+   "children's",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q1253366": {
+  "year": 2013,
+  "sitelinks": 49,
+  "genreIds": [
+   "Q157394",
+   "Q2143665",
+   "Q157443"
+  ],
+  "genres": [
+   "fantasy",
+   "children's",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q378311": {
+  "year": 2009,
+  "sitelinks": 49,
+  "genreIds": [
+   "Q157394",
+   "Q2143665",
+   "Q842256",
+   "Q157443"
+  ],
+  "genres": [
+   "fantasy",
+   "children's",
+   "musical",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q279274": {
+  "year": 2007,
+  "sitelinks": 49,
+  "genreIds": [
+   "Q319221",
+   "Q2143665",
+   "Q130232"
+  ],
+  "genres": [
+   "adventure",
+   "children's",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q276415": {
+  "year": 2004,
+  "sitelinks": 49,
+  "genreIds": [
+   "Q1146335",
+   "Q2143665",
+   "Q860626"
+  ],
+  "genres": [
+   "teen",
+   "children's",
+   "romantic comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q15985075": {
+  "year": 2017,
+  "sitelinks": 46,
+  "genreIds": [
+   "Q157394",
+   "Q2143665"
+  ],
+  "genres": [
+   "fantasy",
+   "children's"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q56850065": {
+  "year": 2021,
+  "sitelinks": 46,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q2143665",
+   "Q130232",
+   "Q157443",
+   "Q471839"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "children's",
+   "drama",
+   "comedy",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q1046295": {
+  "year": 2001,
+  "sitelinks": 45,
+  "genreIds": [
+   "Q1146335",
+   "Q2143665",
+   "Q860626",
+   "Q157443"
+  ],
+  "genres": [
+   "teen",
+   "children's",
+   "romantic comedy",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q148326": {
+  "year": 2005,
+  "sitelinks": 45,
+  "genreIds": [
+   "Q157394",
+   "Q319221",
+   "Q2143665",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "fantasy",
+   "adventure",
+   "children's",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q156519": {
+  "year": 2004,
+  "sitelinks": 44,
+  "genreIds": [
+   "Q319221",
+   "Q2143665",
+   "Q188473",
+   "Q157443"
+  ],
+  "genres": [
+   "adventure",
+   "children's",
+   "action",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q11593": {
+  "year": 2010,
+  "sitelinks": 44,
+  "genreIds": [
+   "Q157394",
+   "Q2143665",
+   "Q188473"
+  ],
+  "genres": [
+   "fantasy",
+   "children's",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q15631322": {
+  "year": 2014,
+  "sitelinks": 43,
+  "genreIds": [
+   "Q2143665",
+   "Q157443"
+  ],
+  "genres": [
+   "children's",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q936327": {
+  "year": 1971,
+  "sitelinks": 43,
+  "genreIds": [
+   "Q157394",
+   "Q842256",
+   "Q2143665",
+   "Q130232"
+  ],
+  "genres": [
+   "fantasy",
+   "musical",
+   "children's",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q1048166": {
+  "year": 1995,
+  "sitelinks": 43,
+  "genreIds": [
+   "Q157394",
+   "Q2143665",
+   "Q157443"
+  ],
+  "genres": [
+   "fantasy",
+   "children's",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q945138": {
+  "year": 1971,
+  "sitelinks": 42,
+  "genreIds": [
+   "Q369747",
+   "Q157394",
+   "Q319221",
+   "Q842256",
+   "Q2143665",
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "war",
+   "fantasy",
+   "adventure",
+   "musical",
+   "children's",
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q636043": {
+  "year": 1985,
+  "sitelinks": 42,
+  "genreIds": [
+   "Q2143665",
+   "Q319221",
+   "Q188473",
+   "Q157443"
+  ],
+  "genres": [
+   "children's",
+   "adventure",
+   "action",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q1286387": {
+  "year": 2003,
+  "sitelinks": 40,
+  "genreIds": [
+   "Q2143665",
+   "Q157394"
+  ],
+  "genres": [
+   "children's",
+   "fantasy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q1094125": {
+  "year": 2008,
+  "sitelinks": 40,
+  "genreIds": [
+   "Q2143665",
+   "Q157394",
+   "Q319221",
+   "Q471839"
+  ],
+  "genres": [
+   "children's",
+   "fantasy",
+   "adventure",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q1758112": {
+  "year": 2013,
+  "sitelinks": 39,
+  "genreIds": [
+   "Q1146335",
+   "Q2143665",
+   "Q157394",
+   "Q319221",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "teen",
+   "children's",
+   "fantasy",
+   "adventure",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q753677": {
+  "year": 2011,
+  "sitelinks": 39,
+  "genreIds": [
+   "Q860626",
+   "Q842256",
+   "Q2143665",
+   "Q157394"
+  ],
+  "genres": [
+   "romantic comedy",
+   "musical",
+   "children's",
+   "fantasy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q711918": {
+  "year": 2011,
+  "sitelinks": 39,
+  "genreIds": [
+   "Q2143665",
+   "Q157443"
+  ],
+  "genres": [
+   "children's",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q587921": {
+  "year": 2006,
+  "sitelinks": 39,
+  "genreIds": [
+   "Q2143665",
+   "Q157443"
+  ],
+  "genres": [
+   "children's",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q392677": {
+  "year": 2003,
+  "sitelinks": 39,
+  "genreIds": [
+   "Q860626",
+   "Q2143665",
+   "Q188473"
+  ],
+  "genres": [
+   "romantic comedy",
+   "children's",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q390341": {
+  "year": 2008,
+  "sitelinks": 39,
+  "genreIds": [
+   "Q2143665",
+   "Q157443"
+  ],
+  "genres": [
+   "children's",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q165847": {
+  "year": 2000,
+  "sitelinks": 39,
+  "genreIds": [
+   "Q2143665",
+   "Q157394",
+   "Q157443"
+  ],
+  "genres": [
+   "children's",
+   "fantasy",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q15713892": {
+  "year": 2015,
+  "sitelinks": 38,
+  "genreIds": [
+   "Q2143665",
+   "Q157394",
+   "Q319221"
+  ],
+  "genres": [
+   "children's",
+   "fantasy",
+   "adventure"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q1364029": {
+  "year": 2003,
+  "sitelinks": 38,
+  "genreIds": [
+   "Q2143665",
+   "Q157394",
+   "Q319221"
+  ],
+  "genres": [
+   "children's",
+   "fantasy",
+   "adventure"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q550232": {
+  "year": 2006,
+  "sitelinks": 38,
+  "genreIds": [
+   "Q2143665",
+   "Q157394",
+   "Q319221"
+  ],
+  "genres": [
+   "children's",
+   "fantasy",
+   "adventure"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q339804": {
+  "year": 1997,
+  "sitelinks": 38,
+  "genreIds": [
+   "Q2143665",
+   "Q130232"
+  ],
+  "genres": [
+   "children's",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q316555": {
+  "year": 1984,
+  "sitelinks": 38,
+  "genreIds": [
+   "Q2143665",
+   "Q157394",
+   "Q130232"
+  ],
+  "genres": [
+   "children's",
+   "fantasy",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q4254026": {
+  "year": 2014,
+  "sitelinks": 66,
+  "genreIds": [
+   "Q1146335",
+   "Q2484376",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "teen",
+   "thriller",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q169082": {
+  "year": 1999,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q1146335"
+  ],
+  "genres": [
+   "teen"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q631103": {
+  "year": 2004,
+  "sitelinks": 59,
+  "genreIds": [
+   "Q1146335",
+   "Q157443"
+  ],
+  "genres": [
+   "teen",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q220713": {
+  "year": 1999,
+  "sitelinks": 58,
+  "genreIds": [
+   "Q1146335"
+  ],
+  "genres": [
+   "teen"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q223596": {
+  "year": 2011,
+  "sitelinks": 56,
+  "genreIds": [
+   "Q1146335",
+   "Q157394",
+   "Q188473",
+   "Q471839"
+  ],
+  "genres": [
+   "teen",
+   "fantasy",
+   "action",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q579928": {
+  "year": 2004,
+  "sitelinks": 54,
+  "genreIds": [
+   "Q1146335",
+   "Q157443"
+  ],
+  "genres": [
+   "teen",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q79503": {
+  "year": 2007,
+  "sitelinks": 54,
+  "genreIds": [
+   "Q1146335",
+   "Q1054574",
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "teen",
+   "romance",
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q60506": {
+  "year": 2011,
+  "sitelinks": 54,
+  "genreIds": [
+   "Q1146335",
+   "Q157394",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "teen",
+   "fantasy",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q499152": {
+  "year": 1985,
+  "sitelinks": 53,
+  "genreIds": [
+   "Q1146335",
+   "Q130232"
+  ],
+  "genres": [
+   "teen",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q2201": {
+  "year": 2010,
+  "sitelinks": 53,
+  "genreIds": [
+   "Q1146335",
+   "Q188473",
+   "Q157443"
+  ],
+  "genres": [
+   "teen",
+   "action",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q329434": {
+  "year": 1984,
+  "sitelinks": 51,
+  "genreIds": [
+   "Q959790",
+   "Q1146335",
+   "Q157394",
+   "Q2484376",
+   "Q130232",
+   "Q200092"
+  ],
+  "genres": [
+   "crime",
+   "teen",
+   "fantasy",
+   "thriller",
+   "drama",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q147878": {
+  "year": 1962,
+  "sitelinks": 51,
+  "genreIds": [
+   "Q369747",
+   "Q1146335",
+   "Q130232"
+  ],
+  "genres": [
+   "war",
+   "teen",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q7765993": {
+  "year": 2015,
+  "sitelinks": 50,
+  "genreIds": [
+   "Q1146335",
+   "Q319221"
+  ],
+  "genres": [
+   "teen",
+   "adventure"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q162672": {
+  "year": 1976,
+  "sitelinks": 50,
+  "genreIds": [
+   "Q1146335",
+   "Q2484376",
+   "Q130232",
+   "Q200092"
+  ],
+  "genres": [
+   "teen",
+   "thriller",
+   "drama",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q60487": {
+  "year": 2012,
+  "sitelinks": 50,
+  "genreIds": [
+   "Q1146335",
+   "Q157394",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "teen",
+   "fantasy",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q753605": {
+  "year": 2011,
+  "sitelinks": 50,
+  "genreIds": [
+   "Q1146335",
+   "Q157394",
+   "Q157443"
+  ],
+  "genres": [
+   "teen",
+   "fantasy",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q21869840": {
+  "year": 2016,
+  "sitelinks": 49,
+  "genreIds": [
+   "Q959790",
+   "Q1200678",
+   "Q1146335",
+   "Q157394",
+   "Q2484376",
+   "Q130232",
+   "Q200092",
+   "Q471839"
+  ],
+  "genres": [
+   "crime",
+   "mystery",
+   "teen",
+   "fantasy",
+   "thriller",
+   "drama",
+   "horror",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q426346": {
+  "year": 1955,
+  "sitelinks": 49,
+  "genreIds": [
+   "Q1146335",
+   "Q130232"
+  ],
+  "genres": [
+   "teen",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q253978": {
+  "year": 1987,
+  "sitelinks": 49,
+  "genreIds": [
+   "Q842256",
+   "Q1146335",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "musical",
+   "teen",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q219442": {
+  "year": 2002,
+  "sitelinks": 49,
+  "genreIds": [
+   "Q1146335",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "teen",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q83767": {
+  "year": 1980,
+  "sitelinks": 49,
+  "genreIds": [
+   "Q1146335",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "teen",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q726294": {
+  "year": 2000,
+  "sitelinks": 49,
+  "genreIds": [
+   "Q842256",
+   "Q1146335",
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "musical",
+   "teen",
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q675468": {
+  "year": 2012,
+  "sitelinks": 49,
+  "genreIds": [
+   "Q1146335",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "teen",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q1243029": {
+  "year": 1980,
+  "sitelinks": 49,
+  "genreIds": [
+   "Q959790",
+   "Q1200678",
+   "Q1146335",
+   "Q2484376",
+   "Q200092"
+  ],
+  "genres": [
+   "crime",
+   "mystery",
+   "teen",
+   "thriller",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q494722": {
+  "year": 1986,
+  "sitelinks": 48,
+  "genreIds": [
+   "Q1146335",
+   "Q319221",
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "teen",
+   "adventure",
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q375855": {
+  "year": 1973,
+  "sitelinks": 48,
+  "genreIds": [
+   "Q1146335",
+   "Q130232"
+  ],
+  "genres": [
+   "teen",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q53115": {
+  "year": 2008,
+  "sitelinks": 48,
+  "genreIds": [
+   "Q842256",
+   "Q1146335",
+   "Q130232"
+  ],
+  "genres": [
+   "musical",
+   "teen",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q323392": {
+  "year": 2011,
+  "sitelinks": 47,
+  "genreIds": [
+   "Q1200678",
+   "Q1146335",
+   "Q157443",
+   "Q200092"
+  ],
+  "genres": [
+   "mystery",
+   "teen",
+   "comedy",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q267721": {
+  "year": 1978,
+  "sitelinks": 47,
+  "genreIds": [
+   "Q842256",
+   "Q860626",
+   "Q1146335"
+  ],
+  "genres": [
+   "musical",
+   "romantic comedy",
+   "teen"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q214014": {
+  "year": 2012,
+  "sitelinks": 47,
+  "genreIds": [
+   "Q959790",
+   "Q1146335",
+   "Q188473",
+   "Q157443"
+  ],
+  "genres": [
+   "crime",
+   "teen",
+   "action",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q679611": {
+  "year": 2007,
+  "sitelinks": 47,
+  "genreIds": [
+   "Q1146335",
+   "Q157443"
+  ],
+  "genres": [
+   "teen",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q886597": {
+  "year": 1974,
+  "sitelinks": 46,
+  "genreIds": [
+   "Q1200678",
+   "Q959790",
+   "Q1146335",
+   "Q2484376",
+   "Q200092"
+  ],
+  "genres": [
+   "mystery",
+   "crime",
+   "teen",
+   "thriller",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q846679": {
+  "year": 1984,
+  "sitelinks": 46,
+  "genreIds": [
+   "Q1146335",
+   "Q130232",
+   "Q188473",
+   "Q1054574"
+  ],
+  "genres": [
+   "teen",
+   "drama",
+   "action",
+   "romance"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q15648198": {
+  "year": 2014,
+  "sitelinks": 63,
+  "genreIds": [
+   "Q842256",
+   "Q130232"
+  ],
+  "genres": [
+   "musical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q27044293": {
+  "year": 2019,
+  "sitelinks": 61,
+  "genreIds": [
+   "Q319221",
+   "Q842256",
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "adventure",
+   "musical",
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q747570": {
+  "year": 1951,
+  "sitelinks": 59,
+  "genreIds": [
+   "Q842256"
+  ],
+  "genres": [
+   "musical"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q213012": {
+  "year": 2006,
+  "sitelinks": 58,
+  "genreIds": [
+   "Q842256",
+   "Q157443"
+  ],
+  "genres": [
+   "musical",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q188850": {
+  "year": 2008,
+  "sitelinks": 57,
+  "genreIds": [
+   "Q842256",
+   "Q860626"
+  ],
+  "genres": [
+   "musical",
+   "romantic comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q126800": {
+  "year": 2006,
+  "sitelinks": 56,
+  "genreIds": [
+   "Q842256",
+   "Q319221",
+   "Q157443"
+  ],
+  "genres": [
+   "musical",
+   "adventure",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q309153": {
+  "year": 1952,
+  "sitelinks": 56,
+  "genreIds": [
+   "Q842256",
+   "Q157443"
+  ],
+  "genres": [
+   "musical",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q3286391": {
+  "year": 2018,
+  "sitelinks": 54,
+  "genreIds": [
+   "Q842256",
+   "Q1054574"
+  ],
+  "genres": [
+   "musical",
+   "romance"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q196665": {
+  "year": 2002,
+  "sitelinks": 54,
+  "genreIds": [
+   "Q842256",
+   "Q130232"
+  ],
+  "genres": [
+   "musical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q387348": {
+  "year": 2007,
+  "sitelinks": 54,
+  "genreIds": [
+   "Q842256",
+   "Q157394",
+   "Q157443"
+  ],
+  "genres": [
+   "musical",
+   "fantasy",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q1999930": {
+  "year": 1969,
+  "sitelinks": 53,
+  "genreIds": [
+   "Q319221",
+   "Q842256",
+   "Q157443"
+  ],
+  "genres": [
+   "adventure",
+   "musical",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q463620": {
+  "year": 1929,
+  "sitelinks": 53,
+  "genreIds": [
+   "Q842256",
+   "Q1054574"
+  ],
+  "genres": [
+   "musical",
+   "romance"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q109767": {
+  "year": 1980,
+  "sitelinks": 52,
+  "genreIds": [
+   "Q842256",
+   "Q157443"
+  ],
+  "genres": [
+   "musical",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q501874": {
+  "year": 2000,
+  "sitelinks": 52,
+  "genreIds": [
+   "Q959790",
+   "Q842256",
+   "Q2484376",
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "crime",
+   "musical",
+   "thriller",
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q7117022": {
+  "year": 2014,
+  "sitelinks": 51,
+  "genreIds": [
+   "Q842256",
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "musical",
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q28234": {
+  "year": 2012,
+  "sitelinks": 51,
+  "genreIds": [
+   "Q842256",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "musical",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q303678": {
+  "year": 2011,
+  "sitelinks": 51,
+  "genreIds": [
+   "Q842256",
+   "Q157394",
+   "Q157443"
+  ],
+  "genres": [
+   "musical",
+   "fantasy",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q236217": {
+  "year": 2007,
+  "sitelinks": 50,
+  "genreIds": [
+   "Q842256",
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "musical",
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q490464": {
+  "year": 2007,
+  "sitelinks": 50,
+  "genreIds": [
+   "Q860626",
+   "Q157394",
+   "Q842256",
+   "Q157443"
+  ],
+  "genres": [
+   "romantic comedy",
+   "fantasy",
+   "musical",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q465087": {
+  "year": 1927,
+  "sitelinks": 50,
+  "genreIds": [
+   "Q842256",
+   "Q1054574",
+   "Q130232"
+  ],
+  "genres": [
+   "musical",
+   "romance",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q470218": {
+  "year": 1936,
+  "sitelinks": 49,
+  "genreIds": [
+   "Q645928",
+   "Q842256",
+   "Q130232"
+  ],
+  "genres": [
+   "biographical",
+   "musical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q468877": {
+  "year": 1944,
+  "sitelinks": 49,
+  "genreIds": [
+   "Q860626",
+   "Q842256",
+   "Q130232"
+  ],
+  "genres": [
+   "romantic comedy",
+   "musical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q383355": {
+  "year": 1953,
+  "sitelinks": 49,
+  "genreIds": [
+   "Q842256",
+   "Q860626",
+   "Q130232",
+   "Q157443"
+  ],
+  "genres": [
+   "musical",
+   "romantic comedy",
+   "drama",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q214723": {
+  "year": 1925,
+  "sitelinks": 57,
+  "genreIds": [
+   "Q860626",
+   "Q157443"
+  ],
+  "genres": [
+   "romantic comedy",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q845057": {
+  "year": 1986,
+  "sitelinks": 53,
+  "genreIds": [
+   "Q860626",
+   "Q130232"
+  ],
+  "genres": [
+   "romantic comedy",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q384397": {
+  "year": 1951,
+  "sitelinks": 53,
+  "genreIds": [
+   "Q860626",
+   "Q130232"
+  ],
+  "genres": [
+   "romantic comedy",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q731310": {
+  "year": 1979,
+  "sitelinks": 53,
+  "genreIds": [
+   "Q860626",
+   "Q130232"
+  ],
+  "genres": [
+   "romantic comedy",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q152493": {
+  "year": 1954,
+  "sitelinks": 52,
+  "genreIds": [
+   "Q860626"
+  ],
+  "genres": [
+   "romantic comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q211429": {
+  "year": 2009,
+  "sitelinks": 51,
+  "genreIds": [
+   "Q860626",
+   "Q130232"
+  ],
+  "genres": [
+   "romantic comedy",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q496266": {
+  "year": 1963,
+  "sitelinks": 51,
+  "genreIds": [
+   "Q860626",
+   "Q1200678"
+  ],
+  "genres": [
+   "romantic comedy",
+   "mystery"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q269887": {
+  "year": 2008,
+  "sitelinks": 50,
+  "genreIds": [
+   "Q860626"
+  ],
+  "genres": [
+   "romantic comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q284229": {
+  "year": 1998,
+  "sitelinks": 49,
+  "genreIds": [
+   "Q860626"
+  ],
+  "genres": [
+   "romantic comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q943338": {
+  "year": 2005,
+  "sitelinks": 48,
+  "genreIds": [
+   "Q860626"
+  ],
+  "genres": [
+   "romantic comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q753899": {
+  "year": 2010,
+  "sitelinks": 48,
+  "genreIds": [
+   "Q860626",
+   "Q157394",
+   "Q188473",
+   "Q157443"
+  ],
+  "genres": [
+   "romantic comedy",
+   "fantasy",
+   "action",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q244975": {
+  "year": 2010,
+  "sitelinks": 48,
+  "genreIds": [
+   "Q860626"
+  ],
+  "genres": [
+   "romantic comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q470560": {
+  "year": 1952,
+  "sitelinks": 48,
+  "genreIds": [
+   "Q860626",
+   "Q130232"
+  ],
+  "genres": [
+   "romantic comedy",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q637835": {
+  "year": 1938,
+  "sitelinks": 47,
+  "genreIds": [
+   "Q860626"
+  ],
+  "genres": [
+   "romantic comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q525415": {
+  "year": 2002,
+  "sitelinks": 47,
+  "genreIds": [
+   "Q860626"
+  ],
+  "genres": [
+   "romantic comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q478748": {
+  "year": 2006,
+  "sitelinks": 47,
+  "genreIds": [
+   "Q860626",
+   "Q157443"
+  ],
+  "genres": [
+   "romantic comedy",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q912729": {
+  "year": 1985,
+  "sitelinks": 46,
+  "genreIds": [
+   "Q860626",
+   "Q157394"
+  ],
+  "genres": [
+   "romantic comedy",
+   "fantasy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q858724": {
+  "year": 2004,
+  "sitelinks": 46,
+  "genreIds": [
+   "Q860626",
+   "Q157443",
+   "Q200092"
+  ],
+  "genres": [
+   "romantic comedy",
+   "comedy",
+   "horror"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q381751": {
+  "year": 2008,
+  "sitelinks": 46,
+  "genreIds": [
+   "Q860626",
+   "Q157443"
+  ],
+  "genres": [
+   "romantic comedy",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q324933": {
+  "year": 1968,
+  "sitelinks": 46,
+  "genreIds": [
+   "Q860626",
+   "Q130232"
+  ],
+  "genres": [
+   "romantic comedy",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q217112": {
+  "year": 2012,
+  "sitelinks": 46,
+  "genreIds": [
+   "Q1146335",
+   "Q860626",
+   "Q130232"
+  ],
+  "genres": [
+   "teen",
+   "romantic comedy",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q179743": {
+  "year": 1938,
+  "sitelinks": 46,
+  "genreIds": [
+   "Q860626"
+  ],
+  "genres": [
+   "romantic comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q177374": {
+  "year": 1998,
+  "sitelinks": 46,
+  "genreIds": [
+   "Q860626"
+  ],
+  "genres": [
+   "romantic comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q80204": {
+  "year": 2012,
+  "sitelinks": 46,
+  "genreIds": [
+   "Q860626",
+   "Q130232"
+  ],
+  "genres": [
+   "romantic comedy",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q912877": {
+  "year": 2006,
+  "sitelinks": 45,
+  "genreIds": [
+   "Q860626"
+  ],
+  "genres": [
+   "romantic comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q798797": {
+  "year": 2011,
+  "sitelinks": 45,
+  "genreIds": [
+   "Q860626",
+   "Q1054574",
+   "Q157443"
+  ],
+  "genres": [
+   "romantic comedy",
+   "romance",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q1139794": {
+  "year": 2005,
+  "sitelinks": 44,
+  "genreIds": [
+   "Q860626"
+  ],
+  "genres": [
+   "romantic comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q380848": {
+  "year": 2009,
+  "sitelinks": 44,
+  "genreIds": [
+   "Q860626",
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "romantic comedy",
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q222800": {
+  "year": 2007,
+  "sitelinks": 44,
+  "genreIds": [
+   "Q860626",
+   "Q130232"
+  ],
+  "genres": [
+   "romantic comedy",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q220154": {
+  "year": 2008,
+  "sitelinks": 44,
+  "genreIds": [
+   "Q860626"
+  ],
+  "genres": [
+   "romantic comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q72925": {
+  "year": 2006,
+  "sitelinks": 44,
+  "genreIds": [
+   "Q1146335",
+   "Q860626"
+  ],
+  "genres": [
+   "teen",
+   "romantic comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q474087": {
+  "year": 2011,
+  "sitelinks": 44,
+  "genreIds": [
+   "Q860626",
+   "Q130232"
+  ],
+  "genres": [
+   "romantic comedy",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q918380": {
+  "year": 1997,
+  "sitelinks": 43,
+  "genreIds": [
+   "Q860626"
+  ],
+  "genres": [
+   "romantic comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q304030": {
+  "year": 2010,
+  "sitelinks": 43,
+  "genreIds": [
+   "Q860626",
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "romantic comedy",
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q290679": {
+  "year": 1955,
+  "sitelinks": 43,
+  "genreIds": [
+   "Q860626",
+   "Q157443"
+  ],
+  "genres": [
+   "romantic comedy",
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q155559": {
+  "year": 2009,
+  "sitelinks": 42,
+  "genreIds": [
+   "Q860626",
+   "Q130232"
+  ],
+  "genres": [
+   "romantic comedy",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q589894": {
+  "year": 1939,
+  "sitelinks": 41,
+  "genreIds": [
+   "Q860626"
+  ],
+  "genres": [
+   "romantic comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q131547207": {
+  "year": 2026,
+  "sitelinks": 67,
+  "genreIds": [
+   "Q17013749",
+   "Q157394",
+   "Q319221",
+   "Q188473"
+  ],
+  "genres": [
+   "historical",
+   "fantasy",
+   "adventure",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q217189": {
+  "year": 1957,
+  "sitelinks": 64,
+  "genreIds": [
+   "Q17013749",
+   "Q157394",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "fantasy",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q106428": {
+  "year": 1995,
+  "sitelinks": 64,
+  "genreIds": [
+   "Q17013749",
+   "Q319221",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "adventure",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q220394": {
+  "year": 1915,
+  "sitelinks": 58,
+  "genreIds": [
+   "Q17013749",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q270351": {
+  "year": 2007,
+  "sitelinks": 55,
+  "genreIds": [
+   "Q369747",
+   "Q17013749",
+   "Q645928",
+   "Q959790",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "war",
+   "historical",
+   "biographical",
+   "crime",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q29057443": {
+  "year": 2019,
+  "sitelinks": 54,
+  "genreIds": [
+   "Q17013749",
+   "Q645928",
+   "Q959790",
+   "Q2484376",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "biographical",
+   "crime",
+   "thriller",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q329709": {
+  "year": 1935,
+  "sitelinks": 54,
+  "genreIds": [
+   "Q17013749",
+   "Q319221"
+  ],
+  "genres": [
+   "historical",
+   "adventure"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q329448": {
+  "year": 2009,
+  "sitelinks": 54,
+  "genreIds": [
+   "Q1200678",
+   "Q17013749",
+   "Q645928",
+   "Q959790",
+   "Q319221",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "mystery",
+   "historical",
+   "biographical",
+   "crime",
+   "adventure",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q221384": {
+  "year": 2001,
+  "sitelinks": 54,
+  "genreIds": [
+   "Q369747",
+   "Q17013749",
+   "Q319221",
+   "Q2484376",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "war",
+   "historical",
+   "adventure",
+   "thriller",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q159054": {
+  "year": 2008,
+  "sitelinks": 54,
+  "genreIds": [
+   "Q369747",
+   "Q17013749",
+   "Q645928",
+   "Q130232"
+  ],
+  "genres": [
+   "war",
+   "historical",
+   "biographical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q115789958": {
+  "year": 2024,
+  "sitelinks": 53,
+  "genreIds": [
+   "Q17013749",
+   "Q319221",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "historical",
+   "adventure",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q302490": {
+  "year": 1986,
+  "sitelinks": 53,
+  "genreIds": [
+   "Q17013749",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q275187": {
+  "year": 2006,
+  "sitelinks": 53,
+  "genreIds": [
+   "Q17013749",
+   "Q369747",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "war",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q646633": {
+  "year": 2000,
+  "sitelinks": 52,
+  "genreIds": [
+   "Q17013749",
+   "Q369747",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "historical",
+   "war",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q466781": {
+  "year": 1976,
+  "sitelinks": 52,
+  "genreIds": [
+   "Q17013749",
+   "Q959790",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "crime",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q62730": {
+  "year": 1981,
+  "sitelinks": 52,
+  "genreIds": [
+   "Q17013749",
+   "Q369747",
+   "Q130232"
+  ],
+  "genres": [
+   "historical",
+   "war",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q741823": {
+  "year": 1991,
+  "sitelinks": 51,
+  "genreIds": [
+   "Q1200678",
+   "Q17013749",
+   "Q645928",
+   "Q959790",
+   "Q130232"
+  ],
+  "genres": [
+   "mystery",
+   "historical",
+   "biographical",
+   "crime",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q219315": {
+  "year": 2009,
+  "sitelinks": 54,
+  "genreIds": [
+   "Q157443"
+  ],
+  "genres": [
+   "comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q47524071": {
+  "year": 2018,
+  "sitelinks": 37,
+  "genreIds": [
+   "Q200092",
+   "Q130232"
+  ],
+  "genres": [
+   "horror",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q134773": {
+  "year": 1994,
+  "sitelinks": 137,
+  "genreIds": [
+   "Q157443",
+   "Q130232"
+  ],
+  "genres": [
+   "comedy",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q15732802": {
+  "year": 2014,
+  "sitelinks": 54,
+  "genreIds": [
+   "Q188473",
+   "Q2484376"
+  ],
+  "genres": [
+   "action",
+   "thriller"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q108006": {
+  "year": 1994,
+  "sitelinks": 59,
+  "genreIds": [
+   "Q319221",
+   "Q959790",
+   "Q188473"
+  ],
+  "genres": [
+   "adventure",
+   "crime",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q36479": {
+  "year": 1994,
+  "sitelinks": 132,
+  "genreIds": [
+   "Q842256",
+   "Q319221",
+   "Q130232"
+  ],
+  "genres": [
+   "musical",
+   "adventure",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q170035": {
+  "year": 2007,
+  "sitelinks": 90,
+  "genreIds": [],
+  "genres": []
+ },
+ "http://www.wikidata.org/entity/Q387601": {
+  "year": 2006,
+  "sitelinks": 57,
+  "genreIds": [
+   "Q157394"
+  ],
+  "genres": [
+   "fantasy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q848785": {
+  "year": 2005,
+  "sitelinks": 36,
+  "genreIds": [
+   "Q369747",
+   "Q645928",
+   "Q130232",
+   "Q188473"
+  ],
+  "genres": [
+   "war",
+   "biographical",
+   "drama",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q3404003": {
+  "year": 2013,
+  "sitelinks": 42,
+  "genreIds": [
+   "Q959790",
+   "Q130232"
+  ],
+  "genres": [
+   "crime",
+   "drama"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q25019036": {
+  "year": 2016,
+  "sitelinks": 1,
+  "genreIds": [],
+  "genres": []
+ }
+}

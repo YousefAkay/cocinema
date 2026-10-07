@@ -3,20 +3,73 @@ const GENRE_DELAY_MS = 1500;
 const MAX_ATTEMPTS = 4;
 const RETRYABLE_STATUSES = new Set([429, 500, 502, 503, 504]);
 
-function parseResults(data) {
-  const bindings = data.results.bindings;
+export const GENRES = {
+  Q157443: 'comedy',
+  Q200092: 'horror',
+  Q471839: 'science fiction',
+  Q130232: 'drama',
+  Q188473: 'action',
+  Q2484376: 'thriller',
+  Q1054574: 'romance',
+  Q202866: 'animated',
+  Q319221: 'adventure',
+  Q157394: 'fantasy',
+  Q959790: 'crime',
+  Q645928: 'biographical',
+  Q369747: 'war',
+  Q172980: 'western',
+  Q1200678: 'mystery',
+  Q2143665: "children's",
+  Q1146335: 'teen',
+  Q842256: 'musical',
+  Q860626: 'romantic comedy',
+  Q17013749: 'historical',
+};
 
-  return bindings.map(entry => ({
-    id: entry.item.value,
-    title: entry.itemLabel.value,
-  }));
+export function entityId(uri) {
+  return uri.slice(uri.lastIndexOf('/') + 1);
 }
 
-function sleep(ms) {
+// One movie can come back as several rows (one per release date and per genre),
+// so rows are folded into a single entry per movie.
+function parseResults(data) {
+  const byId = new Map();
+
+  for (const entry of data.results.bindings) {
+    const id = entry.item.value;
+    if (!byId.has(id)) {
+      byId.set(id, {
+        id,
+        title: entry.itemLabel.value,
+        year: null,
+        sitelinks: Number(entry.links.value),
+        genres: new Set(),
+      });
+    }
+    const movie = byId.get(id);
+
+    if (entry.date) {
+      const year = new Date(entry.date.value).getUTCFullYear();
+      if (Number.isInteger(year) && (movie.year === null || year < movie.year)) {
+        movie.year = year;
+      }
+    }
+    if (entry.genre) {
+      const genreId = entityId(entry.genre.value);
+      if (GENRES[genreId]) {
+        movie.genres.add(GENRES[genreId]);
+      }
+    }
+  }
+
+  return Array.from(byId.values()).map(movie => ({ ...movie, genres: Array.from(movie.genres) }));
+}
+
+export function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function fetchWithRetry(url) {
+export async function fetchWithRetry(url) {
   let backoffMs = 1000;
 
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
@@ -59,7 +112,7 @@ async function fetchWithRetry(url) {
 
 export async function getMoviesByGenre(genreId, limit) {
     const query = `
-    SELECT ?item ?itemLabel ?links WHERE {
+    SELECT ?item ?itemLabel ?links ?date ?genre WHERE {
       {
         SELECT ?item ?links WHERE {
           ?item wdt:P31 wd:Q11424.
@@ -68,6 +121,11 @@ export async function getMoviesByGenre(genreId, limit) {
         }
         ORDER BY DESC(?links)
         LIMIT ${limit}
+      }
+      OPTIONAL { ?item wdt:P577 ?date. }
+      OPTIONAL {
+        ?item wdt:P136 ?genre.
+        VALUES ?genre { ${Object.keys(GENRES).map(id => `wd:${id}`).join(' ')} }
       }
       SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
     }
@@ -79,28 +137,7 @@ export async function getMoviesByGenre(genreId, limit) {
 }
 
 export async function getCatalogMovies() {
-  const genreIds = [
-    'Q157443',   // comedy
-    'Q200092',   // horror
-    'Q471839',   // science fiction
-    'Q130232',   // drama
-    'Q188473',   // action
-    'Q2484376',  // thriller
-    'Q1054574',  // romance
-    'Q202866',   // animated
-    'Q319221',   // adventure
-    'Q157394',   // fantasy
-    'Q959790',   // crime
-    'Q645928',   // biographical
-    'Q369747',   // war
-    'Q172980',   // western
-    'Q1200678',  // mystery
-    'Q2143665',  // children's
-    'Q1146335',  // teen
-    'Q842256',   // musical
-    'Q860626',   // romantic comedy
-    'Q17013749', // historical
-  ];
+  const genreIds = Object.keys(GENRES);
 
   let allMovies = [];
 
@@ -124,15 +161,20 @@ export async function getCatalogMovies() {
 }
 
 function dedupeMovies(movies) {
-  const seenIds = new Set();
-  const unique = [];
+  const byId = new Map();
 
   for (const movie of movies) {
-    if (!seenIds.has(movie.id)) {
-      seenIds.add(movie.id);
-      unique.push(movie);
+    const seen = byId.get(movie.id);
+    if (!seen) {
+      byId.set(movie.id, { ...movie, genres: [...movie.genres] });
+      continue;
+    }
+    seen.genres = Array.from(new Set([...seen.genres, ...movie.genres]));
+    seen.sitelinks = Math.max(seen.sitelinks, movie.sitelinks);
+    if (movie.year !== null && (seen.year === null || movie.year < seen.year)) {
+      seen.year = movie.year;
     }
   }
 
-  return unique;
+  return Array.from(byId.values());
 }
