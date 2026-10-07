@@ -66,9 +66,20 @@ try {
 
   await first.page.locator('.length-card:has(input[value="10"])').click();
   await first.page.waitForSelector('#start-button:not([disabled])');
-  check('choosing Quick enables Get started and says "Ready: 10 films, about a minute"', (await first.page.locator('#length-status').innerText()) === 'Ready: 10 films, about a minute');
+  check('choosing Quick enables Get started and says "Ready: 10 films"', (await first.page.locator('#length-status').innerText()) === 'Ready: 10 films');
   await first.page.locator('.length-card:has(input[value="15"])').click();
-  check('choosing Full says "Ready: 15 films, about two minutes"', (await first.page.locator('#length-status').innerText()) === 'Ready: 15 films, about two minutes');
+  check('choosing Full says "Ready: 15 films"', (await first.page.locator('#length-status').innerText()) === 'Ready: 15 films');
+
+  // No duration claim anywhere in the choice area: it depends on how fast someone rates.
+  const noDuration = /minute|second|\bmin\b|\bsec\b|hour|takes about|~/i;
+  const choiceText = async () => (await first.page.locator('#length-choice').innerText()) + ' ' + (await first.page.locator('#length-status').innerText());
+  await first.page.locator('.length-card:has(input[value="10"])').click();
+  const quickText = await choiceText();
+  await first.page.locator('.length-card:has(input[value="15"])').click();
+  const fullText = await choiceText();
+  check('the Quick and Full options and the status line never mention minutes, seconds or any duration',
+    !noDuration.test(quickText) && !noDuration.test(fullText) && quickText.includes('Ready: 10 films') && fullText.includes('Ready: 15 films'),
+    `${quickText.replace(/\s+/g, ' ')} || ${fullText.replace(/\s+/g, ' ')}`);
   await first.page.reload();
   await first.page.waitForSelector('.length-card');
   check('reloading the landing page shows nothing selected', (await first.page.locator('input[name="length"]:checked').count()) === 0 && await first.page.locator('#start-button').isDisabled());

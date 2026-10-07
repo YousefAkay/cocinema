@@ -475,7 +475,7 @@ function chosenLength() {
   return isValidLength(value) ? value : null;
 }
 
-const LENGTH_TEXT = { 10: 'Ready: 10 films, about a minute', 15: 'Ready: 15 films, about two minutes' };
+const LENGTH_TEXT = { 10: 'Ready: 10 films', 15: 'Ready: 15 films' };
 
 // Get started needs both the data and a chosen length; nothing is chosen for the visitor.
 function updateStartState() {
