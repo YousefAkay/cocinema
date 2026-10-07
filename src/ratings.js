@@ -1,18 +1,21 @@
 import { EXTRA_COUNT } from './candidates.js';
+import { isValidLength } from './shuffle.js';
 
-const STORAGE_KEY = 'cocinema:v3';
+const STORAGE_KEY = 'cocinema:v4';
 
 const ratings = new Map();
 const skipped = new Set();
 let position = { genreIndex: 0, movieIndex: 0 };
 let extra = null;
 let seed = null;
+let length = null;
 
 function persist() {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify({
       ratings: Array.from(ratings),
       seed,
+      length,
       skipped: Array.from(skipped),
       genreIndex: position.genreIndex,
       movieIndex: position.movieIndex,
@@ -49,6 +52,13 @@ export function saveSeed(value) {
   persist();
 }
 
+// Quick (10) or Full (15): how many genres this session covers. Anything else is ignored.
+export function saveLength(value) {
+  if (!isValidLength(value)) return;
+  length = value;
+  persist();
+}
+
 export function savePosition(genreIndex, movieIndex) {
   position = { genreIndex, movieIndex };
   persist();
@@ -74,9 +84,9 @@ function validExtra(value, validIds) {
   return value.shown.every(id => typeof id === 'string' && validIds.has(id));
 }
 
-// Returns the saved { seed, genreIndex, movieIndex, extra } and refills the ratings, or null
+// Returns the saved { seed, length, genreIndex, movieIndex, extra } and refills the ratings, or null
 // if nothing usable was saved. Anything malformed is ignored as a whole.
-export function loadSavedState(validIds, genreCount) {
+export function loadSavedState(validIds) {
   let saved;
   try {
     saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -89,6 +99,8 @@ export function loadSavedState(validIds, genreCount) {
   }
   const { genreIndex, movieIndex } = saved;
   if (!validSeed(saved.seed)) return null;
+  if (!isValidLength(saved.length)) return null;
+  const genreCount = saved.length;
   if (!Number.isInteger(genreIndex) || genreIndex < 0 || genreIndex > genreCount) return null;
   if (!Number.isInteger(movieIndex) || movieIndex < 0) return null;
 
@@ -114,7 +126,8 @@ export function loadSavedState(validIds, genreCount) {
   position = { genreIndex, movieIndex };
   extra = saved.extra;
   seed = saved.seed;
-  return { seed, genreIndex, movieIndex, extra };
+  length = saved.length;
+  return { seed, length, genreIndex, movieIndex, extra };
 }
 
 export function clearSavedState() {
@@ -123,6 +136,7 @@ export function clearSavedState() {
   position = { genreIndex: 0, movieIndex: 0 };
   extra = null;
   seed = null;
+  length = null;
   try {
     localStorage.removeItem(STORAGE_KEY);
   } catch (e) {

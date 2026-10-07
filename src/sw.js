@@ -10,7 +10,7 @@ const SHELL = [
   './', './index.html', './style.css',
   './main.js', './ui.js', './ratings.js', './recommend.js', './similarity.js', './why.js',
   './candidates.js', './percentile.js', './format.js', './links.js', './route.js',
-  './detail.js', './availability.js', './shuffle.js', './offline.js',
+  './detail.js', './availability.js', './shuffle.js', './offline.js', './progress.js',
 ];
 // Cached when available; a miss is not fatal (availability.json may not exist yet, and the
 // manifest and icons are only for installing the app).

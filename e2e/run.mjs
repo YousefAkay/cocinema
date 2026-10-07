@@ -2,7 +2,7 @@
 // Uses the Chrome that is already installed (no browser download).
 import path from 'node:path';
 import { chromium } from 'playwright';
-import { shots, startServer, createRecorder } from './helpers.mjs';
+import { shots, startServer, createRecorder, chooseAndStart } from './helpers.mjs';
 
 const server = await startServer();
 const base = server.base;
@@ -44,8 +44,8 @@ async function firstFilmInFreshSession() {
   const fresh = await browser.newContext({ viewport: { width: 375, height: 667 }, serviceWorkers: 'block' });
   const freshPage = await fresh.newPage();
   await freshPage.goto(base);
-  await freshPage.waitForSelector('#start-button:not([disabled])');
-  await freshPage.click('#start-button');
+  await freshPage.waitForSelector('.length-card');
+  await chooseAndStart(freshPage);
   await freshPage.waitForSelector('#rating-screen .movie-card p');
   const film = await currentFilm(freshPage);
   await fresh.close();
@@ -66,13 +66,13 @@ async function completeOnboarding() {
   return order;
 }
 
-const storedSeed = () => page.evaluate(() => JSON.parse(localStorage.getItem('cocinema:v3')).seed);
+const storedSeed = () => page.evaluate(() => JSON.parse(localStorage.getItem('cocinema:v4')).seed);
 
 const noSideScroll = () => page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth);
 
 try {
   await page.goto(base);
-  await page.waitForSelector('#start-button:not([disabled])');
+  await page.waitForSelector('.length-card');
   await page.screenshot({ path: path.join(shots, '1-landing.png') });
 
   // Shuffled onboarding: each fresh profile gets its own random seed, so across 6 fresh
@@ -82,7 +82,7 @@ try {
   check('fresh sessions do not all start on the same film', new Set(firstFilms).size > 1, `${new Set(firstFilms).size} different of 6`);
 
   // Onboarding
-  await page.click('#start-button');
+  await chooseAndStart(page);
   await page.waitForSelector('#rating-screen .movie-card p');
   const firstFilm = await currentFilm();
   const firstSeed = await storedSeed();
@@ -335,13 +335,13 @@ try {
   await page.getByRole('button', { name: 'Start over' }).click();
   check('Start over returns to the landing screen', await page.locator('#landing-screen').isVisible());
   await page.reload();
-  await page.waitForSelector('#start-button:not([disabled])');
-  const saved = await page.evaluate(() => localStorage.getItem('cocinema:v3'));
+  await page.waitForSelector('.length-card');
+  const saved = await page.evaluate(() => localStorage.getItem('cocinema:v4'));
   check('after Start over and a refresh, nothing is resumed', (await page.locator('#landing-screen').isVisible()) && saved === null);
   await page.screenshot({ path: path.join(shots, '5-after-start-over.png') });
 
   // A new session after Start over: new seed, new order.
-  await page.click('#start-button');
+  await chooseAndStart(page);
   await page.waitForSelector('#rating-screen .movie-card p');
   const secondSeed = await storedSeed();
   const order2 = await completeOnboarding();

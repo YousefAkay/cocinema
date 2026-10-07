@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { shuffle, seededRandom, buildSession, newSeed } from '../src/shuffle.js';
+import { shuffle, seededRandom, buildSession, newSeed, isValidLength, LENGTHS } from '../src/shuffle.js';
 
 const range = n => Array.from({ length: n }, (_, i) => i);
 
@@ -91,4 +91,48 @@ test('newSeed gives whole numbers the saved-state check accepts', () => {
     const seed = newSeed();
     assert.ok(Number.isInteger(seed) && seed >= 0 && seed <= 4294967295);
   }
+});
+
+const fifteen = Array.from({ length: 15 }, (_, i) => ({ genre: `G${i}`, movies: [{ id: `m${i}a` }, { id: `m${i}b` }] }));
+
+test('only 10 and 15 are valid session lengths', () => {
+  assert.deepEqual(LENGTHS, [10, 15]);
+  assert.equal(isValidLength(10), true);
+  assert.equal(isValidLength(15), true);
+  for (const bad of [0, 5, 9, 11, 14, 16, 20, '10', '15', null, undefined, NaN, 10.5]) {
+    assert.equal(isValidLength(bad), false, String(bad));
+  }
+});
+
+test('a Quick session has exactly 10 distinct genres, all from the 15', () => {
+  const all = new Set(fifteen.map(entry => entry.genre));
+  for (const seed of [1, 2, 3, 99, 4242, 4294967295]) {
+    const genres = buildSession(fifteen, seed, 10).map(entry => entry.genre);
+    assert.equal(genres.length, 10);
+    assert.equal(new Set(genres).size, 10);
+    assert.ok(genres.every(genre => all.has(genre)));
+  }
+});
+
+test('a Full session keeps all 15 genres', () => {
+  const genres = buildSession(fifteen, 7, 15).map(entry => entry.genre);
+  assert.equal(genres.length, 15);
+  assert.equal(new Set(genres).size, 15);
+});
+
+test('the Quick genres are deterministic for a seed and differ across seeds', () => {
+  const pick = seed => buildSession(fifteen, seed, 10).map(entry => entry.genre).join();
+  assert.equal(pick(31), pick(31));
+  const sets = new Set([1, 2, 3, 4, 5, 6, 7, 8].map(seed => buildSession(fifteen, seed, 10).map(entry => entry.genre).sort().join()));
+  assert.ok(sets.size > 1, 'different seeds should choose different 10-genre sets');
+});
+
+test('a Quick session is the first 10 genres of the same seed Full order', () => {
+  const full = buildSession(fifteen, 55, 15).map(entry => entry.genre);
+  const quick = buildSession(fifteen, 55, 10).map(entry => entry.genre);
+  assert.deepEqual(quick, full.slice(0, 10));
+});
+
+test('buildSession rejects an unsupported length', () => {
+  assert.throws(() => buildSession(fifteen, 1, 12));
 });

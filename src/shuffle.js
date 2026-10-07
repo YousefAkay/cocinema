@@ -29,10 +29,22 @@ export function shuffle(list, random) {
   return result;
 }
 
+// How many genres (and so roughly how many films) a session covers: Quick or Full.
+export const LENGTHS = [10, 15];
+
+export function isValidLength(value) {
+  return LENGTHS.includes(value);
+}
+
 // The onboarding order for one session: genres in a random order, and the films inside each
-// genre in a random order. Same seed and same pools give the same result.
-export function buildSession(onboarding, seed) {
+// genre in a random order. A Quick session (10) takes the first 10 genres of that shuffled
+// order, so each session asks about a different 10, and the same seed always gives the same ones.
+// Same seed, same pools and same length give the same result.
+export function buildSession(onboarding, seed, length = onboarding.length) {
+  if (!isValidLength(length) && length !== onboarding.length) {
+    throw new Error(`Unsupported session length: ${length}`);
+  }
   const random = seededRandom(seed);
-  const genres = shuffle(onboarding, random);
+  const genres = shuffle(onboarding, random).slice(0, length);
   return genres.map(entry => ({ ...entry, movies: shuffle(entry.movies, random) }));
 }

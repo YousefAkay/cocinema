@@ -1,6 +1,6 @@
 // Offline checks: load once online, go offline, and use the whole app; then simulate a new deploy.
 import { chromium } from 'playwright';
-import { startServer, createRecorder } from './helpers.mjs';
+import { startServer, createRecorder, chooseAndStart } from './helpers.mjs';
 
 const server = await startServer();
 const { check, summary } = createRecorder();
@@ -24,7 +24,7 @@ try {
 
   // First visit, online
   await page.goto(server.base);
-  await page.waitForSelector('#start-button:not([disabled])');
+  await page.waitForSelector('.length-card');
   const scope = await page.evaluate(async () => (await navigator.serviceWorker.ready).scope);
   check('the service worker registers and activates, controlling the whole site', scope === `${server.origin}/`, scope);
   await page.waitForFunction(() => navigator.serviceWorker.controller !== null);
@@ -37,17 +37,19 @@ try {
   // Offline: landing
   await context.setOffline(true);
   await page.reload();
+  await page.waitForSelector('.length-card');
+  await page.locator('.length-card:has(input[value="15"])').click();
   await page.waitForSelector('#start-button:not([disabled])');
-  check('offline: the landing page loads and Get started is enabled', await page.locator('#landing-screen').isVisible());
+  check('offline: the landing page loads and, after choosing a length, Get started is enabled', await page.locator('#landing-screen').isVisible());
   check('offline: the notice appears', await page.locator('#offline-notice').isVisible() && (await page.locator('#offline-notice').innerText()) === 'Offline - using saved data');
 
   // Offline: the site root redirects into the app
   await page.goto(`${server.origin}/`);
-  await page.waitForSelector('#start-button:not([disabled])');
+  await page.waitForSelector('.length-card');
   check('offline: opening the site root still reaches the app', page.url() === server.base && await page.locator('#landing-screen').isVisible(), page.url());
 
   // Offline: full onboarding, results, film page, refresh
-  await page.click('#start-button');
+  await chooseAndStart(page);
   let step = 0;
   while (await page.locator('#rating-screen').isVisible() && step < 60) {
     await page.getByRole('button', { name: String(scoreCycle[step % scoreCycle.length]), exact: true }).click();
@@ -111,8 +113,8 @@ try {
   const plainPage = await plain.newPage();
   watch(plainPage);
   await plainPage.goto(server.base);
-  await plainPage.waitForSelector('#start-button:not([disabled])');
-  await plainPage.click('#start-button');
+  await plainPage.waitForSelector('.length-card');
+  await chooseAndStart(plainPage);
   await plainPage.waitForSelector('#rating-screen .rating-widget');
   check('the app works when the service worker cannot register', await plainPage.locator('#rating-screen').isVisible());
   await plain.close();

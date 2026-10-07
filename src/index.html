@@ -36,8 +36,22 @@
       <h1 tabindex="-1">CoCinema</h1>
       <p>Rate a handful of movies you've seen. CoCinema reads the plots of what you loved (and what you didn't), then finds films whose stories match your taste.</p>
       <p id="load-error" role="alert" hidden></p>
+      <fieldset class="length-choice" id="length-choice">
+        <legend>How many films do you want to rate?</legend>
+        <label class="length-card">
+          <input type="radio" name="length" value="10" autocomplete="off">
+          <span class="length-title">Quick</span>
+          <span class="length-detail">10 films, about a minute</span>
+        </label>
+        <label class="length-card">
+          <input type="radio" name="length" value="15" autocomplete="off">
+          <span class="length-title">Full</span>
+          <span class="length-detail">15 films, about two minutes, sharper first picks</span>
+        </label>
+      </fieldset>
       <button id="retry-button" hidden>Retry</button>
       <button id="start-button" disabled>Get started</button>
+      <p id="length-status" class="length-status" role="status">Choose a length to begin</p>
     </div>
 
     <div id="rating-screen" style="display: none;">

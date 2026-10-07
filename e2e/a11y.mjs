@@ -3,7 +3,7 @@
 import path from 'node:path';
 import { chromium } from 'playwright';
 import AxeBuilder from '@axe-core/playwright';
-import { shots, startServer, createRecorder } from './helpers.mjs';
+import { shots, startServer, createRecorder, chooseAndStart } from './helpers.mjs';
 
 const server = await startServer();
 const { check, summary } = createRecorder();
@@ -49,10 +49,10 @@ try {
   const page = await context.newPage();
   watch(page);
   await page.goto(server.base);
-  await page.waitForSelector('#start-button:not([disabled])');
+  await page.waitForSelector('.length-card');
   await scan(page, 'landing screen');
 
-  await page.click('#start-button');
+  await chooseAndStart(page);
   await page.waitForSelector('#rating-screen .rating-widget');
   await scan(page, 'rating screen');
 
@@ -82,8 +82,8 @@ try {
   const flatPage = await flat.newPage();
   watch(flatPage);
   await flatPage.goto(server.base);
-  await flatPage.waitForSelector('#start-button:not([disabled])');
-  await flatPage.click('#start-button');
+  await flatPage.waitForSelector('.length-card');
+  await chooseAndStart(flatPage);
   await onboard(flatPage, [5]);
   await flatPage.waitForSelector('#results-screen .start-over');
   await scan(flatPage, 'empty-results message');
@@ -104,14 +104,25 @@ try {
   const kbPage = await keyboard.newPage();
   watch(kbPage);
   await kbPage.goto(server.base);
-  await kbPage.waitForSelector('#start-button:not([disabled])');
+  await kbPage.waitForSelector('.length-card');
   const focused = () => kbPage.evaluate(() => {
     const node = document.activeElement;
-    return node ? `${node.tagName.toLowerCase()}:${node.textContent.trim()}` : 'none';
+    if (!node) return 'none';
+    return node.tagName === 'INPUT' ? `input:${node.value}` : `${node.tagName.toLowerCase()}:${node.textContent.trim()}`;
   });
 
+  check('landing: nothing is chosen and Get started is disabled until a choice is made',
+    (await kbPage.locator('input[name="length"]:checked').count()) === 0 && await kbPage.locator('#start-button').isDisabled());
   await kbPage.keyboard.press('Tab');
-  check('landing: the first Tab stops on "Get started"', (await focused()) === 'button:Get started', await focused());
+  check('landing: the first Tab stops on the first length option', (await focused()) === 'input:10', await focused());
+  await kbPage.keyboard.press('ArrowDown');
+  check('landing: the arrow key moves to Full and chooses it', (await focused()) === 'input:15' && await kbPage.locator('input[value="15"]').isChecked());
+  await kbPage.keyboard.press('ArrowUp');
+  await kbPage.keyboard.press('Space');
+  check('landing: Space chooses Quick', await kbPage.locator('input[value="10"]').isChecked());
+  await kbPage.waitForSelector('#start-button:not([disabled])');
+  await kbPage.keyboard.press('Tab');
+  check('landing: the next Tab reaches Get started', (await focused()) === 'button:Get started', await focused());
   await kbPage.keyboard.press('Enter');
   await kbPage.waitForSelector('#rating-screen .rating-widget');
   const firstLabel = await kbPage.locator('#rating-screen > h1').textContent();

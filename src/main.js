@@ -1,6 +1,6 @@
 import { renderMovieCard, renderRatingWidget, renderResults, renderTopPick } from './ui.js';
 import {
-  getAllRatings, getSkippedIds, markSkipped, savePosition, saveExtra, saveSeed, loadSavedState, clearSavedState,
+  getAllRatings, getSkippedIds, markSkipped, savePosition, saveExtra, saveSeed, saveLength, loadSavedState, clearSavedState,
 } from './ratings.js';
 import { recommend, explainMatch } from './recommend.js';
 import { buildWhyLine } from './why.js';
@@ -10,8 +10,9 @@ import { titleWithYear, genreOrder } from './format.js';
 import { parseHash, shortId } from './route.js';
 import { renderDetail, renderNotFound, renderStreaming, showStreamingLoading } from './detail.js';
 import { loadAvailability, streamingView } from './availability.js';
-import { buildSession, newSeed } from './shuffle.js';
+import { buildSession, newSeed, isValidLength } from './shuffle.js';
 import { registerServiceWorker, watchOnlineStatus } from './offline.js';
+import { resolveStep, progressLabel } from './progress.js';
 
 const TOP_COUNT = 5;
 const RESULT_COUNT = 25;
@@ -20,6 +21,8 @@ let catalog = [];
 let onboarding = [];
 let seed = newSeed();
 let session = [];
+let sessionLength = null; // 10 (Quick) or 15 (Full) once a session has started
+let dataLoaded = false;
 let catalogById = new Map();
 let moviesByQid = new Map();
 let genreRank = [];
@@ -111,25 +114,20 @@ function showCurrentMovie() {
     return;
   }
 
-  if (genreIndex >= session.length) {
+  const step = resolveStep(session, genreIndex, movieIndex, id => catalogById.has(id));
+  if (step.genreIndex !== genreIndex || step.movieIndex !== movieIndex) {
+    genreIndex = step.genreIndex;
+    movieIndex = step.movieIndex;
+    savePosition(genreIndex, movieIndex);
+  }
+  if (step.done) {
     showResults();
     return;
   }
 
-  const genre = session[genreIndex];
-  if (movieIndex >= genre.movies.length) {
-    nextGenre();
-    return;
-  }
-
-  const movie = catalogById.get(genre.movies[movieIndex].id);
-  if (!movie) {
-    nextMovie();
-    return;
-  }
-
+  const movie = catalogById.get(step.movieId);
   showRatingStep({
-    label: `${genre.genre} · ${genreIndex + 1} / ${session.length}`,
+    label: progressLabel(step),
     movie,
     onConfirm: nextGenre,
     onSkip: () => skipMovie(movie),
@@ -246,6 +244,12 @@ function showResults(notice, restoreScroll = false) {
 
   if (notice) {
     addParagraph(resultsScreen, 'results-notice', notice);
+  }
+
+  const noun = ratings.length === 1 ? 'film' : 'films';
+  addParagraph(resultsScreen, 'results-basis', `These picks are based on the ${ratings.length} ${noun} you rated.`);
+  if (sessionLength === 10) {
+    addParagraph(resultsScreen, 'results-nudge', `Want sharper picks? Rate ${EXTRA_COUNT} more.`);
   }
 
   const topSection = document.createElement('section');
@@ -379,7 +383,9 @@ function startOver() {
   started = false;
   cameFromResults = false;
   seed = newSeed();
-  session = buildSession(onboarding, seed);
+  session = [];
+  sessionLength = null;
+  clearLengthChoice();
   resultsScreen.innerHTML = '';
   ratingScreen.innerHTML = '';
   detailScreen.innerHTML = '';
@@ -399,16 +405,49 @@ function setLoadError(message) {
   retryButton.hidden = !message;
 }
 
+const lengthInputs = [...document.querySelectorAll('input[name="length"]')];
+const lengthStatus = document.getElementById('length-status');
+
+// The length picked on the landing screen, or null. Only 10 and 15 count.
+function chosenLength() {
+  const picked = lengthInputs.find(input => input.checked);
+  const value = picked ? Number(picked.value) : null;
+  return isValidLength(value) ? value : null;
+}
+
+const LENGTH_TEXT = { 10: 'Ready: 10 films, about a minute', 15: 'Ready: 15 films, about two minutes' };
+
+// Get started needs both the data and a chosen length; nothing is chosen for the visitor.
+function updateStartState() {
+  const length = chosenLength();
+  startButton.disabled = !(dataLoaded && length);
+  lengthStatus.textContent = length ? LENGTH_TEXT[length] : 'Choose a length to begin';
+}
+
+function clearLengthChoice() {
+  lengthInputs.forEach(input => { input.checked = false; });
+  updateStartState();
+}
+
+lengthInputs.forEach(input => input.addEventListener('change', updateStartState));
+// Browsers can remember a ticked radio across a reload; the landing screen always starts empty.
+clearLengthChoice();
+
 startButton.addEventListener('click', function() {
-  if (startButton.disabled) {
+  const length = chosenLength();
+  if (startButton.disabled || !length) {
     return;
   }
   started = true;
+  sessionLength = length;
+  session = buildSession(onboarding, seed, sessionLength);
   saveSeed(seed);
+  saveLength(sessionLength);
   showCurrentMovie();
 });
 
 async function loadData() {
+  dataLoaded = false;
   startButton.disabled = true;
   retryButton.disabled = true;
   setLoadError('');
@@ -428,17 +467,19 @@ async function loadData() {
   catalogById = new Map(catalog.map(movie => [movie.id, movie]));
   moviesByQid = new Map(catalog.map(movie => [shortId(movie.id), movie]));
   genreRank = genreOrder(catalog, onboarding);
-  startButton.disabled = false;
+  dataLoaded = true;
+  updateStartState();
 
-  const saved = loadSavedState(new Set(catalogById.keys()), onboarding.length);
+  const saved = loadSavedState(new Set(catalogById.keys()));
   if (saved) {
     seed = saved.seed;
+    sessionLength = saved.length;
     genreIndex = saved.genreIndex;
     movieIndex = saved.movieIndex;
     extra = saved.extra;
     started = true;
+    session = buildSession(onboarding, seed, sessionLength);
   }
-  session = buildSession(onboarding, seed);
   route();
 }
 
