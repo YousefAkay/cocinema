@@ -5,12 +5,13 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const vercelConfig = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
 export const shots = path.join(root, 'screenshots');
 fs.mkdirSync(shots, { recursive: true });
 
 const TYPES = {
   '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
-  '.webmanifest': 'application/manifest+json', '.png': 'image/png', '.svg': 'image/svg+xml', '.ico': 'image/x-icon',
+  '.webmanifest': 'application/manifest+json', '.png': 'image/png', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.webmanifest': 'application/manifest+json',
 };
 
 // Mirrors the parts of vercel.json that matter here: "/" redirects to "/src/", and the service
@@ -24,18 +25,21 @@ export async function startServer() {
     const urlPath = decodeURIComponent(new URL(req.url, 'http://127.0.0.1').pathname);
     state.counts.set(urlPath, (state.counts.get(urlPath) || 0) + 1);
 
-    if (urlPath === '/') {
-      res.writeHead(308, { Location: '/src/' }).end();
+    const redirect = (vercelConfig.redirects || []).find(rule => rule.source === urlPath);
+    if (redirect) {
+      res.writeHead(308, { Location: redirect.destination }).end();
       return;
     }
-    const file = path.join(root, urlPath.endsWith('/') ? urlPath + 'index.html' : urlPath);
+    const rewrite = (vercelConfig.rewrites || []).find(rule => rule.source === urlPath);
+    const servedPath = rewrite ? rewrite.destination : urlPath;
+    const file = path.join(root, servedPath.endsWith('/') ? servedPath + 'index.html' : servedPath);
     if (!file.startsWith(root) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) {
       res.writeHead(404).end();
       return;
     }
 
     const headers = { 'Content-Type': TYPES[path.extname(file)] || 'application/octet-stream' };
-    if (urlPath === '/src/sw.js') {
+    if (servedPath === '/src/sw.js') {
       headers['Cache-Control'] = 'public, max-age=0, must-revalidate';
       headers['Service-Worker-Allowed'] = '/';
       let body = fs.readFileSync(file, 'utf8');
