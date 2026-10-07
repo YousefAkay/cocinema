@@ -4,7 +4,9 @@
      "description": "A content-based movie recommender using plot embeddings and cosine similarity. One AI call per movie, everything else computed client-side.",
      "type": "module",
      "scripts": {
-          "build:catalog": "node scripts/buildCatalog.js"
+          "build:catalog": "node scripts/buildCatalog.js",
+          "test": "node --test \"tests/**/*.test.js\"",
+          "evaluate": "node scripts/evaluate.js"
      },
      "license": "MIT",
      "dependencies": {

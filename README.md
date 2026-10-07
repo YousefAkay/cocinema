@@ -71,6 +71,14 @@ Every catalog entry is checked against OMDb by title and year. A record is accep
 
 ---
 
+## Evaluation
+
+Run on 7 October 2026 with `npm run evaluate` (fixed seed, no network). Mean over 20 genres and 1,000 synthetic users: precision@10 of 0.58 against a 0.16 baseline (a lift of 4.5x), the held-out liked film at the 72nd percentile on average, and found in the top 20 for 14% of users.
+
+Method: for each genre with at least 25 films, a synthetic user is generated 50 times. They rate 6 films of that genre 9 or 10, 4 films outside it 2 or 3, and 2 other films 5 or 6, all picked at random with a fixed seed. One more film of the genre is held back. The real `recommend()` function ranks every unrated film, and the script records how much of the top 10 is in the genre, how that compares with the genre's share of the whole catalog, and where the held-back film lands.
+
+Limitation: these are synthetic users whose taste is defined by Wikidata genre labels, and a film can carry several labels. The numbers show that the recommender picks up a genre signal from ratings. They say nothing about accuracy for real people, and results vary a lot by genre (from about 1.5x for drama to about 11x for westerns).
+
 ## Tech stack
 
 - **Frontend:** plain JavaScript (ES modules), HTML, CSS. No framework, no build step.
@@ -107,6 +115,10 @@ npm install
 #   OMDB_API_KEY=your_key
 #   OPENAI_API_KEY=your_key
 node scripts/buildCatalog.js
+
+# Run the unit tests and the synthetic evaluation
+npm test
+npm run evaluate
 
 # Serve the site
 npx serve . -l tcp://127.0.0.1:3000
