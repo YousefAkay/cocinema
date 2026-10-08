@@ -8884,34 +8884,6 @@
     ]
    }
   },
-  "http://www.wikidata.org/entity/Q2840289": {
-   "matched": true,
-   "CA": {
-    "subscription": [
-     "Disney+"
-    ],
-    "rentOrBuy": [
-     "AppleTV"
-    ]
-   },
-   "US": {
-    "subscription": [
-     "Disney+"
-    ],
-    "rentOrBuy": [
-     "Amazon",
-     "AppleTV",
-     "Fandango at Home",
-     "Google Play"
-    ]
-   },
-   "GB": {
-    "subscription": [
-     "Disney+"
-    ],
-    "rentOrBuy": []
-   }
-  },
   "http://www.wikidata.org/entity/Q975962": {
    "matched": true,
    "CA": {
@@ -9021,21 +8993,6 @@
     "rentOrBuy": [
      "AppleTV"
     ]
-   }
-  },
-  "http://www.wikidata.org/entity/Q1011848": {
-   "matched": true,
-   "CA": {
-    "subscription": [],
-    "rentOrBuy": []
-   },
-   "US": {
-    "subscription": [],
-    "rentOrBuy": []
-   },
-   "GB": {
-    "subscription": [],
-    "rentOrBuy": []
    }
   },
   "http://www.wikidata.org/entity/Q54152472": {
@@ -9339,21 +9296,6 @@
      "Fandango at Home",
      "Google Play"
     ]
-   },
-   "GB": {
-    "subscription": [],
-    "rentOrBuy": []
-   }
-  },
-  "http://www.wikidata.org/entity/Q30051739": {
-   "matched": false,
-   "CA": {
-    "subscription": [],
-    "rentOrBuy": []
-   },
-   "US": {
-    "subscription": [],
-    "rentOrBuy": []
    },
    "GB": {
     "subscription": [],
@@ -20484,7 +20426,47 @@
     ]
    }
   },
-  "http://www.wikidata.org/entity/Q25019036": {
+  "http://www.wikidata.org/entity/Q49498": {
+   "matched": true,
+   "CA": {
+    "subscription": [
+     "Hoopla",
+     "Netflix",
+     "StackTV (Via Amazon Prime)"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Cineplex"
+    ]
+   },
+   "US": {
+    "subscription": [
+     "Paramount Plus",
+     "Paramount+ (Via Amazon Prime)"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Fandango at Home",
+     "Spectrum On Demand"
+    ]
+   },
+   "GB": {
+    "subscription": [
+     "Netflix",
+     "Sky Go"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Chili",
+     "Rakuten TV",
+     "Sky Store"
+    ]
+   }
+  },
+  "http://www.wikidata.org/entity/Q20856802": {
    "matched": true,
    "CA": {
     "subscription": [
