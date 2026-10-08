@@ -6,5 +6,107 @@
   "http://www.wikidata.org/entity/Q54152472": {
     "omdbTitle": "Luis & the Aliens",
     "note": "OMDb spells the title with an ampersand"
+  },
+  "http://www.wikidata.org/entity/Q13255497": {
+    "omdbTitle": "Birdman or (The Unexpected Virtue of Ignorance)",
+    "omdbYear": 2014,
+    "note": "The stored record is a 30 minute short. Wikidata: Birdman (2014), 119 min, Alejandro Gonzalez Inarritu. OMDb lists it under its full title"
+  },
+  "http://www.wikidata.org/entity/Q1043614": {
+    "omdbTitle": "Like Stars on Earth",
+    "omdbYear": 2007,
+    "note": "The stored plot is a singing show. Wikidata: Taare Zameen Par (2007 film), 165 min, Aamir Khan. OMDb lists the film as Like Stars on Earth"
+  },
+  "http://www.wikidata.org/entity/Q105702": {
+    "omdbTitle": "Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb",
+    "omdbYear": 1964,
+    "note": "The stored record mixes Kubrick's poster with another film's plot and director (the plot check passed on the poster alone). Wikidata: 1964, Stanley Kubrick. OMDb lists it under the full title",
+    "refreshMeta": true
+  },
+  "http://www.wikidata.org/entity/Q309048": {
+    "refreshMeta": true,
+    "note": "King Kong (1933) carries the 2005 film's director, runtime, score and poster. OMDb's plots for the two films are almost the same text, so the plot cannot tell them apart. Wikidata: 1933, Merian C. Cooper and Ernest B. Schoedsack, 100 min"
+  },
+  "http://www.wikidata.org/entity/Q2593047": {
+    "omdbYear": 1994,
+    "allowMissingScore": true,
+    "note": "The catalog id is Jan Svankmajer's Faust (1994, 97 min, per Wikidata), but the stored record was Murnau's 1926 film. OMDb has the 1994 film with no Rotten Tomatoes score"
+  },
+  "http://www.wikidata.org/entity/Q28233477": {
+    "omdbYear": 2017,
+    "allowMissingScore": true,
+    "note": "The catalog id is the 2017 animated Sahara (Pierre Core, per Wikidata), but the stored plot was the 2005 film's. OMDb has the 2017 film with no Rotten Tomatoes score"
+  },
+  "http://www.wikidata.org/entity/Q76479": {
+    "omdbYear": 1967,
+    "note": "OMDb dates A Fistful of Dollars 1967 (US release), Wikidata says 1964"
+  },
+  "http://www.wikidata.org/entity/Q153677": {
+    "omdbYear": 1967,
+    "note": "OMDb dates For a Few Dollars More 1967 (US release), Wikidata says 1965"
+  },
+  "http://www.wikidata.org/entity/Q339804": {
+    "omdbYear": 1999,
+    "note": "OMDb dates Children of Heaven 1999 (US release), Wikidata says 1997"
+  },
+  "http://www.wikidata.org/entity/Q171861": {
+    "acceptStored": true,
+    "note": "The Artist (2011). OMDb's lookup returns an unrelated film of the same name. Wikidata: 2011, 100 min, Michel Hazanavicius, matching the stored record"
+  },
+  "http://www.wikidata.org/entity/Q190525": {
+    "acceptStored": true,
+    "note": "Memento (2000). OMDb's lookup returns a record with no plot. Wikidata: 2000, 113 min, Christopher Nolan, matching the stored record"
+  },
+  "http://www.wikidata.org/entity/Q486239": {
+    "acceptStored": true,
+    "note": "Saw (the 2004 feature, dated 2003 by Wikidata). OMDb's lookup returns a 9 minute short. Wikidata: 103 min, James Wan, matching the stored record"
+  },
+  "http://www.wikidata.org/entity/Q18002795": {
+    "acceptStored": true,
+    "note": "The Revenant (2015). OMDb's lookup returns an unrelated film of the same name. Wikidata: 2015, 157 min, Alejandro Gonzalez Inarritu; the stored record has 156 min and the same director"
+  },
+  "http://www.wikidata.org/entity/Q25136757": {
+    "acceptStored": true,
+    "note": "Call Me by Your Name (2017). OMDb's lookup returns a record with no plot. Wikidata: 2017, 132 min, Luca Guadagnino, matching the stored record"
+  },
+  "http://www.wikidata.org/entity/Q189540": {
+    "acceptStored": true,
+    "note": "Seven Samurai (1954). OMDb's lookup returns a record with no plot. Wikidata: 1954, 207 min, Akira Kurosawa; the stored plot (a veteran samurai hired to protect a village from bandits) is this film"
+  },
+  "http://www.wikidata.org/entity/Q188000": {
+    "acceptStored": true,
+    "note": "Crash (2004). OMDb's lookup returns a 5 minute short. Wikidata: 2004, 112 min, Paul Haggis, matching the stored record"
+  },
+  "http://www.wikidata.org/entity/Q201687": {
+    "acceptStored": true,
+    "note": "Milk (2008). OMDb's lookup returns a 14 minute short. Wikidata: 2008, 128 min, Gus Van Sant, matching the stored record"
+  },
+  "http://www.wikidata.org/entity/Q174371": {
+    "acceptStored": true,
+    "note": "127 Hours (2010). OMDb's lookup returns a 35 minute documentary. Wikidata: 2010, 94 min, Danny Boyle, matching the stored record"
+  },
+  "http://www.wikidata.org/entity/Q201674": {
+    "acceptStored": true,
+    "note": "The Deer Hunter (1978). OMDb's lookup returns a record with no plot. Wikidata: 1978, 182 min, Michael Cimino; the stored record has 183 min and the same director"
+  },
+  "http://www.wikidata.org/entity/Q62721520": {
+    "acceptStored": true,
+    "note": "1917 (2019). OMDb's lookup returns a record with no plot. Wikidata: 2019, 119 min, Sam Mendes, matching the stored record"
+  },
+  "http://www.wikidata.org/entity/Q21869840": {
+    "acceptStored": true,
+    "note": "Split (2016). OMDb's lookup returns an unrelated film of the same name. Wikidata: 2016, 116 min, M. Night Shyamalan; the stored record has 117 min and the same director"
+  },
+  "http://www.wikidata.org/entity/Q272036": {
+    "acceptStored": true,
+    "note": "Wings (1927). OMDb's lookup returns a 1926 film with a similar name. Wikidata: 1927, 141 min, William A. Wellman and Harry d'Abbadie d'Arrast; the stored record has 144 min and the same directors"
+  },
+  "http://www.wikidata.org/entity/Q220741": {
+    "acceptStored": true,
+    "note": "City of God (2002). OMDb has no record under the English or the Portuguese title. Wikidata: 2002, 128 min, Fernando Meirelles and Katia Lund, matching the stored record"
+  },
+  "http://www.wikidata.org/entity/Q550232": {
+    "acceptStored": true,
+    "note": "Arthur and the Minimoys (2006). OMDb has no record under this title. Wikidata: 2006, 100 min, Luc Besson; the stored plot (a ten year old boy and his grandmother's house) is this film"
   }
 }

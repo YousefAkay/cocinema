@@ -58,8 +58,19 @@ async function run() {
   let limitReached = false;
 
   for (const movie of todo) {
+    const override = overrides[movie.id];
+
+    // A person has checked this stored record against Wikidata (see the note in overrides.json),
+    // so there is nothing to ask OMDb.
+    if (override && override.acceptStored) {
+      progress[movie.id] = { title: movie.title, status: 'VERIFIED', byOverride: true };
+      console.log(`VERIFIED by override: "${movie.title}" (${movie.year})`);
+      checked++;
+      continue;
+    }
+
     try {
-      const result = await lookupByYear(movie, overrides[movie.id], sleep);
+      const result = await lookupByYear(movie, override, sleep);
 
       if (result.notFound) {
         progress[movie.id] = { title: movie.title, status: 'NOT_FOUND', reason: 'no OMDb record for any allowed year' };
@@ -70,9 +81,11 @@ async function run() {
         const { data } = result;
         const overlap = plotOverlap(movie.plot, data.Plot);
         const samePoster = posterKey(movie.poster) !== null && posterKey(movie.poster) === posterKey(data.Poster);
-        const verified = overlap >= MIN_PLOT_OVERLAP || samePoster;
+        // refreshMeta: the plot cannot tell this film from another (a remake with a near-identical
+        // plot), so its director, runtime, score and poster are always taken from the year-matched record.
+        const verified = (overlap >= MIN_PLOT_OVERLAP || samePoster) && !(override && override.refreshMeta);
         const correct = {
-          plot: data.Plot,
+          plot: clean(data.Plot),
           poster: clean(data.Poster),
           runtime: clean(data.Runtime),
           director: clean(data.Director),
@@ -84,7 +97,9 @@ async function run() {
         // an obscure short that shares the title, so it is flagged for a human instead of
         // replacing the entry.
         const minutes = parseInt(correct.runtime, 10);
-        const trustworthy = clean(correct.plot) !== null && correct.rottenTomatoes !== null
+        // allowMissingScore: a person confirmed the year-matched record is the right film even
+        // though it has no Rotten Tomatoes score.
+        const trustworthy = clean(correct.plot) !== null && (correct.rottenTomatoes !== null || Boolean(override && override.allowMissingScore))
           && Number.isFinite(minutes) && minutes >= MIN_FEATURE_MINUTES;
         const status = verified ? 'VERIFIED' : trustworthy ? 'MISMATCH' : 'REVIEW';
 

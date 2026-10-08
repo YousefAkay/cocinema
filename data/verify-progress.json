@@ -1,10 +1,4 @@
 {
- "http://www.wikidata.org/entity/Q309048": {
-  "title": "King Kong",
-  "status": "VERIFIED",
-  "overlap": 0.98,
-  "omdbYear": 1933
- },
  "http://www.wikidata.org/entity/Q160215": {
   "title": "King Kong",
   "status": "VERIFIED",
@@ -161,39 +155,11 @@
   "overlap": 1,
   "omdbYear": 2013
  },
- "http://www.wikidata.org/entity/Q13255497": {
-  "title": "Birdman",
-  "status": "REVIEW",
-  "overlap": 0.09,
-  "omdbYear": 2014,
-  "correct": {
-   "plot": "A portrait of Robert, a troubled but poetic soul struggling with his purgatorial existence in a hackney scrapyard.",
-   "poster": null,
-   "runtime": "13 min",
-   "director": "Guy Bolongaro",
-   "rated": null,
-   "rottenTomatoes": "91%"
-  }
- },
  "http://www.wikidata.org/entity/Q183555": {
   "title": "Pirates of the Caribbean: On Stranger Tides",
   "status": "VERIFIED",
   "overlap": 1,
   "omdbYear": 2011
- },
- "http://www.wikidata.org/entity/Q171861": {
-  "title": "The Artist",
-  "status": "REVIEW",
-  "overlap": 0,
-  "omdbYear": 2011,
-  "correct": {
-   "plot": "N/A",
-   "poster": "https://m.media-amazon.com/images/M/MV5BYjlkMzU3MjgtYTVhNy00MTFhLWE4NWItYzkzZTQ5NDA5NjZmXkEyXkFqcGdeQXVyMjQ3NjMwMTc@._V1_SX300.jpg",
-   "runtime": "100 min",
-   "director": "Sunil Prem Vyas",
-   "rated": null,
-   "rottenTomatoes": "95%"
-  }
  },
  "http://www.wikidata.org/entity/Q214801": {
   "title": "The Truman Show",
@@ -212,12 +178,6 @@
   "status": "VERIFIED",
   "overlap": 1,
   "omdbYear": 1989
- },
- "http://www.wikidata.org/entity/Q105702": {
-  "title": "Dr. Strangelove",
-  "status": "VERIFIED",
-  "overlap": 0.07,
-  "omdbYear": 1964
  },
  "http://www.wikidata.org/entity/Q48673898": {
   "title": "Green Book",
@@ -423,20 +383,6 @@
   "overlap": 1,
   "omdbYear": 2010
  },
- "http://www.wikidata.org/entity/Q190525": {
-  "title": "Memento",
-  "status": "REVIEW",
-  "overlap": 0,
-  "omdbYear": 2000,
-  "correct": {
-   "plot": "N/A",
-   "poster": "https://m.media-amazon.com/images/M/MV5BZmJlNzYxMmMtMzQ2YS00NTM5LWJjMjYtMzRmY2NhNDZkMjE1XkEyXkFqcGdeQXVyNjc5Mjg4Nzc@._V1_SX300.jpg",
-   "runtime": null,
-   "director": null,
-   "rated": null,
-   "rottenTomatoes": null
-  }
- },
  "http://www.wikidata.org/entity/Q189505": {
   "title": "Jaws",
   "status": "VERIFIED",
@@ -460,20 +406,6 @@
   "status": "VERIFIED",
   "overlap": 1,
   "omdbYear": 1999
- },
- "http://www.wikidata.org/entity/Q486239": {
-  "title": "Saw",
-  "status": "REVIEW",
-  "overlap": 0,
-  "omdbYear": 2003,
-  "correct": {
-   "plot": "David, an orderly at a hospital, tells his horrific story of being kidnapped and forced to play a vile game of survival.",
-   "poster": "https://m.media-amazon.com/images/M/MV5BMzA5MDQwYWEtYjIxYy00YTYzLWI0NzAtNzRjNGU2OTg5MzgwXkEyXkFqcGc@._V1_SX300.jpg",
-   "runtime": "9 min",
-   "director": "James Wan",
-   "rated": "Not Rated",
-   "rottenTomatoes": null
-  }
  },
  "http://www.wikidata.org/entity/Q200804": {
   "title": "Predator",
@@ -1181,20 +1113,6 @@
   "overlap": 1,
   "omdbYear": 1990
  },
- "http://www.wikidata.org/entity/Q18002795": {
-  "title": "The Revenant",
-  "status": "REVIEW",
-  "overlap": 0,
-  "omdbYear": 2015,
-  "correct": {
-   "plot": "N/A",
-   "poster": null,
-   "runtime": null,
-   "director": "Nikolai Kurbatov",
-   "rated": null,
-   "rottenTomatoes": "78%"
-  }
- },
  "http://www.wikidata.org/entity/Q42047": {
   "title": "GoodFellas",
   "status": "VERIFIED",
@@ -1322,20 +1240,6 @@
   "status": "VERIFIED",
   "overlap": 0.96,
   "omdbYear": 2014
- },
- "http://www.wikidata.org/entity/Q25136757": {
-  "title": "Call Me by Your Name",
-  "status": "REVIEW",
-  "overlap": 0,
-  "omdbYear": 2017,
-  "correct": {
-   "plot": "N/A",
-   "poster": null,
-   "runtime": null,
-   "director": null,
-   "rated": null,
-   "rottenTomatoes": null
-  }
  },
  "http://www.wikidata.org/entity/Q27188178": {
   "title": "Aladdin",
@@ -1479,11 +1383,6 @@
   "overlap": 1,
   "omdbYear": 1961
  },
- "http://www.wikidata.org/entity/Q272036": {
-  "title": "Wings",
-  "status": "REJECTED",
-  "reason": "OMDb returned \"The Wings of a Serf\" (1926)"
- },
  "http://www.wikidata.org/entity/Q217010": {
   "title": "The Twilight Saga: Eclipse",
   "status": "VERIFIED",
@@ -1526,20 +1425,6 @@
   "overlap": 0.73,
   "omdbYear": 2023
  },
- "http://www.wikidata.org/entity/Q28233477": {
-  "title": "Sahara",
-  "status": "REVIEW",
-  "overlap": 0.07,
-  "omdbYear": 2017,
-  "correct": {
-   "plot": "Two clans of snakes cohabit in the desert. Beautiful green serpents that live under the shelter of an oasis, protected and venerated by men and venomous snakes that survive in the sand, dust and heat, hunted and killed by the Tuaregs. Here is the story of Ajar, a young venomous serpent, laughed at by his peers because he still has not done his first molt and that of Eva, rebellious princess of the oasis who wants to escape an arranged marriage. These two will meet and fall in love. Alas, Eva will be kidnapped by the Tuaregs and Ajar, accompanied by his best friend, Pitt the Scorpion, will have to cross the ruthless Sahara to save Eva from the terrible fate awaiting her.",
-   "poster": "https://m.media-amazon.com/images/M/MV5BMjIyMmUxZjktNjE3MC00MmI3LWJjOGItMTJjYjcyNTJhYWYwXkEyXkFqcGc@._V1_QL75_UY562_CR17,0,380,562_.jpg",
-   "runtime": "86 min",
-   "director": "Pierre Coré",
-   "rated": "TV-Y7",
-   "rottenTomatoes": null
-  }
- },
  "http://www.wikidata.org/entity/Q616842": {
   "title": "Beavis and Butt-Head Do America",
   "status": "VERIFIED",
@@ -1578,16 +1463,2145 @@
   "overlap": 0.09,
   "omdbYear": 2025
  },
- "http://www.wikidata.org/entity/Q2840289": {
-  "title": "The Blue Umbrella",
-  "status": "VERIFIED",
-  "overlap": 1,
-  "omdbYear": 2013
- },
  "http://www.wikidata.org/entity/Q975962": {
   "title": "Bionicle: Mask of Light",
   "status": "VERIFIED",
   "overlap": 1,
   "omdbYear": 2003
+ },
+ "http://www.wikidata.org/entity/Q467516": {
+  "title": "The King and I",
+  "status": "MISMATCH",
+  "overlap": 0.28,
+  "omdbYear": 1999,
+  "correct": {
+   "plot": "Traveling to the exotic kingdom of Siam, English schoolteacher Anna Leonowens soon discovers that her most difficult challenge is the stubborn, imperious King himself.",
+   "poster": "https://m.media-amazon.com/images/M/MV5BNjcwZWVjYmItNGFmZS00NTQ0LWEzODctYjEyNWY2NWY2NWUxXkEyXkFqcGc@._V1_SX300.jpg",
+   "runtime": "88 min",
+   "director": "Richard Rich",
+   "rated": "G",
+   "rottenTomatoes": "13%"
+  }
+ },
+ "http://www.wikidata.org/entity/Q116005474": {
+  "title": "Mummies",
+  "status": "VERIFIED",
+  "overlap": 0.94,
+  "omdbYear": 2023
+ },
+ "http://www.wikidata.org/entity/Q7732986": {
+  "title": "The Fabulous Baron Munchausen",
+  "status": "VERIFIED",
+  "overlap": 0.98,
+  "omdbYear": 1962
+ },
+ "http://www.wikidata.org/entity/Q1889303": {
+  "title": "Ronal the Barbarian",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2011
+ },
+ "http://www.wikidata.org/entity/Q54152472": {
+  "title": "Luis and the Aliens",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2018
+ },
+ "http://www.wikidata.org/entity/Q73481216": {
+  "title": "Dreambuilders",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2021
+ },
+ "http://www.wikidata.org/entity/Q66715823": {
+  "title": "Dragon Rider",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2021
+ },
+ "http://www.wikidata.org/entity/Q104898246": {
+  "title": "Even Mice Belong in Heaven",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2021
+ },
+ "http://www.wikidata.org/entity/Q2058447": {
+  "title": "Popeye's Voyage: The Quest for Pappy",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2004
+ },
+ "http://www.wikidata.org/entity/Q114842711": {
+  "title": "Diary of a Wimpy Kid: Rodrick Rules",
+  "status": "MISMATCH",
+  "overlap": 0.33,
+  "omdbYear": 2022,
+  "correct": {
+   "plot": "A new school year, his brother Rodrick teases him over and over and over and over again. Will Greg manage to get along with him? Or will a secret ruin everything?",
+   "poster": "https://m.media-amazon.com/images/M/MV5BYWQ0OWYwZWUtOWUzMy00NGExLWE1NTctM2NkYjQxNzQ5ZmUwXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+   "runtime": "74 min",
+   "director": "Luke Cormican, Gino Nichele",
+   "rated": "PG",
+   "rottenTomatoes": "56%"
+  }
+ },
+ "http://www.wikidata.org/entity/Q111210475": {
+  "title": "Mars Express",
+  "status": "MISMATCH",
+  "overlap": 0.39,
+  "omdbYear": 2024,
+  "correct": {
+   "plot": "In 2200, private detective Aline Ruby and her android partner Carlos Rivera are hired by a wealthy businessman to track down a notorious hacker. On Mars, they descend deep into the underbelly of the planet's capital city where they uncover a darker story of brain farms, corruption, and a missing girl who holds a secret about the robots that threatens to change the face of the universe.",
+   "poster": "https://m.media-amazon.com/images/M/MV5BOWU2ZDlkMTctMTg4My00NzYzLWEzNzQtYmQwZjYwODljMmZjXkEyXkFqcGc@._V1_QL75_UY562_CR1,0,380,562_.jpg",
+   "runtime": "88 min",
+   "director": "Jérémie Périn",
+   "rated": "Not Rated",
+   "rottenTomatoes": "100%"
+  }
+ },
+ "http://www.wikidata.org/entity/Q65127310": {
+  "title": "Away",
+  "status": "MISMATCH",
+  "overlap": 0,
+  "omdbYear": 2019,
+  "correct": {
+   "plot": "A boy and a little bird are on a journey across a strange island trying to get back home.",
+   "poster": "https://m.media-amazon.com/images/M/MV5BNDI0OTAzNGEtMjg5OS00Njk0LWExZWEtZThkMWU2NmE1ZjhhXkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+   "runtime": "75 min",
+   "director": "Gints Zilbalodis",
+   "rated": null,
+   "rottenTomatoes": "100%"
+  }
+ },
+ "http://www.wikidata.org/entity/Q4115183": {
+  "title": "Muhammad: The Last Prophet",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2002
+ },
+ "http://www.wikidata.org/entity/Q121879464": {
+  "title": "They Shot the Piano Player",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2023
+ },
+ "http://www.wikidata.org/entity/Q116784048": {
+  "title": "Four Souls of Coyote",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2023
+ },
+ "http://www.wikidata.org/entity/Q41252539": {
+  "title": "Harvie and the Magic Museum",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2017
+ },
+ "http://www.wikidata.org/entity/Q31271159": {
+  "title": "Up and Away",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2018
+ },
+ "http://www.wikidata.org/entity/Q122363694": {
+  "title": "Diary of a Wimpy Kid Christmas: Cabin Fever",
+  "status": "VERIFIED",
+  "overlap": 0.4,
+  "omdbYear": 2023
+ },
+ "http://www.wikidata.org/entity/Q120647361": {
+  "title": "Sultana's Dream",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2023
+ },
+ "http://www.wikidata.org/entity/Q114860269": {
+  "title": "Aurora's Sunrise",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2023
+ },
+ "http://www.wikidata.org/entity/Q99521078": {
+  "title": "You Animal!",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2020
+ },
+ "http://www.wikidata.org/entity/Q81695664": {
+  "title": "Marona's Fantastic Tale",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2020
+ },
+ "http://www.wikidata.org/entity/Q65091690": {
+  "title": "Liyana",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2018
+ },
+ "http://www.wikidata.org/entity/Q7757074": {
+  "title": "The Pied Piper",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1986
+ },
+ "http://www.wikidata.org/entity/Q390552": {
+  "title": "Pettson och Findus - Kattonauten",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2000
+ },
+ "http://www.wikidata.org/entity/Q102244": {
+  "title": "Harry Potter and the Chamber of Secrets",
+  "status": "VERIFIED",
+  "overlap": 0.11,
+  "omdbYear": 2002
+ },
+ "http://www.wikidata.org/entity/Q131074": {
+  "title": "The Lord of the Rings: The Return of the King",
+  "status": "VERIFIED",
+  "overlap": 0.29,
+  "omdbYear": 2003
+ },
+ "http://www.wikidata.org/entity/Q102448": {
+  "title": "Harry Potter and the Prisoner of Azkaban",
+  "status": "VERIFIED",
+  "overlap": 0.26,
+  "omdbYear": 2004
+ },
+ "http://www.wikidata.org/entity/Q102225": {
+  "title": "Harry Potter and the Goblet of Fire",
+  "status": "VERIFIED",
+  "overlap": 0.19,
+  "omdbYear": 2005
+ },
+ "http://www.wikidata.org/entity/Q232009": {
+  "title": "Harry Potter and the Deathly Hallows: Part 2",
+  "status": "VERIFIED",
+  "overlap": 0.12,
+  "omdbYear": 2011
+ },
+ "http://www.wikidata.org/entity/Q80379": {
+  "title": "The Hobbit: An Unexpected Journey",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2012
+ },
+ "http://www.wikidata.org/entity/Q152780": {
+  "title": "Life of Pi",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2012
+ },
+ "http://www.wikidata.org/entity/Q161687": {
+  "title": "Harry Potter and the Half-Blood Prince",
+  "status": "VERIFIED",
+  "overlap": 0.28,
+  "omdbYear": 2009
+ },
+ "http://www.wikidata.org/entity/Q102235": {
+  "title": "Harry Potter and the Order of the Phoenix",
+  "status": "VERIFIED",
+  "overlap": 0.24,
+  "omdbYear": 2007
+ },
+ "http://www.wikidata.org/entity/Q842306": {
+  "title": "Saludos Amigos",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1943
+ },
+ "http://www.wikidata.org/entity/Q174385": {
+  "title": "Alice in Wonderland",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2010
+ },
+ "http://www.wikidata.org/entity/Q20502242": {
+  "title": "Wonder Woman",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2017
+ },
+ "http://www.wikidata.org/entity/Q719915": {
+  "title": "The Hobbit: The Desolation of Smaug",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2013
+ },
+ "http://www.wikidata.org/entity/Q39571": {
+  "title": "My Neighbor Totoro",
+  "status": "VERIFIED",
+  "overlap": 0.41,
+  "omdbYear": 1990
+ },
+ "http://www.wikidata.org/entity/Q1201853": {
+  "title": "Thor: The Dark World",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2013
+ },
+ "http://www.wikidata.org/entity/Q919649": {
+  "title": "The Hobbit: The Battle of the Five Armies",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2014
+ },
+ "http://www.wikidata.org/entity/Q208269": {
+  "title": "Eternal Sunshine of the Spotless Mind",
+  "status": "VERIFIED",
+  "overlap": 0.88,
+  "omdbYear": 2004
+ },
+ "http://www.wikidata.org/entity/Q193695": {
+  "title": "The Wizard of Oz",
+  "status": "VERIFIED",
+  "overlap": 0.97,
+  "omdbYear": 1939
+ },
+ "http://www.wikidata.org/entity/Q218235": {
+  "title": "Charlie and the Chocolate Factory",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2005
+ },
+ "http://www.wikidata.org/entity/Q484675": {
+  "title": "Léon: The Professional",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1994
+ },
+ "http://www.wikidata.org/entity/Q160560": {
+  "title": "The Da Vinci Code",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2006
+ },
+ "http://www.wikidata.org/entity/Q154581": {
+  "title": "Gangs of New York",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2002
+ },
+ "http://www.wikidata.org/entity/Q155476": {
+  "title": "The Fast and the Furious",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2001
+ },
+ "http://www.wikidata.org/entity/Q109135": {
+  "title": "Trainspotting",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1996
+ },
+ "http://www.wikidata.org/entity/Q104137": {
+  "title": "Unforgiven",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1992
+ },
+ "http://www.wikidata.org/entity/Q208572": {
+  "title": "American History X",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1998
+ },
+ "http://www.wikidata.org/entity/Q61117344": {
+  "title": "The Batman",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2022
+ },
+ "http://www.wikidata.org/entity/Q34414": {
+  "title": "Rear Window",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1954
+ },
+ "http://www.wikidata.org/entity/Q206388": {
+  "title": "Once Upon a Time in America",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1984
+ },
+ "http://www.wikidata.org/entity/Q192115": {
+  "title": "Sin City",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2005
+ },
+ "http://www.wikidata.org/entity/Q135465": {
+  "title": "Rashomon",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1951
+ },
+ "http://www.wikidata.org/entity/Q222720": {
+  "title": "Fargo",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1996
+ },
+ "http://www.wikidata.org/entity/Q211372": {
+  "title": "On the Waterfront",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1954
+ },
+ "http://www.wikidata.org/entity/Q192934": {
+  "title": "Angels & Demons",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2009
+ },
+ "http://www.wikidata.org/entity/Q337078": {
+  "title": "The Big Lebowski",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1998
+ },
+ "http://www.wikidata.org/entity/Q146673": {
+  "title": "Basic Instinct",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1992
+ },
+ "http://www.wikidata.org/entity/Q401976": {
+  "title": "Fast Five",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2011
+ },
+ "http://www.wikidata.org/entity/Q185888": {
+  "title": "The Social Network",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2010
+ },
+ "http://www.wikidata.org/entity/Q190956": {
+  "title": "Amadeus",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1984
+ },
+ "http://www.wikidata.org/entity/Q182944": {
+  "title": "Shakespeare in Love",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1999
+ },
+ "http://www.wikidata.org/entity/Q202211": {
+  "title": "Gandhi",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1983
+ },
+ "http://www.wikidata.org/entity/Q201924": {
+  "title": "The Aviator",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2004
+ },
+ "http://www.wikidata.org/entity/Q59653": {
+  "title": "Argo",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2012
+ },
+ "http://www.wikidata.org/entity/Q14918344": {
+  "title": "The Imitation Game",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2014
+ },
+ "http://www.wikidata.org/entity/Q212775": {
+  "title": "The Last Emperor",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1988
+ },
+ "http://www.wikidata.org/entity/Q18154496": {
+  "title": "Spotlight",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2015
+ },
+ "http://www.wikidata.org/entity/Q27894574": {
+  "title": "Bohemian Rhapsody",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2018
+ },
+ "http://www.wikidata.org/entity/Q152857": {
+  "title": "Downfall",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2005
+ },
+ "http://www.wikidata.org/entity/Q595": {
+  "title": "The Intouchables",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2011
+ },
+ "http://www.wikidata.org/entity/Q21010856": {
+  "title": "Hacksaw Ridge",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2016
+ },
+ "http://www.wikidata.org/entity/Q269912": {
+  "title": "Into the Wild",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2007
+ },
+ "http://www.wikidata.org/entity/Q220780": {
+  "title": "Raging Bull",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1980
+ },
+ "http://www.wikidata.org/entity/Q207921": {
+  "title": "Chariots of Fire",
+  "status": "VERIFIED",
+  "overlap": 0.99,
+  "omdbYear": 1982
+ },
+ "http://www.wikidata.org/entity/Q51668": {
+  "title": "The Passion of the Christ",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2004
+ },
+ "http://www.wikidata.org/entity/Q162277": {
+  "title": "Alexander",
+  "status": "VERIFIED",
+  "overlap": 0.13,
+  "omdbYear": 2004
+ },
+ "http://www.wikidata.org/entity/Q18067135": {
+  "title": "Bridge of Spies",
+  "status": "VERIFIED",
+  "overlap": 0.43,
+  "omdbYear": 2015
+ },
+ "http://www.wikidata.org/entity/Q223884": {
+  "title": "Hotel Rwanda",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2005
+ },
+ "http://www.wikidata.org/entity/Q220515": {
+  "title": "The Pursuit of Happyness",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2006
+ },
+ "http://www.wikidata.org/entity/Q32433": {
+  "title": "Lincoln",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2012
+ },
+ "http://www.wikidata.org/entity/Q2937646": {
+  "title": "Captain Phillips",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2013
+ },
+ "http://www.wikidata.org/entity/Q16970789": {
+  "title": "American Sniper",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2015
+ },
+ "http://www.wikidata.org/entity/Q272860": {
+  "title": "The Elephant Man",
+  "status": "VERIFIED",
+  "overlap": 0.99,
+  "omdbYear": 1980
+ },
+ "http://www.wikidata.org/entity/Q217220": {
+  "title": "Patton",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1970
+ },
+ "http://www.wikidata.org/entity/Q220910": {
+  "title": "Casino",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1995
+ },
+ "http://www.wikidata.org/entity/Q220955": {
+  "title": "Erin Brockovich",
+  "status": "VERIFIED",
+  "overlap": 0.98,
+  "omdbYear": 2000
+ },
+ "http://www.wikidata.org/entity/Q181776": {
+  "title": "Bonnie and Clyde",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1967
+ },
+ "http://www.wikidata.org/entity/Q108525": {
+  "title": "The Untouchables",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1987
+ },
+ "http://www.wikidata.org/entity/Q188718": {
+  "title": "The Bridge on the River Kwai",
+  "status": "VERIFIED",
+  "overlap": 0.98,
+  "omdbYear": 1957
+ },
+ "http://www.wikidata.org/entity/Q183066": {
+  "title": "The Hurt Locker",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2009
+ },
+ "http://www.wikidata.org/entity/Q20456": {
+  "title": "Dances with Wolves",
+  "status": "VERIFIED",
+  "overlap": 0.91,
+  "omdbYear": 1990
+ },
+ "http://www.wikidata.org/entity/Q207698": {
+  "title": "Kingdom of Heaven",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2005
+ },
+ "http://www.wikidata.org/entity/Q190643": {
+  "title": "Platoon",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1986
+ },
+ "http://www.wikidata.org/entity/Q207130": {
+  "title": "The Last Samurai",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2003
+ },
+ "http://www.wikidata.org/entity/Q21935651": {
+  "title": "Dunkirk",
+  "status": "VERIFIED",
+  "overlap": 0.98,
+  "omdbYear": 2017
+ },
+ "http://www.wikidata.org/entity/Q74958": {
+  "title": "Blood Diamond",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2006
+ },
+ "http://www.wikidata.org/entity/Q243439": {
+  "title": "Full Metal Jacket",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1987
+ },
+ "http://www.wikidata.org/entity/Q272599": {
+  "title": "All Quiet on the Western Front",
+  "status": "MISMATCH",
+  "overlap": 0.18,
+  "omdbYear": 1930,
+  "correct": {
+   "plot": "This is an English language film (made in America) adapted from a novel by German author Erich Maria Remarque. The film follows a group of German schoolboys, talked into enlisting at the beginning of World War 1 by their jingoistic teacher. The story is told entirely through the experiences of the young German recruits and highlights the tragedy of war through the eyes of individuals. As the boys witness death and mutilation all around them, any preconceptions about \"the enemy\" and the \"rights and wrongs\" of the conflict disappear, leaving them angry and bewildered. The film is not about heroism but about drudgery and futility and the gulf between the concept of war and the actuality.",
+   "poster": "https://m.media-amazon.com/images/M/MV5BODY0NzU2MWYtODZmMi00Y2Y5LTliZmMtN2JjZTA1OTcyMzAzXkEyXkFqcGc@._V1_QL75_UX380_CR0,16,380,562_.jpg",
+   "runtime": "152 min",
+   "director": "Lewis Milestone",
+   "rated": "Approved",
+   "rottenTomatoes": "98%"
+  }
+ },
+ "http://www.wikidata.org/entity/Q244963": {
+  "title": "First Blood",
+  "status": "VERIFIED",
+  "overlap": 0.21,
+  "omdbYear": 1982
+ },
+ "http://www.wikidata.org/entity/Q471716": {
+  "title": "Barry Lyndon",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1975
+ },
+ "http://www.wikidata.org/entity/Q191543": {
+  "title": "Terminator Salvation",
+  "status": "VERIFIED",
+  "overlap": 0.31,
+  "omdbYear": 2009
+ },
+ "http://www.wikidata.org/entity/Q19590955": {
+  "title": "Rogue One: A Star Wars Story",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2016
+ },
+ "http://www.wikidata.org/entity/Q216006": {
+  "title": "Pan's Labyrinth",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2007
+ },
+ "http://www.wikidata.org/entity/Q1626186": {
+  "title": "Atonement",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2008
+ },
+ "http://www.wikidata.org/entity/Q221491": {
+  "title": "The Thin Red Line",
+  "status": "VERIFIED",
+  "overlap": 0.15,
+  "omdbYear": 1999
+ },
+ "http://www.wikidata.org/entity/Q168154": {
+  "title": "Once Upon a Time in the West",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1969
+ },
+ "http://www.wikidata.org/entity/Q19069": {
+  "title": "The Magnificent Seven",
+  "status": "MISMATCH",
+  "overlap": 0.14,
+  "omdbYear": 1960,
+  "correct": {
+   "plot": "A bandit terrorizes a small Mexican farming village each year. Several of the village elders send three of the farmers into the United States to search for gunmen to defend them. They end up with seven, each arriving with his own reason. They must prepare the town to repulse an army of 30 bandits who will arrive wanting food.",
+   "poster": "https://m.media-amazon.com/images/M/MV5BMzYyNzU0MTM1OF5BMl5BanBnXkFtZTcwMzE1ODE1NA@@._V1_QL75_UX380_CR0,4,380,562_.jpg",
+   "runtime": "128 min",
+   "director": "John Sturges",
+   "rated": "Approved",
+   "rottenTomatoes": "93%"
+  }
+ },
+ "http://www.wikidata.org/entity/Q18225084": {
+  "title": "The Hateful Eight",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2015
+ },
+ "http://www.wikidata.org/entity/Q244315": {
+  "title": "There Will Be Blood",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2008
+ },
+ "http://www.wikidata.org/entity/Q326114": {
+  "title": "True Grit",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2010
+ },
+ "http://www.wikidata.org/entity/Q746029": {
+  "title": "3:10 to Yuma",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2007
+ },
+ "http://www.wikidata.org/entity/Q245208": {
+  "title": "High Noon",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1952
+ },
+ "http://www.wikidata.org/entity/Q994481": {
+  "title": "The Wild Bunch",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1969
+ },
+ "http://www.wikidata.org/entity/Q232000": {
+  "title": "Butch Cassidy and the Sundance Kid",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1969
+ },
+ "http://www.wikidata.org/entity/Q66316924": {
+  "title": "Killers of the Flower Moon",
+  "status": "VERIFIED",
+  "overlap": 0.31,
+  "omdbYear": 2023
+ },
+ "http://www.wikidata.org/entity/Q276769": {
+  "title": "The Searchers",
+  "status": "VERIFIED",
+  "overlap": 0.77,
+  "omdbYear": 1956
+ },
+ "http://www.wikidata.org/entity/Q251997": {
+  "title": "Cimarron",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1931
+ },
+ "http://www.wikidata.org/entity/Q50714": {
+  "title": "Stagecoach",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1939
+ },
+ "http://www.wikidata.org/entity/Q913324": {
+  "title": "Legends of the Fall",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1995
+ },
+ "http://www.wikidata.org/entity/Q156069": {
+  "title": "Resident Evil: Extinction",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2007
+ },
+ "http://www.wikidata.org/entity/Q548919": {
+  "title": "The Lone Ranger",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2013
+ },
+ "http://www.wikidata.org/entity/Q309621": {
+  "title": "The Mask of Zorro",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1998
+ },
+ "http://www.wikidata.org/entity/Q949228": {
+  "title": "Sholay",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1975
+ },
+ "http://www.wikidata.org/entity/Q756416": {
+  "title": "The Quick and the Dead",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1995
+ },
+ "http://www.wikidata.org/entity/Q196004": {
+  "title": "From Dusk Till Dawn",
+  "status": "VERIFIED",
+  "overlap": 0.3,
+  "omdbYear": 1996
+ },
+ "http://www.wikidata.org/entity/Q740528": {
+  "title": "Wild Wild West",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1999
+ },
+ "http://www.wikidata.org/entity/Q669592": {
+  "title": "Giant",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1956
+ },
+ "http://www.wikidata.org/entity/Q251559": {
+  "title": "The Treasure of the Sierra Madre",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1948
+ },
+ "http://www.wikidata.org/entity/Q1045165": {
+  "title": "Shane",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1953
+ },
+ "http://www.wikidata.org/entity/Q85323337": {
+  "title": "The Power of the Dog",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2021
+ },
+ "http://www.wikidata.org/entity/Q547189": {
+  "title": "Dead Man",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1996
+ },
+ "http://www.wikidata.org/entity/Q849475": {
+  "title": "Shanghai Noon",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2000
+ },
+ "http://www.wikidata.org/entity/Q128493": {
+  "title": "Machete",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2010
+ },
+ "http://www.wikidata.org/entity/Q13582568": {
+  "title": "A Million Ways to Die in the West",
+  "status": "VERIFIED",
+  "overlap": 0.93,
+  "omdbYear": 2014
+ },
+ "http://www.wikidata.org/entity/Q691611": {
+  "title": "Serenity",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2005
+ },
+ "http://www.wikidata.org/entity/Q555687": {
+  "title": "The Man Who Shot Liberty Valance",
+  "status": "VERIFIED",
+  "overlap": 0.95,
+  "omdbYear": 1962
+ },
+ "http://www.wikidata.org/entity/Q477630": {
+  "title": "The Outlaw Josey Wales",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1976
+ },
+ "http://www.wikidata.org/entity/Q388950": {
+  "title": "The Assassination of Jesse James by the Coward Robert Ford",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2007
+ },
+ "http://www.wikidata.org/entity/Q1008351": {
+  "title": "Rio Bravo",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1959
+ },
+ "http://www.wikidata.org/entity/Q957323": {
+  "title": "Blazing Saddles",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1974
+ },
+ "http://www.wikidata.org/entity/Q162518": {
+  "title": "How the West Was Won",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1963
+ },
+ "http://www.wikidata.org/entity/Q1420651": {
+  "title": "Tombstone",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1993
+ },
+ "http://www.wikidata.org/entity/Q725578": {
+  "title": "Cowboys & Aliens",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2011
+ },
+ "http://www.wikidata.org/entity/Q675520": {
+  "title": "Maverick",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1994
+ },
+ "http://www.wikidata.org/entity/Q59318": {
+  "title": "Johnny Guitar",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1954
+ },
+ "http://www.wikidata.org/entity/Q103474": {
+  "title": "2001: A Space Odyssey",
+  "status": "VERIFIED",
+  "overlap": 0.8,
+  "omdbYear": 1968
+ },
+ "http://www.wikidata.org/entity/Q132351": {
+  "title": "The Usual Suspects",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1995
+ },
+ "http://www.wikidata.org/entity/Q200396": {
+  "title": "Sherlock Holmes",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2009
+ },
+ "http://www.wikidata.org/entity/Q20382729": {
+  "title": "Arrival",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2016
+ },
+ "http://www.wikidata.org/entity/Q271830": {
+  "title": "The Third Man",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1950
+ },
+ "http://www.wikidata.org/entity/Q209481": {
+  "title": "Eyes Wide Shut",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1999
+ },
+ "http://www.wikidata.org/entity/Q206576": {
+  "title": "Hugo",
+  "status": "VERIFIED",
+  "overlap": 0.95,
+  "omdbYear": 2011
+ },
+ "http://www.wikidata.org/entity/Q243643": {
+  "title": "Sherlock Holmes: A Game of Shadows",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2011
+ },
+ "http://www.wikidata.org/entity/Q107226": {
+  "title": "The Bourne Ultimatum",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2007
+ },
+ "http://www.wikidata.org/entity/Q105624": {
+  "title": "The Bourne Identity",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2002
+ },
+ "http://www.wikidata.org/entity/Q21500755": {
+  "title": "Blade Runner 2049",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2017
+ },
+ "http://www.wikidata.org/entity/Q644987": {
+  "title": "Chinatown",
+  "status": "VERIFIED",
+  "overlap": 0.89,
+  "omdbYear": 1974
+ },
+ "http://www.wikidata.org/entity/Q475693": {
+  "title": "Oldboy",
+  "status": "VERIFIED",
+  "overlap": 0.64,
+  "omdbYear": 2003
+ },
+ "http://www.wikidata.org/entity/Q223139": {
+  "title": "North by Northwest",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1959
+ },
+ "http://www.wikidata.org/entity/Q205447": {
+  "title": "Ocean's Eleven",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2001
+ },
+ "http://www.wikidata.org/entity/Q42198": {
+  "title": "Heat",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1995
+ },
+ "http://www.wikidata.org/entity/Q18199330": {
+  "title": "Fantastic Beasts and Where to Find Them",
+  "status": "VERIFIED",
+  "overlap": 0.33,
+  "omdbYear": 2016
+ },
+ "http://www.wikidata.org/entity/Q853718": {
+  "title": "Fun and Fancy Free",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1948
+ },
+ "http://www.wikidata.org/entity/Q869741": {
+  "title": "Melody Time",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1948
+ },
+ "http://www.wikidata.org/entity/Q207659": {
+  "title": "Space Jam",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1996
+ },
+ "http://www.wikidata.org/entity/Q454398": {
+  "title": "The Smurfs",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2011
+ },
+ "http://www.wikidata.org/entity/Q867283": {
+  "title": "The Iron Giant",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1999
+ },
+ "http://www.wikidata.org/entity/Q244398": {
+  "title": "Stardust",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2007
+ },
+ "http://www.wikidata.org/entity/Q213773": {
+  "title": "Charlotte's Web",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2006
+ },
+ "http://www.wikidata.org/entity/Q1253366": {
+  "title": "The Smurfs 2",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2013
+ },
+ "http://www.wikidata.org/entity/Q378311": {
+  "title": "Alvin and the Chipmunks: The Squeakquel",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2009
+ },
+ "http://www.wikidata.org/entity/Q279274": {
+  "title": "Bridge to Terabithia",
+  "status": "VERIFIED",
+  "overlap": 0.94,
+  "omdbYear": 2007
+ },
+ "http://www.wikidata.org/entity/Q276415": {
+  "title": "A Cinderella Story",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2004
+ },
+ "http://www.wikidata.org/entity/Q15985075": {
+  "title": "Smurfs: The Lost Village",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2017
+ },
+ "http://www.wikidata.org/entity/Q56850065": {
+  "title": "Space Jam: A New Legacy",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2021
+ },
+ "http://www.wikidata.org/entity/Q1046295": {
+  "title": "The Princess Diaries",
+  "status": "VERIFIED",
+  "overlap": 0.99,
+  "omdbYear": 2001
+ },
+ "http://www.wikidata.org/entity/Q148326": {
+  "title": "Zathura: A Space Adventure",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2005
+ },
+ "http://www.wikidata.org/entity/Q156519": {
+  "title": "Around the World in 80 Days",
+  "status": "VERIFIED",
+  "overlap": 0.2,
+  "omdbYear": 2004
+ },
+ "http://www.wikidata.org/entity/Q11593": {
+  "title": "The Last Airbender",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2010
+ },
+ "http://www.wikidata.org/entity/Q15631322": {
+  "title": "Planes: Fire & Rescue",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2014
+ },
+ "http://www.wikidata.org/entity/Q936327": {
+  "title": "Willy Wonka & the Chocolate Factory",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1971
+ },
+ "http://www.wikidata.org/entity/Q1048166": {
+  "title": "Casper",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1995
+ },
+ "http://www.wikidata.org/entity/Q945138": {
+  "title": "Bedknobs and Broomsticks",
+  "status": "VERIFIED",
+  "overlap": 0.97,
+  "omdbYear": 1971
+ },
+ "http://www.wikidata.org/entity/Q636043": {
+  "title": "The Goonies",
+  "status": "VERIFIED",
+  "overlap": 0.19,
+  "omdbYear": 1985
+ },
+ "http://www.wikidata.org/entity/Q1286387": {
+  "title": "The Cat in the Hat",
+  "status": "VERIFIED",
+  "overlap": 0.04,
+  "omdbYear": 2003
+ },
+ "http://www.wikidata.org/entity/Q1094125": {
+  "title": "City of Ember",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2008
+ },
+ "http://www.wikidata.org/entity/Q1758112": {
+  "title": "Ender's Game",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2013
+ },
+ "http://www.wikidata.org/entity/Q753677": {
+  "title": "Gnomeo & Juliet",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2011
+ },
+ "http://www.wikidata.org/entity/Q711918": {
+  "title": "Arthur Christmas",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2011
+ },
+ "http://www.wikidata.org/entity/Q587921": {
+  "title": "Garfield: A Tail of Two Kitties",
+  "status": "VERIFIED",
+  "overlap": 0.96,
+  "omdbYear": 2006
+ },
+ "http://www.wikidata.org/entity/Q392677": {
+  "title": "Agent Cody Banks",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2003
+ },
+ "http://www.wikidata.org/entity/Q390341": {
+  "title": "Beverly Hills Chihuahua",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2008
+ },
+ "http://www.wikidata.org/entity/Q165847": {
+  "title": "102 Dalmatians",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2000
+ },
+ "http://www.wikidata.org/entity/Q15713892": {
+  "title": "Pan",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2015
+ },
+ "http://www.wikidata.org/entity/Q316555": {
+  "title": "The NeverEnding Story",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1984
+ },
+ "http://www.wikidata.org/entity/Q4254026": {
+  "title": "The Amazing Spider-Man 2",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2014
+ },
+ "http://www.wikidata.org/entity/Q169082": {
+  "title": "10 Things I Hate About You",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1999
+ },
+ "http://www.wikidata.org/entity/Q631103": {
+  "title": "Mean Girls",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2004
+ },
+ "http://www.wikidata.org/entity/Q220713": {
+  "title": "American Pie",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1999
+ },
+ "http://www.wikidata.org/entity/Q223596": {
+  "title": "X-Men: First Class",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2011
+ },
+ "http://www.wikidata.org/entity/Q579928": {
+  "title": "The SpongeBob SquarePants Movie",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2004
+ },
+ "http://www.wikidata.org/entity/Q79503": {
+  "title": "Juno",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2007
+ },
+ "http://www.wikidata.org/entity/Q60506": {
+  "title": "The Twilight Saga: Breaking Dawn - Part 1",
+  "status": "VERIFIED",
+  "overlap": 0.98,
+  "omdbYear": 2011
+ },
+ "http://www.wikidata.org/entity/Q499152": {
+  "title": "The Breakfast Club",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1985
+ },
+ "http://www.wikidata.org/entity/Q2201": {
+  "title": "Kick-Ass",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2010
+ },
+ "http://www.wikidata.org/entity/Q329434": {
+  "title": "A Nightmare on Elm Street",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1984
+ },
+ "http://www.wikidata.org/entity/Q147878": {
+  "title": "Ivan's Childhood",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1963
+ },
+ "http://www.wikidata.org/entity/Q7765993": {
+  "title": "The SpongeBob Movie: Sponge Out of Water",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2015
+ },
+ "http://www.wikidata.org/entity/Q162672": {
+  "title": "Carrie",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1976
+ },
+ "http://www.wikidata.org/entity/Q60487": {
+  "title": "The Twilight Saga: Breaking Dawn - Part 2",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2012
+ },
+ "http://www.wikidata.org/entity/Q753605": {
+  "title": "Hop",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2011
+ },
+ "http://www.wikidata.org/entity/Q426346": {
+  "title": "Rebel Without a Cause",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1955
+ },
+ "http://www.wikidata.org/entity/Q253978": {
+  "title": "Dirty Dancing",
+  "status": "VERIFIED",
+  "overlap": 0.22,
+  "omdbYear": 1987
+ },
+ "http://www.wikidata.org/entity/Q219442": {
+  "title": "A Walk to Remember",
+  "status": "VERIFIED",
+  "overlap": 0.96,
+  "omdbYear": 2002
+ },
+ "http://www.wikidata.org/entity/Q83767": {
+  "title": "The Blue Lagoon",
+  "status": "VERIFIED",
+  "overlap": 0.96,
+  "omdbYear": 1980
+ },
+ "http://www.wikidata.org/entity/Q726294": {
+  "title": "Almost Famous",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2000
+ },
+ "http://www.wikidata.org/entity/Q675468": {
+  "title": "The Perks of Being a Wallflower",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2012
+ },
+ "http://www.wikidata.org/entity/Q1243029": {
+  "title": "Friday the 13th",
+  "status": "VERIFIED",
+  "overlap": 0.16,
+  "omdbYear": 1980
+ },
+ "http://www.wikidata.org/entity/Q494722": {
+  "title": "Stand by Me",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1986
+ },
+ "http://www.wikidata.org/entity/Q375855": {
+  "title": "American Graffiti",
+  "status": "VERIFIED",
+  "overlap": 0.99,
+  "omdbYear": 1973
+ },
+ "http://www.wikidata.org/entity/Q53115": {
+  "title": "High School Musical 3: Senior Year",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2008
+ },
+ "http://www.wikidata.org/entity/Q323392": {
+  "title": "Scream 4",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2011
+ },
+ "http://www.wikidata.org/entity/Q267721": {
+  "title": "Grease",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1978
+ },
+ "http://www.wikidata.org/entity/Q214014": {
+  "title": "21 Jump Street",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2012
+ },
+ "http://www.wikidata.org/entity/Q679611": {
+  "title": "Superbad",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2007
+ },
+ "http://www.wikidata.org/entity/Q886597": {
+  "title": "The Texas Chain Saw Massacre",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1974
+ },
+ "http://www.wikidata.org/entity/Q15648198": {
+  "title": "Whiplash",
+  "status": "VERIFIED",
+  "overlap": 0.99,
+  "omdbYear": 2014
+ },
+ "http://www.wikidata.org/entity/Q747570": {
+  "title": "An American in Paris",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1951
+ },
+ "http://www.wikidata.org/entity/Q213012": {
+  "title": "Open Season",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2006
+ },
+ "http://www.wikidata.org/entity/Q188850": {
+  "title": "Mamma Mia!",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2008
+ },
+ "http://www.wikidata.org/entity/Q126800": {
+  "title": "Happy Feet",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2006
+ },
+ "http://www.wikidata.org/entity/Q309153": {
+  "title": "Singin' in the Rain",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1952
+ },
+ "http://www.wikidata.org/entity/Q3286391": {
+  "title": "A Star Is Born",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2018
+ },
+ "http://www.wikidata.org/entity/Q196665": {
+  "title": "8 Mile",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2002
+ },
+ "http://www.wikidata.org/entity/Q387348": {
+  "title": "Alvin and the Chipmunks",
+  "status": "VERIFIED",
+  "overlap": 0.95,
+  "omdbYear": 2007
+ },
+ "http://www.wikidata.org/entity/Q1999930": {
+  "title": "The Diamond Arm",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1969
+ },
+ "http://www.wikidata.org/entity/Q463620": {
+  "title": "The Broadway Melody",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1929
+ },
+ "http://www.wikidata.org/entity/Q109767": {
+  "title": "The Blues Brothers",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1980
+ },
+ "http://www.wikidata.org/entity/Q501874": {
+  "title": "O Brother, Where Art Thou?",
+  "status": "VERIFIED",
+  "overlap": 0.96,
+  "omdbYear": 2001
+ },
+ "http://www.wikidata.org/entity/Q7117022": {
+  "title": "PK",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2014
+ },
+ "http://www.wikidata.org/entity/Q28234": {
+  "title": "Les Misérables",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2012
+ },
+ "http://www.wikidata.org/entity/Q303678": {
+  "title": "Alvin and the Chipmunks: Chipwrecked",
+  "status": "VERIFIED",
+  "overlap": 0.26,
+  "omdbYear": 2011
+ },
+ "http://www.wikidata.org/entity/Q236217": {
+  "title": "La Vie En Rose",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2007
+ },
+ "http://www.wikidata.org/entity/Q490464": {
+  "title": "Enchanted",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2007
+ },
+ "http://www.wikidata.org/entity/Q465087": {
+  "title": "The Jazz Singer",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1928
+ },
+ "http://www.wikidata.org/entity/Q470218": {
+  "title": "The Great Ziegfeld",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1936
+ },
+ "http://www.wikidata.org/entity/Q468877": {
+  "title": "Going My Way",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1944
+ },
+ "http://www.wikidata.org/entity/Q383355": {
+  "title": "Gentlemen Prefer Blondes",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1953
+ },
+ "http://www.wikidata.org/entity/Q214723": {
+  "title": "The Gold Rush",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1925
+ },
+ "http://www.wikidata.org/entity/Q845057": {
+  "title": "Hannah and Her Sisters",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1986
+ },
+ "http://www.wikidata.org/entity/Q384397": {
+  "title": "The African Queen",
+  "status": "VERIFIED",
+  "overlap": 0.91,
+  "omdbYear": 1952
+ },
+ "http://www.wikidata.org/entity/Q731310": {
+  "title": "Manhattan",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1979
+ },
+ "http://www.wikidata.org/entity/Q152493": {
+  "title": "Sabrina",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1954
+ },
+ "http://www.wikidata.org/entity/Q211429": {
+  "title": "Up in the Air",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2009
+ },
+ "http://www.wikidata.org/entity/Q496266": {
+  "title": "Charade",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1963
+ },
+ "http://www.wikidata.org/entity/Q269887": {
+  "title": "Yes Man",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2008
+ },
+ "http://www.wikidata.org/entity/Q284229": {
+  "title": "You've Got Mail",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1998
+ },
+ "http://www.wikidata.org/entity/Q943338": {
+  "title": "Hitch",
+  "status": "VERIFIED",
+  "overlap": 0.74,
+  "omdbYear": 2005
+ },
+ "http://www.wikidata.org/entity/Q753899": {
+  "title": "Scott Pilgrim vs. the World",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2010
+ },
+ "http://www.wikidata.org/entity/Q244975": {
+  "title": "Valentine's Day",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2010
+ },
+ "http://www.wikidata.org/entity/Q470560": {
+  "title": "The Quiet Man",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1952
+ },
+ "http://www.wikidata.org/entity/Q637835": {
+  "title": "You Can't Take It with You",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1938
+ },
+ "http://www.wikidata.org/entity/Q525415": {
+  "title": "My Big Fat Greek Wedding",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2002
+ },
+ "http://www.wikidata.org/entity/Q478748": {
+  "title": "The Holiday",
+  "status": "VERIFIED",
+  "overlap": 0.28,
+  "omdbYear": 2006
+ },
+ "http://www.wikidata.org/entity/Q912729": {
+  "title": "The Purple Rose of Cairo",
+  "status": "VERIFIED",
+  "overlap": 0.94,
+  "omdbYear": 1985
+ },
+ "http://www.wikidata.org/entity/Q858724": {
+  "title": "Shaun of the Dead",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2004
+ },
+ "http://www.wikidata.org/entity/Q381751": {
+  "title": "Sex and the City",
+  "status": "MISMATCH",
+  "overlap": 0.06,
+  "omdbYear": 2008,
+  "correct": {
+   "plot": "After moving in together in an impossibly beautiful New York apartment, Carrie Bradshaw and Mr. Big make a rather arbitrary decision to get married. The wedding itself proves to be anything but a hasty affair--the guest list quickly blooms from 75 to 200 guests, and Carrie's simple, label-less wedding gown gives way to an enormous creation that makes her look like a gigantic cream puff. An upcoming photo spread in Vogue puts the event--which will take place at the New York Public Library--squarely in the public eye. Meanwhile, Carrie's girlfriends--Samantha, the sexpot; Charlotte, the sweet naïf; and Miranda, the rigid perfectionist--could not be happier. At least, they couldn't be happier for Carrie. Charlotte still has the unrealized hope of getting pregnant. Samantha is finding a loving, committed relationship more grueling than she could have imagined. Miranda unwittingly lets her own unhappiness--created when Steve admits to cheating on her just once--spoil Carrie's. After a heated encounter with Steve, she happens to spot Mr. Big and tells him he's crazy to get married. She's really only thinking of her own marriage. But her angry remark gets Mr. Big to thinking.",
+   "poster": "https://m.media-amazon.com/images/M/MV5BYWRjMGMxM2UtODgyYS00OTAxLTk0MDctZjFhOWY0NWUxNmI0XkEyXkFqcGc@._V1_QL75_UY562_CR7,0,380,562_.jpg",
+   "runtime": "145 min",
+   "director": "Michael Patrick King",
+   "rated": "R",
+   "rottenTomatoes": "49%"
+  }
+ },
+ "http://www.wikidata.org/entity/Q324933": {
+  "title": "Stolen Kisses",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1968
+ },
+ "http://www.wikidata.org/entity/Q217112": {
+  "title": "Moonrise Kingdom",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2012
+ },
+ "http://www.wikidata.org/entity/Q179743": {
+  "title": "Bringing Up Baby",
+  "status": "VERIFIED",
+  "overlap": 0.99,
+  "omdbYear": 1938
+ },
+ "http://www.wikidata.org/entity/Q177374": {
+  "title": "There's Something About Mary",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1998
+ },
+ "http://www.wikidata.org/entity/Q80204": {
+  "title": "Anna Karenina",
+  "status": "VERIFIED",
+  "overlap": 0.87,
+  "omdbYear": 2012
+ },
+ "http://www.wikidata.org/entity/Q912877": {
+  "title": "A Good Year",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2006
+ },
+ "http://www.wikidata.org/entity/Q798797": {
+  "title": "Bad Teacher",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2011
+ },
+ "http://www.wikidata.org/entity/Q1139794": {
+  "title": "The 40-Year-Old Virgin",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2005
+ },
+ "http://www.wikidata.org/entity/Q380848": {
+  "title": "Julie & Julia",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2009
+ },
+ "http://www.wikidata.org/entity/Q222800": {
+  "title": "Knocked Up",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2007
+ },
+ "http://www.wikidata.org/entity/Q220154": {
+  "title": "27 Dresses",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2008
+ },
+ "http://www.wikidata.org/entity/Q72925": {
+  "title": "She's the Man",
+  "status": "VERIFIED",
+  "overlap": 0.38,
+  "omdbYear": 2006
+ },
+ "http://www.wikidata.org/entity/Q474087": {
+  "title": "No Strings Attached",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2011
+ },
+ "http://www.wikidata.org/entity/Q918380": {
+  "title": "My Best Friend's Wedding",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1997
+ },
+ "http://www.wikidata.org/entity/Q304030": {
+  "title": "Eat Pray Love",
+  "status": "VERIFIED",
+  "overlap": 0.96,
+  "omdbYear": 2010
+ },
+ "http://www.wikidata.org/entity/Q290679": {
+  "title": "The Seven Year Itch",
+  "status": "VERIFIED",
+  "overlap": 0.93,
+  "omdbYear": 1955
+ },
+ "http://www.wikidata.org/entity/Q155559": {
+  "title": "He's Just Not That Into You",
+  "status": "VERIFIED",
+  "overlap": 0.98,
+  "omdbYear": 2009
+ },
+ "http://www.wikidata.org/entity/Q589894": {
+  "title": "Ninotchka",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1939
+ },
+ "http://www.wikidata.org/entity/Q131547207": {
+  "title": "The Odyssey",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2026
+ },
+ "http://www.wikidata.org/entity/Q217189": {
+  "title": "The Seventh Seal",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1958
+ },
+ "http://www.wikidata.org/entity/Q106428": {
+  "title": "Apollo 13",
+  "status": "VERIFIED",
+  "overlap": 0.42,
+  "omdbYear": 1995
+ },
+ "http://www.wikidata.org/entity/Q220394": {
+  "title": "The Birth of a Nation",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1915
+ },
+ "http://www.wikidata.org/entity/Q270351": {
+  "title": "American Gangster",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2007
+ },
+ "http://www.wikidata.org/entity/Q29057443": {
+  "title": "The Irishman",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2019
+ },
+ "http://www.wikidata.org/entity/Q329709": {
+  "title": "Mutiny on the Bounty",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1936
+ },
+ "http://www.wikidata.org/entity/Q329448": {
+  "title": "Public Enemies",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2009
+ },
+ "http://www.wikidata.org/entity/Q221384": {
+  "title": "Black Hawk Down",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2002
+ },
+ "http://www.wikidata.org/entity/Q159054": {
+  "title": "Valkyrie",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2008
+ },
+ "http://www.wikidata.org/entity/Q115789958": {
+  "title": "Gladiator II",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2024
+ },
+ "http://www.wikidata.org/entity/Q302490": {
+  "title": "The Mission",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1986
+ },
+ "http://www.wikidata.org/entity/Q275187": {
+  "title": "Letters from Iwo Jima",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2007
+ },
+ "http://www.wikidata.org/entity/Q646633": {
+  "title": "The Patriot",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2000
+ },
+ "http://www.wikidata.org/entity/Q466781": {
+  "title": "All the President's Men",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1976
+ },
+ "http://www.wikidata.org/entity/Q62730": {
+  "title": "Das Boot",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1982
+ },
+ "http://www.wikidata.org/entity/Q741823": {
+  "title": "JFK",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1991
+ },
+ "http://www.wikidata.org/entity/Q219315": {
+  "title": "The Hangover",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2009
+ },
+ "http://www.wikidata.org/entity/Q47524071": {
+  "title": "Hereditary",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2018
+ },
+ "http://www.wikidata.org/entity/Q134773": {
+  "title": "Forrest Gump",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1994
+ },
+ "http://www.wikidata.org/entity/Q15732802": {
+  "title": "John Wick",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2014
+ },
+ "http://www.wikidata.org/entity/Q108006": {
+  "title": "Speed",
+  "status": "VERIFIED",
+  "overlap": 0.56,
+  "omdbYear": 1994
+ },
+ "http://www.wikidata.org/entity/Q170035": {
+  "title": "Ratatouille",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2007
+ },
+ "http://www.wikidata.org/entity/Q387601": {
+  "title": "Night at the Museum",
+  "status": "VERIFIED",
+  "overlap": 0.43,
+  "omdbYear": 2006
+ },
+ "http://www.wikidata.org/entity/Q848785": {
+  "title": "Jarhead",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2005
+ },
+ "http://www.wikidata.org/entity/Q3404003": {
+  "title": "Prisoners",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2013
+ },
+ "http://www.wikidata.org/entity/Q309048": {
+  "title": "King Kong",
+  "status": "MISMATCH",
+  "overlap": 0.98,
+  "omdbYear": 1933,
+  "correct": {
+   "plot": "Carl Denham needs to finish his movie and has the perfect location: Skull Island. But he still needs to find a leading lady. This 'soon-to-be-unfortunate' soul is Ann Darrow. No one knows what they will encounter on this island and why it is so mysterious, but once they reach it, they will soon find out. Living on this hidden island is a giant gorilla and this beast now has Ann in its grasps. Carl and Ann's new love, Jack Driscoll, must travel through the jungle looking for Kong and Ann, while avoiding all sorts of creatures and beasts.",
+   "poster": "https://m.media-amazon.com/images/M/MV5BYmFmNTFlN2QtZmEzNS00MTRmLWE1ZGUtODk5YzY1ZTkzMGUzXkEyXkFqcGc@._V1_QL75_UY562_CR21,0,380,562_.jpg",
+   "runtime": "100 min",
+   "director": "Merian C. Cooper, Ernest B. Schoedsack",
+   "rated": "Approved",
+   "rottenTomatoes": "97%"
+  }
+ },
+ "http://www.wikidata.org/entity/Q13255497": {
+  "title": "Birdman",
+  "status": "MISMATCH",
+  "overlap": 0.31,
+  "omdbYear": 2014,
+  "correct": {
+   "plot": "Actor Riggan Thomson is most famous for his movie role from over twenty years ago of the comic book superhero Birdman in the blockbuster movie of the same name and its two equally popular sequels. His association with the role took over his life, where Birdman is more renowned than \"Riggan Thomson\" the actor. Now past middle age, Riggan is trying to establish himself as a true artist by writing, directing, starring in and co-producing with his best friend Jake what is his Broadway debut, an adaptation of Raymond Carver's story, What We Talk About When We Talk About Love. He is staking his name, what little artistic reputation that comes with that name and his life savings on the project, and as such will do anything needed to make the play a success. As he and Jake go through the process of the previews toward opening night, Riggan runs into several issues: needing to find a replacement for the integral supporting male role the night before the first preview; hiring the talented Broadway name, Mike Shiner, for that role, Mike who ends up being difficult to work with and who may end up overshadowing Riggan in the play; having to deal potentially with a lawsuit based on one of his actions to ensure success; needing to be there for his daughter, Sam, who he has hired to be his production assistant and who has just come out of drug rehab; and pleasing the New York Times critic, Tabitha Dickinson, who wants to use any excuse to give the play a scathing review which in turn would close the show after the opening night performance. But Riggan's biggest problem may be his own insecurities, which are manifested by him constantly hearing what he believes to be the truth from the voice of his Birdman character, who he often battles both internally and externally.",
+   "poster": "https://m.media-amazon.com/images/M/MV5BODAzNDMxMzAxOV5BMl5BanBnXkFtZTgwMDMxMjA4MjE@._V1_QL75_UX380_CR0,0,380,562_.jpg",
+   "runtime": "119 min",
+   "director": "Alejandro G. Iñárritu",
+   "rated": "R",
+   "rottenTomatoes": "91%"
+  }
+ },
+ "http://www.wikidata.org/entity/Q171861": {
+  "title": "The Artist",
+  "status": "VERIFIED",
+  "byOverride": true
+ },
+ "http://www.wikidata.org/entity/Q190525": {
+  "title": "Memento",
+  "status": "VERIFIED",
+  "byOverride": true
+ },
+ "http://www.wikidata.org/entity/Q486239": {
+  "title": "Saw",
+  "status": "VERIFIED",
+  "byOverride": true
+ },
+ "http://www.wikidata.org/entity/Q18002795": {
+  "title": "The Revenant",
+  "status": "VERIFIED",
+  "byOverride": true
+ },
+ "http://www.wikidata.org/entity/Q25136757": {
+  "title": "Call Me by Your Name",
+  "status": "VERIFIED",
+  "byOverride": true
+ },
+ "http://www.wikidata.org/entity/Q272036": {
+  "title": "Wings",
+  "status": "VERIFIED",
+  "byOverride": true
+ },
+ "http://www.wikidata.org/entity/Q28233477": {
+  "title": "Sahara",
+  "status": "MISMATCH",
+  "overlap": 0.07,
+  "omdbYear": 2017,
+  "correct": {
+   "plot": "Two clans of snakes cohabit in the desert. Beautiful green serpents that live under the shelter of an oasis, protected and venerated by men and venomous snakes that survive in the sand, dust and heat, hunted and killed by the Tuaregs. Here is the story of Ajar, a young venomous serpent, laughed at by his peers because he still has not done his first molt and that of Eva, rebellious princess of the oasis who wants to escape an arranged marriage. These two will meet and fall in love. Alas, Eva will be kidnapped by the Tuaregs and Ajar, accompanied by his best friend, Pitt the Scorpion, will have to cross the ruthless Sahara to save Eva from the terrible fate awaiting her.",
+   "poster": "https://m.media-amazon.com/images/M/MV5BMjIyMmUxZjktNjE3MC00MmI3LWJjOGItMTJjYjcyNTJhYWYwXkEyXkFqcGc@._V1_QL75_UY562_CR17,0,380,562_.jpg",
+   "runtime": "86 min",
+   "director": "Pierre Coré",
+   "rated": "TV-Y7",
+   "rottenTomatoes": null
+  }
+ },
+ "http://www.wikidata.org/entity/Q2593047": {
+  "title": "Faust",
+  "status": "MISMATCH",
+  "overlap": 0.1,
+  "omdbYear": 1994,
+  "correct": {
+   "plot": "A very free adaptation of Marlowe's 'Doctor Faustus', Goethe's 'Faust' and various other treatments of the old legend of the man who sold his soul to the devil. Svankmajer's Faust is a nondescript man who, after being lured by a strange map into a sinister puppet theatre, finds himself immersed in an indescribably weird version of the play, blending live actors, clay model animation and giant puppets.",
+   "poster": "https://m.media-amazon.com/images/M/MV5BMjEyMzM4ODg4N15BMl5BanBnXkFtZTgwMjQ4NzEwMjE@._V1_SX300.jpg",
+   "runtime": "97 min",
+   "director": "Jan Svankmajer",
+   "rated": null,
+   "rottenTomatoes": null
+  }
+ },
+ "http://www.wikidata.org/entity/Q49498": {
+  "title": "Deep Impact",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1998
+ },
+ "http://www.wikidata.org/entity/Q189540": {
+  "title": "Seven Samurai",
+  "status": "VERIFIED",
+  "byOverride": true
+ },
+ "http://www.wikidata.org/entity/Q220741": {
+  "title": "City of God",
+  "status": "VERIFIED",
+  "byOverride": true
+ },
+ "http://www.wikidata.org/entity/Q188000": {
+  "title": "Crash",
+  "status": "VERIFIED",
+  "byOverride": true
+ },
+ "http://www.wikidata.org/entity/Q201687": {
+  "title": "Milk",
+  "status": "VERIFIED",
+  "byOverride": true
+ },
+ "http://www.wikidata.org/entity/Q174371": {
+  "title": "127 Hours",
+  "status": "VERIFIED",
+  "byOverride": true
+ },
+ "http://www.wikidata.org/entity/Q201674": {
+  "title": "The Deer Hunter",
+  "status": "VERIFIED",
+  "byOverride": true
+ },
+ "http://www.wikidata.org/entity/Q62721520": {
+  "title": "1917",
+  "status": "VERIFIED",
+  "byOverride": true
+ },
+ "http://www.wikidata.org/entity/Q76479": {
+  "title": "A Fistful of Dollars",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1967
+ },
+ "http://www.wikidata.org/entity/Q153677": {
+  "title": "For a Few Dollars More",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1967
+ },
+ "http://www.wikidata.org/entity/Q1043614": {
+  "title": "Taare Zameen Par",
+  "status": "MISMATCH",
+  "overlap": 0.07,
+  "omdbYear": 2007,
+  "correct": {
+   "plot": "Ishaan Awasthi is an eight-year-old child whose world is filled with wonders that no one else seems to appretiate are just not important in the world of adults, who are much more interested in things like homework, marks and neatness. And Ishaan just cannot seem to get anything right in class. When he gets into far more trouble than his parents can handle, he is packed off to a boarding school to 'be disciplined'. Things are no different at his new school, and Ishaan has to contend with the added trauma of separation from his family. One day a new art teacher bursts onto the scene, Ram Shankar Nikumbh, who infects the students with joy and optimism. He breaks all the rules of 'how things are done' by asking them to think, dream and imagine, and all the children respond with enthusiasm, all except Ishaan. Nikumbh soon realizes that Ishaan is very unhappy, and he sets out to discover why. With time, patience and care, he ultimately helps Ishaan find himself.",
+   "poster": "https://m.media-amazon.com/images/M/MV5BZTI0ZGRiMDEtNGNjMS00MGU4LWI3OTktNzcxMDZmZTk3MTljXkEyXkFqcGc@._V1_QL75_UY562_CR7,0,380,562_.jpg",
+   "runtime": "162 min",
+   "director": "Aamir Khan",
+   "rated": "PG",
+   "rottenTomatoes": "93%"
+  }
+ },
+ "http://www.wikidata.org/entity/Q550232": {
+  "title": "Arthur and the Minimoys",
+  "status": "VERIFIED",
+  "byOverride": true
+ },
+ "http://www.wikidata.org/entity/Q339804": {
+  "title": "Children of Heaven",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1999
+ },
+ "http://www.wikidata.org/entity/Q21869840": {
+  "title": "Split",
+  "status": "VERIFIED",
+  "byOverride": true
+ },
+ "http://www.wikidata.org/entity/Q20856802": {
+  "title": "La La Land",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2016
+ },
+ "http://www.wikidata.org/entity/Q105702": {
+  "title": "Dr. Strangelove",
+  "status": "MISMATCH",
+  "overlap": 0.07,
+  "omdbYear": 1964,
+  "correct": {
+   "plot": "Paranoid Brigadier General Jack D. Ripper of Burpelson Air Force Base, believing that fluoridation of the American water supply is a Soviet plot to poison the U.S. populace, is able to deploy through a back door mechanism a nuclear attack on the Soviet Union without the knowledge of his superiors, including the Chair of the Joint Chiefs of Staff, General Buck Turgidson, and President Merkin Muffley. Only Ripper knows the code to recall the B-52 bombers and he has shut down communication in and out of Burpelson as a measure to protect this attack. Ripper's executive officer, RAF Group Captain Lionel Mandrake (on exchange from Britain), who is being held at Burpelson by Ripper, believes he knows the recall codes if he can only get a message to the outside world. Meanwhile at the Pentagon War Room, key persons including Muffley, Turgidson and nuclear scientist and adviser, a former Nazi named Dr. Strangelove, are discussing measures to stop the attack or mitigate its blow-up into an all out nuclear war with the Soviets. Against Turgidson's wishes, Muffley brings Soviet Ambassador Alexi de Sadesky into the War Room, and get his boss, Soviet Premier Dimitri Kisov, on the hot line to inform him of what's going on. The Americans in the War Room are dismayed to learn that the Soviets have an as yet unannounced Doomsday Device to detonate if any of their key targets are hit. As Ripper, Mandrake and those in the War Room try and work the situation to their end goal, Major T.J. \"King\" Kong, one of the B-52 bomber pilots, is working on his own agenda of deploying his bomb where ever he can on enemy soil if he can't make it to his intended target.",
+   "poster": "https://m.media-amazon.com/images/M/MV5BMjFjYzBlOTktMTI2OS00ZWVhLTgxMDUtNzAwODY2NmI3YTAzXkEyXkFqcGc@._V1_QL75_UX380_CR0,14,380,562_.jpg",
+   "runtime": "95 min",
+   "director": "Stanley Kubrick",
+   "rated": "PG",
+   "rottenTomatoes": "98%"
+  }
  }
 }

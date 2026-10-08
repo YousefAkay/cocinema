@@ -51,8 +51,22 @@ export function pickRottenTomatoes(ratings) {
   return entry ? entry.Value : null;
 }
 
+// OMDb sometimes sends text with HTML entities in it ("&amp;", "d&apos;Abbadie"); the page shows
+// text as text, so they are turned into the characters they stand for.
+export function decodeEntities(text) {
+  if (typeof text !== 'string') return text;
+  return text
+    .replace(/&#x([0-9a-f]+);/gi, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#(\d+);/g, (_, digits) => String.fromCodePoint(Number(digits)))
+    .replace(/&apos;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&');
+}
+
 export function clean(value) {
-  return value && value !== 'N/A' ? value : null;
+  return value && value !== 'N/A' ? decodeEntities(value) : null;
 }
 
 // OMDb's y must equal its own release year, while Wikidata gives the earliest release

@@ -6,6 +6,11 @@ const PROGRESS_PATH = 'data/verify-progress.json';
 const LOCK_PATH = 'data/verify-progress.lock';
 const ONBOARDING_PATH = 'data/onboarding.json';
 
+// True when the catalog entry already holds every field of the corrected record.
+function alreadyApplied(movie, correct) {
+  return ['plot', 'poster', 'runtime', 'director', 'rated', 'rottenTomatoes'].every(field => movie[field] === correct[field]);
+}
+
 function start(text) {
   return JSON.stringify((text || '').slice(0, 80));
 }
@@ -30,7 +35,7 @@ async function main() {
 
   for (const movie of catalog) {
     const entry = progress[movie.id];
-    if (!entry || entry.status !== 'MISMATCH' || movie.plot === entry.correct.plot) {
+    if (!entry || entry.status !== 'MISMATCH' || alreadyApplied(movie, entry.correct)) {
       continue;
     }
 
