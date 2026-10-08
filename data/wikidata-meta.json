@@ -3879,18 +3879,6 @@
    "animated"
   ]
  },
- "http://www.wikidata.org/entity/Q30051739": {
-  "year": 2017,
-  "sitelinks": 9,
-  "genreIds": [
-   "Q319221",
-   "Q202866"
-  ],
-  "genres": [
-   "adventure",
-   "animated"
-  ]
- },
  "http://www.wikidata.org/entity/Q122363694": {
   "year": 2023,
   "sitelinks": 8,
@@ -8322,11 +8310,5 @@
    "crime",
    "drama"
   ]
- },
- "http://www.wikidata.org/entity/Q25019036": {
-  "year": 2016,
-  "sitelinks": 1,
-  "genreIds": [],
-  "genres": []
  }
 }
