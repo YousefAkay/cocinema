@@ -10,7 +10,7 @@ const SHELL = [
   './', './index.html', './style.css', './logo.svg',
   './main.js', './ui.js', './ratings.js', './recommend.js', './similarity.js', './why.js',
   './candidates.js', './percentile.js', './format.js', './links.js', './route.js',
-  './detail.js', './availability.js', './shuffle.js', './offline.js', './progress.js', './evaluation-stats.js', './landing-posters.js',
+  './detail.js', './availability.js', './shuffle.js', './offline.js', './progress.js', './evaluation-stats.js', './landing-posters.js', './cowatch.js',
   './fonts/manrope-variable-latin.woff2', './fonts/instrument-serif-regular-latin.woff2',
   './fonts/instrument-serif-italic-latin.woff2',
 ];
