@@ -52,7 +52,7 @@ flowchart LR
 - **Embeddings:** OpenAI `text-embedding-3-small`, reduced to 512 dimensions and rounded to 4 decimals. That's about 5 KB per movie instead of 30 KB, with no visible change in rankings.
 - **Resilience:** the build is resumable. It reuses already-enriched movies, saves progress every 25, and stops cleanly at OMDb's daily limit so the next run picks up where it left off.
 
-Current catalog: **576 movies** across 20 genres.
+Current catalog: **574 movies** across 20 genres.
 
 ### Catalog schema
 
@@ -83,7 +83,7 @@ Every catalog entry is checked against OMDb by title and year. A record is accep
 
 ## Evaluation
 
-Run on 7 October 2026 with `npm run evaluate` (fixed seed, no network). Mean over 20 genres and 1,000 synthetic users: precision@10 of 0.58 against a 0.16 baseline (a lift of 4.5x), the held-out liked film at the 72nd percentile on average, and found in the top 20 for 14% of users.
+Run on 8 October 2026 with `npm run evaluate` (fixed seed, no network). Mean over 20 genres and 1,000 synthetic users: precision@10 of 0.60 against a 0.16 baseline (a lift of 4.6x), the held-out liked film at the 73rd percentile on average, and found in the top 20 for 14% of users.
 
 Method: for each genre with at least 25 films, a synthetic user is generated 50 times. They rate 6 films of that genre 9 or 10, 4 films outside it 2 or 3, and 2 other films 5 or 6, all picked at random with a fixed seed. One more film of the genre is held back. The real `recommend()` function ranks every unrated film, and the script records how much of the top 10 is in the genre, how that compares with the genre's share of the whole catalog, and where the held-back film lands.
 
@@ -95,13 +95,13 @@ Limitation: these are synthetic users whose taste is defined by Wikidata genre l
 
 | Ratings | Precision@10 | Lift over chance | Hidden liked film (mean percentile) | Hidden film in top 20 |
 | --- | --- | --- | --- | --- |
-| 6 | 0.509 | 3.8x | 68.5 | 12.8% |
-| 8 | 0.543 | 4.1x | 70.7 | 15.0% |
-| 10 | 0.559 | 4.2x | 71.5 | 15.5% |
-| 12 | 0.589 | 4.5x | 73.3 | 17.9% |
-| 15 | 0.613 | 4.7x | 74.3 | 18.4% |
+| 6 | 0.514 | 3.9x | 67.8 | 14.2% |
+| 8 | 0.552 | 4.2x | 70.2 | 14.7% |
+| 10 | 0.570 | 4.4x | 71.4 | 16.1% |
+| 12 | 0.599 | 4.6x | 73.7 | 16.6% |
+| 15 | 0.617 | 4.8x | 75.4 | 18.6% |
 
-Picks get steadily better as ratings are added, with no sharp jump anywhere, and 6 ratings already do clearly better than chance. This is the same synthetic setup as above (simulated genre tastes built from Wikidata genre labels), so it describes how recommendations improve with more ratings, not how accurate they are for real people. The 12-rating row uses these nested simulated users, so it differs slightly from the standard run's 4.46x. The headline lift quoted on the landing page comes from the standard run, which writes `src/evaluation-stats.js` so the page and this section cannot disagree.
+Picks get steadily better as ratings are added, with no sharp jump anywhere, and 6 ratings already do clearly better than chance. This is the same synthetic setup as above (simulated genre tastes built from Wikidata genre labels), so it describes how recommendations improve with more ratings, not how accurate they are for real people. The 12-rating row uses these nested simulated users, so it differs slightly from the standard run's 4.58x. The headline lift quoted on the landing page comes from the standard run, which writes `src/evaluation-stats.js` so the page and this section cannot disagree.
 
 ## Tech stack
 

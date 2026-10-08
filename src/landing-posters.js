@@ -1,6 +1,11 @@
 // Written by scripts/buildLandingPosters.js (npm run build:landing). Do not edit by hand.
 export const LANDING_POSTERS = [
   {
+    "title": "Forrest Gump",
+    "year": 1994,
+    "poster": "https://m.media-amazon.com/images/M/MV5BNDYwNzVjMTItZmU5YS00YjQ5LTljYjgtMjY2NDVmYWMyNWFmXkEyXkFqcGc@._V1_QL75_UY562_CR4,0,380,562_.jpg"
+  },
+  {
     "title": "Titanic",
     "year": 1997,
     "poster": "https://m.media-amazon.com/images/M/MV5BYzYyN2FiZmUtYWYzMy00MzViLWJkZTMtOGY1ZjgzNWMwN2YxXkEyXkFqcGc@._V1_QL75_UX380_CR0,2,380,562_.jpg"
@@ -54,10 +59,5 @@ export const LANDING_POSTERS = [
     "title": "The Silence of the Lambs",
     "year": 1991,
     "poster": "https://m.media-amazon.com/images/M/MV5BNDdhOGJhYzctYzYwZC00YmI2LWI0MjctYjg4ODdlMDExYjBlXkEyXkFqcGc@._V1_QL75_UY562_CR1,0,380,562_.jpg"
-  },
-  {
-    "title": "Fight Club",
-    "year": 1999,
-    "poster": "https://m.media-amazon.com/images/M/MV5BOTgyOGQ1NDItNGU3Ny00MjU3LTg2YWEtNmEyYjBiMjI1Y2M5XkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg"
   }
 ];

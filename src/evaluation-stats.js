@@ -4,10 +4,10 @@ export const EVALUATION = {
   "genres": 20,
   "personas": 1000,
   "ratingsPerPersona": 12,
-  "catalogSize": 574,
-  "precisionAt10": 0.581,
+  "catalogSize": 573,
+  "precisionAt10": 0.598,
   "baseline": 0.162,
-  "lift": 4.46,
-  "hiddenPercentile": 72,
-  "top20HitRate": 0.141
+  "lift": 4.58,
+  "hiddenPercentile": 72.6,
+  "top20HitRate": 0.144
 };
