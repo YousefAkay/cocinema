@@ -19,7 +19,7 @@ const TYPES = {
 // inside sw.js so a test can pretend a new deploy went out. counts records how often each path
 // was served.
 export async function startServer() {
-  const state = { swVersion: null, counts: new Map() };
+  const state = { swVersion: null, cowatchOff: false, counts: new Map() };
 
   const server = http.createServer((req, res) => {
     const urlPath = decodeURIComponent(new URL(req.url, 'http://127.0.0.1').pathname);
@@ -39,6 +39,11 @@ export async function startServer() {
     }
 
     const headers = { 'Content-Type': TYPES[path.extname(file)] || 'application/octet-stream' };
+    if (servedPath === '/src/flags.js' && state.cowatchOff) {
+      // A test copy with the co-watch flag switched off.
+      res.writeHead(200, headers).end(fs.readFileSync(file, 'utf8').replace('COWATCH_ENABLED = true', 'COWATCH_ENABLED = false'));
+      return;
+    }
     if (servedPath === '/src/sw.js') {
       headers['Cache-Control'] = 'public, max-age=0, must-revalidate';
       headers['Service-Worker-Allowed'] = '/';

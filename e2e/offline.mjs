@@ -55,11 +55,10 @@ try {
       && offlineFonts.some(name => name.includes('Instrument Serif') && name.endsWith('italic')), offlineFonts.join('; '));
   const offlineStrip = await page.evaluate(() => ({
     tiles: document.querySelectorAll('.strip-tile').length,
-    broken: [...document.querySelectorAll('.strip-tile img')].filter(image => image.complete && image.naturalWidth > 0).length === 0
-      && [...document.querySelectorAll('.strip-tile img')].every(image => !(image.complete && image.naturalWidth === 0)),
+    broken: [...document.querySelectorAll('.strip-tile img')].filter(image => image.complete && image.naturalWidth === 0).length,
     labels: [...document.querySelectorAll('.strip-tile span')].every(label => label.textContent.length > 3),
   }));
-  check('offline: the poster strip shows plain tiles with titles, no broken images', offlineStrip.tiles === 24 && offlineStrip.broken && offlineStrip.labels);
+  check('offline: the poster strip has a titled tile behind every poster and no broken images', offlineStrip.tiles === 24 && offlineStrip.broken === 0 && offlineStrip.labels);
   await page.screenshot({ path: path.join(shots, '13-landing-offline.png') });
   check('offline: the notice appears', await page.locator('#offline-notice').isVisible() && (await page.locator('#offline-notice').innerText()) === 'Offline - using saved data');
 
@@ -79,9 +78,13 @@ try {
   await page.waitForSelector('.top-pick');
   check('offline: onboarding completes and results show', (await page.locator('.top-pick').count()) === 5 && (await page.locator('.more-picks .movie-card').count()) > 5, `${step} ratings`);
 
-  const imagesLoaded = await page.$$eval('#results-screen img', images => images.filter(image => image.complete && image.naturalWidth > 0).length);
-  const placeholders = await page.locator('#results-screen .poster-placeholder').count();
-  check('offline: posters fall back to placeholder cards', imagesLoaded === 0 && placeholders >= 5, `${placeholders} placeholders`);
+  // A poster the browser already fetched while online may still come from its own cache; any other
+  // poster fails, and must show a placeholder card, never a broken image.
+  const posters = await page.evaluate(() => ({
+    broken: [...document.querySelectorAll('#results-screen img')].filter(image => image.complete && image.naturalWidth === 0).length,
+    placeholders: document.querySelectorAll('#results-screen .poster-placeholder').length,
+  }));
+  check('offline: posters that cannot load fall back to placeholder cards, with no broken images', posters.broken === 0 && posters.placeholders >= 3, `${posters.placeholders} placeholders`);
 
   await page.locator('.top-pick h3 a').first().click();
   await page.waitForSelector('#detail-screen .detail');
