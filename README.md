@@ -11,7 +11,7 @@
 ## Features
 
 - **Quick or Full:** a landing page asks how many films you want to rate (nothing is pre-selected). Quick covers 10 of the 15 genres (a different 10 each session), Full covers all 15. Either way you can skip a film you have not seen and get a ranked list. The top 5 come with a one-line reason ("Because you rated ..."), and the rest follow in a compact grid.
-- **Where a film sits for you:** the top 5 show their rank ("#3 of 561 films"), and the rest of the list and every film page show "Top N% for your taste", the film's place among all unrated films. It ranks films against each other and is not the chance you will like one.
+- **Where a film sits for you:** the top 5 show their rank ("#3"), and the rest of the list and every film page show "Top N% for your taste", the film's place among all unrated films. It ranks films against each other and is not the chance you will like one.
 - **Fresh every visit:** each genre has a pool of up to 8 well-known films, and the order of genres and films is shuffled per session from a saved seed, so a refresh resumes on exactly the same film.
 - **Rate 5 more:** five well-known films you have not rated or skipped, at most two per genre, to sharpen the list.
 - **Film pages:** tap any result for its poster, genres, runtime, director, age rating, Rotten Tomatoes score, full plot, a breakdown of how each film you rated pushed this one up or down, a YouTube trailer search, which services include it or rent or sell it in Canada, the US and the UK (from a dated Watchmode snapshot), and JustWatch search links for each (search links, not a guarantee of availability).

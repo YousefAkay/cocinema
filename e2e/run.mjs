@@ -114,9 +114,17 @@ try {
   check('every why line is non-empty and names only movies the user rated', named, whys[0]);
 
   const ranks = await page.locator('.top-pick-match').allInnerTexts();
-  const parsed = ranks.map(text => /^#(\d) of (\d+) films$/.exec(text));
-  check('top cards read "#N of M films" with N from 1 to 5',
-    parsed.every(Boolean) && parsed.map(m => Number(m[1])).join() === '1,2,3,4,5' && parsed.every(m => Number(m[2]) > 100 && m[2] === parsed[0][2]), ranks.join(', '));
+  check('top cards show only their rank: "#1" to "#5", with no total', ranks.join() === '#1,#2,#3,#4,#5', ranks.join(', '));
+  const totals = await page.evaluate(async () => {
+    const catalogLength = (await (await fetch('../data/catalog.json')).json()).length;
+    const screen = document.getElementById('results-screen');
+    const spoken = [...screen.querySelectorAll('[aria-label], [title], img[alt]')].map(node => node.getAttribute('aria-label') || node.getAttribute('title') || node.getAttribute('alt')).join(' ');
+    return { catalogLength, text: `${screen.innerText} ${spoken}`, html: screen.innerHTML };
+  });
+  const unrated = totals.catalogLength - 15;
+  check('the results page shows no exact catalog count and no "of N" ranking text, on screen or for a screen reader',
+    ![totals.catalogLength, totals.catalogLength - 1, unrated, unrated + 1].some(n => new RegExp(`\\b${n}\\b`).test(totals.text))
+      && !/#\d+ of \d+|\b(out of|of) \d{2,} (films|movies)/i.test(totals.text) && !/#\d+ of \d+/.test(totals.html));
   check('the top cards do not show the "Top N%" figure', !(await page.locator('.top-pick').allInnerTexts()).some(text => /Top \d+%/.test(text)));
 
   const notes = await page.locator('.more-picks .movie-card-note').allInnerTexts();

@@ -114,3 +114,21 @@ test('every text and background pair meets WCAG AA (4.5:1, and 3:1 for focus rin
     assert.ok(contrast(color('accent'), background) >= 3, `accent bars on ${background}`);
   }
 });
+
+test('rankings show a plain "#N", never a total', () => {
+  for (const file of ['../src/ui.js', '../src/cowatchScreens.js', '../src/main.js']) {
+    const code = read(file);
+    assert.ok(!/#\$\{[^}]*\}\s+of\s/.test(code), `${file} builds a "#N of M" ranking`);
+  }
+  assert.match(read('../src/ui.js'), /match\.textContent = `#\$\{rank\}`;/);
+  assert.match(read('../src/cowatchScreens.js'), /`#\$\{index \+ 1\}`/);
+});
+
+test('marketing copy takes the film count from roundedCount, never from the exact length or typed by hand', () => {
+  const main = read('../src/main.js');
+  assert.match(main, /fillLandingNumber\('films', roundedCount\(catalog\.length\)/);
+  assert.ok(!/fillLandingNumber\('films', String\(catalog\.length\)\)/.test(main));
+  const html = read('../src/index.html');
+  assert.ok(!/\b5\d0\+?\s+(films|movies)/.test(html), 'a film count is typed into the page');
+  assert.ok(!/\b57\d\b|\b576\b/.test(html), 'an exact catalog count is typed into the page');
+});

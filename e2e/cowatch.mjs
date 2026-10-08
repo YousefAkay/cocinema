@@ -133,6 +133,9 @@ try {
   check('focus moves to the shared list heading', (await focusedId(b.page)) === 'combined-title');
   const titles = await comboTitles(b.page);
   check('there are exactly 10 films', titles.length === 10, titles.join('; '));
+  const comboRanks = await b.page.locator('.combined-rank').allInnerTexts();
+  check('the shared list shows plain ranks "#1" to "#10" with no total',
+    comboRanks.join() === Array.from({ length: 10 }, (_, i) => `#${i + 1}`).join() && !/\bof \d+\b/.test(await b.page.locator('.combined-list').innerText()), comboRanks.slice(0, 3).join(', '));
   const figures = await b.page.locator('.combined-figures').allInnerTexts();
   check('each film shows how it ranks for "You" and for "Your friend" in "Top N%" wording',
     figures.length === 10 && figures.every(text => /^You: Top \d+%\nYour friend: Top \d+%$/.test(text.trim())), figures[0].replace(/\n/g, ' | '));

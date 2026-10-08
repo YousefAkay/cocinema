@@ -124,7 +124,7 @@ export function renderCombined({ results, friendLabel, skipped, hasSolo, onSolo,
     const link = element('a', '', titleWithYear(result.movie));
     link.href = movieHash(result.movie.id);
     title.append(link);
-    body.append(element('p', 'combined-rank', `#${index + 1} of ${results.length}`));
+    body.append(element('p', 'combined-rank', `#${index + 1}`));
     body.append(title);
     const figures = element('ul', 'combined-figures');
     figures.append(element('li', '', `You: Top ${result.percentA}%`));
