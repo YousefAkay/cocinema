@@ -1,7 +1,7 @@
 import test, { beforeEach } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  saveRating, getAllRatings, markSkipped, getSkippedIds, savePosition, saveExtra, saveSeed, saveLength, loadSavedState, clearSavedState,
+  saveRating, getAllRatings, markSkipped, getSkippedIds, savePosition, saveExtra, saveSeed, saveLength, saveFriend, getFriend, loadSavedState, clearSavedState,
 } from '../src/ratings.js';
 
 const KEY = 'cocinema:v4';
@@ -32,7 +32,7 @@ test('saveRating and savePosition write one JSON record under the versioned key'
   saveLength(10);
   saveRating('a', 7);
   savePosition(2, 1);
-  assert.deepEqual(JSON.parse(store[KEY]), { ratings: [['a', 7]], seed: 123, length: 10, skipped: [], genreIndex: 2, movieIndex: 1, extra: null });
+  assert.deepEqual(JSON.parse(store[KEY]), { ratings: [['a', 7]], seed: 123, length: 10, skipped: [], genreIndex: 2, movieIndex: 1, extra: null, friend: null });
   assert.deepEqual(getAllRatings(), [{ id: 'a', score: 7 }]);
 });
 
@@ -167,4 +167,79 @@ test('a Full session accepts positions up to 15 but a Quick session stops at 10'
   assert.equal(loadSavedState(ids).genreIndex, 12);
   store[KEY] = save(10, 12);
   assert.equal(loadSavedState(ids), null);
+});
+
+// ---- A friend's shared taste, kept apart from the visitor's own ratings ----
+const goodSession = { ratings: [['a', 7]], seed: 5, length: 10, skipped: [], genreIndex: 3, movieIndex: 0, extra: null };
+const goodFriend = { ratings: [['b', 9], ['c', 2]], skipped: 4, sample: null };
+
+test('a save from before the friend field existed still loads, with no friend', () => {
+  store[KEY] = JSON.stringify(goodSession); // no friend key at all
+  assert.deepEqual(loadSavedState(ids), { seed: 5, length: 10, genreIndex: 3, movieIndex: 0, extra: null });
+  assert.equal(getFriend(), null);
+  assert.deepEqual(getAllRatings(), [{ id: 'a', score: 7 }]);
+});
+
+test('a saved friend loads back, and never joins the visitor\'s own ratings', () => {
+  store[KEY] = JSON.stringify({ ...goodSession, friend: goodFriend });
+  loadSavedState(ids);
+  assert.deepEqual(getFriend(), { ratings: [{ id: 'b', score: 9 }, { id: 'c', score: 2 }], skipped: 4, sample: null });
+  assert.deepEqual(getAllRatings(), [{ id: 'a', score: 7 }]);
+});
+
+test('saveFriend writes the friend next to, not into, the visitor\'s ratings', () => {
+  saveRating('a', 7);
+  saveFriend({ ratings: [{ id: 'b', score: 9 }], skipped: 0, sample: 'horror' });
+  const saved = JSON.parse(store[KEY]);
+  assert.deepEqual(saved.ratings, [['a', 7]]);
+  assert.deepEqual(saved.friend, { ratings: [['b', 9]], skipped: 0, sample: 'horror' });
+  assert.deepEqual(getAllRatings(), [{ id: 'a', score: 7 }]);
+  saveFriend(null);
+  assert.equal(JSON.parse(store[KEY]).friend, null);
+  assert.equal(getFriend(), null);
+});
+
+test('saving ratings later keeps the friend, and a friend does not change what the visitor rated', () => {
+  saveFriend({ ratings: [{ id: 'b', score: 9 }], skipped: 0, sample: null });
+  saveRating('c', 4);
+  assert.deepEqual(JSON.parse(store[KEY]).friend.ratings, [['b', 9]]);
+  assert.deepEqual(getAllRatings(), [{ id: 'c', score: 4 }]);
+});
+
+test('a bad friend is dropped without losing the visitor\'s own saved ratings', () => {
+  const badFriends = {
+    'not an object': 'yes',
+    'no ratings list': { skipped: 0, sample: null },
+    'empty ratings': { ratings: [], skipped: 0, sample: null },
+    'unknown film': { ratings: [['zzz', 5]], skipped: 0, sample: null },
+    'bad score': { ratings: [['b', 11]], skipped: 0, sample: null },
+    'fractional score': { ratings: [['b', 5.5]], skipped: 0, sample: null },
+    'repeated film': { ratings: [['b', 5], ['b', 6]], skipped: 0, sample: null },
+    'wrong entry shape': { ratings: [['b']], skipped: 0, sample: null },
+    'negative skipped': { ratings: [['b', 5]], skipped: -1, sample: null },
+    'fractional skipped': { ratings: [['b', 5]], skipped: 1.5, sample: null },
+    'unknown sample': { ratings: [['b', 5]], skipped: 0, sample: 'nobody' },
+    'too many films': { ratings: Array.from({ length: 121 }, (_, i) => [`id${i}`, 5]), skipped: 0, sample: null },
+  };
+  for (const [name, friend] of Object.entries(badFriends)) {
+    store[KEY] = JSON.stringify({ ...goodSession, friend });
+    assert.deepEqual(loadSavedState(ids), { seed: 5, length: 10, genreIndex: 3, movieIndex: 0, extra: null }, name);
+    assert.equal(getFriend(), null, name);
+    assert.deepEqual(getAllRatings(), [{ id: 'a', score: 7 }], name);
+  }
+});
+
+test('a known sample friend is accepted and starting over clears the friend', () => {
+  store[KEY] = JSON.stringify({ ...goodSession, friend: { ratings: [['b', 5]], skipped: 0, sample: 'scifi' } });
+  loadSavedState(ids);
+  assert.equal(getFriend().sample, 'scifi');
+  clearSavedState();
+  assert.equal(getFriend(), null);
+  assert.equal(KEY in store, false);
+});
+
+test('getFriend returns a copy, so changing it cannot change the saved friend', () => {
+  saveFriend({ ratings: [{ id: 'b', score: 9 }], skipped: 0, sample: null });
+  getFriend().ratings[0].score = 1;
+  assert.equal(getFriend().ratings[0].score, 9);
 });

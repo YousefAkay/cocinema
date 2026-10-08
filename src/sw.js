@@ -2,7 +2,7 @@
 // latest deploy; the large data files are stale-while-revalidate so they open instantly and
 // still refresh in the background. Other origins (posters, fonts) are never touched.
 
-const CACHE_NAME = 'cocinema-v3';
+const CACHE_NAME = 'cocinema-v4';
 const NETWORK_TIMEOUT_MS = 4000;
 
 // Everything the app needs to start, relative to this file (/src/).
@@ -10,7 +10,7 @@ const SHELL = [
   './', './index.html', './style.css', './logo.svg',
   './main.js', './ui.js', './ratings.js', './recommend.js', './similarity.js', './why.js',
   './candidates.js', './percentile.js', './format.js', './links.js', './route.js',
-  './detail.js', './availability.js', './shuffle.js', './offline.js', './progress.js', './evaluation-stats.js', './landing-posters.js', './cowatch.js', './combine.js',
+  './detail.js', './availability.js', './shuffle.js', './offline.js', './progress.js', './evaluation-stats.js', './landing-posters.js', './cowatch.js', './combine.js', './flags.js', './samples.js', './cowatchScreens.js',
   './fonts/manrope-variable-latin.woff2', './fonts/instrument-serif-regular-latin.woff2',
   './fonts/instrument-serif-italic-latin.woff2',
 ];

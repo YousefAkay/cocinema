@@ -1,6 +1,6 @@
 import { renderMovieCard, renderRatingWidget, renderResults, renderTopPick } from './ui.js';
 import {
-  getAllRatings, getSkippedIds, markSkipped, savePosition, saveExtra, saveSeed, saveLength, loadSavedState, clearSavedState,
+  getAllRatings, getSkippedIds, markSkipped, savePosition, saveExtra, saveSeed, saveLength, saveFriend, getFriend, loadSavedState, clearSavedState,
 } from './ratings.js';
 import { recommend, explainMatch } from './recommend.js';
 import { buildWhyLine } from './why.js';
@@ -9,6 +9,13 @@ import { topPercent } from './percentile.js';
 import { titleWithYear, genreOrder } from './format.js';
 import { parseHash, shortId } from './route.js';
 import { renderDetail, renderNotFound, renderStreaming, showStreamingLoading } from './detail.js';
+import { COWATCH_ENABLED } from './flags.js';
+import { encodeTaste, decodeTaste, shareLink, MAX_FILMS } from './cowatch.js';
+import { combineTastes } from './combine.js';
+import { SAMPLE_FRIENDS, buildSampleFriend } from './samples.js';
+import {
+  renderShareSection, setShareStatus, renderFriendBanner, renderFriendNotice, renderCombined, focusCombinedHeading,
+} from './cowatchScreens.js';
 import { loadAvailability, streamingView } from './availability.js';
 import { buildSession, newSeed, isValidLength } from './shuffle.js';
 import { registerServiceWorker, watchOnlineStatus } from './offline.js';
@@ -47,6 +54,8 @@ let extra = null;
 let started = false;
 let resultsScrollY = 0;
 let cameFromResults = false;
+let pendingFriend = null; // a friend's taste from a link, not yet part of a session
+let soloView = false; // true while the visitor looks at their own picks instead of the shared list
 
 const landingScreen = document.getElementById('landing-screen');
 const ratingScreen = document.getElementById('rating-screen');
@@ -123,7 +132,7 @@ function showCurrentMovie() {
     savePosition(genreIndex, movieIndex);
   }
   if (step.done) {
-    showResults();
+    showFinished();
     return;
   }
 
@@ -196,7 +205,7 @@ function resumeExtra() {
 function finishExtra(notice) {
   extra = null;
   saveExtra(null);
-  showResults(notice);
+  showFinished(notice);
 }
 
 function addParagraph(parent, className, text) {
@@ -282,14 +291,178 @@ function showResults(notice, restoreScroll = false) {
   const actions = document.createElement('div');
   actions.className = 'results-actions';
   addButton(actions, 'rate-more', `Rate ${EXTRA_COUNT} more`, startExtra);
+  if (COWATCH_ENABLED && getFriend()) {
+    addButton(actions, 'cowatch-to-combined', "Films you'd both enjoy", () => {
+      soloView = false;
+      showCombined();
+    });
+  }
   addButton(actions, 'start-over', 'Start over', startOver);
   resultsScreen.append(actions);
+
+  if (COWATCH_ENABLED) {
+    resultsScreen.append(renderShareSection({ onShare: shareMyTaste, onSample: trySampleFriend }));
+  }
 
   if (restoreScroll) {
     window.scrollTo(0, resultsScrollY);
   } else {
     topHeading.focus({ preventScroll: true });
   }
+}
+
+// ---- Watch with a friend (behind COWATCH_ENABLED) ----
+
+function showFinished(notice, restoreScroll = false) {
+  if (COWATCH_ENABLED && getFriend() && !soloView) {
+    showCombined(notice, restoreScroll);
+  } else {
+    showResults(notice, restoreScroll);
+  }
+}
+
+function friendLabel(friend) {
+  const sample = friend.sample ? SAMPLE_FRIENDS.find(candidate => candidate.key === friend.sample) : null;
+  return sample ? `${sample.label} (sample)` : 'Your friend';
+}
+
+// Films that suit both people. The friend's ratings are only read here: they are never added to
+// the visitor's own ratings or profile.
+function showCombined(notice, restoreScroll = false) {
+  showOnly(resultsScreen);
+  resultsScreen.innerHTML = '';
+  if (!restoreScroll) {
+    window.scrollTo(0, 0);
+  }
+
+  const friend = getFriend();
+  const outcome = combineTastes(catalog, getAllRatings(), friend.ratings, 10);
+  if (outcome.problem) {
+    soloView = true;
+    showResults(outcome.problem === 'b'
+      ? "Your friend's ratings are not enough to compare (they need at least 3 known films with different scores)."
+      : notice);
+    return;
+  }
+
+  if (notice) {
+    addParagraph(resultsScreen, 'results-notice', notice);
+  }
+  resultsScreen.append(renderCombined({
+    results: outcome.results,
+    friendLabel: friendLabel(friend),
+    skipped: friend.skipped,
+    hasSolo: true,
+    onSolo: () => {
+      soloView = true;
+      showResults();
+    },
+    onRateMore: startExtra,
+    onStartOver: startOver,
+  }));
+
+  if (restoreScroll) {
+    window.scrollTo(0, resultsScrollY);
+  } else {
+    focusCombinedHeading();
+  }
+}
+
+// Builds the link from the visitor's own ratings and shares or copies it.
+async function shareMyTaste() {
+  let link;
+  try {
+    link = shareLink(location.href, encodeTaste(getAllRatings().slice(0, MAX_FILMS)));
+  } catch (error) {
+    setShareStatus("Couldn't make a link from your ratings.");
+    return;
+  }
+
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: 'CoCinema', text: 'Rate your own films and we will find ones we would both enjoy.', url: link });
+      setShareStatus('Link shared.');
+      return;
+    } catch (error) {
+      if (error && error.name === 'AbortError') {
+        return;
+      }
+    }
+  }
+  try {
+    await navigator.clipboard.writeText(link);
+    setShareStatus('Link copied. Send it to your friend.');
+  } catch (error) {
+    setShareStatus('Copy this link and send it to your friend:', link);
+  }
+}
+
+// A made-up friend goes through exactly the path a real link takes: encoded, then decoded
+// against the catalog, then combined.
+function trySampleFriend(key) {
+  const ratings = buildSampleFriend(catalog, key);
+  const decoded = ratings ? decodeTaste(encodeTaste(ratings), new Set(catalogById.keys())) : null;
+  if (!decoded || !decoded.ok) {
+    setShareStatus("Couldn't build that sample friend.");
+    return;
+  }
+  saveFriend({ ratings: decoded.ratings, skipped: decoded.skipped, sample: key });
+  soloView = false;
+  showCombined();
+}
+
+function stripHash() {
+  history.replaceState(null, '', location.pathname + location.search);
+}
+
+function clearFriendBanner() {
+  document.querySelectorAll('.friend-banner, .friend-notice').forEach(node => node.remove());
+}
+
+function insertOnLanding(node) {
+  const actions = document.querySelector('.hero-actions');
+  actions.insertBefore(node, document.getElementById('length-choice'));
+}
+
+// The visitor opened a friend's link (#/with/<payload>).
+function showFriendLanding(payload) {
+  document.title = 'CoCinema';
+  clearFriendBanner();
+  const decoded = decodeTaste(payload, new Set(catalogById.keys()));
+  const usable = decoded.ok && recommend(decoded.ratings, catalog, 1).length > 0;
+
+  if (!usable) {
+    pendingFriend = null;
+    stripHash();
+    const text = decoded.ok
+      ? "That link didn't have enough films we know to compare tastes. Ask your friend for a new one."
+      : "That link doesn't look right, so we couldn't open it. Ask your friend to send it again.";
+    if (started) {
+      showFinished(text);
+    } else {
+      showOnly(landingScreen);
+      insertOnLanding(renderFriendNotice(text));
+    }
+    return;
+  }
+
+  pendingFriend = { ratings: decoded.ratings, skipped: decoded.skipped, sample: null };
+  const finished = started && !extra && genreIndex >= session.length && recommend(getAllRatings(), catalog, 1).length > 0;
+  showOnly(landingScreen);
+  insertOnLanding(renderFriendBanner({
+    count: decoded.ratings.length,
+    skipped: decoded.skipped,
+    hasSaved: finished,
+    onUseSaved: () => {
+      saveFriend(pendingFriend);
+      pendingFriend = null;
+      soloView = false;
+      stripHash();
+      showFinished();
+    },
+  }));
+  document.getElementById('friend-banner-title').tabIndex = -1;
+  document.getElementById('friend-banner-title').focus({ preventScroll: true });
 }
 
 // A film's own page, at #/movie/<id>. Renders from the saved ratings, so it works after a reload.
@@ -353,14 +526,15 @@ function leaveDetail() {
 function showHome() {
   document.title = 'CoCinema';
   if (!started) {
+    pendingFriend = null;
+    clearFriendBanner();
     showOnly(landingScreen);
     return;
   }
   if (extra) {
     resumeExtra();
   } else if (genreIndex >= session.length) {
-    showResults(undefined, cameFromResults);
-    resultsScreen.querySelector('h2')?.focus({ preventScroll: true });
+    showFinished(undefined, cameFromResults);
   } else {
     showCurrentMovie();
   }
@@ -370,6 +544,8 @@ function route() {
   const target = parseHash(location.hash);
   if (target.type === 'movie') {
     showDetail(target.qid);
+  } else if (target.type === 'with') {
+    showFriendLanding(target.payload);
   } else {
     showHome();
   }
@@ -387,6 +563,9 @@ function startOver() {
   seed = newSeed();
   session = [];
   sessionLength = null;
+  pendingFriend = null;
+  soloView = false;
+  clearFriendBanner();
   clearLengthChoice();
   resultsScreen.innerHTML = '';
   ratingScreen.innerHTML = '';
@@ -498,11 +677,26 @@ startButton.addEventListener('click', function() {
   if (startButton.disabled || !length) {
     return;
   }
+  if (started) {
+    // Rating again from a friend's link replaces the saved session.
+    clearSavedState();
+    genreIndex = 0;
+    movieIndex = 0;
+    extra = null;
+    seed = newSeed();
+  }
   started = true;
   sessionLength = length;
   session = buildSession(onboarding, seed, sessionLength);
   saveSeed(seed);
   saveLength(sessionLength);
+  if (COWATCH_ENABLED && pendingFriend) {
+    saveFriend(pendingFriend);
+    pendingFriend = null;
+    clearFriendBanner();
+    stripHash();
+  }
+  soloView = false;
   showCurrentMovie();
 });
 

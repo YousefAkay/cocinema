@@ -1,5 +1,6 @@
 import { EXTRA_COUNT } from './candidates.js';
 import { isValidLength } from './shuffle.js';
+import { SAMPLE_KEYS } from './samples.js';
 
 const STORAGE_KEY = 'cocinema:v4';
 
@@ -9,6 +10,7 @@ let position = { genreIndex: 0, movieIndex: 0 };
 let extra = null;
 let seed = null;
 let length = null;
+let friend = null;
 
 function persist() {
   try {
@@ -20,6 +22,7 @@ function persist() {
       genreIndex: position.genreIndex,
       movieIndex: position.movieIndex,
       extra,
+      friend: friend ? { ratings: friend.ratings.map(item => [item.id, item.score]), skipped: friend.skipped, sample: friend.sample } : null,
     }));
   } catch (e) {
     // Storage unavailable (private mode, quota): keep going in memory only.
@@ -59,6 +62,17 @@ export function saveLength(value) {
   persist();
 }
 
+// A friend's shared taste, kept apart from the visitor's own ratings: it is never added to them
+// and never changes the visitor's own profile. { ratings: [{ id, score }], skipped, sample }.
+export function saveFriend(value) {
+  friend = value ? { ratings: value.ratings.map(item => ({ id: item.id, score: item.score })), skipped: value.skipped, sample: value.sample || null } : null;
+  persist();
+}
+
+export function getFriend() {
+  return friend ? { ratings: friend.ratings.map(item => ({ ...item })), skipped: friend.skipped, sample: friend.sample } : null;
+}
+
 export function savePosition(genreIndex, movieIndex) {
   position = { genreIndex, movieIndex };
   persist();
@@ -73,6 +87,26 @@ export function saveExtra(state) {
 
 function validSeed(value) {
   return Number.isInteger(value) && value >= 0 && value <= 4294967295;
+}
+
+// Returns the friend as stored, or null when it is missing or not valid. Unlike the other fields,
+// a bad friend never costs the visitor their own saved ratings: it is simply dropped.
+function readFriend(value, validIds) {
+  if (!value || typeof value !== 'object' || !Array.isArray(value.ratings)) return null;
+  if (value.ratings.length === 0 || value.ratings.length > 120) return null;
+  if (!Number.isInteger(value.skipped) || value.skipped < 0 || value.skipped > 1000) return null;
+  if (value.sample !== null && value.sample !== undefined && !SAMPLE_KEYS.includes(value.sample)) return null;
+  const seen = new Set();
+  const list = [];
+  for (const entry of value.ratings) {
+    if (!Array.isArray(entry) || entry.length !== 2) return null;
+    const [id, score] = entry;
+    if (typeof id !== 'string' || !validIds.has(id) || seen.has(id)) return null;
+    if (!Number.isInteger(score) || score < 1 || score > 10) return null;
+    seen.add(id);
+    list.push({ id, score });
+  }
+  return { ratings: list, skipped: value.skipped, sample: value.sample || null };
 }
 
 function validExtra(value, validIds) {
@@ -125,6 +159,7 @@ export function loadSavedState(validIds) {
   for (const id of saved.skipped) skipped.add(id);
   position = { genreIndex, movieIndex };
   extra = saved.extra;
+  friend = readFriend(saved.friend, validIds);
   seed = saved.seed;
   length = saved.length;
   return { seed, length, genreIndex, movieIndex, extra };
@@ -137,6 +172,7 @@ export function clearSavedState() {
   extra = null;
   seed = null;
   length = null;
+  friend = null;
   try {
     localStorage.removeItem(STORAGE_KEY);
   } catch (e) {
