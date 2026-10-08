@@ -66,13 +66,23 @@ try {
     return {
       films: text('films'), dims: text('dimensions'), lift: text('lift'),
       catalogLength: catalog.length, dimensions: catalog[0].embedding.length, expectedLift: `${stats.EVALUATION.lift.toFixed(1)}x`,
+      expectedLabel: (await import('./format.js')).roundedCount(catalog.length),
     };
   });
-  check('the film count and dimension count are read from the loaded data, everywhere they appear',
-    dataNumbers.films.length === 2 && dataNumbers.films.every(text => text === String(dataNumbers.catalogLength))
+  check('the film count is a rounded-down label such as "550+", computed from the loaded data, everywhere it appears',
+    dataNumbers.films.length === 2 && dataNumbers.films.every(text => text === dataNumbers.expectedLabel)
+      && /^\d+\+$/.test(dataNumbers.expectedLabel) && parseInt(dataNumbers.expectedLabel, 10) <= dataNumbers.catalogLength
+      && parseInt(dataNumbers.expectedLabel, 10) > dataNumbers.catalogLength - 50
+      && dataNumbers.films.every(text => text !== String(dataNumbers.catalogLength))
+      && dataNumbers.dims.length === 2 && dataNumbers.dims.every(text => text === String(dataNumbers.dimensions)), JSON.stringify([dataNumbers.films, dataNumbers.dims]));
+  check('the dimension count is read from the loaded data, everywhere it appears',
+    dataNumbers.dims.length === 2
       && dataNumbers.dims.length === 2 && dataNumbers.dims.every(text => text === String(dataNumbers.dimensions)), JSON.stringify([dataNumbers.films, dataNumbers.dims]));
   check('the "better than chance" figure is the evaluation lift to one decimal', dataNumbers.lift.join() === dataNumbers.expectedLift, `${dataNumbers.lift} vs ${dataNumbers.expectedLift}`);
   const bodyText = await p.locator('#landing-screen').innerText();
+  const landingHtml = await p.locator('#landing-screen').innerHTML();
+  check('the landing page contains no exact catalog count and no "of N" ranking text',
+    !new RegExp(`\\b${dataNumbers.catalogLength}\\b`).test(bodyText + landingHtml) && !/#\d+ of \d+|\bout of \d{2,}\b/i.test(bodyText + landingHtml), dataNumbers.expectedLabel);
   check('the page makes no claim about trackers or analytics', !/tracker|tracking|analytics/i.test(bodyText));
   check('the stats footnote says the figure comes from simulated profiles', bodyText.includes('Measured with simulated taste profiles, not a study of real viewers.'));
 

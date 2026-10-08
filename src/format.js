@@ -43,3 +43,16 @@ export function topGenres(movie, order, max = MAX_GENRES) {
 export function capitalize(text) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
+
+export const COUNT_STEP = 50;
+
+// A film count for marketing copy: rounded DOWN to the nearest 50 with a plus sign (576 becomes
+// "550+", 549 becomes "500+"). Rounding down keeps the label true if films are removed later.
+// Returns null when there is no usable count (not a number, or under 50), so the caller can fall
+// back to wording without a number.
+export function roundedCount(count) {
+  if (typeof count !== 'number' || !Number.isFinite(count) || count < COUNT_STEP) {
+    return null;
+  }
+  return `${Math.floor(count / COUNT_STEP) * COUNT_STEP}+`;
+}

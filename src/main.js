@@ -6,7 +6,7 @@ import { recommend, explainMatch } from './recommend.js';
 import { buildWhyLine } from './why.js';
 import { EXTRA_COUNT, pickNextCandidate } from './candidates.js';
 import { topPercent } from './percentile.js';
-import { titleWithYear, genreOrder } from './format.js';
+import { titleWithYear, genreOrder, roundedCount } from './format.js';
 import { parseHash, shortId } from './route.js';
 import { renderDetail, renderNotFound, renderStreaming, showStreamingLoading } from './detail.js';
 import { COWATCH_ENABLED } from './flags.js';
@@ -272,7 +272,7 @@ function showResults(notice, restoreScroll = false) {
 
   ranked.slice(0, TOP_COUNT).forEach((result, index) => {
     const why = buildWhyLine(explainMatch(result.movie.id, ratings, catalog));
-    topSection.append(renderTopPick(result, index + 1, everyUnrated.length, why));
+    topSection.append(renderTopPick(result, index + 1, why));
   });
   addParagraph(topSection, 'match-note',
     'Top N% ranks each film against the rest of the catalog for you. It is not the chance you will like it.');
@@ -608,7 +608,8 @@ function fillLandingNumber(name, text) {
 
 // Numbers on the landing page come from the data itself, so they cannot go out of date.
 function fillLandingNumbers() {
-  fillLandingNumber('films', String(catalog.length));
+  // Marketing copy gets a rounded-down label ("550+"), never the exact count.
+  fillLandingNumber('films', roundedCount(catalog.length) || 'many');
   fillLandingNumber('dimensions', String(catalog[0] && catalog[0].embedding ? catalog[0].embedding.length : ''));
 }
 

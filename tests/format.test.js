@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { topPercent } from '../src/percentile.js';
-import { titleWithYear, genreOrder, topGenres, capitalize } from '../src/format.js';
+import { titleWithYear, genreOrder, topGenres, capitalize, roundedCount } from '../src/format.js';
 import { trailerSearchUrl, whereToWatchLinks } from '../src/links.js';
 import { movieHash, parseHash, shortId } from '../src/route.js';
 
@@ -123,4 +123,38 @@ test('parseHash treats anything else as home', () => {
   for (const hash of ['', '#', '#/', '#/movie/', '#/movie/abc', '#/movie/Q12/extra', '#/other/Q1', undefined]) {
     assert.deepEqual(parseHash(hash), { type: 'home' }, String(hash));
   }
+});
+
+test('roundedCount rounds down to the nearest 50 and adds a plus sign', () => {
+  assert.equal(roundedCount(576), '550+');
+  assert.equal(roundedCount(575), '550+');
+  assert.equal(roundedCount(550), '550+');
+  assert.equal(roundedCount(549), '500+');
+  assert.equal(roundedCount(539), '500+');
+  assert.equal(roundedCount(500), '500+');
+  assert.equal(roundedCount(499), '450+');
+  assert.equal(roundedCount(100), '100+');
+  assert.equal(roundedCount(50), '50+');
+  assert.equal(roundedCount(1234), '1200+');
+});
+
+test('roundedCount never claims more films than there are', () => {
+  for (let count = 50; count <= 1500; count++) {
+    const label = roundedCount(count);
+    const shown = parseInt(label, 10);
+    assert.ok(shown <= count && shown > count - 50, `${count} -> ${label}`);
+    assert.equal(shown % 50, 0);
+  }
+});
+
+test('roundedCount gives null when there is no usable count, so copy can fall back to words', () => {
+  assert.equal(roundedCount(0), null);
+  assert.equal(roundedCount(49), null);
+  assert.equal(roundedCount(-100), null);
+  assert.equal(roundedCount('576'), null);
+  assert.equal(roundedCount(NaN), null);
+  assert.equal(roundedCount(Infinity), null);
+  assert.equal(roundedCount(null), null);
+  assert.equal(roundedCount(undefined), null);
+  assert.equal(roundedCount({}), null);
 });

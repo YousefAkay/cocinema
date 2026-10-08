@@ -50,9 +50,9 @@ export function renderMovieCard(movie, linkTo = null, note = null) {
   return link;
 }
 
-// A larger result card for the top picks: poster, title with year, rank among all candidates and
+// A larger result card for the top picks: poster, title with year, rank and
 // the "why" line. Everything goes in with textContent, so titles are never parsed as HTML.
-export function renderTopPick(result, rank, total, whyLine) {
+export function renderTopPick(result, rank, whyLine) {
   const { movie } = result;
   const card = document.createElement('article');
   card.className = 'top-pick';
@@ -68,7 +68,7 @@ export function renderTopPick(result, rank, total, whyLine) {
 
   const match = document.createElement('p');
   match.className = 'top-pick-match';
-  match.textContent = `#${rank} of ${total} films`;
+  match.textContent = `#${rank}`;
 
   const why = document.createElement('p');
   why.className = 'top-pick-why';
