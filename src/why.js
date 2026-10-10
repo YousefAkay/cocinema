@@ -68,18 +68,27 @@ function chosenContributions(contributions) {
   return { chosen, positiveTotal };
 }
 
-// The template for this film: the one its id hashes to, or the next one whose opening is not
-// already taken.
-function pickTemplate(count, filmId, usedOpenings) {
+// How the held-back film is worded. Each takes the score and name of the rated film.
+export const HELD_BACK_PHRASES = [
+  (score, name) => ` Your ${score} for ${name} held it back a little.`,
+  (score, name) => ` Only your ${score} for ${name} held it back.`,
+  (score, name) => ` The one drag: your ${score} for ${name}.`,
+  (score, name) => ` Your ${score} for ${name} pulled the other way.`,
+];
+
+// At most this many cards in one list carry a held-back clause: the ones with the largest share.
+export const MAX_HELD_BACK_CARDS = 2;
+
+// The last three words of a line, so two cards can be kept from ending alike.
+export function endingOf(line) {
+  return line.toLowerCase().replace(/[.!]+$/, '').split(/\s+/).slice(-3).join(' ');
+}
+
+// Templates for this film in the order to try them: the one its id hashes to first.
+function templateOrder(count, filmId) {
   const templates = TEMPLATES[count];
   const start = hashId(filmId) % templates.length;
-  for (let step = 0; step < templates.length; step++) {
-    const candidate = templates[(start + step) % templates.length];
-    if (!usedOpenings.has(candidate.opening)) {
-      return candidate;
-    }
-  }
-  return templates[start];
+  return templates.map((_, step) => templates[(start + step) % templates.length]);
 }
 
 // A title is shown with its year only when two of the rated films in play share a title.
@@ -91,33 +100,68 @@ function namer(contributions) {
   return item => (counts.get(item.title) > 1 ? titleWithYear(item) : item.title);
 }
 
+// The film that pulled this pick down the most, and its share of the positive pull, or null when
+// there is none or the share is under HELD_BACK_SHARE.
+export function heldBackBy(contributions) {
+  const positiveTotal = contributions.filter(item => item.contribution > 0).reduce((sum, item) => sum + item.contribution, 0);
+  const negatives = contributions.filter(item => item.contribution < 0);
+  const worst = negatives[negatives.length - 1];
+  if (!worst || positiveTotal <= 0) return null;
+  const share = -worst.contribution / positiveTotal;
+  return -worst.contribution >= HELD_BACK_SHARE * positiveTotal ? { film: worst, share } : null;
+}
+
+function usedSets(used) {
+  if (used instanceof Set) return { openings: used, endings: new Set() };
+  return { openings: used.openings || new Set(), endings: used.endings || new Set() };
+}
+
 // Builds the "why" sentence from explainMatch() output (sorted, largest positive first) for one
-// film. usedOpenings is the set of openings already taken by earlier cards; the line avoids them
-// where it can and adds its own. Plain text only: the caller must put it on the page with
-// textContent, never innerHTML.
-export function buildWhyLine(contributions, filmId = '', usedOpenings = new Set()) {
+// film. used holds the openings and endings already taken by earlier cards (a Set is read as the
+// openings); the line avoids them where it can and adds its own. heldBack: false leaves out the
+// held-back clause even when it would qualify. Plain text only: the caller must put it on the
+// page with textContent, never innerHTML.
+export function buildWhyLine(contributions, filmId = '', used = new Set(), { heldBack = true } = {}) {
   if (!contributions.some(item => item.contribution > 0)) {
     return NEUTRAL_LINE;
   }
 
-  const { chosen, positiveTotal } = chosenContributions(contributions);
-  const template = pickTemplate(chosen.length, filmId, usedOpenings);
-  usedOpenings.add(template.opening);
-
+  const taken = usedSets(used);
+  const { chosen } = chosenContributions(contributions);
   const nameOf = namer(contributions);
-  let line = template.build(chosen.map(item => ({ name: nameOf(item), score: item.score })));
+  const names = chosen.map(item => ({ name: nameOf(item), score: item.score }));
+  const held = heldBack ? heldBackBy(contributions) : null;
 
-  const negatives = contributions.filter(item => item.contribution < 0);
-  const worst = negatives[negatives.length - 1];
-  if (worst && -worst.contribution >= HELD_BACK_SHARE * positiveTotal) {
-    line += ` Your ${worst.score} for ${nameOf(worst)} held it back a little.`;
+  // The phrasing of the held-back clause, in the order to try: the one the id hashes to first.
+  const phrases = HELD_BACK_PHRASES.map((_, step) => HELD_BACK_PHRASES[(hashId(`${filmId}:held`) + step) % HELD_BACK_PHRASES.length]);
+  const clauses = held ? phrases.map(phrase => phrase(held.film.score, nameOf(held.film))) : [''];
+
+  const candidates = [];
+  for (const template of templateOrder(chosen.length, filmId)) {
+    for (const clause of clauses) {
+      candidates.push({ template, line: template.build(names) + clause });
+    }
   }
-  return line;
+  // Best first: a new opening and a new ending, then a new opening, then anything.
+  const best = candidates.find(item => !taken.openings.has(item.template.opening) && !taken.endings.has(endingOf(item.line)))
+    || candidates.find(item => !taken.openings.has(item.template.opening))
+    || candidates[0];
+  taken.openings.add(best.template.opening);
+  taken.endings.add(endingOf(best.line));
+  return best.line;
 }
 
-// Lines for a whole list of cards, in order, so no two cards open the same way (as far as the
-// templates allow). items: [{ id, contributions }].
+// Lines for a whole list of cards, in order, so no two cards open or end the same way (as far as
+// the templates allow). Only the MAX_HELD_BACK_CARDS cards with the largest negative share carry a
+// held-back clause (ties go to the higher rank), so one low rating does not end every line alike.
+// items: [{ id, contributions }].
 export function buildWhyLines(items) {
-  const used = new Set();
-  return items.map(item => buildWhyLine(item.contributions, item.id, used));
+  const ranked = items
+    .map((item, index) => ({ index, held: heldBackBy(item.contributions) }))
+    .filter(entry => entry.held)
+    .sort((a, b) => b.held.share - a.held.share || a.index - b.index)
+    .slice(0, MAX_HELD_BACK_CARDS);
+  const allowed = new Set(ranked.map(entry => entry.index));
+  const used = { openings: new Set(), endings: new Set() };
+  return items.map((item, index) => buildWhyLine(item.contributions, item.id, used, { heldBack: allowed.has(index) }));
 }

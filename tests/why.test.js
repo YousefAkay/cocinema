@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { buildWhyLine, buildWhyLines, hashId, NEUTRAL_LINE, HELD_BACK_SHARE, TEMPLATES } from '../src/why.js';
+import { buildWhyLine, buildWhyLines, hashId, endingOf, NEUTRAL_LINE, HELD_BACK_SHARE, MAX_HELD_BACK_CARDS, TEMPLATES } from '../src/why.js';
 
 const part = (title, score, contribution, year) => ({ id: `id-${title}`, title, year, score, weight: 0, contribution });
 const count = (text, needle) => text.split(needle).length - 1;
@@ -78,16 +78,16 @@ test('the held-back film is named only when its negative pull is a large share o
   assert.equal(HELD_BACK_SHARE, 0.25);
   const base = [part('A', 9, 0.4)];
   const atThreshold = buildWhyLine([...base, part('Dull', 2, -0.1)], 'film-5'); // 0.1 / 0.4 = 0.25
-  assert.ok(atThreshold.includes('Dull') && /\b2\b/.test(atThreshold) && atThreshold.includes('held it back'));
+  assert.ok(atThreshold.includes('Dull') && /\b2\b/.test(atThreshold) && atThreshold.includes('your 2 for Dull') || atThreshold.includes('Your 2 for Dull'));
   const justBelow = buildWhyLine([...base, part('Dull', 2, -0.0999)], 'film-5');
-  assert.ok(!justBelow.includes('Dull') && !justBelow.includes('held it back'));
+  assert.ok(!justBelow.includes('Dull'));
   const tiny = buildWhyLine([...base, part('Dull', 2, -0.02)], 'film-5');
-  assert.ok(!tiny.includes('held it back'));
+  assert.ok(!tiny.includes('Dull'));
 });
 
 test('when several rated films pull a pick down, only the strongest one is named', () => {
   const line = buildWhyLine([part('A', 9, 0.4), part('B', 2, -0.1), part('C', 1, -0.2)], 'film-6');
-  assert.ok(line.includes('C') && !line.includes('B') && line.includes('held it back'));
+  assert.ok(line.includes('for C') && !line.includes('B'));
   assert.ok(/\b1\b/.test(line));
 });
 
@@ -159,5 +159,91 @@ test('every count of titles has several templates with different openings', () =
   for (const key of Object.keys(TEMPLATES)) {
     const openings = TEMPLATES[key].map(template => template.opening);
     assert.ok(new Set(openings).size >= 5 && new Set(openings).size === openings.length, `${key}: ${openings}`);
+  }
+});
+
+// ---- One low rating that drags down every pick: the clause goes on at most two cards
+
+// Five picks that all like the same films and are all pulled down by the same low rating, each by
+// a different amount: share is the pull of "Low" as a fraction of the positive total (0.4 + 0.2).
+function dragged(shares) {
+  return shares.map((share, index) => ({
+    id: `pick-${index}`,
+    contributions: [part('Heat', 9, 0.4), part('Alien', 8, 0.2), part('Low', 2, -share * 0.6)],
+  }));
+}
+const carries = line => line.includes('Low');
+
+test('when one low rating drags down all five picks, the clause is on at most two cards', () => {
+  const lines = buildWhyLines(dragged([0.9, 0.5, 0.6, 0.3, 0.4]));
+  assert.ok(lines.filter(carries).length <= MAX_HELD_BACK_CARDS);
+  assert.equal(MAX_HELD_BACK_CARDS, 2);
+  assert.equal(lines.filter(carries).length, 2);
+});
+
+test('the cards that carry the clause are the ones with the largest negative share', () => {
+  const lines = buildWhyLines(dragged([0.3, 0.9, 0.4, 0.6, 0.3]));
+  assert.deepEqual(lines.map(carries), [false, true, false, true, false]);
+});
+
+test('equal shares go to the higher ranks', () => {
+  const lines = buildWhyLines(dragged([0.5, 0.5, 0.5, 0.5, 0.5]));
+  assert.deepEqual(lines.map(carries), [true, true, false, false, false]);
+});
+
+test('a card under the threshold never carries the clause, even when it is among the largest', () => {
+  const lines = buildWhyLines(dragged([0.1, 0.2, 0.05, 0.249, 0.1]));
+  assert.ok(lines.every(line => !carries(line)));
+  const one = buildWhyLines(dragged([0.1, 0.2, 0.3, 0.1, 0.1]));
+  assert.deepEqual(one.map(carries), [false, false, true, false, false]);
+});
+
+test('with no large negative, no card carries a clause', () => {
+  const items = Array.from({ length: 5 }, (_, index) => ({ id: `pick-${index}`, contributions: [part('Heat', 9, 0.4), part('Low', 2, -0.01)] }));
+  assert.ok(buildWhyLines(items).every(line => !carries(line)));
+});
+
+test('no two cards open or end alike, including the held-back wording', () => {
+  for (const shares of [[0.9, 0.5, 0.6, 0.3, 0.4], [0.5, 0.5, 0.5, 0.5, 0.5], [0.9, 0.9, 0.1, 0.1, 0.1]]) {
+    const lines = buildWhyLines(dragged(shares));
+    assert.equal(new Set(lines.map(endingOf)).size, 5, lines.join(' / '));
+    assert.equal(new Set(lines).size, 5);
+  }
+});
+
+test('the two clauses in one list are worded differently', () => {
+  const lines = buildWhyLines(dragged([0.9, 0.8, 0.1, 0.1, 0.1])).filter(carries);
+  assert.equal(lines.length, 2);
+  const clause = line => line.slice(line.search(/(Your|Only|The one|Low)[^.]*Low|The one drag/));
+  assert.notEqual(endingOf(lines[0]), endingOf(lines[1]));
+  assert.notEqual(clause(lines[0]), clause(lines[1]));
+});
+
+test('the same input gives the same five lines every time', () => {
+  const first = buildWhyLines(dragged([0.9, 0.5, 0.6, 0.3, 0.4]));
+  for (let i = 0; i < 5; i++) assert.deepEqual(buildWhyLines(dragged([0.9, 0.5, 0.6, 0.3, 0.4])), first);
+});
+
+test('every film and number in a list of lines comes from each card\'s own contribution data', () => {
+  let seed = 11;
+  const random = () => (seed = (seed * 48271) % 2147483647) / 2147483647;
+  for (let run = 0; run < 60; run++) {
+    const items = Array.from({ length: 5 }, (_, card) => {
+      const size = 2 + Math.floor(random() * 5);
+      const contributions = Array.from({ length: size }, (_, i) => part(`Film ${run}-${i}`, 1 + Math.floor(random() * 10), (random() < 0.65 ? 1 : -1) * (0.02 + random() * 0.5)));
+      contributions.sort((a, b) => b.contribution - a.contribution);
+      return { id: `run-${run}-card-${card}`, contributions };
+    });
+    const lines = buildWhyLines(items);
+    assert.ok(lines.filter((line, i) => items[i].contributions.some(item => item.contribution < 0) && /held|drag|other way|Only your/.test(line)).length <= MAX_HELD_BACK_CARDS);
+    lines.forEach((line, i) => {
+      if (line === NEUTRAL_LINE) return;
+      const mentioned = [...line.matchAll(/Film \d+-\d+/g)].map(match => match[0]);
+      const data = items[i].contributions;
+      assert.ok(mentioned.every(title => data.some(item => item.title === title)), line);
+      const numbers = [...line.replace(/Film \d+-\d+/g, '').matchAll(/\b\d+\b/g)].map(match => Number(match[0]));
+      const scores = new Set(data.filter(item => mentioned.includes(item.title)).map(item => item.score));
+      assert.ok(numbers.every(number => scores.has(number)), line);
+    });
   }
 });
