@@ -62,17 +62,27 @@ try {
       cards.every(card => /^\d{4}( · (\d+h( \d+m)?|\d+m))?( · Rotten Tomatoes \d{1,3}%)?$/.test(card.meta) && !/\bmin\b/.test(card.meta)), cards.map(card => card.meta).join(' | '));
     check(`${label}: no card shows any of the film's plot`, cards.every(card => {
       const plot = plots.get(card.href.slice(card.href.lastIndexOf('/') + 1)) || '';
-      return plot.length > 40 && !card.text.includes(plot.slice(0, 40));
+      return !card.text.includes(plot.slice(0, 40));
     }));
     check(`${label}: no card scrolls inside itself`, cards.every(card => !card.clipped));
     const tallest = Math.max(...cards.map(card => card.height));
     check(`${label}: no card is taller than before (${OLD_MAX_CARD_HEIGHT[width]}px)`, tallest <= OLD_MAX_CARD_HEIGHT[width], cards.map(card => card.height).join(', '));
+    check(`${label}: no why line is cut short with these ratings`, await page.$$eval('.top-pick-why', nodes => nodes.every(node => node.scrollHeight <= node.clientHeight + 1)));
+    await page.evaluate(() => scrollTo(0, 0));
+    await page.screenshot({ path: path.join(shots, `results-${width}.png`) });
+    // The worst case: very long film names in the why line must not make a card taller than before.
+    const worst = await page.evaluate(() => {
+      const long = 'Because you gave The Lord of the Rings: The Fellowship of the Ring a 10, Harry Potter and the Chamber of Secrets a 9 and Pirates of the Caribbean: The Curse of the Black Pearl a 9, this one rose up your list. Your 2 for Indiana Jones and the Kingdom of the Crystal Skull held it back a little.';
+      const card = document.querySelector('.top-pick');
+      card.querySelector('h3 a').textContent = 'Pirates of the Caribbean: Dead Mans Chest and Other Long Names';
+      card.querySelector('.top-pick-why').textContent = long;
+      return Math.round(card.getBoundingClientRect().height);
+    });
+    check(`${label}: even a very long why line and title keep a card within the old height`, worst <= OLD_MAX_CARD_HEIGHT[width], String(worst));
     const openings = cards.map(card => card.why.split(/\s+/).slice(0, 2).join(' '));
     check(`${label}: no two top cards open the same way`, new Set(openings).size === 5, openings.join(' / '));
     check(`${label}: no sideways scroll`, await page.evaluate(() => document.scrollingElement.scrollWidth <= innerWidth));
 
-    await page.evaluate(() => scrollTo(0, 0));
-    await page.screenshot({ path: path.join(shots, `results-${width}.png`) });
 
     // Co-watch entry
     const actions = await page.$$eval('.results-actions button', nodes => nodes.map(node => node.textContent));

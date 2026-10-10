@@ -1770,3 +1770,48 @@ button.results-nudge:hover {
 .cowatch-entry:hover {
   background: var(--surface-hover);
 }
+
+/* Top card text block: the rank sits on the title's line, so a longer "why" line still fits the
+   card's height. The why line is cut at 3 lines on a wide card and 4 on a phone (its full text
+   stays in the title attribute); realistic lines are shorter than that. */
+.top-pick-body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  gap: 6px 10px;
+}
+
+.top-pick-body h3 {
+  flex: 1 1 0;
+  order: 1;
+  min-width: 0;
+  margin: 0;
+}
+
+.top-pick-body .top-pick-match {
+  order: 0;
+  margin: 0;
+}
+
+.top-pick-body .top-pick-meta,
+.top-pick-body .pill-row {
+  flex-basis: 100%;
+  order: 2;
+  margin: 0;
+}
+
+.top-pick-why {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+@media (max-width: 480px) {
+  .top-pick-why {
+    -webkit-line-clamp: 4;
+  }
+}
