@@ -331,6 +331,11 @@ function showResults(notice, restoreScroll = false) {
     addParagraph(resultsScreen, 'results-notice', notice);
   }
 
+  // Watch with a friend sits right under the header, before the picks.
+  if (COWATCH_ENABLED) {
+    resultsScreen.append(renderShareSection({ onShare: shareMyTaste, onSample: trySampleFriend }));
+  }
+
   const noun = ratings.length === 1 ? 'film' : 'films';
   addParagraph(resultsScreen, 'results-basis', `These picks are based on the ${ratings.length} ${noun} you rated.`);
   if (sessionLength === 10) {
@@ -370,12 +375,6 @@ function showResults(notice, restoreScroll = false) {
   const actions = document.createElement('div');
   actions.className = 'results-actions';
   addButton(actions, 'rate-more', `Rate ${EXTRA_COUNT} more`, startExtra);
-  if (COWATCH_ENABLED) {
-    addButton(actions, 'cowatch-entry', 'Watch with a friend', () => scrollToSection(
-      document.getElementById('cowatch-title').closest('section'),
-      document.getElementById('cowatch-title'),
-    ));
-  }
   if (COWATCH_ENABLED && getFriend()) {
     addButton(actions, 'cowatch-to-combined', "Films you'd both enjoy", () => {
       soloView = false;
@@ -385,14 +384,11 @@ function showResults(notice, restoreScroll = false) {
   addButton(actions, 'start-over', 'Start over', requestStartOver);
   resultsScreen.append(actions);
 
-  if (COWATCH_ENABLED) {
-    resultsScreen.append(renderShareSection({ onShare: shareMyTaste, onSample: trySampleFriend }));
-  }
-
   if (restoreScroll) {
     window.scrollTo(0, resultsScrollY);
   } else {
-    topHeading.focus({ preventScroll: true });
+    // Focus starts on the page heading, so the next Tab reaches the invite button.
+    pageHeading.focus({ preventScroll: true });
   }
 }
 

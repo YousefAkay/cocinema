@@ -84,31 +84,55 @@ try {
     check(`${label}: no sideways scroll`, await page.evaluate(() => document.scrollingElement.scrollWidth <= innerWidth));
 
 
-    // Co-watch entry
+    // The Watch with a friend banner
     const actions = await page.$$eval('.results-actions button', nodes => nodes.map(node => node.textContent));
-    check(`${label}: "Watch with a friend" sits beside "Rate 5 more" and "Start over"`, actions.join('|') === 'Rate 5 more|Watch with a friend|Start over', actions.join('|'));
+    check(`${label}: "Rate 5 more" and "Start over" sit together in their own row`, actions.join('|') === 'Rate 5 more|Start over', actions.join('|'));
+    check(`${label}: there is no separate "Watch with a friend" button or card at the bottom`, (await page.getByRole('button', { name: 'Watch with a friend', exact: true }).count()) === 0 && (await page.locator('.cowatch-section').count()) === 0);
+    const place = await page.evaluate(() => {
+      const banner = document.querySelector('.cowatch-banner').getBoundingClientRect();
+      const heading = document.querySelector('.top-picks h2').getBoundingClientRect();
+      const card = document.querySelector('.top-pick').getBoundingClientRect();
+      const header = document.querySelector('.site-bar').getBoundingClientRect();
+      return { bannerTop: Math.round(banner.top), bannerBottom: Math.round(banner.bottom), headingTop: Math.round(heading.top), cardTop: Math.round(card.top), cardBottom: Math.round(card.bottom), headerBottom: Math.round(header.bottom), innerHeight };
+    });
+    check(`${label}: the banner is directly under the header and above "Your top picks"`, place.bannerTop >= place.headerBottom && place.bannerTop - place.headerBottom < 40 && place.bannerBottom <= place.headingTop, JSON.stringify(place));
+    check(`${label}: the first top pick is still fully on screen (top ${place.cardTop}, bottom ${place.cardBottom})`, place.cardBottom <= place.innerHeight);
+    console.log(`   first card top: ${place.cardTop}px`);
+    check(`${label}: the banner is compact (${Math.round(place.bannerBottom - place.bannerTop)}px)`, place.bannerBottom - place.bannerTop <= (width === 1440 ? 110 : 150));
     check(`${label}: the invite button is "Copy invite link" or, with a share sheet, "Share invite link"`, await page.evaluate(() => {
       const text = document.getElementById('cowatch-share').textContent;
       return text === (navigator.share ? 'Share invite link' : 'Copy invite link');
     }));
-    await page.getByRole('button', { name: 'Watch with a friend', exact: true }).click();
-    await page.waitForFunction(() => document.activeElement && document.activeElement.id === 'cowatch-title');
-    await page.waitForTimeout(900);
-    const placed = await page.evaluate(() => {
-      const box = document.querySelector('.cowatch-section').getBoundingClientRect();
-      return { top: box.top, inView: box.top < innerHeight && box.bottom > 0, focused: document.activeElement.id };
-    });
-    check(`${label}: the entry scrolls to the co-watch card and moves focus to its heading`, placed.inView && placed.top < height / 2 && placed.focused === 'cowatch-title', JSON.stringify(placed));
-    await page.screenshot({ path: path.join(shots, `cowatch-card-${width}.png`) });
+    check(`${label}: the privacy line is visible in the banner`, /never sent to a server\. Anyone who has the link can see them\./.test(await page.locator('.cowatch-banner .cowatch-privacy').innerText()) && await page.locator('.cowatch-privacy').isVisible());
+
+    // Keyboard: the invite button is the first thing after the logo link
+    await page.evaluate(() => { document.activeElement.blur(); scrollTo(0, 0); });
+    await page.locator('.site-bar .brand').focus();
+    await page.keyboard.press('Tab');
+    check(`${label}: Tab from the logo link reaches the invite button`, await page.evaluate(() => document.activeElement.id === 'cowatch-share'));
+    await page.keyboard.press('Tab');
+    check(`${label}: then the "Try a sample friend" control`, await page.evaluate(() => document.activeElement.classList.contains('cowatch-toggle')));
+
+    // Share: the button does the sharing itself and confirms it
+    await page.context().grantPermissions(['clipboard-read', 'clipboard-write']).catch(() => {});
+    await page.evaluate(() => { if (navigator.share) navigator.share = async () => {}; });
+    await page.click('#cowatch-share');
+    await page.waitForFunction(() => document.getElementById('cowatch-status').textContent.length > 0);
+    const confirmation = await page.locator('#cowatch-status').innerText();
+    check(`${label}: the share button confirms what it did`, /^(Link shared\.|Link copied\. Send it to your friend\.)$/.test(confirmation), confirmation);
+    await page.screenshot({ path: path.join(shots, `cowatch-banner-${width}.png`) });
+
+    // Sample friends: collapsed, then open inline, clearly labelled
+    check(`${label}: the sample friends start collapsed`, await page.locator('#cowatch-samples').isHidden());
+    await page.click('.cowatch-toggle');
+    check(`${label}: "Try a sample friend" opens three labelled sample options inline`, (await page.locator('.cowatch-sample').allInnerTexts()).join('|') === 'Horror fan (sample)|Romance fan (sample)|Sci-fi fan (sample)'
+      && (await page.locator('.cowatch-toggle').getAttribute('aria-expanded')) === 'true' && /not real people/.test(await page.locator('#cowatch-samples').innerText()));
+    check(`${label}: no sideways scroll with the samples open`, await page.evaluate(() => document.scrollingElement.scrollWidth <= innerWidth));
+    await page.getByRole('button', { name: 'Horror fan (sample)' }).click();
+    await page.waitForSelector('.combined');
+    check(`${label}: a sample friend leads to the shared list`, (await page.locator('.combined-card').count()) === 10 && /Horror fan \(sample\)/.test(await page.locator('.combined-figures').first().innerText()));
     await context.close();
   }
-
-  // Reduced motion: the scroll is instant, and focus still moves
-  const calm = await results(375, 667, 15, 'reduce');
-  await calm.page.getByRole('button', { name: 'Watch with a friend', exact: true }).click();
-  await calm.page.waitForFunction(() => document.activeElement && document.activeElement.id === 'cowatch-title', null, { timeout: 500 });
-  check('with reduced motion the entry scrolls at once and focus moves to the heading', true);
-  await calm.context.close();
 
   // Quick: the nudge is a real button that starts "Rate 5 more"
   const quick = await results(375, 667, 10);

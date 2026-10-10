@@ -65,16 +65,18 @@ try {
   check('the visitor\'s own results show a "Watch with a friend" section with a privacy line',
     await a.page.locator('#cowatch-share').isVisible() && /never sent to a server/.test(await a.page.locator('.cowatch-privacy').innerText())
       && /Anyone who has the link can see them/.test(await a.page.locator('.cowatch-privacy').innerText()));
+  check('the sample friends start collapsed behind "Try a sample friend"', await a.page.locator('#cowatch-samples').isHidden() && (await a.page.locator('.cowatch-toggle').getAttribute('aria-expanded')) === 'false');
+  await a.page.click('.cowatch-toggle');
   check('three sample friends are offered, labelled as sample tastes and not real people',
     (await a.page.locator('.cowatch-sample').allInnerTexts()).join('|') === 'Horror fan (sample)|Romance fan (sample)|Sci-fi fan (sample)'
       && /not real people/.test(await a.page.locator('.cowatch-samples').innerText()));
-  await a.page.locator('.cowatch-section').scrollIntoViewIfNeeded();
   await a.page.screenshot({ path: path.join(shots, '15-cowatch-share.png') });
-  await scan(a.page, 'results with the Watch with a friend section');
+  await scan(a.page, 'results with the Watch with a friend banner and the samples open');
   check('the share section keeps 44px buttons and no sideways scroll',
     (await a.page.$$eval('.cowatch-button, .cowatch-sample', nodes => nodes.filter(node => node.getBoundingClientRect().height < 44).length)) === 0 && await noSideScroll(a.page));
 
   // keyboard: reach the button with Tab and press Enter
+  await a.page.click('.cowatch-toggle');
   await a.page.locator('#cowatch-share').focus();
   await a.page.keyboard.press('Enter');
   await a.page.waitForFunction(() => document.getElementById('cowatch-status').textContent.length > 0);
@@ -222,6 +224,7 @@ try {
   await sample.page.waitForSelector('.length-card');
   await chooseAndStart(sample.page, 10);
   const ratedSample = await onboard(sample.page, scoresB);
+  await sample.page.click('.cowatch-toggle');
   await sample.page.getByRole('button', { name: 'Horror fan (sample)' }).click();
   await sample.page.waitForSelector('.combined');
   const sampleFigures = await sample.page.locator('.combined-figures').allInnerTexts();
@@ -231,6 +234,7 @@ try {
   await sample.page.screenshot({ path: path.join(shots, '18-cowatch-sample.png') });
   await sample.page.getByRole('button', { name: 'Back to my picks' }).click();
   await sample.page.waitForSelector('.top-pick');
+  await sample.page.click('.cowatch-toggle');
   await sample.page.getByRole('button', { name: 'Romance fan (sample)' }).focus();
   await sample.page.keyboard.press('Space');
   await sample.page.waitForSelector('.combined');
@@ -325,7 +329,7 @@ try {
   await chooseAndStart(off.page, 10);
   await onboard(off.page, scoresB);
   check('flag off: the results have no co-watch section, button or sample friends',
-    (await off.page.locator('.top-pick').count()) === 5 && (await off.page.locator('.cowatch-section, #cowatch-share, .cowatch-sample, .cowatch-to-combined').count()) === 0
+    (await off.page.locator('.top-pick').count()) === 5 && (await off.page.locator('.cowatch-banner, #cowatch-share, .cowatch-sample, .cowatch-to-combined').count()) === 0
       && !/friend/i.test(await off.page.locator('#results-screen').innerText()));
   const offState = await off.page.evaluate(() => JSON.parse(localStorage.getItem('cocinema:v4')));
   check('flag off: the link\'s taste is never stored and the visitor sees only their own picks', offState.friend === null && (await off.page.locator('.combined').count()) === 0);

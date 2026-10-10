@@ -22,18 +22,28 @@ function button(className, text, onClick) {
 
 export const PRIVACY_LINE = 'Your ratings are stored inside the link itself and are never sent to a server. Anyone who has the link can see them.';
 
-// Shown on the visitor's own results: share a link, or try a made-up friend.
+// The banner at the top of the visitor's own results: one line, the share button, and a small
+// control that opens the sample friends. All text is set with textContent.
 export function renderShareSection({ onShare, onSample }) {
-  const section = element('section', 'cowatch-section');
-  section.setAttribute('aria-labelledby', 'cowatch-title');
-  section.append(element('h2', '', 'Watch with a friend'));
-  section.firstChild.id = 'cowatch-title';
-  section.firstChild.tabIndex = -1;
-  section.append(element('p', 'cowatch-intro', 'Send a link, and when your friend rates their own films you both get one list of films that suit the two of you.'));
+  const section = element('section', 'cowatch-banner');
+  section.setAttribute('aria-label', 'Watch with a friend');
 
+  const top = element('div', 'cowatch-banner-top');
+  top.append(element('p', 'cowatch-line', 'Get one list of films that suit you both'));
+  const actions = element('div', 'cowatch-banner-actions');
   const share = button('cowatch-button', navigator.share ? 'Share invite link' : 'Copy invite link', onShare);
   share.id = 'cowatch-share';
-  section.append(share);
+  const toggle = button('cowatch-toggle', 'Try a sample friend', () => {
+    const open = toggle.getAttribute('aria-expanded') !== 'true';
+    toggle.setAttribute('aria-expanded', String(open));
+    samples.hidden = !open;
+  });
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-controls', 'cowatch-samples');
+  actions.append(share, toggle);
+  top.append(actions);
+  section.append(top);
+
   const status = element('p', 'cowatch-status');
   status.setAttribute('role', 'status');
   status.id = 'cowatch-status';
@@ -41,7 +51,8 @@ export function renderShareSection({ onShare, onSample }) {
   section.append(element('p', 'cowatch-privacy', PRIVACY_LINE));
 
   const samples = element('div', 'cowatch-samples');
-  samples.append(element('h3', '', 'Try it with a sample friend'));
+  samples.id = 'cowatch-samples';
+  samples.hidden = true;
   samples.append(element('p', 'cowatch-intro', 'Made-up tastes for trying the feature on your own, not real people.'));
   const row = element('div', 'cowatch-sample-row');
   for (const sample of SAMPLE_FRIENDS) {

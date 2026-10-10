@@ -135,7 +135,7 @@ try {
   check('the rest of the list renders', restCount >= 10, `${restCount} cards`);
   check('no horizontal scroll on results at 375px', await noSideScroll());
 
-  const small = await page.$$eval('#results-screen button', buttons => buttons.filter(b => b.getBoundingClientRect().height < 44).length);
+  const small = await page.$$eval('#results-screen button', buttons => buttons.filter(b => b.offsetParent !== null && b.getBoundingClientRect().height < 44).length);
   check('results buttons are at least 44px tall', small === 0);
 
   await page.screenshot({ path: path.join(shots, '2-results-top.png') });

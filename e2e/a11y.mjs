@@ -65,6 +65,13 @@ try {
   await onboard(page, scoreCycle);
   await page.waitForSelector('.top-pick');
   await scan(page, 'results screen with top-5 cards');
+  await page.click('.cowatch-toggle');
+  await scan(page, 'results screen with the Watch with a friend samples open');
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await scan(page, 'results screen with the samples open at 1440 px');
+  await page.click('.cowatch-toggle');
+  await scan(page, 'results screen at 1440 px');
+  await page.setViewportSize({ width: 375, height: 667 });
 
   await page.locator('.top-pick h3 a').first().click();
   await page.waitForSelector('.country-block');

@@ -1046,25 +1046,6 @@ img {
 
 /* ---------- Watch with a friend ---------- */
 
-.cowatch-section {
-  max-width: 720px;
-  margin: 48px auto 0;
-  padding: 24px;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  background: var(--surface);
-}
-
-.cowatch-section h2 {
-  margin: 0 0 8px;
-  font-size: 1.4rem;
-}
-
-.cowatch-section h3 {
-  margin: 0 0 6px;
-  font-size: 1.05rem;
-}
-
 .cowatch-intro,
 .cowatch-privacy,
 .cowatch-status {
@@ -1757,20 +1738,6 @@ button.results-nudge:hover {
   color: var(--text);
 }
 
-.cowatch-entry {
-  min-height: 44px;
-  padding: 10px 24px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--surface);
-  color: var(--text);
-  font-weight: 700;
-}
-
-.cowatch-entry:hover {
-  background: var(--surface-hover);
-}
-
 /* Top card text block: the rank sits on the title's line, so a longer "why" line still fits the
    card's height. The why line is cut at 3 lines on a wide card and 4 on a phone (its full text
    stays in the title attribute); realistic lines are shorter than that. */
@@ -1813,5 +1780,103 @@ button.results-nudge:hover {
 @media (max-width: 480px) {
   .top-pick-why {
     -webkit-line-clamp: 4;
+  }
+}
+
+/* ---------- Watch with a friend banner (top of the results) ---------- */
+
+.cowatch-banner {
+  max-width: 720px;
+  margin: 0 auto 16px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.cowatch-banner-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+}
+
+.cowatch-line {
+  margin: 0;
+  font-weight: 700;
+}
+
+.cowatch-banner-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+
+.cowatch-banner .cowatch-button {
+  margin: 0;
+  padding: 8px 20px;
+}
+
+.cowatch-toggle {
+  min-height: 44px;
+  padding: 0 8px;
+  border: none;
+  background: none;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.cowatch-toggle:hover {
+  color: var(--text);
+}
+
+.cowatch-banner .cowatch-status {
+  margin: 8px 0 0;
+}
+
+.cowatch-banner .cowatch-privacy {
+  margin: 8px 0 0;
+  font-size: 0.8rem;
+}
+
+.cowatch-banner .cowatch-samples {
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+.cowatch-banner .cowatch-intro {
+  margin: 0 0 8px;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 480px) {
+  .cowatch-banner {
+    margin-bottom: 8px;
+    padding: 10px 12px;
+  }
+
+  .cowatch-banner-actions {
+    flex-wrap: nowrap;
+    gap: 4px;
+    width: 100%;
+  }
+
+  .cowatch-banner .cowatch-button {
+    padding: 8px 16px;
+  }
+
+  .cowatch-toggle {
+    padding: 0 6px;
+  }
+
+  .cowatch-banner .cowatch-privacy {
+    margin-top: 4px;
+    font-size: 0.75rem;
+    line-height: 1.35;
   }
 }

@@ -20,9 +20,9 @@
 | --- | --- | --- |
 | <img src="docs/images/rating-1440-1.png" alt="First film in the rating frame" width="300" /> | <img src="docs/images/rating-1440-2.png" alt="Second film in the same frame, everything in the same place" width="300" /> | <img src="docs/images/rating-1440-3.png" alt="Third film in the same frame, everything in the same place" width="300" /> |
 
-| Results | Watch with a friend |
+| Results | The invite banner |
 | --- | --- |
-| <img src="docs/images/results-1440.png" alt="Results at desktop width" width="440" /> | <img src="docs/images/cowatch-card-1440.png" alt="The Watch with a friend card" width="440" /> |
+| <img src="docs/images/results-1440.png" alt="Results at desktop width" width="440" /> | <img src="docs/images/cowatch-banner-1440.png" alt="The Watch with a friend banner at the top of the results" width="440" /> |
 
 Screenshots are taken by the browser tests.
 
@@ -34,7 +34,7 @@ Screenshots are taken by the browser tests.
 - **Picks with reasons.** The top 5 each carry a short line naming the films you rated that drove the pick and the score you gave them ("Your 9 for X did most of the work here, with a nudge from Y (8)."), plus the one film that held it back when that pull is large. The wording is chosen from the film's id, so a list always reads the same way and no two top cards open alike. Every card also shows its year, runtime, Rotten Tomatoes score and genres. The rest follow in a compact grid. "Rate 5 more" adds five well-known unrated films, at most two per genre, to sharpen the list.
 - **Where a film sits for you.** Top picks show a rank; other films show "Top N% for your taste", its place among the films you have not rated. It ranks films against each other and is not the chance you will like one.
 - **Film pages.** Poster, genres, runtime, director, age rating, Rotten Tomatoes score, the full plot, a breakdown of how each film you rated pushed this one up or down, a YouTube trailer search, and which services carry it (subscription, rent or buy) in Canada, the US and the UK, from a dated Watchmode snapshot, with JustWatch search links (searches, not a guarantee of availability).
-- **Watch with a friend.** Share a link (the card's button copies it, or opens the share sheet where there is one); your friend rates their own films and you both get one list of films that suit the two of you. A "Watch with a friend" button next to "Rate 5 more" scrolls to the card. There are also three made-up sample friends (horror, romance, sci-fi) to try it alone.
+- **Watch with a friend.** A banner at the top of the results has the invite button (it copies the link, or opens the share sheet where there is one) and a "Try a sample friend" control. Your friend rates their own films and you both get one list of films that suit the two of you. There are three made-up sample friends (horror, romance, sci-fi) to try it alone.
 - **Home, Back and Start over never lose your ratings by accident.** The logo and a Home button on the rating screen go home; with at least one rating (and for the browser Back button) a dialog asks "Leave and keep your ratings?". The landing page then offers "Continue (n of N)" beside the Quick and Full choice, which still has no default. "Start over" asks before it clears anything.
 - **Installable and offline.** After one visit the app works with no connection (posters excepted) and can be added to the home screen. Ratings and position are saved in the browser. The screens are checked with an automated accessibility scan (axe).
 
@@ -125,7 +125,7 @@ This is a snapshot, not live data. Under Watchmode's free plan the cached data m
 
 ### Offline use
 
-A service worker (`src/sw.js`) keeps one versioned cache (currently `cocinema-v8`); bumping the name on a deploy makes every phone drop the old cache. Code (HTML, JS, CSS) is network-first with a 4 second wait before falling back to the saved copy. Data files (`catalog.json`, `onboarding.json`, `availability.json`) are stale-while-revalidate. Other origins (posters) are never cached, so offline the cards show placeholders. The worker is registered only on https or 127.0.0.1, so the app works the same without it.
+A service worker (`src/sw.js`) keeps one versioned cache (currently `cocinema-v9`); bumping the name on a deploy makes every phone drop the old cache. Code (HTML, JS, CSS) is network-first with a 4 second wait before falling back to the saved copy. Data files (`catalog.json`, `onboarding.json`, `availability.json`) are stale-while-revalidate. Other origins (posters) are never cached, so offline the cards show placeholders. The worker is registered only on https or 127.0.0.1, so the app works the same without it.
 
 ### Routing
 
@@ -157,7 +157,7 @@ Run with `npm run evaluate` (fixed seed, no network). The picks beat the genre b
 ## Testing
 
 - **Unit tests:** `npm test` runs 232 tests (node:test) over 23 files, covering the recommender, the why lines (determinism, variety, the held-back threshold, and that every film and number named comes from the real contribution data), runtime and rating formatting, sharing links, the combined ranking, catalog integrity and the Vercel config.
-- **Browser tests:** `npm run test:e2e` runs ten headless-Chrome scripts (Playwright) and reported 336 passing checks in total: the main flow, the Quick/Full choice, the landing page, icons, co-watch, offline mode and update behaviour, an axe accessibility scan with keyboard checks (including the confirmation dialog), the fixed rating frame (bounding boxes over six consecutive films at 1440x900, 1366x768, 1280x720, 1024x768, 375x667 and 360x640), Home, Back, Continue and the dialogs, and the results cards (no taller than before, no plot text, the co-watch entry). It also saves the screenshots.
+- **Browser tests:** `npm run test:e2e` runs ten headless-Chrome scripts (Playwright) and reported 361 passing checks in total: the main flow, the Quick/Full choice, the landing page, icons, co-watch, offline mode and update behaviour, an axe accessibility scan with keyboard checks (including the confirmation dialog), the fixed rating frame (bounding boxes over six consecutive films at 1440x900, 1366x768, 1280x720, 1024x768, 375x667 and 360x640), Home, Back, Continue and the dialogs, and the results cards (no taller than before, no plot text, the co-watch entry). It also saves the screenshots.
 
 ## Tech stack
 
