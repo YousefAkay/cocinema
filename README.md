@@ -117,7 +117,7 @@ This is a snapshot, not live data. Under Watchmode's free plan the cached data m
 
 ### Offline use
 
-A service worker (`src/sw.js`) keeps one versioned cache (currently `cocinema-v9`); bumping the name on a deploy makes every phone drop the old cache. Code (HTML, JS, CSS) is network-first with a 4 second wait before falling back to the saved copy. Data files (`catalog.json`, `onboarding.json`, `availability.json`) are stale-while-revalidate. Other origins (posters) are never cached, so offline the cards show placeholders. The worker is registered only on https or 127.0.0.1, so the app works the same without it.
+A service worker (`src/sw.js`) keeps one versioned cache (currently `cocinema-v10`); bumping the name on a deploy makes every phone drop the old cache. Code (HTML, JS, CSS) is network-first with a 4 second wait before falling back to the saved copy. Data files (`catalog.json`, `onboarding.json`, `availability.json`) are stale-while-revalidate. Other origins (posters) are never cached, so offline the cards show placeholders. The worker is registered only on https or 127.0.0.1, so the app works the same without it.
 
 ### Routing
 
@@ -219,7 +219,7 @@ npx serve . -l tcp://127.0.0.1:3000
 ## Credits and licenses
 
 - Film data from [Wikidata](https://www.wikidata.org) (CC0).
-- Plots, posters, runtimes, directors, ratings and Rotten Tomatoes scores from the [OMDb API](https://www.omdbapi.com). Posters come through OMDb.
+- Plots, posters, runtimes, directors, ratings and Rotten Tomatoes scores from the [OMDb API](https://www.omdbapi.com), whose content is licensed [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Posters come through OMDb: they are loaded from OMDb's image links, are not stored or redistributed in this repository, and belong to their respective studios and rights holders. CoCinema is a free, non-commercial portfolio project.
 - Plot embeddings by [OpenAI](https://platform.openai.com) (`text-embedding-3-small`), computed offline.
 - Streaming data by [Watchmode](https://www.watchmode.com).
 - Fonts, self-hosted under the SIL Open Font License 1.1: Instrument Serif (`src/fonts/OFL-instrument-serif.txt`) and Manrope (`src/fonts/OFL-manrope.txt`).

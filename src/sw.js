@@ -2,7 +2,7 @@
 // latest deploy; the large data files are stale-while-revalidate so they open instantly and
 // still refresh in the background. Other origins (posters, fonts) are never touched.
 
-const CACHE_NAME = 'cocinema-v9';
+const CACHE_NAME = 'cocinema-v10';
 const NETWORK_TIMEOUT_MS = 4000;
 
 // Everything the app needs to start, relative to this file (/src/).
