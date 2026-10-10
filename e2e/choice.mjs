@@ -22,7 +22,7 @@ const parseLabel = text => {
   const match = /^(.+) · (\d+) \/ (\d+)$/.exec(text.trim());
   return match ? { genre: match[1], n: Number(match[2]), of: Number(match[3]) } : null;
 };
-const currentStep = async page => parseLabel(await page.locator('#rating-screen > h1').textContent());
+const currentStep = async page => parseLabel(await page.locator('#rating-screen .rating-step').textContent());
 
 // Rates through onboarding, recording each genre and "n / of" label as it first appears.
 async function finishOnboarding(page, seen) {
@@ -39,7 +39,7 @@ async function finishOnboarding(page, seen) {
 
 async function rateFiveMore(page) {
   const before = await page.locator('.top-pick h3').allInnerTexts();
-  await page.getByRole('button', { name: 'Rate 5 more' }).click();
+  await page.getByRole('button', { name: 'Rate 5 more', exact: true }).click();
   for (let i = 0; i < 5; i++) {
     await page.waitForSelector('#rating-screen .rating-widget');
     await page.getByRole('button', { name: String([8, 3, 9, 2, 10][i]), exact: true }).click();
@@ -108,13 +108,15 @@ try {
   check('a Quick session covers exactly 10 different genres', quickSteps.length === 10 && new Set(quickGenres).size === 10, quickGenres.join(', '));
   const basis = await quick.page.locator('.results-basis').innerText();
   check('results say how many films the picks are based on', /^These picks are based on the \d+ films? you rated\.$/.test(basis), basis);
-  check('Quick results nudge towards "Rate 5 more"', (await quick.page.locator('.results-nudge').innerText()) === 'Want sharper picks? Rate 5 more.');
+  check('Quick results nudge towards "Rate 5 more"', (await quick.page.locator('.results-nudge').innerText()) === 'Want sharper picks? Rate 5 more');
   check('"Rate 5 more" works in Quick mode and changes the list', await rateFiveMore(quick.page));
   await quick.page.reload();
   await quick.page.waitForSelector('.top-pick');
   check('a refresh on Quick results keeps the Quick results', (await quick.page.locator('.results-nudge').count()) === 1);
 
   await quick.page.getByRole('button', { name: 'Start over' }).click();
+
+  await quick.page.locator('dialog .confirm-ok').click();
   await quick.page.waitForSelector('.length-card');
   check('Start over returns to the landing screen with nothing selected',
     (await quick.page.locator('#landing-screen').isVisible()) && (await quick.page.locator('input[name="length"]:checked').count()) === 0 && await quick.page.locator('#start-button').isDisabled());

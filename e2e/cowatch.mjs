@@ -39,7 +39,7 @@ async function onboard(page, scores) {
   const rated = [];
   let step = 0;
   while (await page.locator('#rating-screen').isVisible() && step < 60) {
-    rated.push((await page.locator('#rating-screen .movie-card p').first().innerText()).trim());
+    rated.push((await page.locator('#rating-screen .rating-title').first().innerText()).trim());
     await page.getByRole('button', { name: String(scores[step % scores.length]), exact: true }).click();
     await page.getByRole('button', { name: 'Confirm' }).click();
     step++;
@@ -109,20 +109,20 @@ try {
   // rate a few, refresh mid-session, and carry on
   const ratedB = [];
   for (let i = 0; i < 3; i++) {
-    ratedB.push((await b.page.locator('#rating-screen .movie-card p').first().innerText()).trim());
+    ratedB.push((await b.page.locator('#rating-screen .rating-title').first().innerText()).trim());
     await b.page.getByRole('button', { name: String(scoresB[i]), exact: true }).click();
     await b.page.getByRole('button', { name: 'Confirm' }).click();
   }
-  const labelBefore = await b.page.locator('#rating-screen > h1').textContent();
+  const labelBefore = await b.page.locator('#rating-screen .rating-step').textContent();
   await b.page.reload();
   await b.page.waitForSelector('#rating-screen .rating-widget');
-  check('a refresh mid-session resumes on the same step', (await b.page.locator('#rating-screen > h1').textContent()) === labelBefore, labelBefore);
+  check('a refresh mid-session resumes on the same step', (await b.page.locator('#rating-screen .rating-step').textContent()) === labelBefore, labelBefore);
   const midState = await b.page.evaluate(() => JSON.parse(localStorage.getItem('cocinema:v4')));
   check('the friend\'s taste is kept in the session, apart from the visitor\'s own ratings',
     midState.friend && midState.friend.ratings.length === ratedA.length && midState.ratings.length === 3);
 
   while (await b.page.locator('#rating-screen').isVisible()) {
-    ratedB.push((await b.page.locator('#rating-screen .movie-card p').first().innerText()).trim());
+    ratedB.push((await b.page.locator('#rating-screen .rating-title').first().innerText()).trim());
     await b.page.getByRole('button', { name: String(scoresB[ratedB.length % scoresB.length]), exact: true }).click();
     await b.page.getByRole('button', { name: 'Confirm' }).click();
   }
@@ -172,7 +172,7 @@ try {
   check('and the shared list is one click away', (await comboTitles(b.page)).length === 10);
 
   // Rate 5 more still works from the shared list
-  await b.page.getByRole('button', { name: 'Rate 5 more' }).click();
+  await b.page.getByRole('button', { name: 'Rate 5 more', exact: true }).click();
   for (let i = 0; i < 5; i++) {
     await b.page.waitForSelector('#rating-screen .rating-widget');
     await b.page.getByRole('button', { name: String([8, 3, 9, 2, 10][i]), exact: true }).click();
@@ -182,6 +182,8 @@ try {
   check('"Rate 5 more" returns to an updated shared list', (await comboTitles(b.page)).length === 10);
 
   await b.page.getByRole('button', { name: 'Start over' }).click();
+
+  await b.page.locator('dialog .confirm-ok').click();
   await b.page.waitForSelector('.length-card');
   const cleared = await b.page.evaluate(() => localStorage.getItem('cocinema:v4'));
   check('Start over clears the session and the friend, and shows the plain landing screen',

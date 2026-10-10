@@ -1,12 +1,13 @@
-import { renderMovieCard, renderRatingWidget, renderResults, renderTopPick } from './ui.js';
+import { renderRatingStep, renderResults, renderTopPick } from './ui.js';
+import { confirmDialog } from './dialog.js';
 import {
   getAllRatings, getSkippedIds, markSkipped, savePosition, saveExtra, saveSeed, saveLength, saveFriend, getFriend, loadSavedState, clearSavedState,
 } from './ratings.js';
 import { recommend, explainMatch } from './recommend.js';
-import { buildWhyLine } from './why.js';
+import { buildWhyLines } from './why.js';
 import { EXTRA_COUNT, pickNextCandidate } from './candidates.js';
 import { topPercent } from './percentile.js';
-import { titleWithYear, genreOrder, roundedCount } from './format.js';
+import { titleWithYear, genreOrder, roundedCount, topGenres } from './format.js';
 import { parseHash, shortId } from './route.js';
 import { renderDetail, renderNotFound, renderStreaming, showStreamingLoading } from './detail.js';
 import { COWATCH_ENABLED } from './flags.js';
@@ -56,6 +57,9 @@ let resultsScrollY = 0;
 let cameFromResults = false;
 let pendingFriend = null; // a friend's taste from a link, not yet part of a session
 let soloView = false; // true while the visitor looks at their own picks instead of the shared list
+let activeScreen = null;
+let onLanding = false; // true while the landing screen is shown to someone who has a session in progress
+let guardActive = false; // true while a history entry sits in front of the page, so Back can ask first
 
 const landingScreen = document.getElementById('landing-screen');
 const ratingScreen = document.getElementById('rating-screen');
@@ -66,7 +70,81 @@ function showOnly(screen) {
   for (const candidate of [landingScreen, ratingScreen, resultsScreen, detailScreen]) {
     candidate.style.display = candidate === screen ? '' : 'none';
   }
+  activeScreen = screen;
+  onLanding = screen === landingScreen;
   document.body.classList.toggle('started', screen !== landingScreen);
+  document.body.classList.toggle('rating-active', screen === ratingScreen);
+  if (screen === landingScreen) {
+    updateContinue();
+  }
+}
+
+// ---- Going home ----
+
+// A history entry in front of the page, so the browser's Back button on the rating and results
+// screens asks before leaving instead of dropping the visitor out of the app.
+function ensureGuard() {
+  if (guardActive) return;
+  history.pushState({ cocinemaGuard: true }, '', location.href);
+  guardActive = true;
+}
+
+function goLanding() {
+  stripHash();
+  clearLengthChoice();
+  document.title = 'CoCinema';
+  showOnly(landingScreen);
+  window.scrollTo(0, 0);
+  landingScreen.querySelector('h1').focus({ preventScroll: true });
+}
+
+// Home from any screen. Ratings are never deleted: with at least one rating the visitor is asked
+// first, and "Go home" only shows the landing screen.
+async function requestHome() {
+  if (activeScreen === landingScreen || getAllRatings().length === 0) {
+    goLanding();
+    return;
+  }
+  ensureGuard();
+  const leave = await confirmDialog({
+    title: 'Leave and keep your ratings?',
+    body: 'Your ratings stay saved on this device. Choose Continue on the home page to pick up where you left off.',
+    cancelLabel: 'Keep going',
+    confirmLabel: 'Go home',
+    returnFocus: document.querySelector('#rating-screen .rating-title, #results-screen h1, #detail-screen h1'),
+  });
+  if (leave) {
+    goLanding();
+  }
+}
+
+window.addEventListener('popstate', () => {
+  // Opening or leaving a film page, or opening a friend's link, is handled by the hash route.
+  // On the landing screen there is nothing to ask.
+  if (activeScreen === detailScreen || parseHash(location.hash).type !== 'home') return;
+  guardActive = false;
+  if (activeScreen === landingScreen) return;
+  requestHome();
+});
+
+for (const brand of document.querySelectorAll('a.brand')) {
+  brand.addEventListener('click', event => {
+    event.preventDefault();
+    requestHome();
+  });
+}
+
+async function requestStartOver() {
+  if (getAllRatings().length > 0) {
+    const confirmed = await confirmDialog({
+      title: 'Start over?',
+      body: 'This clears your ratings and your list on this device.',
+      cancelLabel: 'Keep my ratings',
+      confirmLabel: 'Start over',
+    });
+    if (!confirmed) return;
+  }
+  startOver();
 }
 
 // Remember where the results list was scrolled when a film is opened from it.
@@ -77,28 +155,23 @@ resultsScreen.addEventListener('click', event => {
   }
 });
 
-// One rating step: a progress label, the movie, the rating buttons and "Haven't seen it".
+// One rating step: a fixed frame with the progress label, the movie, the rating buttons and
+// "Haven't seen it". The frame never scrolls and nothing in it moves between films.
 function showRatingStep({ label, movie, onConfirm, onSkip }) {
   showOnly(ratingScreen);
+  ensureGuard();
   ratingScreen.innerHTML = '';
-  window.scrollTo(0, 0);
 
-  // The step label is the page's heading; focus moves to it so a screen reader announces the new step.
-  const progress = document.createElement('h1');
-  progress.tabIndex = -1;
-  progress.textContent = label;
-
-  const skipButton = document.createElement('button');
-  skipButton.textContent = "Haven't seen it";
-  skipButton.addEventListener('click', onSkip);
-
-  ratingScreen.append(
-    progress,
-    renderMovieCard(movie),
-    renderRatingWidget(movie.id, null, onConfirm),
-    skipButton,
-  );
-  progress.focus({ preventScroll: true });
+  const { frame, heading } = renderRatingStep({
+    label,
+    movie,
+    genres: topGenres(movie, genreRank),
+    onConfirm,
+    onSkip,
+    onHome: requestHome,
+  });
+  ratingScreen.append(frame);
+  heading.focus({ preventScroll: true });
 }
 
 function skipMovie(movie) {
@@ -229,6 +302,7 @@ function addButton(parent, className, text, onClick) {
 
 function showResults(notice, restoreScroll = false) {
   showOnly(resultsScreen);
+  ensureGuard();
   resultsScreen.innerHTML = '';
   if (!restoreScroll) {
     window.scrollTo(0, 0);
@@ -248,7 +322,7 @@ function showResults(notice, restoreScroll = false) {
 
   if (ranked.length === 0) {
     addParagraph(resultsScreen, '', 'Rate at least 3 movies (with different scores) to get recommendations.');
-    addButton(resultsScreen, 'start-over', 'Start over', startOver);
+    addButton(resultsScreen, 'start-over', 'Start over', requestStartOver);
     pageHeading.focus({ preventScroll: true });
     return;
   }
@@ -260,7 +334,7 @@ function showResults(notice, restoreScroll = false) {
   const noun = ratings.length === 1 ? 'film' : 'films';
   addParagraph(resultsScreen, 'results-basis', `These picks are based on the ${ratings.length} ${noun} you rated.`);
   if (sessionLength === 10) {
-    addParagraph(resultsScreen, 'results-nudge', `Want sharper picks? Rate ${EXTRA_COUNT} more.`);
+    addButton(resultsScreen, 'results-nudge', `Want sharper picks? Rate ${EXTRA_COUNT} more`, startExtra);
   }
 
   const topSection = document.createElement('section');
@@ -270,9 +344,14 @@ function showResults(notice, restoreScroll = false) {
   topHeading.tabIndex = -1;
   topSection.append(topHeading);
 
-  ranked.slice(0, TOP_COUNT).forEach((result, index) => {
-    const why = buildWhyLine(explainMatch(result.movie.id, ratings, catalog));
-    topSection.append(renderTopPick(result, index + 1, why));
+  // Wording is chosen from each film's id, and no two cards open the same way.
+  const topResults = ranked.slice(0, TOP_COUNT);
+  const whyLines = buildWhyLines(topResults.map(result => ({
+    id: result.movie.id,
+    contributions: explainMatch(result.movie.id, ratings, catalog),
+  })));
+  topResults.forEach((result, index) => {
+    topSection.append(renderTopPick(result, index + 1, whyLines[index], topGenres(result.movie, genreRank)));
   });
   addParagraph(topSection, 'match-note',
     'Top N% ranks each film against the rest of the catalog for you. It is not the chance you will like it.');
@@ -291,13 +370,19 @@ function showResults(notice, restoreScroll = false) {
   const actions = document.createElement('div');
   actions.className = 'results-actions';
   addButton(actions, 'rate-more', `Rate ${EXTRA_COUNT} more`, startExtra);
+  if (COWATCH_ENABLED) {
+    addButton(actions, 'cowatch-entry', 'Watch with a friend', () => scrollToSection(
+      document.getElementById('cowatch-title').closest('section'),
+      document.getElementById('cowatch-title'),
+    ));
+  }
   if (COWATCH_ENABLED && getFriend()) {
     addButton(actions, 'cowatch-to-combined', "Films you'd both enjoy", () => {
       soloView = false;
       showCombined();
     });
   }
-  addButton(actions, 'start-over', 'Start over', startOver);
+  addButton(actions, 'start-over', 'Start over', requestStartOver);
   resultsScreen.append(actions);
 
   if (COWATCH_ENABLED) {
@@ -330,6 +415,7 @@ function friendLabel(friend) {
 // the visitor's own ratings or profile.
 function showCombined(notice, restoreScroll = false) {
   showOnly(resultsScreen);
+  ensureGuard();
   resultsScreen.innerHTML = '';
   if (!restoreScroll) {
     window.scrollTo(0, 0);
@@ -358,7 +444,7 @@ function showCombined(notice, restoreScroll = false) {
       showResults();
     },
     onRateMore: startExtra,
-    onStartOver: startOver,
+    onStartOver: requestStartOver,
   }));
 
   if (restoreScroll) {
@@ -531,6 +617,10 @@ function showHome() {
     showOnly(landingScreen);
     return;
   }
+  if (onLanding) {
+    showOnly(landingScreen);
+    return;
+  }
   if (extra) {
     resumeExtra();
   } else if (genreIndex >= session.length) {
@@ -617,13 +707,12 @@ renderPosterStrip();
 // The "better than chance" figure is the lift from the latest evaluation run (src/evaluation-stats.js).
 fillLandingNumber('lift', `${EVALUATION.lift.toFixed(1)}x`);
 
-document.getElementById('how-link').addEventListener('click', event => {
-  event.preventDefault();
-  const section = document.getElementById('how');
+// Scrolls a section into view (instantly when the visitor prefers reduced motion) and then
+// moves focus to its heading.
+function scrollToSection(section, heading) {
   const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   section.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
   // Moving focus while a smooth scroll is running can cut the scroll short, so wait for it to end.
-  const heading = document.getElementById('how-title');
   heading.tabIndex = -1;
   let focused = false;
   const focusHeading = () => {
@@ -633,6 +722,11 @@ document.getElementById('how-link').addEventListener('click', event => {
   };
   window.addEventListener('scrollend', focusHeading, { once: true });
   setTimeout(focusHeading, calm ? 0 : 1200);
+}
+
+document.getElementById('how-link').addEventListener('click', event => {
+  event.preventDefault();
+  scrollToSection(document.getElementById('how'), document.getElementById('how-title'));
 });
 
 const startButton = document.getElementById('start-button');
@@ -672,6 +766,28 @@ function clearLengthChoice() {
 lengthInputs.forEach(input => input.addEventListener('change', updateStartState));
 // Browsers can remember a ticked radio across a reload; the landing screen always starts empty.
 clearLengthChoice();
+
+// "Continue" is offered beside the Quick and Full choice when a session with ratings is saved.
+// Choosing a length still has no default, and Get started still begins a new session.
+const continueButton = document.getElementById('continue-button');
+
+function updateContinue() {
+  const show = dataLoaded && started && getAllRatings().length > 0;
+  continueButton.hidden = !show;
+  if (!show) return;
+  if (extra) {
+    continueButton.textContent = `Continue (${extra.rated + 1} of ${EXTRA_COUNT})`;
+    return;
+  }
+  const step = resolveStep(session, genreIndex, movieIndex, id => catalogById.has(id));
+  continueButton.textContent = step.done ? 'See my picks' : `Continue (${step.n} of ${step.of})`;
+}
+
+continueButton.addEventListener('click', () => {
+  onLanding = false;
+  clearFriendBanner();
+  showHome();
+});
 
 startButton.addEventListener('click', function() {
   const length = chosenLength();

@@ -23,7 +23,7 @@ const ratedTitles = new Set();
 const scoreCycle = [9, 10, 3, 8, 2, 9, 5, 10, 2, 7, 9, 3, 8, 10, 4];
 
 async function rateCurrent(score) {
-  const title = await page.locator('#rating-screen .movie-card p').innerText();
+  const title = await page.locator('#rating-screen .rating-title').innerText();
   await page.getByRole('button', { name: String(score), exact: true }).click();
   await page.getByRole('button', { name: 'Confirm' }).click();
   ratedTitles.add(title);
@@ -34,8 +34,8 @@ async function topTitles() {
 }
 
 async function currentFilm(p = page) {
-  const label = await p.locator('#rating-screen > h1').innerText();
-  const title = await p.locator('#rating-screen .movie-card p').innerText();
+  const label = await p.locator('#rating-screen .rating-step').innerText();
+  const title = await p.locator('#rating-screen .rating-title').innerText();
   return `${label} | ${title}`;
 }
 
@@ -46,7 +46,7 @@ async function firstFilmInFreshSession() {
   await freshPage.goto(base);
   await freshPage.waitForSelector('.length-card');
   await chooseAndStart(freshPage);
-  await freshPage.waitForSelector('#rating-screen .movie-card p');
+  await freshPage.waitForSelector('#rating-screen .rating-title');
   const film = await currentFilm(freshPage);
   await fresh.close();
   return film;
@@ -83,20 +83,20 @@ try {
 
   // Onboarding
   await chooseAndStart(page);
-  await page.waitForSelector('#rating-screen .movie-card p');
+  await page.waitForSelector('#rating-screen .rating-title');
   const firstFilm = await currentFilm();
   const firstSeed = await storedSeed();
   check('the seed is saved as soon as onboarding starts', Number.isInteger(firstSeed));
 
   await page.reload();
-  await page.waitForSelector('#rating-screen .movie-card p');
+  await page.waitForSelector('#rating-screen .rating-title');
   check('refresh on the very first film resumes on the same film', (await currentFilm()) === firstFilm, firstFilm);
 
   await page.getByRole('button', { name: "Haven't seen it" }).click();
-  await page.waitForFunction(old => !document.querySelector('#rating-screen .movie-card p')?.innerText.includes(old), firstFilm.split(' | ')[1]);
+  await page.waitForFunction(old => !document.querySelector('#rating-screen .rating-title')?.innerText.includes(old), firstFilm.split(' | ')[1]);
   const afterSkip = await currentFilm();
   await page.reload();
-  await page.waitForSelector('#rating-screen .movie-card p');
+  await page.waitForSelector('#rating-screen .rating-title');
   check('refresh after skipping a film resumes on the same film and genre', (await currentFilm()) === afterSkip, afterSkip);
 
   const order1 = await completeOnboarding();
@@ -107,11 +107,12 @@ try {
   check('exactly 5 top cards', topCount === 5, `found ${topCount}`);
 
   const whys = await page.locator('.top-pick-why').allInnerTexts();
-  const named = whys.every(text => {
-    const titles = [...text.matchAll(/"([^"]+)"/g)].map(match => match[1]);
-    return text.trim().length > 0 && titles.length > 0 && titles.every(title => ratedTitles.has(title));
-  });
-  check('every why line is non-empty and names only movies the user rated', named, whys[0]);
+  // Every film named in a why line must be one the user rated, and it must carry a score.
+  const named = whys.every(text => text.trim().length > 0 && /\b(10|[1-9])\b/.test(text)
+    && [...ratedTitles].some(title => text.includes(title)));
+  check('every why line is non-empty, names a film the user rated, and has the score they gave', named, whys.join(' // ') + ' :: ' + [...ratedTitles].join(', '));
+  const openings = whys.map(text => text.split(/\s+/).slice(0, 2).join(' '));
+  check('no two top cards open the same way', new Set(openings).size === whys.length, openings.join(' / '));
 
   const ranks = await page.locator('.top-pick-match').allInnerTexts();
   check('top cards show only their rank: "#1" to "#5", with no total', ranks.join() === '#1,#2,#3,#4,#5', ranks.join(', '));
@@ -301,9 +302,9 @@ try {
 
   // Rate 5 more, with a refresh in the middle and one skip
   const before = await topTitles();
-  await page.getByRole('button', { name: 'Rate 5 more' }).click();
+  await page.getByRole('button', { name: 'Rate 5 more', exact: true }).click();
   await page.waitForSelector('#rating-screen .rating-widget');
-  const firstLabel = await page.locator('#rating-screen > h1').innerText();
+  const firstLabel = await page.locator('#rating-screen .rating-step').innerText();
   check('extra flow starts at "1 of 5"', /1 of 5/i.test(firstLabel), firstLabel);
   check('the rating step is scrolled to the top', await page.evaluate(() => window.scrollY === 0));
   await page.waitForTimeout(500);
@@ -314,12 +315,12 @@ try {
   await page.waitForSelector('#rating-screen .rating-widget');
   await rateCurrent(2);
 
-  const midTitle = await page.locator('#rating-screen .movie-card p').innerText();
-  const midLabel = await page.locator('#rating-screen > h1').innerText();
+  const midTitle = await page.locator('#rating-screen .rating-title').innerText();
+  const midLabel = await page.locator('#rating-screen .rating-step').innerText();
   await page.reload();
   await page.waitForSelector('#rating-screen .rating-widget');
-  const afterTitle = await page.locator('#rating-screen .movie-card p').innerText();
-  const afterLabel = await page.locator('#rating-screen > h1').innerText();
+  const afterTitle = await page.locator('#rating-screen .rating-title').innerText();
+  const afterLabel = await page.locator('#rating-screen .rating-step').innerText();
   check('refresh mid-flow resumes on the same film and step', afterTitle === midTitle && afterLabel === midLabel && /3 of 5/i.test(afterLabel), `${afterLabel}: ${afterTitle}`);
 
   for (const score of [8, 3, 10]) {
@@ -341,6 +342,8 @@ try {
 
   // Start over
   await page.getByRole('button', { name: 'Start over' }).click();
+  await page.locator('dialog .confirm-ok').click();
+  await page.waitForSelector('#landing-screen', { state: 'visible' });
   check('Start over returns to the landing screen', await page.locator('#landing-screen').isVisible());
   await page.reload();
   await page.waitForSelector('.length-card');
@@ -350,7 +353,7 @@ try {
 
   // A new session after Start over: new seed, new order.
   await chooseAndStart(page);
-  await page.waitForSelector('#rating-screen .movie-card p');
+  await page.waitForSelector('#rating-screen .rating-title');
   const secondSeed = await storedSeed();
   const order2 = await completeOnboarding();
   check('Start over gives a new seed and a different order', secondSeed !== firstSeed && JSON.stringify(order1) !== JSON.stringify(order2), `${firstSeed} -> ${secondSeed}`);

@@ -17,7 +17,7 @@ try {
   const page = await context.newPage();
   page.on('pageerror', error => problems.push(error.message));
   await page.goto(server.base);
-  await page.waitForSelector('.brand img');
+  await page.waitForSelector('#landing-screen .brand img');
 
   // Icon links in the page
   const links = await page.evaluate(() => [...document.querySelectorAll('link[rel~="icon"], link[rel="apple-touch-icon"]')]
@@ -70,7 +70,7 @@ try {
 
   // The logo in the page
   const logo = await page.evaluate(() => {
-    const image = document.querySelector('.brand img');
+    const image = document.querySelector('#landing-screen .brand img');
     const box = image.getBoundingClientRect();
     return { loaded: image.complete && image.naturalWidth > 0, alt: image.getAttribute('alt'), width: Math.round(box.width), height: Math.round(box.height), src: new URL(image.src).pathname };
   });

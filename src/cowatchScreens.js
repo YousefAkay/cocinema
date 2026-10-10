@@ -28,9 +28,10 @@ export function renderShareSection({ onShare, onSample }) {
   section.setAttribute('aria-labelledby', 'cowatch-title');
   section.append(element('h2', '', 'Watch with a friend'));
   section.firstChild.id = 'cowatch-title';
+  section.firstChild.tabIndex = -1;
   section.append(element('p', 'cowatch-intro', 'Send a link, and when your friend rates their own films you both get one list of films that suit the two of you.'));
 
-  const share = button('cowatch-button', 'Watch with a friend', onShare);
+  const share = button('cowatch-button', navigator.share ? 'Share invite link' : 'Copy invite link', onShare);
   share.id = 'cowatch-share';
   section.append(share);
   const status = element('p', 'cowatch-status');

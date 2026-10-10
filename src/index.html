@@ -32,16 +32,23 @@
 </head>
 <body>
 
+  <header class="site-bar" id="site-bar">
+    <a class="brand" href="#/" aria-label="CoCinema, home">
+      <img src="logo.svg" alt="" width="28" height="28">
+      <span>CoCinema</span>
+    </a>
+  </header>
+
   <main id="main">
     <div id="offline-notice" class="offline-notice" role="status" hidden>Offline - using saved data</div>
 
     <div id="landing-screen">
       <div class="landing-wrap">
         <header class="topbar">
-          <div class="brand">
-            <img src="logo.svg" alt="" width="28" height="28">
-            <span>CoCinema</span>
-          </div>
+          <a class="brand" href="#/" aria-label="CoCinema, home">
+              <img src="logo.svg" alt="" width="28" height="28">
+              <span>CoCinema</span>
+            </a>
           <nav aria-label="Site">
             <a href="#how" id="how-link">How it works</a>
             <a href="https://github.com/YousefAkay/cocinema" target="_blank" rel="noopener noreferrer">Open source on GitHub</a>
@@ -69,7 +76,10 @@
                 <span class="length-detail">15 films, sharper first picks</span>
               </label>
             </fieldset>
-            <button id="start-button" disabled>Get started</button>
+            <div class="start-row">
+              <button id="start-button" disabled>Get started</button>
+              <button id="continue-button" type="button" hidden>Continue</button>
+            </div>
             <p id="length-status" class="length-status" role="status">Choose a length to begin</p>
           </div>
         </section>

@@ -9,7 +9,7 @@
           "evaluate": "node scripts/evaluate.js",
           "build:assets": "node scripts/generateAssets.mjs",
           "build:landing": "node scripts/buildLandingPosters.js",
-          "test:e2e": "node e2e/run.mjs && node e2e/choice.mjs && node e2e/landing.mjs && node e2e/icons.mjs && node e2e/cowatch.mjs && node e2e/offline.mjs && node e2e/a11y.mjs"
+          "test:e2e": "node e2e/run.mjs && node e2e/choice.mjs && node e2e/landing.mjs && node e2e/icons.mjs && node e2e/cowatch.mjs && node e2e/offline.mjs && node e2e/a11y.mjs && node e2e/frame.mjs && node e2e/home.mjs && node e2e/results.mjs"
      },
      "license": "MIT",
      "dependencies": {

@@ -59,7 +59,7 @@ try {
   await page.getByRole('button', { name: '9', exact: true }).click();
   await page.getByRole('button', { name: 'Confirm' }).click();
   await page.getByRole('button', { name: 'Confirm' }).click(); // no score yet: shows the hint
-  await page.waitForSelector('.rating-hint:not([hidden])');
+  await page.waitForSelector('.rating-hint:not(:empty)');
   await scan(page, 'rating screen with the "Pick a score first" hint');
 
   await onboard(page, scoreCycle);
@@ -72,9 +72,13 @@ try {
   await page.getByRole('button', { name: /Back/ }).click();
   await page.waitForSelector('.top-pick');
 
-  await page.getByRole('button', { name: 'Rate 5 more' }).click();
+  await page.getByRole('button', { name: 'Rate 5 more', exact: true }).click();
   await page.waitForSelector('#rating-screen .rating-widget');
   await scan(page, 'extra-rating flow');
+  await page.click('.home-button');
+  await page.waitForSelector('dialog.confirm-dialog[open]');
+  await scan(page, 'leave-and-keep-your-ratings dialog');
+  await page.keyboard.press('Escape');
   await context.close();
 
   // Empty-results message: every film rated the same, so there is no taste to rank by
@@ -114,7 +118,9 @@ try {
   check('landing: nothing is chosen and Get started is disabled until a choice is made',
     (await kbPage.locator('input[name="length"]:checked').count()) === 0 && await kbPage.locator('#start-button').isDisabled());
   await kbPage.keyboard.press('Tab');
-  check('landing: Tab starts with the "How it works" link', (await focused()) === 'a:How it works', await focused());
+  check('landing: Tab starts with the logo link home', (await focused()) === 'a:CoCinema' && (await kbPage.evaluate(() => document.activeElement.getAttribute('aria-label'))) === 'CoCinema, home', await focused());
+  await kbPage.keyboard.press('Tab');
+  check('landing: then the "How it works" link', (await focused()) === 'a:How it works', await focused());
   await kbPage.keyboard.press('Tab');
   check('landing: then the GitHub link', (await focused()).startsWith('a:Open source'), await focused());
   await kbPage.keyboard.press('Tab');
@@ -129,8 +135,9 @@ try {
   check('landing: the next Tab reaches Get started', (await focused()) === 'button:Get started', await focused());
   await kbPage.keyboard.press('Enter');
   await kbPage.waitForSelector('#rating-screen .rating-widget');
-  const firstLabel = await kbPage.locator('#rating-screen > h1').textContent();
-  check('starting moves focus to the step heading', (await focused()) === `h1:${firstLabel}`, await focused());
+  const firstLabel = await kbPage.locator('#rating-screen .rating-step').textContent();
+  const firstTitle = await kbPage.locator('#rating-screen .rating-title').textContent();
+  check('starting moves focus to the film title heading', (await focused()) === `h1:${firstTitle}`, await focused());
 
   const order = [];
   for (let i = 0; i < 12; i++) {
@@ -147,7 +154,7 @@ try {
   check('the focus ring is visible (solid, at least 2px, offset from the button)', ring.style === 'solid' && ring.width >= 2 && ring.offset >= 2, JSON.stringify(ring));
 
   // Back to the heading, then pick 7 and confirm with the keyboard only
-  await kbPage.locator('#rating-screen > h1').focus();
+  await kbPage.locator('#rating-screen .rating-title').focus();
   for (let i = 0; i < 7; i++) await kbPage.keyboard.press('Tab');
   check('Tab 7 times from the heading lands on score 7', (await focused()) === 'button:7', await focused());
   await kbPage.keyboard.press('Space');
@@ -156,9 +163,9 @@ try {
   for (let i = 0; i < 4; i++) await kbPage.keyboard.press('Tab');
   check('three more Tabs and one more reach Confirm', (await focused()) === 'button:Confirm', await focused());
   await kbPage.keyboard.press('Enter');
-  await kbPage.waitForFunction(old => document.querySelector('#rating-screen > h1')?.textContent !== old, firstLabel);
-  const nextLabel = await kbPage.locator('#rating-screen > h1').textContent();
-  check('Confirm by keyboard moves on and puts focus on the new step heading', (await focused()) === `h1:${nextLabel}`, await focused());
+  await kbPage.waitForFunction(old => document.querySelector('#rating-screen .rating-step')?.textContent !== old, firstLabel);
+  const nextTitle = await kbPage.locator('#rating-screen .rating-title').textContent();
+  check('Confirm by keyboard moves on and puts focus on the new film title heading', (await focused()) === `h1:${nextTitle}`, await focused());
 
   await kbPage.keyboard.press('Shift+Tab');
   await kbPage.keyboard.press('Enter'); // wherever focus lands first, Enter must not break the page
