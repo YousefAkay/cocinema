@@ -56,3 +56,33 @@ export function roundedCount(count) {
   }
   return `${Math.floor(count / COUNT_STEP) * COUNT_STEP}+`;
 }
+
+// "142 min" becomes "2h 22m", "120 min" "2h", "45 min" "45m". Anything else, or no value, is null.
+export function formatRuntime(text) {
+  const match = /^(\d+)\s*min$/i.exec(String(text || '').trim());
+  const total = match ? Number(match[1]) : 0;
+  if (!total) {
+    return null;
+  }
+  const hours = Math.floor(total / 60);
+  const minutes = total % 60;
+  if (hours === 0) {
+    return `${minutes}m`;
+  }
+  return minutes === 0 ? `${hours}h` : `${hours}h ${minutes}m`;
+}
+
+// "87%" becomes "Rotten Tomatoes 87%". Anything else, or no value, is null.
+export function formatRottenTomatoes(text) {
+  const match = /^(\d{1,3})%$/.exec(String(text || '').trim());
+  return match ? `Rotten Tomatoes ${match[1]}%` : null;
+}
+
+// The small facts line under a title: year, runtime and Rotten Tomatoes, with anything missing left out.
+export function metaParts(movie) {
+  return [
+    movie.year ? String(movie.year) : null,
+    formatRuntime(movie.runtime),
+    formatRottenTomatoes(movie.rottenTomatoes),
+  ].filter(Boolean);
+}

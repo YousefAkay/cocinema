@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { topPercent } from '../src/percentile.js';
-import { titleWithYear, genreOrder, topGenres, capitalize, roundedCount } from '../src/format.js';
+import { titleWithYear, genreOrder, topGenres, capitalize, roundedCount, formatRuntime, formatRottenTomatoes, metaParts } from '../src/format.js';
 import { trailerSearchUrl, whereToWatchLinks } from '../src/links.js';
 import { movieHash, parseHash, shortId } from '../src/route.js';
 
@@ -157,4 +157,43 @@ test('roundedCount gives null when there is no usable count, so copy can fall ba
   assert.equal(roundedCount(null), null);
   assert.equal(roundedCount(undefined), null);
   assert.equal(roundedCount({}), null);
+});
+
+test('runtimes are written as hours and minutes', () => {
+  assert.equal(formatRuntime('142 min'), '2h 22m');
+  assert.equal(formatRuntime('120 min'), '2h');
+  assert.equal(formatRuntime('60 min'), '1h');
+  assert.equal(formatRuntime('45 min'), '45m');
+  assert.equal(formatRuntime('123 min'), '2h 3m');
+});
+
+test('missing or odd runtimes give nothing instead of a wrong figure', () => {
+  for (const value of [null, undefined, '', 'N/A', '0 min', 'about two hours', 142]) {
+    assert.equal(formatRuntime(value), null, String(value));
+  }
+});
+
+test('Rotten Tomatoes is a percentage with its name, or nothing', () => {
+  assert.equal(formatRottenTomatoes('87%'), 'Rotten Tomatoes 87%');
+  assert.equal(formatRottenTomatoes('100%'), 'Rotten Tomatoes 100%');
+  for (const value of [null, undefined, '', 'N/A', '87', '8.7/10']) {
+    assert.equal(formatRottenTomatoes(value), null, String(value));
+  }
+});
+
+test('the facts line leaves out whatever is missing, with no stray separators', () => {
+  assert.deepEqual(metaParts({ year: 1994, runtime: '142 min', rottenTomatoes: '91%' }), ['1994', '2h 22m', 'Rotten Tomatoes 91%']);
+  assert.deepEqual(metaParts({ year: 1994, runtime: null, rottenTomatoes: '91%' }), ['1994', 'Rotten Tomatoes 91%']);
+  assert.deepEqual(metaParts({ year: 1994, runtime: '142 min', rottenTomatoes: null }), ['1994', '2h 22m']);
+  assert.deepEqual(metaParts({ year: 1994 }), ['1994']);
+  assert.deepEqual(metaParts({}), []);
+});
+
+test('every catalog film gives a clean facts line', async () => {
+  const fs = await import('node:fs');
+  const catalog = JSON.parse(fs.readFileSync(new URL('../data/catalog.json', import.meta.url), 'utf8'));
+  for (const movie of catalog) {
+    const text = metaParts(movie).join(' · ');
+    assert.ok(text.length > 0 && !/\bmin\b|null|undefined|N\/A/.test(text), movie.title + ': ' + text);
+  }
 });
