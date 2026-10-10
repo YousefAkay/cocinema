@@ -8,21 +8,34 @@
 
 🎬 **Live:** [cocinema-pi.vercel.app](https://cocinema-pi.vercel.app)
 
-| Landing | Results with reasons | Film page | A list for two |
-| --- | --- | --- | --- |
-| <img src="docs/images/landing.png" alt="Landing screen with Quick and Full choices" width="200" /> | <img src="docs/images/results.png" alt="Top picks, each with a Because you rated line" width="200" /> | <img src="docs/images/film-page.png" alt="A film page with poster, details and plot" width="200" /> | <img src="docs/images/shared-list.png" alt="Films you would both enjoy, with each person's Top N%" width="200" /> |
+**On a phone (375 px)**
 
-Screenshots are taken at 375 px by the browser tests.
+| Landing | Rating screen | Results with reasons | Film page | A list for two |
+| --- | --- | --- | --- | --- |
+| <img src="docs/images/landing.png" alt="Landing screen with Quick and Full choices" width="150" /> | <img src="docs/images/rating-375-1.png" alt="The rating screen: poster, title, facts, genres and scores in one frame" width="150" /> | <img src="docs/images/results-375.png" alt="Top picks, each with a warm line saying which of your ratings drove it" width="150" /> | <img src="docs/images/film-page.png" alt="A film page with poster, details and plot" width="150" /> | <img src="docs/images/shared-list.png" alt="Films you would both enjoy, with each person's Top N%" width="150" /> |
+
+**On a desktop (1440 x 900): the rating frame does not move or scroll from one film to the next**
+
+| Film 1 | Film 2 | Film 3 |
+| --- | --- | --- |
+| <img src="docs/images/rating-1440-1.png" alt="First film in the rating frame" width="300" /> | <img src="docs/images/rating-1440-2.png" alt="Second film in the same frame, everything in the same place" width="300" /> | <img src="docs/images/rating-1440-3.png" alt="Third film in the same frame, everything in the same place" width="300" /> |
+
+| Results | Watch with a friend |
+| --- | --- |
+| <img src="docs/images/results-1440.png" alt="Results at desktop width" width="440" /> | <img src="docs/images/cowatch-card-1440.png" alt="The Watch with a friend card" width="440" /> |
+
+Screenshots are taken by the browser tests.
 
 ---
 
 ## What it does
 
-- **Quick or Full onboarding.** Nothing is pre-selected. Quick asks you to rate 10 films (10 of the 15 genres, a different 10 each session); Full covers all 15 genres. Skip any film you have not seen. The order of genres and films is shuffled per session from a saved seed, so a refresh resumes on the same film.
-- **Picks with reasons.** The top 5 each carry a line such as "Because you rated ...", built from the ratings that pushed the film up (and any that held it back). The rest follow in a compact grid. "Rate 5 more" adds five well-known unrated films, at most two per genre, to sharpen the list.
+- **Quick or Full onboarding.** Nothing is pre-selected. Quick asks you to rate 10 films (10 of the 15 genres, a different 10 each session); Full covers all 15 genres. Skip any film you have not seen. The order of genres and films is shuffled per session from a saved seed, so a refresh resumes on the same film. Each film is shown in one fixed frame (poster, title, year, runtime, Rotten Tomatoes, genre pills and the scores) that fits the window with no scrolling and keeps every control in the same place from film to film.
+- **Picks with reasons.** The top 5 each carry a short line naming the films you rated that drove the pick and the score you gave them ("Your 9 for X did most of the work here, with a nudge from Y (8)."), plus the one film that held it back when that pull is large. The wording is chosen from the film's id, so a list always reads the same way and no two top cards open alike. Every card also shows its year, runtime, Rotten Tomatoes score and genres. The rest follow in a compact grid. "Rate 5 more" adds five well-known unrated films, at most two per genre, to sharpen the list.
 - **Where a film sits for you.** Top picks show a rank; other films show "Top N% for your taste", its place among the films you have not rated. It ranks films against each other and is not the chance you will like one.
 - **Film pages.** Poster, genres, runtime, director, age rating, Rotten Tomatoes score, the full plot, a breakdown of how each film you rated pushed this one up or down, a YouTube trailer search, and which services carry it (subscription, rent or buy) in Canada, the US and the UK, from a dated Watchmode snapshot, with JustWatch search links (searches, not a guarantee of availability).
-- **Watch with a friend.** Share a link; your friend rates their own films and you both get one list of films that suit the two of you. There are also three made-up sample friends (horror, romance, sci-fi) to try it alone.
+- **Watch with a friend.** Share a link (the card's button copies it, or opens the share sheet where there is one); your friend rates their own films and you both get one list of films that suit the two of you. A "Watch with a friend" button next to "Rate 5 more" scrolls to the card. There are also three made-up sample friends (horror, romance, sci-fi) to try it alone.
+- **Home, Back and Start over never lose your ratings by accident.** The logo and a Home button on the rating screen go home; with at least one rating (and for the browser Back button) a dialog asks "Leave and keep your ratings?". The landing page then offers "Continue (n of N)" beside the Quick and Full choice, which still has no default. "Start over" asks before it clears anything.
 - **Installable and offline.** After one visit the app works with no connection (posters excepted) and can be added to the home screen. Ratings and position are saved in the browser. The screens are checked with an automated accessibility scan (axe).
 
 ## How it works
@@ -112,7 +125,7 @@ This is a snapshot, not live data. Under Watchmode's free plan the cached data m
 
 ### Offline use
 
-A service worker (`src/sw.js`) keeps one versioned cache (currently `cocinema-v6`); bumping the name on a deploy makes every phone drop the old cache. Code (HTML, JS, CSS) is network-first with a 4 second wait before falling back to the saved copy. Data files (`catalog.json`, `onboarding.json`, `availability.json`) are stale-while-revalidate. Other origins (posters) are never cached, so offline the cards show placeholders. The worker is registered only on https or 127.0.0.1, so the app works the same without it.
+A service worker (`src/sw.js`) keeps one versioned cache (currently `cocinema-v7`); bumping the name on a deploy makes every phone drop the old cache. Code (HTML, JS, CSS) is network-first with a 4 second wait before falling back to the saved copy. Data files (`catalog.json`, `onboarding.json`, `availability.json`) are stale-while-revalidate. Other origins (posters) are never cached, so offline the cards show placeholders. The worker is registered only on https or 127.0.0.1, so the app works the same without it.
 
 ### Routing
 
@@ -127,7 +140,7 @@ One HTML page, hash routes. `#/movie/<Wikidata id>` is a film page (it survives 
 
 ## Evaluation
 
-Run with `npm run evaluate` (fixed seed, no network). The headline numbers are generated into [`src/evaluation-stats.js`](src/evaluation-stats.js), which the landing page also reads, so this section and the page cannot disagree. Current values, with seed 20261007 and 1,000 synthetic users over 20 genres, each rating 12 films:
+Run with `npm run evaluate` (fixed seed, no network). The picks beat the genre baseline by a lift of 4.6x (precision@10 of 0.60 against 0.16). The headline numbers are generated into [`src/evaluation-stats.js`](src/evaluation-stats.js), which the landing page also reads, so this section and the page cannot disagree. Current values, with seed 20261007 and 1,000 synthetic users over 20 genres, each rating 12 films:
 
 | Measure | Value |
 | --- | --- |
@@ -143,8 +156,8 @@ Run with `npm run evaluate` (fixed seed, no network). The headline numbers are g
 
 ## Testing
 
-- **Unit tests:** `npm test` runs 213 tests (node:test) over 23 files, covering the recommender, explanations, sharing links, the combined ranking, catalog integrity and the Vercel config.
-- **Browser tests:** `npm run test:e2e` runs seven headless-Chrome scripts at 375 px (Playwright) and reported 231 passing checks in total: the main flow, the Quick/Full choice, the landing page, icons, co-watch, offline mode and update behaviour, and an axe accessibility scan with keyboard checks. It also saves the screenshots.
+- **Unit tests:** `npm test` runs 223 tests (node:test) over 23 files, covering the recommender, the why lines (determinism, variety, the held-back threshold, and that every film and number named comes from the real contribution data), runtime and rating formatting, sharing links, the combined ranking, catalog integrity and the Vercel config.
+- **Browser tests:** `npm run test:e2e` runs ten headless-Chrome scripts (Playwright) and reported 331 passing checks in total: the main flow, the Quick/Full choice, the landing page, icons, co-watch, offline mode and update behaviour, an axe accessibility scan with keyboard checks (including the confirmation dialog), the fixed rating frame (bounding boxes over six consecutive films at 1440x900, 1366x768, 1280x720, 1024x768, 375x667 and 360x640), Home, Back, Continue and the dialogs, and the results cards (no taller than before, no plot text, the co-watch entry). It also saves the screenshots.
 
 ## Tech stack
 
@@ -173,6 +186,7 @@ src/                runtime: static files served to the browser
   main.js           screens, hash routing and the rating flows
   recommend.js, similarity.js           taste profile, ranking, cosine similarity
   combine.js, cowatch.js, cowatchScreens.js, samples.js, flags.js   Watch with a friend
+  why.js, dialog.js  the "why" lines, and the one confirmation dialog
   detail.js, availability.js            film page and streaming text
   ratings.js        the only file that touches localStorage
   sw.js, offline.js service worker and offline notice
