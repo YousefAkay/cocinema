@@ -8,30 +8,21 @@
 
 🎬 **Live:** [cocinema-pi.vercel.app](https://cocinema-pi.vercel.app)
 
-**On a phone (375 px)**
+<p align="center">
+  <img src="docs/images/results.png" alt="Results: the top picks, each with a line saying which of the person's own ratings drove it" width="760" />
+</p>
+<p align="center"><em>An example run: each reason is an exact breakdown of the person's own ratings.</em></p>
 
-| Landing | Rating screen | Results with reasons | Film page | A list for two |
-| --- | --- | --- | --- | --- |
-| <img src="docs/images/landing.png" alt="Landing screen with Quick and Full choices" width="150" /> | <img src="docs/images/rating-375-1.png" alt="The rating screen: poster, title, facts, genres and scores in one frame" width="150" /> | <img src="docs/images/results-375.png" alt="Top picks, each with a warm line saying which of your ratings drove it" width="150" /> | <img src="docs/images/film-page.png" alt="A film page with poster, details and plot" width="150" /> | <img src="docs/images/shared-list.png" alt="Films you would both enjoy, with each person's Top N%" width="150" /> |
-
-**On a desktop (1440 x 900): the rating frame does not move or scroll from one film to the next**
-
-| Film 1 | Film 2 | Film 3 |
+| Landing | Rating screen | A list for two |
 | --- | --- | --- |
-| <img src="docs/images/rating-1440-1.png" alt="First film in the rating frame" width="300" /> | <img src="docs/images/rating-1440-2.png" alt="Second film in the same frame, everything in the same place" width="300" /> | <img src="docs/images/rating-1440-3.png" alt="Third film in the same frame, everything in the same place" width="300" /> |
-
-| Results | The invite banner |
-| --- | --- |
-| <img src="docs/images/results-1440.png" alt="Results at desktop width" width="440" /> | <img src="docs/images/cowatch-banner-1440.png" alt="The Watch with a friend banner at the top of the results" width="440" /> |
-
-Screenshots are taken by the browser tests.
+| <img src="docs/images/landing.png" alt="Landing screen with Quick and Full choices" width="220" /> | <img src="docs/images/rating.png" alt="The rating screen: poster, title, facts, genres and scores" width="220" /> | <img src="docs/images/shared-list.png" alt="Films you would both enjoy, with each person's Top N%" width="220" /> |
 
 ---
 
 ## What it does
 
-- **Quick or Full onboarding.** Nothing is pre-selected. Quick asks you to rate 10 films (10 of the 15 genres, a different 10 each session); Full covers all 15 genres. Skip any film you have not seen. The order of genres and films is shuffled per session from a saved seed, so a refresh resumes on the same film. Each film is shown in one fixed frame (poster, title, year, runtime, Rotten Tomatoes, genre pills and the scores) that fits the window with no scrolling and keeps every control in the same place from film to film.
-- **Picks with reasons.** The top 5 each carry a short line naming the films you rated that drove the pick and the score you gave them ("Your 9 for X did most of the work here, with a nudge from Y (8)."), plus the one film that held it back when that pull is large. The wording is chosen from the film's id, so a list always reads the same way and no two top cards open alike. Every card also shows its year, runtime, Rotten Tomatoes score and genres. The rest follow in a compact grid. "Rate 5 more" adds five well-known unrated films, at most two per genre, to sharpen the list.
+- **Quick or Full onboarding.** Nothing is pre-selected. Quick asks you to rate 10 films (10 of the 15 genres, a different 10 each session); Full covers all 15 genres. Skip any film you have not seen. The order of genres and films is shuffled per session from a saved seed, so a refresh resumes on the same film. Each film is shown with its poster, year, runtime, Rotten Tomatoes score and genres next to the scores.
+- **Picks with reasons.** The top 5 each carry a short line naming the films you rated that drove the pick and the score you gave them ("Your 9 for X did most of the work here, with a nudge from Y (8)."), plus, on at most two cards, the one film that held the pick back when that pull is large. The wording is chosen from the film's id, so a list always reads the same way, no two top cards open or end alike, and the held-back clause appears on at most two cards. Every card also shows its year, runtime, Rotten Tomatoes score and genres. The rest follow in a compact grid. "Rate 5 more" adds five well-known unrated films, at most two per genre, to sharpen the list.
 - **Where a film sits for you.** Top picks show a rank; other films show "Top N% for your taste", its place among the films you have not rated. It ranks films against each other and is not the chance you will like one.
 - **Film pages.** Poster, genres, runtime, director, age rating, Rotten Tomatoes score, the full plot, a breakdown of how each film you rated pushed this one up or down, a YouTube trailer search, and which services carry it (subscription, rent or buy) in Canada, the US and the UK, from a dated Watchmode snapshot, with JustWatch search links (searches, not a guarantee of availability).
 - **Watch with a friend.** A banner at the top of the results has the invite button (it copies the link, or opens the share sheet where there is one) and a "Try a sample friend" control. Your friend rates their own films and you both get one list of films that suit the two of you. There are three made-up sample friends (horror, romance, sci-fi) to try it alone.
@@ -140,7 +131,7 @@ One HTML page, hash routes. `#/movie/<Wikidata id>` is a film page (it survives 
 
 ## Evaluation
 
-Run with `npm run evaluate` (fixed seed, no network). The picks beat the genre baseline by a lift of 4.6x (precision@10 of 0.60 against 0.16). The headline numbers are generated into [`src/evaluation-stats.js`](src/evaluation-stats.js), which the landing page also reads, so this section and the page cannot disagree. Current values, with seed 20261007 and 1,000 synthetic users over 20 genres, each rating 12 films:
+Run with `npm run evaluate` (fixed seed, no network). The picks beat the genre baseline by a lift of 4.6x. The headline numbers are generated into [`src/evaluation-stats.js`](src/evaluation-stats.js), which the landing page also reads, so this section and the page cannot disagree. Current values, with seed 20261007 and 1,000 synthetic users over 20 genres, each rating 12 films:
 
 | Measure | Value |
 | --- | --- |
@@ -157,7 +148,7 @@ Run with `npm run evaluate` (fixed seed, no network). The picks beat the genre b
 ## Testing
 
 - **Unit tests:** `npm test` runs 232 tests (node:test) over 23 files, covering the recommender, the why lines (determinism, variety, the held-back threshold, and that every film and number named comes from the real contribution data), runtime and rating formatting, sharing links, the combined ranking, catalog integrity and the Vercel config.
-- **Browser tests:** `npm run test:e2e` runs ten headless-Chrome scripts (Playwright) and reported 361 passing checks in total: the main flow, the Quick/Full choice, the landing page, icons, co-watch, offline mode and update behaviour, an axe accessibility scan with keyboard checks (including the confirmation dialog), the fixed rating frame (bounding boxes over six consecutive films at 1440x900, 1366x768, 1280x720, 1024x768, 375x667 and 360x640), Home, Back, Continue and the dialogs, and the results cards (no taller than before, no plot text, the co-watch entry). It also saves the screenshots.
+- **Browser tests:** `npm run test:e2e` runs ten headless-Chrome scripts (Playwright) and reported 361 passing checks in total: the main flow, the Quick/Full choice, the landing page, icons, co-watch, offline mode and update behaviour, an axe accessibility scan with keyboard checks, Home, Back, Continue and the dialogs, and the results cards and invite banner. One of them measures the rating screen across six consecutive films at six window sizes (1440x900 down to 360x640) and checks that it stays in place and does not scroll.
 
 ## Tech stack
 
