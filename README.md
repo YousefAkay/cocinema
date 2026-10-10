@@ -8,14 +8,15 @@
 
 🎬 **Live:** [cocinema-pi.vercel.app](https://cocinema-pi.vercel.app)
 
-<p align="center">
-  <img src="docs/images/results.png" alt="Results: the top picks, each with a line saying which of the person's own ratings drove it" width="760" />
-</p>
+<img src="docs/images/results.webp" alt="Results: the first three top picks, each with a line saying which of the person's own ratings drove it" width="100%" />
+
 <p align="center"><em>An example run: each reason is an exact breakdown of the person's own ratings.</em></p>
 
-| Landing | Rating screen | A list for two |
-| --- | --- | --- |
-| <img src="docs/images/landing.png" alt="Landing screen with Quick and Full choices" width="220" /> | <img src="docs/images/rating.png" alt="The rating screen: poster, title, facts, genres and scores" width="220" /> | <img src="docs/images/shared-list.png" alt="Films you would both enjoy, with each person's Top N%" width="220" /> |
+<p align="center">
+  <img src="docs/images/landing.webp" alt="Landing screen: choose Quick or Full, then Get started" width="280" />
+  <img src="docs/images/rating.webp" alt="Rating screen: poster, title, year, runtime, Rotten Tomatoes, genres and the scores" width="280" />
+  <img src="docs/images/shared-list.webp" alt="Films you'd both enjoy: the shared list for two people, with each person's Top N%" width="280" />
+</p>
 
 ---
 
