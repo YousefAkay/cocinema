@@ -752,6 +752,94 @@ img {
   gap: 12px;
 }
 
+/* Get started and the status line. On a phone, while the genre grid is on screen, they stick to
+   the bottom of the window (main.js adds .is-sticky), clear of the safe area at the bottom. */
+.start-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+@media (max-width: 719px) {
+  .start-zone.is-sticky {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    padding: 12px 0 max(12px, env(safe-area-inset-bottom));
+    background: var(--bg);
+  }
+}
+
+/* The genre chips: compact, three to a row on a phone, ordered by film count. */
+.genre-choice {
+  width: 100%;
+  max-width: 720px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.genre-choice legend {
+  margin: 0 auto 12px;
+  padding: 0;
+  color: var(--text-secondary);
+  font-weight: 700;
+  text-align: center;
+}
+
+.genre-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+@media (min-width: 720px) {
+  .genre-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+.genre-chip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 6px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* The radio stays in the page for keyboards and screen readers; the chip is what is seen. */
+.genre-chip input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+}
+
+.genre-chip:hover {
+  border-color: var(--accent-hover);
+}
+
+.genre-chip:has(input:checked) {
+  border-color: var(--accent-hover);
+  background: rgba(124, 58, 237, 0.16);
+}
+
+.genre-chip:has(input:focus-visible) {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
 .length-choice {
   display: grid;
   gap: 12px;
@@ -1040,6 +1128,10 @@ img {
 @media (min-width: 720px) {
   .length-choice {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .mode-choice {
+    grid-template-columns: 1fr 1fr;
   }
 
   .length-choice legend {

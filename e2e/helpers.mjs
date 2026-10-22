@@ -77,8 +77,12 @@ export function createRecorder() {
   };
 }
 
-// Picks a session length on the landing screen (nothing is chosen for the visitor) and starts.
+// Picks General (unless a friend's link has already made it General) and a session length on the
+// landing screen, where nothing is chosen for the visitor, and starts.
 export async function chooseAndStart(page, length = 15) {
+  if (await page.locator('#mode-choice').isVisible()) {
+    await page.locator('.length-card:has(input[value="general"])').click();
+  }
   await page.locator(`.length-card:has(input[value="${length}"])`).click();
   await page.waitForSelector('#start-button:not([disabled])');
   await page.click('#start-button');

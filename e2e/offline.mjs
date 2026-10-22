@@ -43,9 +43,10 @@ try {
   await context.setOffline(true);
   await page.reload();
   await page.waitForSelector('.length-card');
+  await page.locator('.length-card:has(input[value="general"])').click();
   await page.locator('.length-card:has(input[value="15"])').click();
   await page.waitForSelector('#start-button:not([disabled])');
-  check('offline: the landing page loads and, after choosing a length, Get started is enabled', await page.locator('#landing-screen').isVisible());
+  check('offline: the landing page loads and, after choosing General and a length, Get started is enabled', await page.locator('#landing-screen').isVisible());
   const offlineFonts = await page.evaluate(async () => {
     await document.fonts.ready;
     return [...document.fonts].filter(face => face.status === 'loaded').map(face => `${face.family} ${face.style}`);

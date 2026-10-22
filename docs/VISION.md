@@ -11,7 +11,8 @@ What CoCinema should become and the rules the code keeps. Reviews check the code
 3. Results:
    - Top 3 picks in their own section above the rest, with bigger posters and titles, and a short line for each saying why it was picked.
    - Then the rest of the ranked list, in order, with poster and title, no explanation lines.
-4. Every movie shows its title and poster. Clicking any movie opens its own page: poster, title, description, trailer, where to watch (Canada, US, UK).
+4. Genre mode: the landing first asks "General" or "Pick a genre". Pick a genre offers every catalog genre with at least 35 films; the visitor rates only films from that genre (Taster 5, Quick 10, Full 15 rated films) and gets back only films from that genre, ranked by the same recommend() and filtered afterwards. Co-watch is General only.
+5. Every movie shows its title and poster. Clicking any movie opens its own page: poster, title, description, trailer, where to watch (Canada, US, UK).
 
 ## Done (v1, live)
 

@@ -641,11 +641,13 @@ function stripHash() {
 
 function clearFriendBanner() {
   document.querySelectorAll('.friend-banner, .friend-notice').forEach(node => node.remove());
+  inviteOpen = false;
+  updateStartState();
 }
 
 function insertOnLanding(node) {
   const actions = document.querySelector('.hero-actions');
-  actions.insertBefore(node, document.getElementById('length-choice'));
+  actions.insertBefore(node, document.getElementById('mode-choice'));
 }
 
 // The visitor opened a friend's link (#/with/<payload>).
@@ -671,6 +673,9 @@ function showFriendLanding(payload) {
   }
 
   pendingFriend = { ratings: decoded.ratings, skipped: decoded.skipped, sample: null };
+  // Watching with a friend is General only, so the General / Pick a genre question is not asked.
+  inviteOpen = true;
+  updateStartState();
   const finished = started && !extra && !isGenreMode() && sessionDone() && recommend(getAllRatings(), catalog, 1).length > 0;
   showOnly(landingScreen);
   insertOnLanding(renderFriendBanner({
@@ -900,24 +905,106 @@ const LENGTH_TEXT = {
 };
 document.getElementById('length-status-spacer').textContent = LENGTH_TEXT[5];
 
-// Get started needs both the data and a chosen length; nothing is chosen for the visitor.
-function updateStartState() {
-  const length = chosenLength();
-  startButton.disabled = !(dataLoaded && length);
-  lengthStatus.textContent = length ? LENGTH_TEXT[length] : 'Choose a length to begin';
+// The landing choice: General or Pick a genre, then (for a genre) one of the offered genres, then
+// the length. Nothing is chosen for the visitor; each answer reveals the next question.
+const modeChoice = document.getElementById('mode-choice');
+const genreChoice = document.getElementById('genre-choice');
+const genreGrid = document.getElementById('genre-grid');
+const lengthChoice = document.getElementById('length-choice');
+const startZone = document.getElementById('start-zone');
+const modeInputs = [...document.querySelectorAll('input[name="mode"]')];
+let inviteOpen = false; // a friend's link is on the landing screen, so the session is General
+let genreGridInView = false;
+
+function chosenModeValue() {
+  if (inviteOpen) return 'general';
+  const picked = modeInputs.find(input => input.checked);
+  return picked ? picked.value : null;
 }
 
+function chosenGenreLabel() {
+  const picked = genreGrid.querySelector('input[name="genre"]:checked');
+  return picked ? picked.value : null;
+}
+
+// { mode, genre } once the mode (and, for a genre, the genre) is chosen; null until then.
+function chosenSetup() {
+  const value = chosenModeValue();
+  if (value === 'general') return { mode: 'general', genre: null };
+  const label = chosenGenreLabel();
+  return value === 'genre' && label ? { mode: 'genre', genre: label } : null;
+}
+
+// One radio per offered genre, largest first, shown as compact chips.
+function renderGenreChoices() {
+  genreGrid.replaceChildren(...offeredGenres.map(({ label }) => {
+    const chip = document.createElement('label');
+    chip.className = 'genre-chip';
+    const input = document.createElement('input');
+    input.type = 'radio';
+    input.name = 'genre';
+    input.value = label;
+    input.autocomplete = 'off';
+    input.addEventListener('change', updateStartState);
+    const name = document.createElement('span');
+    name.textContent = genreName(label);
+    chip.append(input, name);
+    return chip;
+  }));
+}
+
+// Get started needs the data and a complete choice; the status line says what is still missing.
+function updateStartState() {
+  const value = chosenModeValue();
+  modeChoice.hidden = inviteOpen;
+  genreChoice.hidden = value !== 'genre';
+  lengthChoice.hidden = !value;
+  const setup = chosenSetup();
+  const length = chosenLength();
+  startButton.disabled = !(dataLoaded && setup && length);
+  if (!value) {
+    lengthStatus.textContent = 'Choose General or a genre to begin';
+  } else if (!setup) {
+    lengthStatus.textContent = 'Choose a genre';
+  } else {
+    lengthStatus.textContent = length ? LENGTH_TEXT[length] : 'Choose a length to begin';
+  }
+  updateSticky();
+}
+
+// On a phone, Get started sticks to the bottom of the window only while the genre grid is on
+// screen, so it can be reached without scrolling past every chip.
+function updateSticky() {
+  startZone.classList.toggle('is-sticky', genreGridInView && !genreChoice.hidden);
+}
+
+if ('IntersectionObserver' in window) {
+  new IntersectionObserver(entries => {
+    genreGridInView = entries[entries.length - 1].isIntersecting;
+    updateSticky();
+  }).observe(genreChoice);
+}
+
+// The stuck band must never cover what has keyboard focus: scroll the focused control clear of it.
+document.addEventListener('focusin', event => {
+  if (!startZone.classList.contains('is-sticky') || startZone.contains(event.target)) return;
+  const band = startZone.getBoundingClientRect();
+  const target = (event.target.closest && event.target.closest('label')) || event.target;
+  const overlap = target.getBoundingClientRect().bottom - band.top;
+  if (overlap > -8) window.scrollBy({ top: overlap + 8, behavior: 'instant' });
+});
+
 function clearLengthChoice() {
-  lengthInputs.forEach(input => { input.checked = false; });
+  [...modeInputs, ...lengthInputs, ...genreGrid.querySelectorAll('input')].forEach(input => { input.checked = false; });
   updateStartState();
 }
 
-lengthInputs.forEach(input => input.addEventListener('change', updateStartState));
+[...modeInputs, ...lengthInputs].forEach(input => input.addEventListener('change', updateStartState));
 // Browsers can remember a ticked radio across a reload; the landing screen always starts empty.
 clearLengthChoice();
 
-// "Continue" is offered beside the Quick and Full choice when a session with ratings is saved.
-// Choosing a length still has no default, and Get started still begins a new session.
+// "Continue" is offered beside the choice when a session with ratings is saved. Nothing is
+// chosen by default, and Get started still begins a new session.
 const continueButton = document.getElementById('continue-button');
 
 function updateContinue() {
@@ -943,12 +1030,6 @@ continueButton.addEventListener('click', () => {
   clearFriendBanner();
   showHome();
 });
-
-// The mode chosen on the landing screen. Until the landing offers "Pick a genre", every new
-// session is General; genre-mode sessions are fully supported once started (and on reload).
-function chosenSetup() {
-  return { mode: 'general', genre: null };
-}
 
 // Builds the films for the chosen mode from the seed, so a refresh rebuilds the same ones.
 function buildForMode() {
@@ -1015,6 +1096,7 @@ async function loadData() {
   updateStartState();
 
   offeredGenres = availableGenres(catalog);
+  renderGenreChoices();
   const saved = loadSavedState(new Set(catalogById.keys()), new Set(offeredGenres.map(entry => entry.label)));
   if (saved) {
     seed = saved.seed;

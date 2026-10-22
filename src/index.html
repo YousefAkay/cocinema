@@ -62,7 +62,24 @@
           <div class="hero-actions">
             <p id="load-error" role="alert" hidden></p>
             <button id="retry-button" hidden>Retry</button>
-            <fieldset class="length-choice" id="length-choice">
+            <fieldset class="length-choice mode-choice" id="mode-choice">
+              <legend>What are you in the mood for?</legend>
+              <label class="length-card">
+                <input type="radio" name="mode" value="general" autocomplete="off">
+                <span class="length-title">General</span>
+                <span class="length-detail">Films from every genre</span>
+              </label>
+              <label class="length-card">
+                <input type="radio" name="mode" value="genre" autocomplete="off">
+                <span class="length-title">Pick a genre</span>
+                <span class="length-detail">Just one genre</span>
+              </label>
+            </fieldset>
+            <fieldset class="genre-choice" id="genre-choice" hidden>
+              <legend>Which genre?</legend>
+              <div class="genre-grid" id="genre-grid"></div>
+            </fieldset>
+            <fieldset class="length-choice" id="length-choice" hidden>
               <legend>How many films do you want to rate?</legend>
               <label class="length-card">
                 <input type="radio" name="length" value="5" autocomplete="off">
@@ -80,14 +97,16 @@
                 <span class="length-detail">15 films, sharper first picks</span>
               </label>
             </fieldset>
-            <div class="start-row">
-              <button id="start-button" disabled>Get started</button>
-              <button id="continue-button" type="button" hidden>Continue</button>
-            </div>
-            <div class="length-status-row">
-              <p id="length-status" class="length-status" role="status">Choose a length to begin</p>
-              <!-- The longest message, invisible, keeps the row as tall as it ever gets, so choosing a card moves nothing. -->
-              <p class="length-status length-status-spacer" id="length-status-spacer" aria-hidden="true"></p>
+            <div class="start-zone" id="start-zone">
+              <div class="start-row">
+                <button id="start-button" disabled>Get started</button>
+                <button id="continue-button" type="button" hidden>Continue</button>
+              </div>
+              <div class="length-status-row">
+                <p id="length-status" class="length-status" role="status">Choose General or a genre to begin</p>
+                <!-- The longest message, invisible, keeps the row as tall as it ever gets, so choosing a card moves nothing. -->
+                <p class="length-status length-status-spacer" id="length-status-spacer" aria-hidden="true"></p>
+              </div>
             </div>
           </div>
         </section>
@@ -103,7 +122,7 @@
           <li class="how-card">
             <span class="numeral" aria-hidden="true">1</span>
             <h3>Rate a few films</h3>
-            <p>Score films you have seen from 1 to 10 and skip the rest; Taster covers 5 genres, Quick 10 and Full 15, and you can rate more later.</p>
+            <p>Pick films from every genre or just one, score the ones you have seen from 1 to 10 and skip the rest; Taster asks for 5, Quick 10 and Full 15.</p>
           </li>
           <li class="how-card">
             <span class="numeral" aria-hidden="true">2</span>

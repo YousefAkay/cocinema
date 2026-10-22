@@ -131,7 +131,11 @@ try {
   await kbPage.keyboard.press('Tab');
   check('landing: then the GitHub link', (await focused()).startsWith('a:Open source'), await focused());
   await kbPage.keyboard.press('Tab');
-  check('landing: then the first length option, Taster', (await focused()) === 'input:5', await focused());
+  check('landing: then the first choice, General', (await focused()) === 'input:general', await focused());
+  await kbPage.keyboard.press('Space');
+  check('landing: Space chooses General and the length question appears', await kbPage.locator('input[value="general"]').isChecked() && await kbPage.locator('#length-choice').isVisible());
+  await kbPage.keyboard.press('Tab');
+  check('landing: the next Tab reaches the first length option, Taster', (await focused()) === 'input:5', await focused());
   await kbPage.keyboard.press('ArrowDown');
   check('landing: the arrow key moves to Quick and chooses it', (await focused()) === 'input:10' && await kbPage.locator('input[value="10"]').isChecked());
   await kbPage.keyboard.press('ArrowDown');

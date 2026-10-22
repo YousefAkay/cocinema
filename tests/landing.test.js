@@ -50,7 +50,7 @@ test('the landing poster strip uses 12 verified, well-known films with a poster 
 
 test('the app asks for no font from another site', () => {
   for (const file of ['../src/style.css', '../src/index.html', '../src/main.js', '../src/sw.js']) {
-    assert.ok(!/fonts\.googleapis\.com|fonts\.gstatic\.com|Inter/.test(read(file)), `${file} still refers to Google Fonts or Inter`);
+    assert.ok(!/fonts\.googleapis\.com|fonts\.gstatic\.com|\bInter\b/.test(read(file)), `${file} still refers to Google Fonts or Inter`);
   }
   const css = read('../src/style.css');
   const files = ['figtree-latin-wght-normal.woff2', 'big-shoulders-display-latin-wght-normal.woff2'];
@@ -176,7 +176,19 @@ test('the length choice offers Taster, Quick and Full in that order, as radios w
 test('the How it works copy describes all three lengths', () => {
   const html = read('../src/index.html');
   const how = /<section class="how[\s\S]*?<\/section>/.exec(html)[0];
-  assert.match(how, /Taster covers 5 genres, Quick 10 and Full 15/);
+  assert.match(how, /every genre or just one/);
+  assert.match(how, /Taster asks for 5, Quick 10 and Full 15/);
+});
+
+test('the landing asks General or Pick a genre first, with nothing chosen, and the sticky band clears the safe area', () => {
+  const html = read('../src/index.html');
+  const mode = /<fieldset class="length-choice mode-choice" id="mode-choice">[\s\S]*?<\/fieldset>/.exec(html)[0];
+  assert.deepEqual([...mode.matchAll(/name="mode" value="(\w+)"/g)].map(match => match[1]), ['general', 'genre']);
+  assert.ok(!/checked/.test(mode));
+  assert.match(html, /<fieldset class="genre-choice" id="genre-choice" hidden>/);
+  assert.match(html, /<fieldset class="length-choice" id="length-choice" hidden>/);
+  const css = read('../src/style.css');
+  assert.match(css, /\.start-zone\.is-sticky \{[^}]*bottom: 0;[^}]*max\(12px, env\(safe-area-inset-bottom\)\)/);
 });
 
 test('the landing has no pill label and one plain stats line filled from data, with its footnote', () => {

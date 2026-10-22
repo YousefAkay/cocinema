@@ -54,18 +54,29 @@ try {
   const first = await newPage();
   await first.page.goto(server.base);
   await first.page.waitForSelector('.length-card');
+  // First question: General or Pick a genre, nothing chosen, and the length not asked yet.
+  check('the first question is General or Pick a genre, as two radios in a fieldset with a legend, neither chosen',
+    (await first.page.locator('#mode-choice input[type="radio"][name="mode"]').count()) === 2
+      && (await first.page.locator('#mode-choice .length-title').allInnerTexts()).join('|') === 'General|Pick a genre'
+      && (await first.page.locator('#mode-choice > legend').innerText()).length > 0
+      && (await first.page.locator('input[name="mode"]:checked').count()) === 0);
+  check('before a mode is chosen the length cards are hidden, Get started is disabled and the status says what is missing',
+    await first.page.locator('#length-choice').isHidden() && await first.page.locator('#genre-choice').isHidden()
+      && await first.page.locator('#start-button').isDisabled() && (await first.page.locator('#length-status').innerText()) === 'Choose General or a genre to begin');
+  await first.page.locator('.length-card:has(input[value="general"])').click();
+  check('General shows the length cards and no genre chips', await first.page.locator('#length-choice').isVisible() && await first.page.locator('#genre-choice').isHidden());
   const radios = first.page.locator('input[type="radio"][name="length"]');
   check('three real radio inputs, inside a fieldset with a legend',
-    (await radios.count()) === 3 && (await first.page.locator('fieldset.length-choice > legend').innerText()).includes('How many films'));
+    (await radios.count()) === 3 && (await first.page.locator('#length-choice > legend').innerText()).includes('How many films'));
   check('the cards read Taster, Quick, Full in that order',
-    (await first.page.locator('.length-title').allInnerTexts()).join('|') === 'Taster|Quick|Full'
+    (await first.page.locator('#length-choice .length-title').allInnerTexts()).join('|') === 'Taster|Quick|Full'
       && (await first.page.locator('.length-card:has(input[value="5"]) .length-detail').innerText()) === '5 films, rougher picks');
   check('no option is selected on first load', (await first.page.locator('input[name="length"]:checked').count()) === 0);
-  check('Get started is disabled and the status says "Choose a length to begin"',
+  check('with General chosen, Get started is disabled and the status says "Choose a length to begin"',
     await first.page.locator('#start-button').isDisabled() && (await first.page.locator('#length-status').innerText()) === 'Choose a length to begin');
-  const sizes = await first.page.$$eval('.length-card', cards => cards.map(card => Math.round(card.getBoundingClientRect().height)));
+  const sizes = await first.page.$$eval('#length-choice .length-card', cards => cards.map(card => Math.round(card.getBoundingClientRect().height)));
   check('all three choice cards are at least 44px tall', sizes.length === 3 && sizes.every(height => height >= 44), sizes.join(', '));
-  const cardsFit = await first.page.$$eval('.length-card', cards => cards.every(card => {
+  const cardsFit = await first.page.$$eval('#length-choice .length-card', cards => cards.every(card => {
     const box = card.getBoundingClientRect();
     const text = card.querySelector('.length-detail').getBoundingClientRect();
     return box.left >= 0 && box.right <= innerWidth && text.right <= box.right && parseFloat(getComputedStyle(card.querySelector('.length-detail')).fontSize) >= 14;

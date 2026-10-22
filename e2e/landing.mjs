@@ -143,7 +143,7 @@ try {
   const heroH1 = await box(d, '.hero h1');
   const cardBoxes = await d.locator('.length-card').evaluateAll(nodes => nodes.map(node => node.getBoundingClientRect().toJSON()));
   const startBox = await box(d, '#start-button');
-  check('1280x800: the headline, both choice cards and Get started fit on the first screen',
+  check('1280x800: the headline, the General and Pick a genre cards and Get started fit on the first screen',
     heroH1.y + heroH1.height < 800 && cardBoxes.every(card => card.bottom <= 800) && startBox.y + startBox.height <= 800,
     `button ends ${Math.round(startBox.y + startBox.height)}`);
   check('1280px: the choice cards sit side by side', Math.abs(cardBoxes[0].top - cardBoxes[1].top) < 2 && cardBoxes[1].left > cardBoxes[0].right - 1);
@@ -182,6 +182,7 @@ try {
   await broken.route('**/catalog.json', route => route.abort());
   await broken.goto(server.base);
   await broken.waitForSelector('#load-error:not([hidden])');
+  await broken.locator('.length-card:has(input[value="general"])').click();
   await broken.locator('.length-card:has(input[value="10"])').click();
   check('the error state still shows Retry and keeps Get started disabled even after choosing a length',
     await broken.locator('#retry-button').isVisible() && await broken.locator('#start-button').isDisabled());
