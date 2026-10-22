@@ -837,9 +837,10 @@ function chosenLength() {
   return isValidLength(value) ? value : null;
 }
 
-// Taster gets one plain sentence about the trade-off instead of "Ready".
+// Taster gets a short plain note about the trade-off instead of "Ready". The invisible spacer
+// copies it, as the longest message, so the row never changes height.
 const LENGTH_TEXT = {
-  5: 'Picks from 5 films will be rougher: CoCinema needs at least 3 films you have actually rated with different scores, and you can rate more afterwards.',
+  5: "Rougher picks from 5 films. Rate at least 3 with different scores; you can always add more.",
   10: 'Ready: 10 films',
   15: 'Ready: 15 films',
 };

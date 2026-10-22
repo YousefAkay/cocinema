@@ -84,8 +84,11 @@ try {
   check('choosing Taster, Quick or Full never shifts the layout', layouts.every(entry => entry === unselected), `${unselected} / ${layouts.join(' / ')}`);
 
   const tasterText = await first.page.locator('#length-status').innerText();
-  check('choosing Taster shows one plain sentence about rougher picks, the 3-film minimum and rating more',
-    /^[^.]*rougher[^.]*at least 3 films you have actually rated with different scores[^.]*rate more afterwards\.$/.test(tasterText), tasterText);
+  check('choosing Taster shows a short note about rougher picks, the 3-film minimum and rating more',
+    tasterText === "Rougher picks from 5 films. Rate at least 3 with different scores; you can always add more.", tasterText);
+  const noteLines = await first.page.locator('#length-status').evaluate(node => Math.round(node.getBoundingClientRect().height / parseFloat(getComputedStyle(node).lineHeight)));
+  check('at 375px the Taster note takes at most two lines', noteLines <= 2, `${noteLines} lines`);
+  check('the invisible sizing copy matches the Taster note', (await first.page.locator('#length-status-spacer').textContent()) === tasterText);
   await first.page.locator('.length-card:has(input[value="10"])').click();
   check('the Taster sentence goes away for Quick', !/rougher|at least 3/.test(await first.page.locator('#length-status').innerText()));
   await first.page.locator('.length-card:has(input[value="15"])').click();
