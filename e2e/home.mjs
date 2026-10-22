@@ -57,6 +57,24 @@ try {
   check('with ratings, Home opens a dialog named "Leave and keep your ratings?"',
     await a.page.getByRole('dialog', { name: 'Leave and keep your ratings?' }).isVisible());
   check('focus starts on "Keep going" and the page behind cannot be tabbed to', (await focusedText(a.page)) === 'Keep going');
+  const buttons = await a.page.evaluate(() => {
+    const look = selector => {
+      const button = document.querySelector(`dialog .${selector}`);
+      const box = button.getBoundingClientRect();
+      return { text: button.textContent, left: box.left, top: box.top, fill: getComputedStyle(button).backgroundColor };
+    };
+    return { safe: look('confirm-cancel'), leave: look('confirm-ok') };
+  });
+  check('"Keep going" is the filled violet primary button on the right, "Go home" a plain one on its left',
+    buttons.safe.text === 'Keep going' && buttons.leave.text === 'Go home' && buttons.safe.left > buttons.leave.left
+      && buttons.safe.fill === 'rgb(124, 58, 237)' && buttons.leave.fill !== 'rgb(124, 58, 237)', JSON.stringify(buttons));
+  const stacked = await a.page.evaluate(() => {
+    document.querySelector('dialog.confirm-dialog').style.width = '200px';
+    const [safe, leave] = ['confirm-cancel', 'confirm-ok'].map(name => document.querySelector(`dialog .${name}`).getBoundingClientRect().top);
+    document.querySelector('dialog.confirm-dialog').style.width = '';
+    return safe < leave;
+  });
+  check('when the buttons stack, the safe one is on top', stacked);
   const cycle = [];
   for (let i = 0; i < 4; i++) {
     await a.page.keyboard.press('Tab');
@@ -142,6 +160,17 @@ try {
   await c.page.waitForSelector('.top-pick');
   await c.page.getByRole('button', { name: 'Start over' }).click();
   check('Start over opens a confirmation dialog', await c.page.getByRole('dialog', { name: 'Start over?' }).isVisible());
+  const startOverButtons = await c.page.evaluate(() => ['confirm-ok', 'confirm-cancel'].map(name => {
+    const button = document.querySelector(`dialog .${name}`);
+    const box = button.getBoundingClientRect();
+    return { text: button.textContent, left: box.left, top: box.top, fill: getComputedStyle(button).backgroundColor };
+  }));
+  const [wipe, keep] = startOverButtons;
+  const safeFirst = keep.top === wipe.top ? keep.left > wipe.left : keep.top < wipe.top;
+  check('in "Start over?", "Keep my ratings" is the violet primary, right of or above the wiping action, which is not violet',
+    keep.text === 'Keep my ratings' && safeFirst
+      && startOverButtons[1].fill === 'rgb(124, 58, 237)' && startOverButtons[0].fill !== 'rgb(124, 58, 237)', JSON.stringify(startOverButtons));
+  check('focus starts on "Keep my ratings"', (await focusedText(c.page)) === 'Keep my ratings');
   await c.page.getByRole('button', { name: 'Keep my ratings' }).click();
   check('"Keep my ratings" keeps the results and the saved ratings', await c.page.locator('.top-pick').first().isVisible() && (await saved(c.page)).ratings.length === 10);
   check('focus returns to the Start over button', await c.page.evaluate(() => document.activeElement.classList.contains('start-over')));

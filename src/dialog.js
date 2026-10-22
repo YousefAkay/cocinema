@@ -1,8 +1,9 @@
 // One confirmation dialog for the whole app ("Leave and keep your ratings?", "Start over?").
 // It is a native modal <dialog>: the page behind it is inert, so focus stays inside, Tab cycles
-// between its two buttons, and Escape closes it as "cancel". Focus goes to the cancel button
-// first (the safe choice) and returns to whatever had it before when the dialog closes. All
-// text is set with textContent.
+// between its two buttons, and Escape closes it as "cancel". The cancel button is the safe choice:
+// it is the primary button, on the right (or on top when the buttons stack), and focus goes to it
+// first. The confirm button is a quiet secondary one on the left. Focus returns to whatever had it
+// before when the dialog closes. All text is set with textContent.
 
 let open = false;
 
@@ -42,7 +43,8 @@ export function confirmDialog({ title, body, cancelLabel, confirmLabel, returnFo
   confirm.type = 'button';
   confirm.className = 'confirm-ok';
   confirm.textContent = confirmLabel;
-  actions.append(cancel, confirm);
+  // Page order matches what is seen: the action on the left, the safe choice on the right.
+  actions.append(confirm, cancel);
   dialog.append(heading, text, actions);
 
   return new Promise(resolve => {

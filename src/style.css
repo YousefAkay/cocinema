@@ -1707,7 +1707,8 @@ body.rating-active .offline-notice {
 
 .confirm-actions {
   display: flex;
-  flex-wrap: wrap;
+  /* when the two buttons do not fit on one line, the safe one (second) moves on top */
+  flex-wrap: wrap-reverse;
   gap: 12px;
   justify-content: flex-end;
 }
@@ -1722,14 +1723,18 @@ body.rating-active .offline-notice {
   font-weight: 700;
 }
 
-.confirm-actions .confirm-ok {
+.confirm-actions .confirm-cancel {
   border-color: transparent;
   background: var(--accent-fill);
   color: #fff;
 }
 
-.confirm-actions .confirm-ok:hover {
+.confirm-actions .confirm-cancel:hover {
   background: var(--accent-fill-hover);
+}
+
+.confirm-actions .confirm-ok:hover {
+  border-color: var(--text-muted);
 }
 
 /* ---------- Landing: Continue ---------- */

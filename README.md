@@ -117,7 +117,7 @@ This is a snapshot, not live data. Under Watchmode's free plan the cached data m
 
 ### Offline use
 
-A service worker (`src/sw.js`) keeps one versioned cache (currently `cocinema-v13`); bumping the name on a deploy makes every phone drop the old cache. Code (HTML, JS, CSS) is network-first with a 4 second wait before falling back to the saved copy. Data files (`catalog.json`, `onboarding.json`, `availability.json`) are stale-while-revalidate. Other origins (posters) are never cached, so offline the cards show placeholders. The worker is registered only on https or 127.0.0.1, so the app works the same without it.
+A service worker (`src/sw.js`) keeps one versioned cache (currently `cocinema-v14`); bumping the name on a deploy makes every phone drop the old cache. Code (HTML, JS, CSS) is network-first with a 4 second wait before falling back to the saved copy. Data files (`catalog.json`, `onboarding.json`, `availability.json`) are stale-while-revalidate. Other origins (posters) are never cached, so offline the cards show placeholders. The worker is registered only on https or 127.0.0.1, so the app works the same without it.
 
 ### Routing
 
