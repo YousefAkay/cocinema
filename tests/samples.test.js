@@ -101,8 +101,10 @@ test('with the flag off, film pages and the home page route exactly as before', 
 test('every co-watch entry point in the app is behind the flag', () => {
   const main = fs.readFileSync(new URL('../src/main.js', import.meta.url), 'utf8');
   // the button and samples are only added inside a flag check
-  assert.match(main, /if \(COWATCH_ENABLED\) \{\s*resultsScreen\.append\(renderShareSection/);
-  assert.match(main, /if \(COWATCH_ENABLED && getFriend\(\)\)/);
+  // and, in genre mode, not at all: co-watch belongs to General
+  assert.match(main, /if \(COWATCH_ENABLED && !isGenreMode\(\)\) \{\s*resultsScreen\.append\(renderShareSection/);
+  assert.match(main, /if \(COWATCH_ENABLED && getFriend\(\) && !isGenreMode\(\)\)/);
+  assert.match(main, /if \(COWATCH_ENABLED && getFriend\(\) && !soloView && !isGenreMode\(\)\)/);
   assert.match(main, /if \(COWATCH_ENABLED && pendingFriend\)/);
   // the route that opens a link comes only from parseHash, which the flag controls
   const route = fs.readFileSync(new URL('../src/route.js', import.meta.url), 'utf8');

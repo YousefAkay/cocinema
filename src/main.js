@@ -1,14 +1,14 @@
 import { renderRatingStep, renderResults, renderTopPick } from './ui.js';
 import { confirmDialog } from './dialog.js';
 import {
-  getAllRatings, getSkippedIds, markSkipped, unmarkSkipped, removeRating, savePosition, saveExtra, saveTrail, saveSeed, saveLength, saveFriend, getFriend,
+  getAllRatings, getSkippedIds, markSkipped, unmarkSkipped, removeRating, savePosition, saveExtra, saveTrail, saveMode, saveSeed, saveLength, saveFriend, getFriend,
   loadSavedState, clearSavedState,
 } from './ratings.js';
 import { recommend, explainMatch } from './recommend.js';
 import { buildWhyLines } from './why.js';
 import { EXTRA_COUNT, pickNextCandidate } from './candidates.js';
 import { topPercent } from './percentile.js';
-import { titleWithYear, genreOrder, roundedCount, topGenres } from './format.js';
+import { titleWithYear, genreOrder, roundedCount, topGenres, genreName, genreNameInText } from './format.js';
 import { parseHash, shortId } from './route.js';
 import { renderDetail, renderNotFound, renderStreaming, showStreamingLoading } from './detail.js';
 import { COWATCH_ENABLED } from './flags.js';
@@ -22,6 +22,7 @@ import { loadAvailability, streamingView } from './availability.js';
 import { buildSession, newSeed, isValidLength } from './shuffle.js';
 import { registerServiceWorker, watchOnlineStatus } from './offline.js';
 import { resolveStep, progressLabel, nextStep, locateFilm, shownBefore } from './progress.js';
+import { availableGenres, buildGenreQueue, genreStepAt, nextGenreStep, filterGenreResults } from './genres.js';
 import { EVALUATION } from './evaluation-stats.js';
 import { LANDING_POSTERS } from './landing-posters.js';
 
@@ -33,6 +34,10 @@ let onboarding = [];
 let seed = newSeed();
 let session = [];
 let sessionLength = null; // 5 (Taster), 10 (Quick) or 15 (Full) once a session has started
+let mode = 'general'; // 'general' (one film per genre) or 'genre' (films from one genre)
+let chosenGenre = null; // the catalog label in genre mode, such as 'comedy'
+let queue = []; // genre mode: the films to ask about, best known first
+let offeredGenres = []; // [{ label, count }] from the catalog, for the genre choice
 let dataLoaded = false;
 let catalogById = new Map();
 let moviesByQid = new Map();
@@ -194,9 +199,44 @@ function skipMovie(movie) {
   advance();
 }
 
-// After any answer: on to the first film not yet answered (see nextStep).
+// The two ways to rate share every screen; only these choose the films and count the steps.
+// General walks one film per genre (progress.js); genre mode walks one genre's queue (genres.js),
+// where genreIndex is 0 until the session is finished.
+const isKnown = id => catalogById.has(id);
+const isGenreMode = () => mode === 'genre';
+
+function stepAt() {
+  return isGenreMode()
+    ? genreStepAt(queue, chosenGenre, genreIndex, movieIndex, answers(), sessionLength)
+    : resolveStep(session, genreIndex, movieIndex, isKnown);
+}
+
+function stepAfterAnswer() {
+  return isGenreMode() ? nextGenreStep(queue, chosenGenre, answers(), sessionLength) : nextStep(session, answers(), isKnown);
+}
+
+function placeOf(movieId) {
+  if (!isGenreMode()) return locateFilm(session, movieId);
+  const index = queue.indexOf(movieId);
+  return index === -1 ? null : { genreIndex: 0, movieIndex: index };
+}
+
+function sessionDone() {
+  return genreIndex >= (isGenreMode() ? sessionLength : session.length);
+}
+
+function stepLabel(step) {
+  return isGenreMode() ? `${genreName(step.genre)} · ${step.n} / ${step.of}` : progressLabel(step);
+}
+
+// "Rate 5 more" suggests films from the chosen genre in genre mode, from anywhere otherwise.
+function extraPool() {
+  return isGenreMode() ? catalog.filter(movie => (movie.genres || []).includes(chosenGenre)) : catalog;
+}
+
+// After any answer: on to the first film not yet answered (see nextStep and nextGenreStep).
 function advance() {
-  const step = nextStep(session, answers(), id => catalogById.has(id));
+  const step = stepAfterAnswer();
   genreIndex = step.genreIndex;
   movieIndex = step.movieIndex;
   savePosition(genreIndex, movieIndex);
@@ -206,7 +246,7 @@ function advance() {
 // Back: the film shown before this one, rated or skipped. A skipped film is shown fresh; a rated
 // one keeps its score until the visitor answers again.
 function goBack() {
-  const place = trail.length > 1 ? locateFilm(session, trail[trail.length - 2]) : null;
+  const place = trail.length > 1 ? placeOf(trail[trail.length - 2]) : null;
   if (!place) return;
   trail.pop();
   saveTrail(trail);
@@ -223,7 +263,7 @@ function showCurrentMovie() {
     return;
   }
 
-  const step = resolveStep(session, genreIndex, movieIndex, id => catalogById.has(id));
+  const step = stepAt();
   if (step.genreIndex !== genreIndex || step.movieIndex !== movieIndex) {
     genreIndex = step.genreIndex;
     movieIndex = step.movieIndex;
@@ -240,12 +280,12 @@ function showCurrentMovie() {
   }
   const movie = catalogById.get(step.movieId);
   showRatingStep({
-    label: progressLabel(step),
+    label: stepLabel(step),
     movie,
     current: scoreOf(movie.id),
     onConfirm: advance,
     onSkip: () => skipMovie(movie),
-    onBack: trail.length > 1 && locateFilm(session, trail[trail.length - 2]) ? goBack : null,
+    onBack: trail.length > 1 && placeOf(trail[trail.length - 2]) ? goBack : null,
   });
 }
 
@@ -256,7 +296,7 @@ function startExtra() {
 }
 
 function showNextExtra() {
-  const movie = pickNextCandidate(catalog, {
+  const movie = pickNextCandidate(extraPool(), {
     rated: new Set(getAllRatings().map(rating => rating.id)),
     skipped: new Set(getSkippedIds()),
     shown: extra.shown,
@@ -366,16 +406,25 @@ function showResults(notice, restoreScroll = false) {
   // Score every unrated film once, so each shown film can be placed among all of them.
   const everyUnrated = recommend(ratings, catalog, catalog.length);
   const allScores = everyUnrated.map(result => result.score);
-  const ranked = everyUnrated.slice(0, RESULT_COUNT);
+  // Genre mode keeps the same ranking, filtered to the chosen genre.
+  const genreText = isGenreMode() ? genreNameInText(chosenGenre) : null;
+  const shown = isGenreMode() ? filterGenreResults(everyUnrated, chosenGenre, new Set(ratings.map(rating => rating.id))) : everyUnrated;
+  const ranked = shown.slice(0, RESULT_COUNT);
 
   const pageHeading = document.createElement('h1');
   pageHeading.className = 'visually-hidden';
   pageHeading.tabIndex = -1;
-  pageHeading.textContent = 'Your recommendations';
+  pageHeading.textContent = genreText ? `Your ${genreText} recommendations` : 'Your recommendations';
   resultsScreen.append(pageHeading);
 
-  if (ranked.length === 0) {
+  if (everyUnrated.length === 0) {
     showNotEnough(ratings, notice);
+    return;
+  }
+  if (ranked.length === 0) {
+    addParagraph(resultsScreen, 'results-notice', `You have rated every ${genreText} film we know. Start over to try another genre.`);
+    addButton(resultsScreen, 'start-over', 'Start over', requestStartOver);
+    pageHeading.focus({ preventScroll: true });
     return;
   }
 
@@ -383,13 +432,15 @@ function showResults(notice, restoreScroll = false) {
     addParagraph(resultsScreen, 'results-notice', notice);
   }
 
-  // Watch with a friend sits right under the header, before the picks.
-  if (COWATCH_ENABLED) {
+  // Watch with a friend sits right under the header, before the picks. It is a General-mode feature.
+  if (COWATCH_ENABLED && !isGenreMode()) {
     resultsScreen.append(renderShareSection({ onShare: shareMyTaste, onSample: trySampleFriend }));
   }
 
   const noun = ratings.length === 1 ? 'film' : 'films';
-  addParagraph(resultsScreen, 'results-basis', `These picks are based on the ${ratings.length} ${noun} you rated.`);
+  addParagraph(resultsScreen, 'results-basis', genreText
+    ? `These ${genreText} picks are based on the ${ratings.length} ${noun} you rated.`
+    : `These picks are based on the ${ratings.length} ${noun} you rated.`);
   if (sessionLength === 5 || sessionLength === 10) {
     addButton(resultsScreen, 'results-nudge', `Want sharper picks? Rate ${EXTRA_COUNT} more`, startExtra);
   }
@@ -397,7 +448,7 @@ function showResults(notice, restoreScroll = false) {
   const topSection = document.createElement('section');
   topSection.className = 'top-picks';
   const topHeading = document.createElement('h2');
-  topHeading.textContent = 'Your top picks';
+  topHeading.textContent = genreText ? `Your ${genreText} picks` : 'Your top picks';
   topHeading.tabIndex = -1;
   topSection.append(topHeading);
 
@@ -427,7 +478,7 @@ function showResults(notice, restoreScroll = false) {
   const actions = document.createElement('div');
   actions.className = 'results-actions';
   addButton(actions, 'rate-more', `Rate ${EXTRA_COUNT} more`, startExtra);
-  if (COWATCH_ENABLED && getFriend()) {
+  if (COWATCH_ENABLED && getFriend() && !isGenreMode()) {
     addButton(actions, 'cowatch-to-combined', "Films you'd both enjoy", () => {
       soloView = false;
       showCombined();
@@ -486,7 +537,7 @@ function showNotEnough(ratings, notice) {
 // ---- Watch with a friend (behind COWATCH_ENABLED) ----
 
 function showFinished(notice, restoreScroll = false) {
-  if (COWATCH_ENABLED && getFriend() && !soloView) {
+  if (COWATCH_ENABLED && getFriend() && !soloView && !isGenreMode()) {
     showCombined(notice, restoreScroll);
   } else {
     showResults(notice, restoreScroll);
@@ -620,7 +671,7 @@ function showFriendLanding(payload) {
   }
 
   pendingFriend = { ratings: decoded.ratings, skipped: decoded.skipped, sample: null };
-  const finished = started && !extra && genreIndex >= session.length && recommend(getAllRatings(), catalog, 1).length > 0;
+  const finished = started && !extra && !isGenreMode() && sessionDone() && recommend(getAllRatings(), catalog, 1).length > 0;
   showOnly(landingScreen);
   insertOnLanding(renderFriendBanner({
     count: decoded.ratings.length,
@@ -710,7 +761,7 @@ function showHome() {
   }
   if (extra) {
     resumeExtra();
-  } else if (genreIndex >= session.length) {
+  } else if (sessionDone()) {
     showFinished(undefined, cameFromResults);
   } else {
     showCurrentMovie();
@@ -736,6 +787,9 @@ function startOver() {
   movieIndex = 0;
   extra = null;
   trail = [];
+  mode = 'general';
+  chosenGenre = null;
+  queue = [];
   started = false;
   cameFromResults = false;
   seed = newSeed();
@@ -874,8 +928,14 @@ function updateContinue() {
     continueButton.textContent = `Continue (${extra.rated + 1} of ${EXTRA_COUNT})`;
     return;
   }
-  const step = resolveStep(session, genreIndex, movieIndex, id => catalogById.has(id));
-  continueButton.textContent = step.done ? 'See my picks' : `Continue (${step.n} of ${step.of})`;
+  const step = stepAt();
+  if (step.done) {
+    continueButton.textContent = 'See my picks';
+  } else {
+    continueButton.textContent = isGenreMode()
+      ? `Continue ${genreNameInText(chosenGenre)}, ${step.n} of ${step.of}`
+      : `Continue (${step.n} of ${step.of})`;
+  }
 }
 
 continueButton.addEventListener('click', () => {
@@ -884,9 +944,22 @@ continueButton.addEventListener('click', () => {
   showHome();
 });
 
+// The mode chosen on the landing screen. Until the landing offers "Pick a genre", every new
+// session is General; genre-mode sessions are fully supported once started (and on reload).
+function chosenSetup() {
+  return { mode: 'general', genre: null };
+}
+
+// Builds the films for the chosen mode from the seed, so a refresh rebuilds the same ones.
+function buildForMode() {
+  session = isGenreMode() ? [] : buildSession(onboarding, seed, sessionLength);
+  queue = isGenreMode() ? buildGenreQueue(catalog, onboarding, chosenGenre, seed) : [];
+}
+
 startButton.addEventListener('click', function() {
   const length = chosenLength();
-  if (startButton.disabled || !length) {
+  const setup = chosenSetup();
+  if (startButton.disabled || !length || !setup) {
     return;
   }
   if (started) {
@@ -900,9 +973,12 @@ startButton.addEventListener('click', function() {
   }
   started = true;
   sessionLength = length;
-  session = buildSession(onboarding, seed, sessionLength);
+  mode = setup.mode;
+  chosenGenre = setup.genre;
+  buildForMode();
   saveSeed(seed);
   saveLength(sessionLength);
+  saveMode(mode, chosenGenre);
   if (COWATCH_ENABLED && pendingFriend) {
     saveFriend(pendingFriend);
     pendingFriend = null;
@@ -938,18 +1014,21 @@ async function loadData() {
   fillLandingNumbers();
   updateStartState();
 
-  const saved = loadSavedState(new Set(catalogById.keys()));
+  offeredGenres = availableGenres(catalog);
+  const saved = loadSavedState(new Set(catalogById.keys()), new Set(offeredGenres.map(entry => entry.label)));
   if (saved) {
     seed = saved.seed;
     sessionLength = saved.length;
     genreIndex = saved.genreIndex;
     movieIndex = saved.movieIndex;
     extra = saved.extra;
+    mode = saved.mode;
+    chosenGenre = saved.genre;
     started = true;
-    session = buildSession(onboarding, seed, sessionLength);
+    buildForMode();
     // Saves from before Back existed have no trail; rebuild it from the answers.
     const { rated, skipped } = answers();
-    trail = saved.trail || shownBefore(session, genreIndex, movieIndex, id => rated.has(id) || skipped.has(id));
+    trail = saved.trail || (isGenreMode() ? [] : shownBefore(session, genreIndex, movieIndex, id => rated.has(id) || skipped.has(id)));
   }
   route();
 }

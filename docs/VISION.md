@@ -35,7 +35,7 @@ Open items:
 - AI runs in one place only: one embedding per plot, at build time. Everything live is deterministic maths in the browser. No API keys or AI calls in `src/`.
 - No IMDb data: no IMDb IDs, votes or datasets.
 - `recommend()` returns the full ranked list of `{ movie, score }`; screens decide how many to show.
-- `recommend.js` is pure maths with no DOM; `similarity.js` holds vector helpers; `ratings.js` stores scores; `ui.js` only builds elements; `main.js` loads data and switches screens.
+- `recommend.js` is pure maths with no DOM; `similarity.js` holds vector helpers; `ratings.js` stores scores; `genres.js` picks the offered genres, builds a genre's rating queue and filters ranked results to that genre, with no DOM; `ui.js` only builds elements; `main.js` loads data and switches screens.
 - The onboarding list lives in `data/onboarding.json`, never hard-coded in `main.js`.
 - Each screen is its own div that is shown or hidden.
 - Movie data only gains fields; new versions add code rather than rewrite v1.

@@ -44,6 +44,19 @@ export function capitalize(text) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
+// Friendly names for catalog genre labels where the label itself reads oddly; every other label
+// is shown capitalised ("comedy" is "Comedy").
+const GENRE_NAMES = { 'science fiction': 'Sci-fi', "children's": 'Family', animated: 'Animation', 'romantic comedy': 'Rom-com' };
+
+export function genreName(label) {
+  return GENRE_NAMES[label] || capitalize(label);
+}
+
+// The same name inside a sentence: "Your comedy picks", "Your sci-fi picks".
+export function genreNameInText(label) {
+  return genreName(label).toLowerCase();
+}
+
 export const COUNT_STEP = 50;
 
 // A film count for marketing copy: rounded DOWN to the nearest 50 with a plus sign (576 becomes

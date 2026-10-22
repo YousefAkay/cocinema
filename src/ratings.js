@@ -12,6 +12,8 @@ let seed = null;
 let length = null;
 let friend = null;
 let trail = null;
+let mode = 'general';
+let genre = null;
 
 function persist() {
   try {
@@ -24,6 +26,8 @@ function persist() {
       movieIndex: position.movieIndex,
       extra,
       trail,
+      mode,
+      genre,
       friend: friend ? { ratings: friend.ratings.map(item => [item.id, item.score]), skipped: friend.skipped, sample: friend.sample } : null,
     }));
   } catch (e) {
@@ -99,6 +103,13 @@ export function saveExtra(state) {
   persist();
 }
 
+// General (one film per genre) or genre mode (films from one genre, given as its catalog label).
+export function saveMode(value, label = null) {
+  mode = value === 'genre' ? 'genre' : 'general';
+  genre = mode === 'genre' ? label : null;
+  persist();
+}
+
 // The onboarding films shown so far, oldest first, ending with the one on screen. Back walks it.
 export function saveTrail(list) {
   trail = list ? [...list] : null;
@@ -145,9 +156,11 @@ function validExtra(value, validIds) {
   return value.shown.every(id => typeof id === 'string' && validIds.has(id));
 }
 
-// Returns the saved { seed, length, genreIndex, movieIndex, extra, trail } and refills the ratings, or null
+// Saves from before genre mode have no mode and load as General. A genre-mode save whose genre is
+// no longer offered (validGenres) keeps its ratings and loads as a finished General session.
+// Returns the saved { seed, length, genreIndex, movieIndex, extra, trail, mode, genre } and refills the ratings, or null
 // if nothing usable was saved. Anything malformed is ignored as a whole.
-export function loadSavedState(validIds) {
+export function loadSavedState(validIds, validGenres = null) {
   let saved;
   try {
     saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -180,17 +193,25 @@ export function loadSavedState(validIds) {
   if (!validExtra(saved.extra, validIds)) return null;
   if (saved.extra !== null && genreIndex !== genreCount) return null;
 
+  const savedMode = saved.mode === undefined || saved.mode === null ? 'general' : saved.mode;
+  if (savedMode !== 'general' && savedMode !== 'genre') return null;
+  if (savedMode === 'genre' && typeof saved.genre !== 'string') return null;
+  const genreGone = savedMode === 'genre' && validGenres !== null && !validGenres.has(saved.genre);
+
   ratings.clear();
   for (const [id, score] of restored) ratings.set(id, score);
   skipped.clear();
   for (const id of saved.skipped) skipped.add(id);
-  position = { genreIndex, movieIndex };
+  position = genreGone ? { genreIndex: genreCount, movieIndex: 0 } : { genreIndex, movieIndex };
   extra = saved.extra;
   friend = readFriend(saved.friend, validIds);
-  trail = readTrail(saved.trail, validIds);
+  trail = genreGone ? null : readTrail(saved.trail, validIds);
+  mode = genreGone ? 'general' : savedMode;
+  genre = mode === 'genre' ? saved.genre : null;
   seed = saved.seed;
   length = saved.length;
-  return { seed, length, genreIndex, movieIndex, extra, trail: trail ? [...trail] : null };
+  if (genreGone) persist();
+  return { seed, length, ...position, extra, trail: trail ? [...trail] : null, mode, genre };
 }
 
 export function clearSavedState() {
@@ -202,6 +223,8 @@ export function clearSavedState() {
   length = null;
   friend = null;
   trail = null;
+  mode = 'general';
+  genre = null;
   try {
     localStorage.removeItem(STORAGE_KEY);
   } catch (e) {
