@@ -8,14 +8,15 @@ test('ratingCounts splits a total into about half liked, a third disliked and th
   assert.deepEqual(ratingCounts(8), { liked: 4, disliked: 3, neutral: 1 });
   assert.deepEqual(ratingCounts(10), { liked: 5, disliked: 3, neutral: 2 });
   assert.deepEqual(ratingCounts(15), { liked: 8, disliked: 5, neutral: 2 });
+  assert.deepEqual(ratingCounts(5), { liked: 3, disliked: 1, neutral: 1 }); // a Taster session
+  assert.deepEqual(ratingCounts(3), { liked: 1, disliked: 1, neutral: 1 });
 });
 
 test('ratingCounts always adds up to the total, with at least one of each', () => {
   for (let total = 3; total <= 30; total++) {
     const { liked, disliked, neutral } = ratingCounts(total);
     assert.ok(liked >= 1 && disliked >= 1 && neutral >= 1, `total ${total}`);
-    assert.ok(liked + disliked + neutral >= total);
-    if (total >= 6) assert.equal(liked + disliked + neutral, total, `total ${total}`);
+    assert.equal(liked + disliked + neutral, total, `total ${total}`);
   }
 });
 

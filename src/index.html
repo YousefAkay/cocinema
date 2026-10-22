@@ -66,6 +66,11 @@
             <fieldset class="length-choice" id="length-choice">
               <legend>How many films do you want to rate?</legend>
               <label class="length-card">
+                <input type="radio" name="length" value="5" autocomplete="off">
+                <span class="length-title">Taster</span>
+                <span class="length-detail">5 films, rougher picks</span>
+              </label>
+              <label class="length-card">
                 <input type="radio" name="length" value="10" autocomplete="off">
                 <span class="length-title">Quick</span>
                 <span class="length-detail">10 films</span>
@@ -80,7 +85,11 @@
               <button id="start-button" disabled>Get started</button>
               <button id="continue-button" type="button" hidden>Continue</button>
             </div>
-            <p id="length-status" class="length-status" role="status">Choose a length to begin</p>
+            <div class="length-status-row">
+              <p id="length-status" class="length-status" role="status">Choose a length to begin</p>
+              <!-- The longest message, invisible, keeps the row as tall as it ever gets, so choosing a card moves nothing. -->
+              <p class="length-status length-status-spacer" id="length-status-spacer" aria-hidden="true"></p>
+            </div>
           </div>
         </section>
       </div>
@@ -95,7 +104,7 @@
           <li class="how-card">
             <span class="numeral" aria-hidden="true">1</span>
             <h3>Rate a few films</h3>
-            <p>Score movies you have seen from 1 to 10. Not seen one? Skip it. Quick mode covers 10 genres, Full covers all 15.</p>
+            <p>Score movies you have seen from 1 to 10. Not seen one? Skip it. Taster covers 5 genres, Quick 10 and Full all 15. Fewer films means rougher picks, and you can always rate more later.</p>
           </li>
           <li class="how-card">
             <span class="numeral" aria-hidden="true">2</span>

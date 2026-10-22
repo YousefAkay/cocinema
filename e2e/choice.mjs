@@ -1,4 +1,4 @@
-// Quick (10) or Full (15): nothing is chosen for the visitor, and the choice survives a refresh.
+// Taster (5), Quick (10) or Full (15): nothing is chosen for the visitor, and the choice survives a refresh.
 import { chromium } from 'playwright';
 import { startServer, createRecorder, chooseAndStart } from './helpers.mjs';
 
@@ -55,13 +55,43 @@ try {
   await first.page.goto(server.base);
   await first.page.waitForSelector('.length-card');
   const radios = first.page.locator('input[type="radio"][name="length"]');
-  check('two real radio inputs, inside a fieldset with a legend',
-    (await radios.count()) === 2 && (await first.page.locator('fieldset.length-choice > legend').innerText()).includes('How many films'));
-  check('neither option is selected on first load', (await first.page.locator('input[name="length"]:checked').count()) === 0);
+  check('three real radio inputs, inside a fieldset with a legend',
+    (await radios.count()) === 3 && (await first.page.locator('fieldset.length-choice > legend').innerText()).includes('How many films'));
+  check('the cards read Taster, Quick, Full in that order',
+    (await first.page.locator('.length-title').allInnerTexts()).join('|') === 'Taster|Quick|Full'
+      && (await first.page.locator('.length-card:has(input[value="5"]) .length-detail').innerText()) === '5 films, rougher picks');
+  check('no option is selected on first load', (await first.page.locator('input[name="length"]:checked').count()) === 0);
   check('Get started is disabled and the status says "Choose a length to begin"',
     await first.page.locator('#start-button').isDisabled() && (await first.page.locator('#length-status').innerText()) === 'Choose a length to begin');
   const sizes = await first.page.$$eval('.length-card', cards => cards.map(card => Math.round(card.getBoundingClientRect().height)));
-  check('both choice cards are at least 44px tall', sizes.every(height => height >= 44), sizes.join(', '));
+  check('all three choice cards are at least 44px tall', sizes.length === 3 && sizes.every(height => height >= 44), sizes.join(', '));
+  const cardsFit = await first.page.$$eval('.length-card', cards => cards.every(card => {
+    const box = card.getBoundingClientRect();
+    const text = card.querySelector('.length-detail').getBoundingClientRect();
+    return box.left >= 0 && box.right <= innerWidth && text.right <= box.right && parseFloat(getComputedStyle(card.querySelector('.length-detail')).fontSize) >= 14;
+  }));
+  check('at 375px the three cards fit the width and their text is at least 14px', cardsFit);
+
+  // Selecting any card, including Taster with its longer sentence, moves nothing on the page.
+  const layout = () => first.page.evaluate(() => ['#length-choice', '.start-row', '.length-status-row', '.poster-strip', '#how']
+    .map(selector => { const box = document.querySelector(selector).getBoundingClientRect(); return [box.top + scrollY, box.height].map(Math.round).join(','); }).join(' '));
+  const unselected = await layout();
+  const layouts = [];
+  for (const value of ['5', '10', '15', '5']) {
+    await first.page.locator(`.length-card:has(input[value="${value}"])`).click();
+    layouts.push(await layout());
+  }
+  check('choosing Taster, Quick or Full never shifts the layout', layouts.every(entry => entry === unselected), `${unselected} / ${layouts.join(' / ')}`);
+
+  const tasterText = await first.page.locator('#length-status').innerText();
+  check('choosing Taster shows one plain sentence about rougher picks, the 3-film minimum and rating more',
+    /^[^.]*rougher[^.]*at least 3 films you have actually rated with different scores[^.]*rate more afterwards\.$/.test(tasterText), tasterText);
+  await first.page.locator('.length-card:has(input[value="10"])').click();
+  check('the Taster sentence goes away for Quick', !/rougher|at least 3/.test(await first.page.locator('#length-status').innerText()));
+  await first.page.locator('.length-card:has(input[value="15"])').click();
+  check('and for Full', !/rougher|at least 3/.test(await first.page.locator('#length-status').innerText()));
+  check('the spacer that holds the row open is hidden from screen readers',
+    (await first.page.locator('#length-status-spacer').getAttribute('aria-hidden')) === 'true' && await first.page.locator('#length-status-spacer').evaluate(node => getComputedStyle(node).visibility === 'hidden'));
   check('no horizontal scroll on the landing screen', await first.page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth));
 
   await first.page.locator('.length-card:has(input[value="10"])').click();
@@ -73,12 +103,14 @@ try {
   // No duration claim anywhere in the choice area: it depends on how fast someone rates.
   const noDuration = /minute|second|\bmin\b|\bsec\b|hour|takes about|~/i;
   const choiceText = async () => (await first.page.locator('#length-choice').innerText()) + ' ' + (await first.page.locator('#length-status').innerText());
+  await first.page.locator('.length-card:has(input[value="5"])').click();
+  const tasterChoice = await choiceText();
   await first.page.locator('.length-card:has(input[value="10"])').click();
   const quickText = await choiceText();
   await first.page.locator('.length-card:has(input[value="15"])').click();
   const fullText = await choiceText();
-  check('the Quick and Full options and the status line never mention minutes, seconds or any duration',
-    !noDuration.test(quickText) && !noDuration.test(fullText) && quickText.includes('Ready: 10 films') && fullText.includes('Ready: 15 films'),
+  check('the three options and the status line never mention minutes, seconds or any duration',
+    !noDuration.test(tasterChoice) && !noDuration.test(quickText) && !noDuration.test(fullText) && quickText.includes('Ready: 10 films') && fullText.includes('Ready: 15 films'),
     `${quickText.replace(/\s+/g, ' ')} || ${fullText.replace(/\s+/g, ' ')}`);
   await first.page.reload();
   await first.page.waitForSelector('.length-card');
@@ -131,6 +163,28 @@ try {
   const againGenres = (await finishOnboarding(again.page, [])).map(step => step.genre);
   check('another Quick session covers a different 10 genres or a different order', againGenres.join() !== quickGenres.join(), againGenres.join(', '));
   await again.context.close();
+
+  // Taster: 5 steps, a refresh keeps the length, the nudge shows, Rate 5 more works
+  const taster = await newPage();
+  await taster.page.goto(server.base);
+  await taster.page.waitForSelector('.length-card');
+  await chooseAndStart(taster.page, 5);
+  await taster.page.waitForSelector('#rating-screen .rating-widget');
+  const tasterFirst = await currentStep(taster.page);
+  check('Taster shows "n / 5" starting at 1', tasterFirst.n === 1 && tasterFirst.of === 5, JSON.stringify(tasterFirst));
+  await taster.page.getByRole('button', { name: '9', exact: true }).click();
+  await taster.page.getByRole('button', { name: 'Confirm' }).click();
+  const tasterMid = await currentStep(taster.page);
+  await taster.page.reload();
+  await taster.page.waitForSelector('#rating-screen .rating-widget');
+  check('a refresh in a Taster session keeps the length and the same genre', JSON.stringify(await currentStep(taster.page)) === JSON.stringify(tasterMid) && tasterMid.of === 5);
+  const tasterSteps = await finishOnboarding(taster.page, [tasterFirst]);
+  check('a Taster session covers exactly 5 different genres', tasterSteps.length === 5 && new Set(tasterSteps.map(step => step.genre)).size === 5,
+    tasterSteps.map(step => step.genre).join(', '));
+  check('Taster results nudge towards "Rate 5 more"', (await taster.page.locator('.results-nudge').innerText()) === 'Want sharper picks? Rate 5 more');
+  check('Taster results say they are based on 5 films', (await taster.page.locator('.results-basis').innerText()) === 'These picks are based on the 5 films you rated.');
+  check('"Rate 5 more" works in Taster mode and changes the list', await rateFiveMore(taster.page));
+  await taster.context.close();
 
   // Full: 15 steps, no nudge, Rate 5 more works
   const full = await newPage();

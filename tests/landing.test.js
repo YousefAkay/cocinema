@@ -132,3 +132,21 @@ test('marketing copy takes the film count from roundedCount, never from the exac
   assert.ok(!/\b5\d0\+?\s+(films|movies)/.test(html), 'a film count is typed into the page');
   assert.ok(!/\b57\d\b|\b576\b/.test(html), 'an exact catalog count is typed into the page');
 });
+
+test('the length choice offers Taster, Quick and Full in that order, as radios with nothing checked', () => {
+  const html = read('../src/index.html');
+  const fieldset = /<fieldset class="length-choice"[\s\S]*?<\/fieldset>/.exec(html)[0];
+  assert.match(fieldset, /<legend>/);
+  const radios = [...fieldset.matchAll(/<input type="radio" name="length" value="(\d+)"[^>]*>/g)];
+  assert.deepEqual(radios.map(match => match[1]), ['5', '10', '15']);
+  assert.ok(radios.every(match => !/checked/.test(match[0])), 'no option may be pre-selected');
+  const titles = [...fieldset.matchAll(/class="length-title">([^<]+)</g)].map(match => match[1]);
+  assert.deepEqual(titles, ['Taster', 'Quick', 'Full']);
+  assert.ok(!/minute|second|hour/i.test(fieldset), 'no duration claims');
+});
+
+test('the How it works copy describes all three lengths', () => {
+  const html = read('../src/index.html');
+  const how = /<section class="how[\s\S]*?<\/section>/.exec(html)[0];
+  assert.match(how, /Taster covers 5 genres, Quick 10 and Full all 15/);
+});

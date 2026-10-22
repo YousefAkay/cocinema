@@ -32,7 +32,7 @@ let catalog = [];
 let onboarding = [];
 let seed = newSeed();
 let session = [];
-let sessionLength = null; // 10 (Quick) or 15 (Full) once a session has started
+let sessionLength = null; // 5 (Taster), 10 (Quick) or 15 (Full) once a session has started
 let dataLoaded = false;
 let catalogById = new Map();
 let moviesByQid = new Map();
@@ -375,9 +375,7 @@ function showResults(notice, restoreScroll = false) {
   resultsScreen.append(pageHeading);
 
   if (ranked.length === 0) {
-    addParagraph(resultsScreen, '', 'Rate at least 3 movies (with different scores) to get recommendations.');
-    addButton(resultsScreen, 'start-over', 'Start over', requestStartOver);
-    pageHeading.focus({ preventScroll: true });
+    showNotEnough(ratings, notice);
     return;
   }
 
@@ -392,7 +390,7 @@ function showResults(notice, restoreScroll = false) {
 
   const noun = ratings.length === 1 ? 'film' : 'films';
   addParagraph(resultsScreen, 'results-basis', `These picks are based on the ${ratings.length} ${noun} you rated.`);
-  if (sessionLength === 10) {
+  if (sessionLength === 5 || sessionLength === 10) {
     addButton(resultsScreen, 'results-nudge', `Want sharper picks? Rate ${EXTRA_COUNT} more`, startExtra);
   }
 
@@ -444,6 +442,45 @@ function showResults(notice, restoreScroll = false) {
     // Focus starts on the page heading, so the next Tab reaches the invite button.
     pageHeading.focus({ preventScroll: true });
   }
+}
+
+// Too few ratings to rank with (under 3, or all the same score), whatever the session length: say
+// how far the visitor got and offer "Rate more" first, so the results are never a dead end.
+function notEnoughText(ratings) {
+  const count = ratings.length;
+  if (count >= 3 && new Set(ratings.map(rating => rating.score)).size === 1) {
+    return `You've rated ${count} films, all with the same score. CoCinema needs a few different scores to tell what you like.`;
+  }
+  const sofar = count === 0 ? "You haven't rated any films yet." : `You've rated ${count} ${count === 1 ? 'film' : 'films'} so far.`;
+  return `${sofar} CoCinema needs at least 3, with different scores, to find your picks.`;
+}
+
+function showNotEnough(ratings, notice) {
+  if (notice) {
+    addParagraph(resultsScreen, 'results-notice', notice);
+  }
+  const section = document.createElement('section');
+  section.className = 'not-enough';
+  section.setAttribute('aria-labelledby', 'not-enough-title');
+  const heading = document.createElement('h2');
+  heading.id = 'not-enough-title';
+  heading.tabIndex = -1;
+  heading.textContent = 'A few more films needed';
+  section.append(heading);
+  addParagraph(section, 'not-enough-text', notEnoughText(ratings));
+  addParagraph(section, 'not-enough-text', 'Rate a few more and your picks will appear here.');
+
+  const actions = document.createElement('div');
+  actions.className = 'results-actions';
+  addButton(actions, 'rate-more', `Rate ${EXTRA_COUNT} more`, () => {
+    // With a friend saved, recovering leads back to the shared list.
+    soloView = false;
+    startExtra();
+  });
+  addButton(actions, 'start-over', 'Start over', requestStartOver);
+  section.append(actions);
+  resultsScreen.append(section);
+  heading.focus({ preventScroll: true });
 }
 
 // ---- Watch with a friend (behind COWATCH_ENABLED) ----
@@ -800,7 +837,13 @@ function chosenLength() {
   return isValidLength(value) ? value : null;
 }
 
-const LENGTH_TEXT = { 10: 'Ready: 10 films', 15: 'Ready: 15 films' };
+// Taster gets one plain sentence about the trade-off instead of "Ready".
+const LENGTH_TEXT = {
+  5: 'Picks from 5 films will be rougher: CoCinema needs at least 3 films you have actually rated with different scores, and you can rate more afterwards.',
+  10: 'Ready: 10 films',
+  15: 'Ready: 15 films',
+};
+document.getElementById('length-status-spacer').textContent = LENGTH_TEXT[5];
 
 // Get started needs both the data and a chosen length; nothing is chosen for the visitor.
 function updateStartState() {

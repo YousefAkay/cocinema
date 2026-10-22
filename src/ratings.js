@@ -69,7 +69,7 @@ export function saveSeed(value) {
   persist();
 }
 
-// Quick (10) or Full (15): how many genres this session covers. Anything else is ignored.
+// Taster (5), Quick (10) or Full (15): how many genres this session covers. Anything else is ignored.
 export function saveLength(value) {
   if (!isValidLength(value)) return;
   length = value;

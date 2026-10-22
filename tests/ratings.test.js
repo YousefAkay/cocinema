@@ -152,10 +152,10 @@ test('the session length is saved and both Quick (10) and Full (15) load back', 
   assert.deepEqual(loadSavedState(ids), { seed: 5, length: 10, genreIndex: 10, movieIndex: 0, extra: null, trail: null });
 });
 
-test('saveLength ignores anything but 10 or 15', () => {
+test('saveLength ignores anything but 5, 10 or 15', () => {
   saveSeed(5);
   saveLength(10);
-  for (const bad of [0, 5, 12, 16, '10', null, undefined, NaN, 10.5]) {
+  for (const bad of [0, 3, 6, 12, 16, '5', '10', null, undefined, NaN, 10.5]) {
     saveLength(bad);
     assert.equal(JSON.parse(store[KEY]).length, 10, String(bad));
   }
@@ -286,4 +286,29 @@ test('a bad trail is dropped without losing the saved ratings', () => {
     assert.equal(loadSavedState(ids).trail, null, JSON.stringify(trail).slice(0, 20));
     assert.deepEqual(getAllRatings(), [{ id: 'a', score: 7 }]);
   }
+});
+
+// ---- Taster sessions (5 genres) ----
+test('a Taster session (length 5) saves and loads back, mid-session and finished', () => {
+  saveSeed(77);
+  saveLength(5);
+  saveRating('a', 9);
+  markSkipped('b');
+  saveTrail(['a', 'b', 'c']);
+  savePosition(1, 1);
+  const saved = JSON.parse(store[KEY]);
+  assert.equal(saved.length, 5);
+  assert.deepEqual(loadSavedState(ids), { seed: 77, length: 5, genreIndex: 1, movieIndex: 1, extra: null, trail: ['a', 'b', 'c'] });
+  assert.deepEqual(getAllRatings(), [{ id: 'a', score: 9 }]);
+  assert.deepEqual(getSkippedIds(), ['b']);
+  store[KEY] = JSON.stringify({ ratings: [['a', 9]], seed: 77, length: 5, skipped: [], genreIndex: 5, movieIndex: 0, extra: { rated: 1, shown: ['b', 'c'] } });
+  assert.deepEqual(loadSavedState(ids), { seed: 77, length: 5, genreIndex: 5, movieIndex: 0, extra: { rated: 1, shown: ['b', 'c'] }, trail: null });
+});
+
+test('a Taster save accepts positions up to 5 and no further', () => {
+  const save = genreIndex => JSON.stringify({ ratings: [], seed: 1, length: 5, skipped: [], genreIndex, movieIndex: 0, extra: null });
+  store[KEY] = save(5);
+  assert.equal(loadSavedState(ids).genreIndex, 5);
+  store[KEY] = save(6);
+  assert.equal(loadSavedState(ids), null);
 });

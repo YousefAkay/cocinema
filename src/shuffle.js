@@ -29,16 +29,17 @@ export function shuffle(list, random) {
   return result;
 }
 
-// How many genres (and so roughly how many films) a session covers: Quick or Full.
-export const LENGTHS = [10, 15];
+// How many genres (and so roughly how many films) a session covers: Taster, Quick or Full.
+export const LENGTHS = [5, 10, 15];
 
 export function isValidLength(value) {
   return LENGTHS.includes(value);
 }
 
 // The onboarding order for one session: genres in a random order, and the films inside each
-// genre in a random order. A Quick session (10) takes the first 10 genres of that shuffled
-// order, so each session asks about a different 10, and the same seed always gives the same ones.
+// genre in a random order. A Taster (5) or Quick (10) session takes the first 5 or 10 genres of
+// that shuffled order, so each session asks about a different set, and the same seed always gives
+// the same ones.
 // Same seed, same pools and same length give the same result.
 export function buildSession(onboarding, seed, length = onboarding.length) {
   if (!isValidLength(length) && length !== onboarding.length) {

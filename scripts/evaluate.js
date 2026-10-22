@@ -5,7 +5,7 @@ import { recommend } from '../src/recommend.js';
 // Usage:
 //   node scripts/evaluate.js                 the standard run (12 ratings per persona); also writes src/evaluation-stats.js
 //   node scripts/evaluate.js --ratings 8     the same personas' recipe with 8 ratings in total
-//   node scripts/evaluate.js --compare       6, 8, 10, 12 and 15 ratings side by side, on nested personas
+//   node scripts/evaluate.js --compare       5, 6, 8, 10, 12 and 15 ratings side by side, on nested personas
 
 // Synthetic "genre-persona" evaluation. No network, fixed seed, so every run prints the same numbers.
 // It measures whether the recommender can recover a genre taste from ratings; it is NOT
@@ -21,13 +21,16 @@ const NEUTRAL = 2;
 const TOP_K = 10;
 const HIT_WINDOW = 20;
 const STATS_PATH = 'src/evaluation-stats.js';
-const COMPARE_TOTALS = [6, 8, 10, 12, 15];
+const COMPARE_TOTALS = [5, 6, 8, 10, 12, 15];
 
 // How a total number of ratings splits up: about half liked, a third disliked, the rest
-// neutral, with at least one of each. 12 gives the standard 6 / 4 / 2.
+// neutral, with at least one of each. 12 gives the standard 6 / 4 / 2. Small totals (3 to 5)
+// give up disliked, then liked, films to make room for the neutral one, so the sum is exact.
 export function ratingCounts(total) {
-  const liked = Math.max(1, Math.round(total / 2));
-  const disliked = Math.max(1, Math.round(total / 3));
+  let liked = Math.max(1, Math.round(total / 2));
+  let disliked = Math.max(1, Math.round(total / 3));
+  while (liked + disliked + 1 > total && disliked > 1) disliked--;
+  while (liked + disliked + 1 > total && liked > 1) liked--;
   const neutral = Math.max(1, total - liked - disliked);
   return { liked, disliked, neutral };
 }

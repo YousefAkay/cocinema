@@ -131,9 +131,11 @@ try {
   await kbPage.keyboard.press('Tab');
   check('landing: then the GitHub link', (await focused()).startsWith('a:Open source'), await focused());
   await kbPage.keyboard.press('Tab');
-  check('landing: then the first length option', (await focused()) === 'input:10', await focused());
+  check('landing: then the first length option, Taster', (await focused()) === 'input:5', await focused());
   await kbPage.keyboard.press('ArrowDown');
-  check('landing: the arrow key moves to Full and chooses it', (await focused()) === 'input:15' && await kbPage.locator('input[value="15"]').isChecked());
+  check('landing: the arrow key moves to Quick and chooses it', (await focused()) === 'input:10' && await kbPage.locator('input[value="10"]').isChecked());
+  await kbPage.keyboard.press('ArrowDown');
+  check('landing: the arrow key moves on to Full and chooses it', (await focused()) === 'input:15' && await kbPage.locator('input[value="15"]').isChecked());
   await kbPage.keyboard.press('ArrowUp');
   await kbPage.keyboard.press('Space');
   check('landing: Space chooses Quick', await kbPage.locator('input[value="10"]').isChecked());

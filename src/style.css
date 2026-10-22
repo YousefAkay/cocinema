@@ -298,6 +298,21 @@ img {
   background: var(--accent-fill-hover);
 }
 
+.not-enough {
+  max-width: 560px;
+  margin: 24px auto 0;
+  text-align: center;
+}
+
+.not-enough-text {
+  margin: 0 0 8px;
+  color: var(--text-secondary);
+}
+
+.not-enough .results-actions {
+  margin-top: 24px;
+}
+
 @media (max-width: 480px) {
   .top-pick {
     grid-template-columns: minmax(0, 96px) minmax(0, 1fr);
@@ -862,10 +877,23 @@ img {
   cursor: not-allowed;
 }
 
+.length-status-row {
+  display: grid;
+  width: 100%;
+  max-width: 560px;
+}
+
+/* The status and its invisible spacer share one cell, so the row is always the spacer's height. */
 .length-status {
+  grid-area: 1 / 1;
   margin: 0;
   color: var(--text-muted);
   font-size: 0.9rem;
+  text-align: center;
+}
+
+.length-status-spacer {
+  visibility: hidden;
 }
 
 .poster-strip {
@@ -1034,9 +1062,27 @@ img {
   font-weight: 700;
 }
 
-@media (min-width: 560px) {
+/* Three cards stacked on a phone: title and detail share one line so Get started stays close. */
+@media (max-width: 719px) {
   .length-choice {
-    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .length-card {
+    grid-template-columns: auto 1fr;
+    align-items: baseline;
+    column-gap: 10px;
+    padding: 12px 16px 12px 52px;
+  }
+
+  .length-card input {
+    left: 16px;
+  }
+}
+
+@media (min-width: 720px) {
+  .length-choice {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 
   .length-choice legend {

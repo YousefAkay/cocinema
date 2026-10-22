@@ -95,11 +95,12 @@ test('newSeed gives whole numbers the saved-state check accepts', () => {
 
 const fifteen = Array.from({ length: 15 }, (_, i) => ({ genre: `G${i}`, movies: [{ id: `m${i}a` }, { id: `m${i}b` }] }));
 
-test('only 10 and 15 are valid session lengths', () => {
-  assert.deepEqual(LENGTHS, [10, 15]);
+test('only 5, 10 and 15 are valid session lengths', () => {
+  assert.deepEqual(LENGTHS, [5, 10, 15]);
+  assert.equal(isValidLength(5), true);
   assert.equal(isValidLength(10), true);
   assert.equal(isValidLength(15), true);
-  for (const bad of [0, 5, 9, 11, 14, 16, 20, '10', '15', null, undefined, NaN, 10.5]) {
+  for (const bad of [0, 1, 3, 4, 6, 9, 11, 14, 16, 20, '5', '10', '15', null, undefined, NaN, 5.5, 10.5]) {
     assert.equal(isValidLength(bad), false, String(bad));
   }
 });
@@ -135,4 +136,31 @@ test('a Quick session is the first 10 genres of the same seed Full order', () =>
 
 test('buildSession rejects an unsupported length', () => {
   assert.throws(() => buildSession(fifteen, 1, 12));
+});
+
+test('a Taster session has exactly 5 distinct genres, all from the 15', () => {
+  const all = new Set(fifteen.map(entry => entry.genre));
+  for (const seed of [0, 1, 2, 3, 99, 4242, 4294967295]) {
+    const genres = buildSession(fifteen, seed, 5).map(entry => entry.genre);
+    assert.equal(genres.length, 5);
+    assert.equal(new Set(genres).size, 5);
+    assert.ok(genres.every(genre => all.has(genre)));
+  }
+});
+
+test('a Taster session is the first 5 genres of the same seed Quick and Full order, films included', () => {
+  for (const seed of [55, 8, 123456]) {
+    const full = buildSession(fifteen, seed, 15);
+    const quick = buildSession(fifteen, seed, 10);
+    const taster = buildSession(fifteen, seed, 5);
+    assert.deepEqual(taster, full.slice(0, 5));
+    assert.deepEqual(taster, quick.slice(0, 5));
+  }
+});
+
+test('the Taster genres are deterministic for a seed and differ across seeds', () => {
+  const pick = seed => buildSession(fifteen, seed, 5).map(entry => entry.genre).join();
+  assert.equal(pick(31), pick(31));
+  const sets = new Set([1, 2, 3, 4, 5, 6, 7, 8].map(seed => buildSession(fifteen, seed, 5).map(entry => entry.genre).sort().join()));
+  assert.ok(sets.size > 4, 'different seeds should choose different 5-genre sets');
 });
