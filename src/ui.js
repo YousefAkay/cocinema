@@ -98,7 +98,6 @@ export function renderTopPick(result, rank, whyLine, genres = []) {
   const why = document.createElement('p');
   why.className = 'top-pick-why';
   why.textContent = whyLine;
-  why.title = whyLine;
 
   card.append(renderPoster(movie), body, why);
   return card;

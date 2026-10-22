@@ -11,10 +11,21 @@ const problems = [];
 
 // Tallest top card before this change (same ratings, same catalog), per window width.
 const OLD_MAX_CARD_HEIGHT = { 1440: 210, 375: 275 };
+// The made-up worst case below, now shown in full rather than cut off.
+const WORST_CARD_HEIGHT = { 1440: 235, 375: 325 };
 const cycle = [9, 10, 3, 8, 2, 9, 5, 10, 2, 7, 9, 3, 8, 10, 4];
+// The session seed comes from Math.random(), so it is fixed here: the same films get the same
+// scores, and the same why lines come back, on every run.
+const SEED = 20261022;
+// With this seed the scores above go to films with long names, and at 375px one why line needs a
+// fifth line ("Your 10 for Dr. Strangelove leads, with The Shawshank Redemption (9) and Harry
+// Potter and the Chamber of Secrets (10) adding to it. Only your 2 for One Flew Over the Cuckoo's
+// Nest held it back."). It used to be cut off at four.
+const LONG_SEED = 4020695695;
 
-async function results(width, height, length = 15, reducedMotion = 'no-preference') {
+async function results(width, height, length = 15, reducedMotion = 'no-preference', seed = SEED) {
   const context = await browser.newContext({ viewport: { width, height }, serviceWorkers: 'block', reducedMotion });
+  await context.addInitScript(value => { Math.random = () => value / 4294967296; }, seed);
   const page = await context.newPage();
   page.on('pageerror', error => problems.push(error.message));
   page.on('console', message => {
@@ -29,6 +40,14 @@ async function results(width, height, length = 15, reducedMotion = 'no-preferenc
   }
   await page.waitForSelector('.top-pick');
   return { context, page };
+}
+
+// A why line is never clamped and none of its text is hidden.
+function whyShownInFull(nodes) {
+  return nodes.every(node => {
+    const style = getComputedStyle(node);
+    return style.webkitLineClamp === 'none' && style.overflowY === 'visible' && node.scrollHeight <= node.clientHeight + 1;
+  });
 }
 
 try {
@@ -67,10 +86,11 @@ try {
     check(`${label}: no card scrolls inside itself`, cards.every(card => !card.clipped));
     const tallest = Math.max(...cards.map(card => card.height));
     check(`${label}: no card is taller than before (${OLD_MAX_CARD_HEIGHT[width]}px)`, tallest <= OLD_MAX_CARD_HEIGHT[width], cards.map(card => card.height).join(', '));
-    check(`${label}: no why line is cut short with these ratings`, await page.$$eval('.top-pick-why', nodes => nodes.every(node => node.scrollHeight <= node.clientHeight + 1)));
+    check(`${label}: no why line is cut short with these ratings`, await page.$$eval('.top-pick-why', whyShownInFull));
     await page.evaluate(() => scrollTo(0, 0));
     await page.screenshot({ path: path.join(shots, `results-${width}.png`) });
-    // The worst case: very long film names in the why line must not make a card taller than before.
+    // The worst case: very long film names in the why line are shown in full, and the card grows
+    // by no more than the extra lines need.
     const worst = await page.evaluate(() => {
       const long = 'Because you gave The Lord of the Rings: The Fellowship of the Ring a 10, Harry Potter and the Chamber of Secrets a 9 and Pirates of the Caribbean: The Curse of the Black Pearl a 9, this one rose up your list. Your 2 for Indiana Jones and the Kingdom of the Crystal Skull held it back a little.';
       const card = document.querySelector('.top-pick');
@@ -78,7 +98,8 @@ try {
       card.querySelector('.top-pick-why').textContent = long;
       return Math.round(card.getBoundingClientRect().height);
     });
-    check(`${label}: even a very long why line and title keep a card within the old height`, worst <= OLD_MAX_CARD_HEIGHT[width], String(worst));
+    check(`${label}: a very long why line and title are shown in full`, await page.$$eval('.top-pick-why', whyShownInFull));
+    check(`${label}: and that card stays within ${WORST_CARD_HEIGHT[width]}px`, worst <= WORST_CARD_HEIGHT[width], String(worst));
     const openings = cards.map(card => card.why.split(/\s+/).slice(0, 2).join(' '));
     check(`${label}: no two top cards open the same way`, new Set(openings).size === 5, openings.join(' / '));
     check(`${label}: no sideways scroll`, await page.evaluate(() => document.scrollingElement.scrollWidth <= innerWidth));
@@ -133,6 +154,14 @@ try {
     check(`${label}: a sample friend leads to the shared list`, (await page.locator('.combined-card').count()) === 10 && /Horror fan \(sample\)/.test(await page.locator('.combined-figures').first().innerText()));
     await context.close();
   }
+
+  // The ratings that used to cut a why line short at 375px
+  const long = await results(375, 667, 15, 'no-preference', LONG_SEED);
+  const lines = await long.page.$$eval('.top-pick-why', nodes => nodes.map(node => node.textContent));
+  check('375px: with the ratings that once cut a why line short, the long line is there',
+    lines.some(line => line.startsWith('Your 10 for Dr. Strangelove leads') && line.endsWith("One Flew Over the Cuckoo's Nest held it back.")), lines.join(' / '));
+  check('375px: and every why line is shown in full', await long.page.$$eval('.top-pick-why', whyShownInFull));
+  await long.context.close();
 
   // Quick: the nudge is a real button that starts "Rate 5 more"
   const quick = await results(375, 667, 10);
