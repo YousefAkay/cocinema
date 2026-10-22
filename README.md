@@ -115,7 +115,7 @@ Each entry in `data/catalog.json`:
 
 `node scripts/watchmode.js` looks up where each film can be watched in Canada, the US and the UK and writes service names to `data/availability.json`. It is resumable and stops at a credit cap (`--max-credits`, default 2000). The film page loads the file only when a film is opened; if it is missing, has no entry, or is more than 30 days old, the page shows only the JustWatch search links.
 
-This is a snapshot, not live data. Under Watchmode's free plan the cached data must be **refreshed or deleted within 30 days** of the fetch date. The current snapshot was fetched on **7 October 2026**, so refresh or delete it by **6 November 2026**. To refresh, delete `data/availability.json` and run the script. The key goes in `.env` as `WATCHMODE_API_KEY` and is never printed or committed.
+This is a snapshot, not live data. Under Watchmode's free plan the cached data must be **refreshed or deleted within 30 days** of the fetch date. The current snapshot was fetched on **22 October 2026**, so refresh or delete it by **21 November 2026**. To refresh, delete `data/availability.json` and run the script. The key goes in `.env` as `WATCHMODE_API_KEY` and is never printed or committed.
 
 ### Offline use
 

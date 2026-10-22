@@ -1,202 +1,6 @@
 {
- "fetchedAt": "2026-10-07",
+ "fetchedAt": "2026-10-22",
  "films": {
-  "http://www.wikidata.org/entity/Q132689": {
-   "matched": true,
-   "CA": {
-    "subscription": [
-     "Crave",
-     "Crave (Via Amazon Prime)"
-    ],
-    "rentOrBuy": [
-     "Amazon",
-     "AppleTV",
-     "Cineplex"
-    ]
-   },
-   "US": {
-    "subscription": [
-     "HBO (Via Hulu)",
-     "HBO Max",
-     "MAX (Via Amazon Prime)",
-     "Max Roku Channel"
-    ],
-    "rentOrBuy": [
-     "Amazon",
-     "AppleTV",
-     "Fandango at Home",
-     "Google Play",
-     "Spectrum On Demand"
-    ]
-   },
-   "GB": {
-    "subscription": [
-     "HBO Max",
-     "MAX (Via Amazon Prime)"
-    ],
-    "rentOrBuy": [
-     "Amazon",
-     "AppleTV",
-     "Chili",
-     "Rakuten TV",
-     "Sky Store"
-    ]
-   }
-  },
-  "http://www.wikidata.org/entity/Q108839994": {
-   "matched": true,
-   "CA": {
-    "subscription": [
-     "Crave",
-     "Crave (Via Amazon Prime)"
-    ],
-    "rentOrBuy": [
-     "Amazon",
-     "AppleTV",
-     "Cineplex"
-    ]
-   },
-   "US": {
-    "subscription": [
-     "DirecTV On Demand",
-     "Peacock",
-     "Peacock Premium",
-     "YouTube TV"
-    ],
-    "rentOrBuy": [
-     "Amazon",
-     "AppleTV",
-     "Fandango at Home",
-     "Spectrum On Demand"
-    ]
-   },
-   "GB": {
-    "subscription": [],
-    "rentOrBuy": [
-     "Amazon",
-     "AppleTV",
-     "Chili",
-     "Rakuten TV",
-     "Sky Store"
-    ]
-   }
-  },
-  "http://www.wikidata.org/entity/Q61448040": {
-   "matched": true,
-   "CA": {
-    "subscription": [
-     "Crave",
-     "Crave (Via Amazon Prime)",
-     "Hollywood Suite",
-     "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
-    ],
-    "rentOrBuy": [
-     "Amazon",
-     "AppleTV",
-     "Cineplex"
-    ]
-   },
-   "US": {
-    "subscription": [
-     "DirecTV On Demand",
-     "fuboTV",
-     "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)",
-     "Paramount+ Roku Channel"
-    ],
-    "rentOrBuy": [
-     "Amazon",
-     "AppleTV",
-     "Fandango at Home"
-    ]
-   },
-   "GB": {
-    "subscription": [
-     "BFI Player",
-     "ITVX Premium",
-     "MUBI"
-    ],
-    "rentOrBuy": [
-     "Amazon",
-     "AppleTV",
-     "Curzon Home Cinema",
-     "Rakuten TV",
-     "Sky Store"
-    ]
-   }
-  },
-  "http://www.wikidata.org/entity/Q27044293": {
-   "matched": true,
-   "CA": {
-    "subscription": [
-     "Disney+"
-    ],
-    "rentOrBuy": [
-     "Amazon",
-     "AppleTV",
-     "Cineplex"
-    ]
-   },
-   "US": {
-    "subscription": [
-     "Disney+"
-    ],
-    "rentOrBuy": [
-     "Amazon",
-     "AppleTV",
-     "Fandango at Home",
-     "Google Play"
-    ]
-   },
-   "GB": {
-    "subscription": [
-     "Disney+"
-    ],
-    "rentOrBuy": [
-     "Amazon",
-     "AppleTV",
-     "Rakuten TV",
-     "Sky Store"
-    ]
-   }
-  },
-  "http://www.wikidata.org/entity/Q170035": {
-   "matched": true,
-   "CA": {
-    "subscription": [
-     "Disney+"
-    ],
-    "rentOrBuy": [
-     "Amazon",
-     "AppleTV",
-     "Cineplex"
-    ]
-   },
-   "US": {
-    "subscription": [
-     "Disney+",
-     "fuboTV",
-     "Hulu"
-    ],
-    "rentOrBuy": [
-     "Amazon",
-     "AppleTV",
-     "Fandango at Home"
-    ]
-   },
-   "GB": {
-    "subscription": [
-     "Disney+"
-    ],
-    "rentOrBuy": [
-     "Amazon",
-     "AppleTV",
-     "Rakuten TV",
-     "Sky Store"
-    ]
-   }
-  },
   "http://www.wikidata.org/entity/Q104123": {
    "matched": true,
    "CA": {
@@ -204,8 +8,7 @@
      "Crave",
      "Crave (Via Amazon Prime)",
      "fuboTV",
-     "Hollywood Suite",
-     "Lionsgate+ (Via Amazon Prime)"
+     "Hollywood Suite"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -227,6 +30,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -234,7 +38,8 @@
     "subscription": [
      "ITVX Premium",
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "Paramount+ (Via Amazon Prime)",
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -251,7 +56,6 @@
     "subscription": [
      "Crave",
      "Crave (Via Amazon Prime)",
-     "Disney+",
      "Netflix",
      "Prime Video"
     ],
@@ -274,7 +78,6 @@
    },
    "GB": {
     "subscription": [
-     "Disney+",
      "Prime Video"
     ],
     "rentOrBuy": [
@@ -306,6 +109,7 @@
      "fuboTV",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel",
      "Prime Video",
      "YouTube TV"
     ],
@@ -543,20 +347,23 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "Crave (Via Amazon Prime)",
      "fuboTV",
      "Netflix",
      "Prime Video"
     ],
     "rentOrBuy": [
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
     "subscription": [
      "DirecTV On Demand",
      "Hulu",
-     "Hulu on Disney+"
+     "Hulu on Disney+",
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -646,7 +453,8 @@
      "Amazon",
      "AppleTV",
      "Chili",
-     "Curzon Home Cinema"
+     "Curzon Home Cinema",
+     "Sky Store"
     ]
    }
   },
@@ -713,11 +521,13 @@
     "subscription": [
      "AppleTV+",
      "AppleTV+ Amazon Channel",
+     "Prime Video",
      "Sky Go"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -739,19 +549,22 @@
    },
    "US": {
     "subscription": [
-     "AppleTV+",
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
-    "subscription": [],
+    "subscription": [
+     "Prime Video"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -803,7 +616,6 @@
      "Disney+"
     ],
     "rentOrBuy": [
-     "Amazon",
      "AppleTV",
      "Rakuten TV",
      "Sky Store"
@@ -815,6 +627,7 @@
    "CA": {
     "subscription": [
      "AMC+ Amazon Channel",
+     "Hoopla",
      "Prime Video"
     ],
     "rentOrBuy": [
@@ -825,8 +638,7 @@
    "US": {
     "subscription": [
      "DirecTV On Demand",
-     "Lionsgate+ (Via Amazon Prime)",
-     "Philo"
+     "Lionsgate+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -862,11 +674,7 @@
     ]
    },
    "US": {
-    "subscription": [
-     "DirecTV On Demand",
-     "MGM+",
-     "MGM+ (Via Amazon Prime)"
-    ],
+    "subscription": [],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -905,8 +713,7 @@
    },
    "US": {
     "subscription": [
-     "Disney+",
-     "FX"
+     "Disney+"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -1089,6 +896,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "Club Illico",
      "Disney+",
      "Hollywood Suite",
      "Prime Video"
@@ -1101,6 +909,7 @@
    },
    "US": {
     "subscription": [
+     "fuboTV",
      "Peacock",
      "Peacock Premium"
     ],
@@ -1118,6 +927,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -1200,6 +1010,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "Hoopla",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)"
     ],
@@ -1211,9 +1022,7 @@
    },
    "US": {
     "subscription": [
-     "Hoopla",
-     "Prime Video",
-     "The Roku Channel"
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -1280,7 +1089,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -1289,15 +1099,13 @@
      "HBO (Via Hulu)",
      "HBO Max",
      "MAX (Via Amazon Prime)",
-     "Max Roku Channel",
-     "TBS",
-     "TNT",
-     "truTV"
+     "Max Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -1480,7 +1288,8 @@
    },
    "GB": {
     "subscription": [
-     "Disney+"
+     "Disney+",
+     "ITVX Premium"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -1552,7 +1361,8 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
@@ -1574,6 +1384,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "Hoopla",
      "MGM+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
@@ -1583,14 +1394,13 @@
     ]
    },
    "US": {
-    "subscription": [
-     "The Roku Channel"
-    ],
+    "subscription": [],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
@@ -1672,10 +1482,8 @@
      "Hulu",
      "Hulu on Disney+",
      "Peacock Premium",
-     "Philo",
      "Prime Video",
-     "Shout! Factory TV Amazon Channel",
-     "The Roku Channel"
+     "Shout! Factory TV Amazon Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -1717,7 +1525,8 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
@@ -1822,7 +1631,6 @@
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)",
      "Paramount+ Roku Channel",
-     "Philo",
      "YouTube TV"
     ],
     "rentOrBuy": [
@@ -1830,6 +1638,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -1886,8 +1695,7 @@
      "Crave",
      "Crave (Via Amazon Prime)",
      "Netflix",
-     "Prime Video",
-     "The Criterion Channel"
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -1900,9 +1708,7 @@
      "MGM+",
      "Peacock",
      "Peacock Premium",
-     "Prime Video",
-     "The Criterion Channel",
-     "The Roku Channel"
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -1928,10 +1734,8 @@
    "matched": true,
    "CA": {
     "subscription": [
-     "AMC Plus Apple TV Channel",
      "AMC+",
      "Crave (Via Amazon Prime)",
-     "Netflix",
      "Prime Video"
     ],
     "rentOrBuy": [
@@ -1942,8 +1746,6 @@
    },
    "US": {
     "subscription": [
-     "AMC Plus Apple TV Channel",
-     "AMC+",
      "Prime Video",
      "YouTube TV"
     ],
@@ -2059,8 +1861,6 @@
    },
    "US": {
     "subscription": [
-     "AMC Plus Apple TV Channel",
-     "AMC+",
      "Netflix",
      "Peacock",
      "Peacock Premium"
@@ -2100,7 +1900,8 @@
      "DirecTV On Demand",
      "fuboTV",
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -2136,7 +1937,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -2234,8 +2036,7 @@
      "Netflix",
      "Peacock Premium",
      "Prime Video",
-     "Sundance",
-     "The Roku Channel"
+     "Sundance"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -2270,7 +2071,11 @@
    },
    "US": {
     "subscription": [
+     "DirecTV On Demand",
      "Netflix",
+     "TBS",
+     "TNT",
+     "truTV",
      "YouTube TV"
     ],
     "rentOrBuy": [
@@ -2282,6 +2087,7 @@
    },
    "GB": {
     "subscription": [
+     "Prime Video",
      "Sky Go"
     ],
     "rentOrBuy": [
@@ -2308,7 +2114,8 @@
      "DirecTV On Demand",
      "fuboTV",
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -2517,7 +2324,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -2531,7 +2339,8 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
@@ -2593,7 +2402,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -2605,6 +2415,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -2629,7 +2440,6 @@
     "subscription": [
      "Crave",
      "Crave (Via Amazon Prime)",
-     "Disney+",
      "Hollywood Suite",
      "Lionsgate+ (Via Amazon Prime)",
      "Netflix"
@@ -2637,7 +2447,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -2648,7 +2459,8 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
@@ -2659,6 +2471,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -2704,8 +2517,6 @@
    "matched": true,
    "CA": {
     "subscription": [
-     "Crave",
-     "Crave (Via Amazon Prime)",
      "Lionsgate+ (Via Amazon Prime)",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)"
@@ -2718,19 +2529,21 @@
    },
    "US": {
     "subscription": [
+     "DirecTV On Demand",
      "fuboTV",
      "Hulu",
      "Hulu on Disney+",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel",
      "Peacock",
-     "Peacock Premium",
-     "STARZ"
+     "Peacock Premium"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Google Play",
      "Plex",
      "Spectrum On Demand"
     ]
@@ -2754,6 +2567,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "Hoopla",
      "Prime Video",
      "Shudder"
     ],
@@ -2765,10 +2579,10 @@
     "subscription": [
      "AMC+ Amazon Channel",
      "Cineverse Subscription",
+     "DirecTV On Demand",
+     "fuboTV",
      "Prime Video",
-     "Shudder",
-     "Shudder (Via Amazon Prime)",
-     "The Roku Channel"
+     "Shudder (Via Amazon Prime)"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -2798,6 +2612,7 @@
      "Shudder (Via Amazon Prime)"
     ],
     "rentOrBuy": [
+     "Amazon",
      "Cineplex"
     ]
    },
@@ -2806,8 +2621,7 @@
      "AMC Plus Apple TV Channel",
      "AMC+",
      "AMC+ Amazon Channel",
-     "AMC+ Roku Channel",
-     "DirecTV On Demand",
+     "AMC+ Roku Premium Channel",
      "fuboTV",
      "Philo",
      "Shudder",
@@ -2877,7 +2691,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -2890,7 +2705,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -2913,6 +2729,7 @@
    "CA": {
     "subscription": [
      "Crave",
+     "Hoopla",
      "The Criterion Channel"
     ],
     "rentOrBuy": [
@@ -2923,8 +2740,7 @@
    "US": {
     "subscription": [
      "Prime Video",
-     "The Criterion Channel",
-     "The Roku Channel"
+     "The Criterion Channel"
     ],
     "rentOrBuy": [
      "AppleTV",
@@ -2968,7 +2784,8 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
@@ -2985,7 +2802,6 @@
    "CA": {
     "subscription": [
      "Club Illico",
-     "Disney+",
      "Prime Video"
     ],
     "rentOrBuy": [
@@ -3035,15 +2851,12 @@
    },
    "US": {
     "subscription": [
-     "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)",
-     "Paramount+ Roku Channel"
+     "Paramount+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play",
      "Plex",
      "Spectrum On Demand"
     ]
@@ -3077,7 +2890,6 @@
      "DirecTV On Demand",
      "fuboTV",
      "MGM Plus Roku Premium Channel",
-     "MGM+",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)"
     ],
@@ -3093,6 +2905,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -3128,6 +2941,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -3137,6 +2951,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "Club Illico",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)"
     ],
@@ -3149,17 +2964,17 @@
    "US": {
     "subscription": [
      "MGM Plus Roku Premium Channel",
-     "MGM+",
+     "Paramount Plus",
      "Paramount+ (Via Amazon Prime)",
      "Peacock",
-     "Peacock Premium",
-     "The Roku Channel"
+     "Peacock Premium"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -3171,6 +2986,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -3212,8 +3028,7 @@
    "GB": {
     "subscription": [
      "Disney+",
-     "Prime Video",
-     "Sky Go"
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -3236,7 +3051,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -3250,12 +3066,14 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
     "subscription": [
-     "HBO Max"
+     "HBO Max",
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -3277,8 +3095,7 @@
    },
    "US": {
     "subscription": [
-     "Prime Video",
-     "The Roku Channel"
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -3288,7 +3105,9 @@
    },
    "GB": {
     "subscription": [],
-    "rentOrBuy": []
+    "rentOrBuy": [
+     "AppleTV"
+    ]
    }
   },
   "http://www.wikidata.org/entity/Q240713": {
@@ -3331,6 +3150,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "Club Illico",
      "Hollywood Suite",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)",
@@ -3344,12 +3164,12 @@
    },
    "US": {
     "subscription": [
+     "DirecTV On Demand",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)",
      "Paramount+ Roku Channel",
      "Peacock",
-     "Peacock Premium",
-     "STARZ"
+     "Peacock Premium"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -3393,7 +3213,7 @@
      "AMC Plus Apple TV Channel",
      "AMC+",
      "AMC+ Amazon Channel",
-     "AMC+ Roku Channel",
+     "AMC+ Roku Premium Channel",
      "DirecTV On Demand",
      "Philo",
      "Prime Video"
@@ -3420,18 +3240,46 @@
    }
   },
   "http://www.wikidata.org/entity/Q318910": {
-   "matched": false,
+   "matched": true,
    "CA": {
-    "subscription": [],
-    "rentOrBuy": []
+    "subscription": [
+     "Crave",
+     "Prime Video"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Cineplex",
+     "Plex"
+    ]
    },
    "US": {
-    "subscription": [],
-    "rentOrBuy": []
+    "subscription": [
+     "HBO (Via Hulu)",
+     "HBO Max",
+     "MAX (Via Amazon Prime)",
+     "Max Roku Channel",
+     "YouTube TV"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Fandango at Home",
+     "Google Play",
+     "Plex"
+    ]
    },
    "GB": {
-    "subscription": [],
-    "rentOrBuy": []
+    "subscription": [
+     "HBO Max",
+     "Prime Video"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Chili",
+     "Sky Store"
+    ]
    }
   },
   "http://www.wikidata.org/entity/Q309048": {
@@ -3479,7 +3327,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -3489,6 +3338,7 @@
      "HBO (Via Hulu)",
      "HBO Max",
      "MAX (Via Amazon Prime)",
+     "Max Roku Channel",
      "Philo"
     ],
     "rentOrBuy": [
@@ -3496,6 +3346,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -3528,9 +3379,7 @@
     ]
    },
    "US": {
-    "subscription": [
-     "Philo"
-    ],
+    "subscription": [],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -3582,8 +3431,7 @@
      "Shudder (Via Amazon Prime)",
      "STARZ",
      "STARZ (Via Amazon Prime)",
-     "The Criterion Channel",
-     "The Roku Channel"
+     "The Criterion Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -3594,7 +3442,6 @@
    },
    "GB": {
     "subscription": [
-     "MUBI",
      "Prime Video"
     ],
     "rentOrBuy": [
@@ -3621,13 +3468,15 @@
    "US": {
     "subscription": [
      "HBO (Via Hulu)",
-     "HBO Max"
+     "HBO Max",
+     "Max Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -3656,24 +3505,23 @@
    },
    "US": {
     "subscription": [
-     "DirecTV On Demand",
      "Freeform",
      "fuboTV",
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)",
-     "Paramount+ Roku Channel"
+     "Paramount+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play",
      "Plex",
      "Spectrum On Demand"
     ]
    },
    "GB": {
-    "subscription": [],
+    "subscription": [
+     "Discovery+ (Via Amazon Prime)"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -3697,8 +3545,7 @@
    },
    "US": {
     "subscription": [
-     "Disney+",
-     "Hulu"
+     "Disney+"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -3735,7 +3582,6 @@
    },
    "US": {
     "subscription": [
-     "ViX",
      "YouTube TV"
     ],
     "rentOrBuy": [
@@ -3780,8 +3626,6 @@
    "US": {
     "subscription": [
      "DirecTV On Demand",
-     "Disney+",
-     "Hulu",
      "Philo",
      "STARZ",
      "STARZ (Via Amazon Prime)",
@@ -3879,6 +3723,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -4169,14 +4014,14 @@
      "Disney+",
      "fuboTV",
      "FX",
-     "Hulu",
      "YouTube TV"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
@@ -4282,7 +4127,8 @@
    },
    "US": {
     "subscription": [
-     "Disney+"
+     "Disney+",
+     "fuboTV"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -4351,8 +4197,7 @@
    },
    "US": {
     "subscription": [
-     "Disney+",
-     "Hulu"
+     "Disney+"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -4386,8 +4231,7 @@
    },
    "US": {
     "subscription": [
-     "Disney+",
-     "Hulu"
+     "Disney+"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -4464,8 +4308,7 @@
    },
    "US": {
     "subscription": [
-     "Disney+",
-     "Hulu"
+     "Disney+"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -4525,10 +4368,8 @@
    "matched": true,
    "CA": {
     "subscription": [
-     "Club Illico",
      "Crave",
      "Crave (Via Amazon Prime)",
-     "Disney+",
      "Lionsgate+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
@@ -4541,7 +4382,9 @@
    "US": {
     "subscription": [
      "DirecTV On Demand",
-     "Netflix"
+     "fuboTV",
+     "Hulu",
+     "Lionsgate+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -4552,12 +4395,12 @@
    },
    "GB": {
     "subscription": [
+     "Lionsgate+ (Via Amazon Prime)",
      "Sky Go"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -4579,7 +4422,6 @@
    "US": {
     "subscription": [
      "DirecTV On Demand",
-     "Hulu",
      "Philo",
      "STARZ",
      "STARZ (Via Amazon Prime)",
@@ -4592,12 +4434,14 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
    "GB": {
     "subscription": [
-     "Netflix"
+     "Netflix",
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -4625,6 +4469,9 @@
    "US": {
     "subscription": [
      "DirecTV On Demand",
+     "TBS",
+     "TNT",
+     "truTV",
      "YouTube TV"
     ],
     "rentOrBuy": [
@@ -4668,7 +4515,8 @@
      "DirecTV On Demand",
      "HBO (Via Hulu)",
      "HBO Max",
-     "MAX (Via Amazon Prime)"
+     "MAX (Via Amazon Prime)",
+     "Max Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -4707,6 +4555,9 @@
     "subscription": [
      "DirecTV On Demand",
      "fuboTV",
+     "TBS",
+     "TNT",
+     "truTV",
      "YouTube TV"
     ],
     "rentOrBuy": [
@@ -4719,8 +4570,7 @@
    },
    "GB": {
     "subscription": [
-     "Disney+",
-     "Prime Video"
+     "Disney+"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -4785,12 +4635,16 @@
      "HBO Max",
      "MAX (Via Amazon Prime)",
      "Max Roku Channel",
+     "TBS",
+     "TNT",
+     "truTV",
      "YouTube TV"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -4825,7 +4679,6 @@
      "Disney+",
      "fuboTV",
      "FX",
-     "Hulu",
      "YouTube TV"
     ],
     "rentOrBuy": [
@@ -4833,6 +4686,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -4863,7 +4717,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -4884,7 +4739,8 @@
    "GB": {
     "subscription": [
      "AppleTV+",
-     "AppleTV+ Amazon Channel"
+     "AppleTV+ Amazon Channel",
+     "Disney+"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -4977,7 +4833,6 @@
     "subscription": [
      "Crave",
      "Crave (Via Amazon Prime)",
-     "Disney+",
      "Prime Video"
     ],
     "rentOrBuy": [
@@ -4992,6 +4847,7 @@
      "Philo",
      "STARZ",
      "STARZ (Via Amazon Prime)",
+     "STARZ (Via Hulu)",
      "Starz Roku Premium Channel"
     ],
     "rentOrBuy": [
@@ -5003,7 +4859,6 @@
    },
    "GB": {
     "subscription": [
-     "Disney+",
      "Sky Go"
     ],
     "rentOrBuy": [
@@ -5035,21 +4890,18 @@
      "HBO Max",
      "MAX (Via Amazon Prime)",
      "Max Roku Channel",
-     "TBS",
-     "TNT",
-     "truTV",
      "YouTube TV"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
     "subscription": [
      "HBO Max",
-     "ITVX Premium",
      "MAX (Via Amazon Prime)",
      "Netflix"
     ],
@@ -5073,8 +4925,7 @@
    "US": {
     "subscription": [
      "fuboTV",
-     "Hoopla",
-     "The Roku Channel"
+     "Hoopla"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -5153,7 +5004,6 @@
    "US": {
     "subscription": [
      "MGM Plus Roku Premium Channel",
-     "MGM+",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)",
      "Paramount+ Roku Channel",
@@ -5190,12 +5040,14 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
     "subscription": [
      "Kanopy",
+     "Netflix",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)",
      "Paramount+ Roku Channel",
@@ -5205,6 +5057,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -5240,7 +5093,6 @@
     "subscription": [
      "DirecTV On Demand",
      "MGM Plus Roku Premium Channel",
-     "MGM+",
      "TBS",
      "TNT",
      "truTV"
@@ -5279,7 +5131,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -5288,9 +5141,6 @@
      "HBO Max",
      "MAX (Via Amazon Prime)",
      "Max Roku Channel",
-     "TBS",
-     "TNT",
-     "truTV",
      "YouTube TV"
     ],
     "rentOrBuy": [
@@ -5302,7 +5152,6 @@
    "GB": {
     "subscription": [
      "HBO Max",
-     "ITVX Premium",
      "MAX (Via Amazon Prime)",
      "Netflix",
      "Prime Video"
@@ -5310,6 +5159,48 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Rakuten TV",
+     "Sky Store"
+    ]
+   }
+  },
+  "http://www.wikidata.org/entity/Q132689": {
+   "matched": true,
+   "CA": {
+    "subscription": [
+     "Crave",
+     "Crave (Via Amazon Prime)"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Cineplex"
+    ]
+   },
+   "US": {
+    "subscription": [
+     "HBO (Via Hulu)",
+     "HBO Max",
+     "MAX (Via Amazon Prime)",
+     "Max Roku Channel"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Fandango at Home",
+     "Google Play",
+     "Spectrum On Demand"
+    ]
+   },
+   "GB": {
+    "subscription": [
+     "HBO Max",
+     "MAX (Via Amazon Prime)"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -5392,7 +5283,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -5407,6 +5299,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -5440,16 +5333,16 @@
     "subscription": [
      "DirecTV On Demand",
      "fuboTV",
+     "MGM Plus Roku Premium Channel",
      "MGM+",
      "MGM+ (Via Amazon Prime)",
-     "MGM+ Roku Channel",
-     "Philo",
-     "The Roku Channel"
+     "Philo"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -5546,12 +5439,12 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
     "subscription": [
-     "MGM+",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)",
      "Paramount+ Roku Channel",
@@ -5562,6 +5455,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -5582,6 +5476,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "Hoopla",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)"
     ],
@@ -5602,7 +5497,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -5614,6 +5510,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -5646,7 +5543,8 @@
    "GB": {
     "subscription": [
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "Paramount+ (Via Amazon Prime)",
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -5701,7 +5599,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -5710,15 +5609,13 @@
      "HBO Max",
      "MAX (Via Amazon Prime)",
      "Max Roku Channel",
-     "TBS",
-     "TNT",
-     "truTV",
      "YouTube TV"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -5814,7 +5711,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -5822,12 +5720,14 @@
      "DirecTV On Demand",
      "fuboTV",
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -5846,10 +5746,49 @@
     ]
    }
   },
+  "http://www.wikidata.org/entity/Q108839994": {
+   "matched": true,
+   "CA": {
+    "subscription": [
+     "Crave",
+     "Crave (Via Amazon Prime)"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Cineplex"
+    ]
+   },
+   "US": {
+    "subscription": [
+     "DirecTV On Demand",
+     "Peacock",
+     "Peacock Premium",
+     "YouTube TV"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Fandango at Home",
+     "Spectrum On Demand"
+    ]
+   },
+   "GB": {
+    "subscription": [],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Chili",
+     "Rakuten TV",
+     "Sky Store"
+    ]
+   }
+  },
   "http://www.wikidata.org/entity/Q190086": {
    "matched": true,
    "CA": {
     "subscription": [
+     "Hoopla",
      "MGM+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
@@ -5862,6 +5801,7 @@
     "subscription": [
      "DirecTV On Demand",
      "fuboTV",
+     "MGM Plus Roku Premium Channel",
      "MGM+",
      "MGM+ (Via Amazon Prime)",
      "Philo",
@@ -5872,6 +5812,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -5904,6 +5845,7 @@
    },
    "US": {
     "subscription": [
+     "HBO (Via Hulu)",
      "HBO Max",
      "MAX (Via Amazon Prime)",
      "YouTube TV"
@@ -5923,6 +5865,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
+     "Curzon Home Cinema",
      "Rakuten TV"
     ]
    }
@@ -5995,12 +5939,12 @@
     "subscription": [
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)",
-     "Prime Video",
      "Sky Go"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Curzon Home Cinema",
      "Rakuten TV",
      "Sky Store"
@@ -6064,8 +6008,7 @@
    "GB": {
     "subscription": [
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)",
-     "Prime Video"
+     "Paramount+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -6198,8 +6141,8 @@
    "US": {
     "subscription": [
      "Lionsgate+ (Via Amazon Prime)",
-     "Prime Video",
-     "The Roku Channel"
+     "Peacock",
+     "Peacock Premium"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -6240,6 +6183,7 @@
    },
    "GB": {
     "subscription": [
+     "Prime Video",
      "Sky Go"
     ],
     "rentOrBuy": [
@@ -6309,7 +6253,6 @@
     "subscription": [
      "DirecTV On Demand",
      "fuboTV",
-     "Hulu",
      "MGM Plus Roku Premium Channel",
      "MGM+",
      "MGM+ (Via Amazon Prime)",
@@ -6357,6 +6300,9 @@
      "HBO Max",
      "MAX (Via Amazon Prime)",
      "Max Roku Channel",
+     "TBS",
+     "TNT",
+     "truTV",
      "YouTube TV"
     ],
     "rentOrBuy": [
@@ -6392,21 +6338,27 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
     "subscription": [
+     "DirecTV On Demand",
      "HBO (Via Hulu)",
      "HBO Max",
      "MAX (Via Amazon Prime)",
      "Max Roku Channel",
+     "TBS",
+     "TNT",
+     "truTV",
      "YouTube TV"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -6433,7 +6385,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -6450,6 +6403,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -6498,6 +6452,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -6528,7 +6483,6 @@
    },
    "US": {
     "subscription": [
-     "fuboTV",
      "Hulu",
      "Hulu on Disney+",
      "Prime Video",
@@ -6574,7 +6528,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -6584,6 +6539,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -6610,7 +6566,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -6620,6 +6577,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -6653,7 +6611,8 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
@@ -6689,8 +6648,7 @@
    },
    "US": {
     "subscription": [
-     "AMC Plus Apple TV Channel",
-     "AMC+",
+     "AMC+ Roku Premium Channel",
      "YouTube TV"
     ],
     "rentOrBuy": [
@@ -6698,6 +6656,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -6729,7 +6688,6 @@
    },
    "US": {
     "subscription": [
-     "AppleTV+",
      "DirecTV On Demand",
      "fuboTV",
      "Paramount Plus",
@@ -6751,6 +6709,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -6761,6 +6720,54 @@
    "CA": {
     "subscription": [
      "Crave (Via Amazon Prime)"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Cineplex",
+     "Plex"
+    ]
+   },
+   "US": {
+    "subscription": [
+     "DirecTV On Demand",
+     "fuboTV",
+     "Paramount Plus",
+     "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Fandango at Home",
+     "Plex"
+    ]
+   },
+   "GB": {
+    "subscription": [
+     "HBO Max",
+     "MAX (Via Amazon Prime)",
+     "Prime Video"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Chili",
+     "Rakuten TV",
+     "Sky Store"
+    ]
+   }
+  },
+  "http://www.wikidata.org/entity/Q61448040": {
+   "matched": true,
+   "CA": {
+    "subscription": [
+     "CBC Gem Subscription",
+     "Crave",
+     "Crave (Via Amazon Prime)",
+     "Hollywood Suite",
+     "Paramount Plus",
+     "Paramount+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -6784,12 +6791,15 @@
    },
    "GB": {
     "subscription": [
-     "HBO Max",
-     "MAX (Via Amazon Prime)"
+     "BFI Player",
+     "ITVX Premium",
+     "MUBI"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
+     "Curzon Home Cinema",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -6802,7 +6812,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -6810,15 +6821,13 @@
      "DirecTV On Demand",
      "HBO (Via Hulu)",
      "HBO Max",
-     "MAX (Via Amazon Prime)",
-     "TBS",
-     "TNT",
-     "truTV"
+     "MAX (Via Amazon Prime)"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -6826,7 +6835,8 @@
     "subscription": [
      "HBO Max",
      "MAX (Via Amazon Prime)",
-     "Netflix"
+     "Netflix",
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -6847,9 +6857,9 @@
    },
    "US": {
     "subscription": [
-     "fuboTV",
-     "MGM+ (Via Amazon Prime)",
-     "Paramount Plus"
+     "Paramount Plus",
+     "Paramount+ Roku Channel",
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -6858,7 +6868,10 @@
     ]
    },
    "GB": {
-    "subscription": [],
+    "subscription": [
+     "Paramount Plus",
+     "Paramount+ (Via Amazon Prime)"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -6881,7 +6894,8 @@
      "DirecTV On Demand",
      "HBO (Via Hulu)",
      "HBO Max",
-     "MAX (Via Amazon Prime)"
+     "MAX (Via Amazon Prime)",
+     "Max Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -6913,7 +6927,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -6966,6 +6981,7 @@
    "GB": {
     "subscription": [
      "Netflix",
+     "Prime Video",
      "Sky Go"
     ],
     "rentOrBuy": [
@@ -7008,6 +7024,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -7024,7 +7041,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -7033,22 +7051,19 @@
      "HBO Max",
      "MAX (Via Amazon Prime)",
      "Max Roku Channel",
-     "TBS",
-     "TNT",
-     "truTV",
      "YouTube TV"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
    "GB": {
     "subscription": [
      "HBO Max",
-     "ITVX Premium",
      "MAX (Via Amazon Prime)",
      "Netflix",
      "Prime Video"
@@ -7092,7 +7107,8 @@
    },
    "GB": {
     "subscription": [
-     "Disney+"
+     "Disney+",
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -7124,6 +7140,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -7134,6 +7151,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -7200,7 +7218,6 @@
      "Disney+",
      "fuboTV",
      "FX",
-     "Hulu",
      "YouTube TV"
     ],
     "rentOrBuy": [
@@ -7208,6 +7225,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -7257,7 +7275,6 @@
     "subscription": [
      "Disney+",
      "Netflix",
-     "Prime Video",
      "Sky Go"
     ],
     "rentOrBuy": [
@@ -7274,7 +7291,6 @@
     "subscription": [
      "Crave",
      "Crave (Via Amazon Prime)",
-     "Disney+",
      "Hollywood Suite",
      "Lionsgate+ (Via Amazon Prime)",
      "Netflix"
@@ -7282,7 +7298,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -7304,6 +7321,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -7366,7 +7384,8 @@
    },
    "US": {
     "subscription": [
-     "Disney+"
+     "Disney+",
+     "Wonder Project Amazon Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -7403,14 +7422,15 @@
     "subscription": [
      "AppleTV+",
      "AppleTV+ Amazon Channel",
-     "MGM+",
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Google Play",
      "Spectrum On Demand"
     ]
    },
@@ -7442,7 +7462,9 @@
    },
    "US": {
     "subscription": [
-     "MGM+"
+     "DirecTV On Demand",
+     "MGM+",
+     "Watch TCM"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -7454,7 +7476,6 @@
    "GB": {
     "subscription": [],
     "rentOrBuy": [
-     "Amazon",
      "AppleTV",
      "Chili",
      "Rakuten TV",
@@ -7465,16 +7486,17 @@
   "http://www.wikidata.org/entity/Q202548": {
    "matched": true,
    "CA": {
-    "subscription": [],
+    "subscription": [
+     "Hollywood Suite"
+    ],
     "rentOrBuy": [
      "Amazon",
-     "AppleTV"
+     "AppleTV",
+     "Cineplex"
     ]
    },
    "US": {
     "subscription": [
-     "DirecTV On Demand",
-     "Watch TCM",
      "YouTube TV"
     ],
     "rentOrBuy": [
@@ -7500,7 +7522,6 @@
    "CA": {
     "subscription": [
      "CBC Gem Subscription",
-     "Netflix",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)"
     ],
@@ -7511,7 +7532,9 @@
     ]
    },
    "US": {
-    "subscription": [],
+    "subscription": [
+     "Prime Video"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -7520,9 +7543,7 @@
     ]
    },
    "GB": {
-    "subscription": [
-     "Netflix"
-    ],
+    "subscription": [],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -7542,8 +7563,7 @@
    },
    "US": {
     "subscription": [
-     "Hoopla",
-     "Netflix"
+     "Hoopla"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -7570,9 +7590,7 @@
     "rentOrBuy": []
    },
    "US": {
-    "subscription": [
-     "Philo"
-    ],
+    "subscription": [],
     "rentOrBuy": []
    },
    "GB": {
@@ -7631,7 +7649,8 @@
    },
    "US": {
     "subscription": [
-     "Disney+"
+     "Disney+",
+     "fuboTV"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -7654,7 +7673,9 @@
   "http://www.wikidata.org/entity/Q25136757": {
    "matched": true,
    "CA": {
-    "subscription": [],
+    "subscription": [
+     "CBC Gem Subscription"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -7669,7 +7690,8 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
@@ -7736,6 +7758,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -7811,6 +7834,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -7842,9 +7866,7 @@
     ]
    },
    "US": {
-    "subscription": [
-     "The Roku Channel"
-    ],
+    "subscription": [],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -7908,7 +7930,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -7923,7 +7946,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -7978,7 +8002,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -8015,8 +8040,7 @@
    },
    "US": {
     "subscription": [
-     "Prime Video",
-     "The Roku Channel"
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -8147,6 +8171,7 @@
    "CA": {
     "subscription": [
      "Hollywood Suite",
+     "Hoopla",
      "Lionsgate+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
@@ -8179,7 +8204,6 @@
    "CA": {
     "subscription": [
      "Club Illico",
-     "Hoopla",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)"
     ],
@@ -8196,12 +8220,14 @@
      "MGM+ (Via Amazon Prime)",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel",
      "Philo"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -8233,6 +8259,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -8293,7 +8320,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -8302,13 +8330,15 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
     "subscription": [
      "HBO Max",
-     "MAX (Via Amazon Prime)"
+     "MAX (Via Amazon Prime)",
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -8323,6 +8353,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "Crave (Via Amazon Prime)",
      "Disney+",
      "Hollywood Suite"
     ],
@@ -8371,8 +8402,7 @@
    },
    "US": {
     "subscription": [
-     "Prime Video",
-     "The Roku Channel"
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Fandango at Home",
@@ -8430,6 +8460,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "Hoopla",
      "MGM+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
@@ -8446,6 +8477,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -8495,14 +8527,14 @@
     "subscription": [
      "Crave",
      "Crave (Via Amazon Prime)",
-     "Disney+",
      "Hollywood Suite",
      "Netflix"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -8514,7 +8546,8 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
@@ -8525,6 +8558,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -8540,7 +8574,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -8551,13 +8586,15 @@
      "MGM+ (Via Amazon Prime)",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel",
      "Philo",
      "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -8588,7 +8625,9 @@
     ]
    },
    "US": {
-    "subscription": [],
+    "subscription": [
+     "fuboTV"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -8678,18 +8717,21 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
     "subscription": [
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -8778,7 +8820,8 @@
      "DirecTV On Demand",
      "fuboTV",
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -8939,7 +8982,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -9150,7 +9194,8 @@
     "subscription": [],
     "rentOrBuy": [
      "Amazon",
-     "AppleTV"
+     "AppleTV",
+     "Plex"
     ]
    },
    "US": {
@@ -9158,7 +9203,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -9293,13 +9339,55 @@
     ],
     "rentOrBuy": [
      "AppleTV",
-     "Fandango at Home",
-     "Google Play"
+     "Fandango at Home"
     ]
    },
    "GB": {
     "subscription": [],
     "rentOrBuy": []
+   }
+  },
+  "http://www.wikidata.org/entity/Q49498": {
+   "matched": true,
+   "CA": {
+    "subscription": [
+     "Hoopla",
+     "Netflix",
+     "StackTV (Via Amazon Prime)"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Cineplex"
+    ]
+   },
+   "US": {
+    "subscription": [
+     "Paramount Plus",
+     "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel",
+     "Philo"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Fandango at Home",
+     "Plex",
+     "Spectrum On Demand"
+    ]
+   },
+   "GB": {
+    "subscription": [
+     "Netflix",
+     "Sky Go"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Chili",
+     "Rakuten TV",
+     "Sky Store"
+    ]
    }
   },
   "http://www.wikidata.org/entity/Q122363694": {
@@ -9459,7 +9547,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -9475,6 +9564,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -9504,21 +9594,27 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
     "subscription": [
+     "DirecTV On Demand",
      "HBO (Via Hulu)",
      "HBO Max",
      "MAX (Via Amazon Prime)",
      "Max Roku Channel",
+     "TBS",
+     "TNT",
+     "truTV",
      "YouTube TV"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -9546,7 +9642,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -9562,6 +9659,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -9590,7 +9688,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -9607,6 +9706,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -9635,7 +9735,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -9652,6 +9753,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -9696,6 +9798,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -9794,7 +9897,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -9811,6 +9915,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -9839,7 +9944,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -9856,6 +9962,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -9888,8 +9995,7 @@
    },
    "US": {
     "subscription": [
-     "Disney+",
-     "fuboTV"
+     "Disney+"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -9987,7 +10093,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -10005,7 +10112,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -10035,7 +10143,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -10048,7 +10157,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -10072,7 +10182,8 @@
     ],
     "rentOrBuy": [
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -10085,7 +10196,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -10140,7 +10252,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -10153,7 +10266,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -10229,6 +10343,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -10257,7 +10372,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -10273,6 +10389,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -10331,7 +10448,8 @@
    "CA": {
     "subscription": [
      "Crave",
-     "Crave (Via Amazon Prime)"
+     "Crave (Via Amazon Prime)",
+     "Paramount Plus"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -10344,18 +10462,20 @@
      "fuboTV",
      "Netflix",
      "Philo",
-     "STARZ",
      "Starz Roku Premium Channel"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
    "GB": {
-    "subscription": [],
+    "subscription": [
+     "Prime Video"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -10376,9 +10496,7 @@
     ]
    },
    "US": {
-    "subscription": [
-     "Paramount Plus"
-    ],
+    "subscription": [],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -10400,9 +10518,11 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "Crave (Via Amazon Prime)",
      "Hollywood Suite",
      "Hoopla",
-     "Netflix"
+     "Netflix",
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -10416,13 +10536,14 @@
      "fuboTV",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)",
-     "STARZ"
+     "Paramount+ Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -10478,7 +10599,9 @@
   "http://www.wikidata.org/entity/Q109135": {
    "matched": true,
    "CA": {
-    "subscription": [],
+    "subscription": [
+     "Crave"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -10491,7 +10614,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -10598,15 +10722,13 @@
      "HBO (Via Hulu)",
      "HBO Max",
      "MAX (Via Amazon Prime)",
-     "Max Roku Channel",
-     "TBS",
-     "TNT",
-     "truTV"
+     "Max Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -10635,6 +10757,7 @@
    },
    "US": {
     "subscription": [
+     "Watch TCM",
      "YouTube TV"
     ],
     "rentOrBuy": [
@@ -10659,7 +10782,8 @@
    "matched": true,
    "CA": {
     "subscription": [
-     "Hollywood Suite"
+     "Hollywood Suite",
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -10668,7 +10792,9 @@
     ]
    },
    "US": {
-    "subscription": [],
+    "subscription": [
+     "Prime Video"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -10694,6 +10820,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "Crave (Via Amazon Prime)",
      "Hollywood Suite",
      "Prime Video"
     ],
@@ -10721,6 +10848,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -10741,7 +10869,6 @@
      "HBO (Via Hulu)",
      "HBO Max",
      "MAX (Via Amazon Prime)",
-     "Max Roku Channel",
      "The Criterion Channel"
     ],
     "rentOrBuy": [
@@ -10766,7 +10893,6 @@
     "subscription": [
      "Crave",
      "Crave (Via Amazon Prime)",
-     "Hoopla",
      "MGM+ (Via Amazon Prime)",
      "Netflix"
     ],
@@ -10780,8 +10906,7 @@
     "subscription": [
      "DirecTV On Demand",
      "fuboTV",
-     "Hoopla",
-     "Hulu",
+     "MGM Plus Roku Premium Channel",
      "MGM+",
      "MGM+ (Via Amazon Prime)",
      "Philo"
@@ -10789,7 +10914,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -10844,7 +10970,8 @@
     "subscription": [
      "Crave",
      "Crave (Via Amazon Prime)",
-     "Hollywood Suite"
+     "Hollywood Suite",
+     "Paramount Plus"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -10856,18 +10983,20 @@
     "subscription": [
      "fuboTV",
      "Netflix",
-     "STARZ",
      "Starz Roku Premium Channel"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
-    "subscription": [],
+    "subscription": [
+     "Prime Video"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -10880,6 +11009,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "Hoopla",
      "Lionsgate+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
@@ -10890,14 +11020,14 @@
    },
    "US": {
     "subscription": [
-     "Lionsgate+ (Via Amazon Prime)",
-     "The Roku Channel"
+     "Lionsgate+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -10958,7 +11088,6 @@
      "DirecTV On Demand",
      "fuboTV",
      "MGM Plus Roku Premium Channel",
-     "MGM+",
      "Paramount Plus",
      "Paramount+ Roku Channel"
     ],
@@ -11027,7 +11156,8 @@
      "AppleTV+ Amazon Channel",
      "Crave",
      "Crave (Via Amazon Prime)",
-     "Netflix"
+     "Netflix",
+     "The Criterion Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -11037,8 +11167,6 @@
    },
    "US": {
     "subscription": [
-     "AppleTV+",
-     "DirecTV On Demand",
      "fuboTV",
      "MGM+",
      "MGM+ (Via Amazon Prime)",
@@ -11050,7 +11178,6 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play",
      "Plex",
      "Spectrum On Demand"
     ]
@@ -11088,7 +11215,8 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
@@ -11192,7 +11320,8 @@
      "DirecTV On Demand",
      "fuboTV",
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -11232,7 +11361,8 @@
      "DirecTV On Demand",
      "fuboTV",
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -11377,7 +11507,6 @@
    "US": {
     "subscription": [
      "DirecTV On Demand",
-     "FX",
      "YouTube TV"
     ],
     "rentOrBuy": [
@@ -11389,6 +11518,8 @@
    },
    "GB": {
     "subscription": [
+     "HBO Max",
+     "MAX (Via Amazon Prime)",
      "Sky Go"
     ],
     "rentOrBuy": [
@@ -11441,6 +11572,7 @@
     "subscription": [
      "Crave",
      "Crave (Via Amazon Prime)",
+     "Hoopla",
      "Prime Video"
     ],
     "rentOrBuy": [
@@ -11511,7 +11643,6 @@
    "US": {
     "subscription": [
      "DirecTV On Demand",
-     "fuboTV",
      "Lionsgate+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
@@ -11578,13 +11709,13 @@
    "US": {
     "subscription": [
      "MGM+",
-     "Prime Video",
-     "The Roku Channel"
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -11726,7 +11857,9 @@
   "http://www.wikidata.org/entity/Q223884": {
    "matched": true,
    "CA": {
-    "subscription": [],
+    "subscription": [
+     "Hoopla"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -11734,14 +11867,13 @@
     ]
    },
    "US": {
-    "subscription": [
-     "The Roku Channel"
-    ],
+    "subscription": [],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -11775,6 +11907,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -11873,13 +12006,13 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
     "subscription": [],
     "rentOrBuy": [
-     "Amazon",
      "AppleTV",
      "Rakuten TV",
      "Sky Store"
@@ -11893,7 +12026,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -11905,6 +12039,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -11949,7 +12084,6 @@
      "MUBI"
     ],
     "rentOrBuy": [
-     "Amazon",
      "AppleTV",
      "BFI Player",
      "Rakuten TV",
@@ -11972,8 +12106,7 @@
    "US": {
     "subscription": [
      "DirecTV On Demand",
-     "fuboTV",
-     "Philo"
+     "fuboTV"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -12110,7 +12243,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -12118,7 +12252,8 @@
      "DirecTV On Demand",
      "fuboTV",
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -12196,7 +12331,6 @@
    },
    "US": {
     "subscription": [
-     "fuboTV",
      "Lionsgate+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
@@ -12231,10 +12365,6 @@
    },
    "US": {
     "subscription": [
-     "AMC Plus Apple TV Channel",
-     "AMC+",
-     "BBC America",
-     "MGM+",
      "Prime Video",
      "YouTube TV"
     ],
@@ -12243,6 +12373,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -12268,7 +12399,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Google Play"
     ]
    },
    "GB": {
@@ -12287,7 +12419,6 @@
    "matched": true,
    "CA": {
     "subscription": [
-     "Hoopla",
      "MGM+ (Via Amazon Prime)",
      "Netflix"
     ],
@@ -12301,7 +12432,6 @@
     "subscription": [
      "DirecTV On Demand",
      "fuboTV",
-     "Hoopla",
      "MGM Plus Roku Premium Channel",
      "MGM+",
      "MGM+ (Via Amazon Prime)",
@@ -12312,6 +12442,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -12336,7 +12467,8 @@
     ],
     "rentOrBuy": [
      "Amazon",
-     "AppleTV"
+     "AppleTV",
+     "Plex"
     ]
    },
    "US": {
@@ -12346,6 +12478,7 @@
      "HBO (Via Hulu)",
      "HBO Max",
      "MAX (Via Amazon Prime)",
+     "Max Roku Channel",
      "MGM+",
      "MGM+ (Via Amazon Prime)",
      "Philo"
@@ -12354,6 +12487,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -12385,7 +12519,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -12393,7 +12528,8 @@
      "DirecTV On Demand",
      "fuboTV",
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -12464,7 +12600,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -12474,12 +12611,14 @@
      "HBO (Via Hulu)",
      "HBO Max",
      "MAX (Via Amazon Prime)",
+     "Max Roku Channel",
      "MGM+"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -12519,7 +12658,6 @@
    "GB": {
     "subscription": [],
     "rentOrBuy": [
-     "Amazon",
      "AppleTV",
      "Rakuten TV",
      "Sky Store"
@@ -12529,7 +12667,9 @@
   "http://www.wikidata.org/entity/Q272599": {
    "matched": true,
    "CA": {
-    "subscription": [],
+    "subscription": [
+     "Hoopla"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -12538,8 +12678,7 @@
    },
    "US": {
     "subscription": [
-     "fuboTV",
-     "The Roku Channel"
+     "fuboTV"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -12570,14 +12709,13 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
     "subscription": [
-     "AMC Plus Apple TV Channel",
-     "AMC+",
-     "AMC+ Roku Channel",
+     "AMC+ Roku Premium Channel",
      "DirecTV On Demand",
      "YouTube TV"
     ],
@@ -12641,14 +12779,18 @@
   "http://www.wikidata.org/entity/Q471716": {
    "matched": true,
    "CA": {
-    "subscription": [],
+    "subscription": [
+     "The Criterion Channel"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV"
     ]
    },
    "US": {
-    "subscription": [],
+    "subscription": [
+     "The Criterion Channel"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -12845,13 +12987,13 @@
      "MGM Plus Roku Premium Channel",
      "MGM+",
      "MGM+ (Via Amazon Prime)",
-     "Philo",
-     "The Roku Channel"
+     "Philo"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -12878,9 +13020,7 @@
    },
    "US": {
     "subscription": [
-     "fuboTV",
-     "MGM+",
-     "Philo"
+     "MGM+"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -12920,8 +13060,7 @@
      "MGM Plus Roku Premium Channel",
      "MGM+",
      "MGM+ (Via Amazon Prime)",
-     "Philo",
-     "The Roku Channel"
+     "Philo"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -12961,14 +13100,14 @@
      "MGM+",
      "MGM+ (Via Amazon Prime)",
      "Philo",
-     "The Roku Channel",
      "YouTube TV"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
@@ -13017,6 +13156,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "CBC Gem Subscription",
      "fuboTV"
     ],
     "rentOrBuy": [
@@ -13055,6 +13195,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -13079,7 +13220,8 @@
      "DirecTV On Demand",
      "fuboTV",
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -13128,7 +13270,8 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
@@ -13219,9 +13362,7 @@
     ]
    },
    "US": {
-    "subscription": [
-     "Philo"
-    ],
+    "subscription": [],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -13249,7 +13390,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -13260,7 +13402,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -13338,6 +13481,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "Hoopla",
      "The Criterion Channel"
     ],
     "rentOrBuy": []
@@ -13346,17 +13490,14 @@
     "subscription": [
      "Cineverse Subscription",
      "DirecTV On Demand",
-     "Fandor",
      "Fandor (Via Amazon Prime)",
      "fuboTV",
      "HBO (Via Hulu)",
      "HBO Max",
-     "Hoopla",
      "MAX (Via Amazon Prime)",
      "Philo",
      "Prime Video",
-     "The Criterion Channel",
-     "The Roku Channel"
+     "The Criterion Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -13393,6 +13534,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -13421,19 +13563,22 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
     "subscription": [
      "Netflix",
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -13499,7 +13644,8 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
@@ -13543,7 +13689,9 @@
   "http://www.wikidata.org/entity/Q756416": {
    "matched": true,
    "CA": {
-    "subscription": [],
+    "subscription": [
+     "fuboTV"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -13592,7 +13740,6 @@
      "AMC+ Amazon Channel",
      "DirecTV On Demand",
      "MGM Plus Roku Premium Channel",
-     "MGM+",
      "Peacock",
      "Peacock Premium",
      "Philo"
@@ -13639,7 +13786,8 @@
      "DirecTV On Demand",
      "fuboTV",
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -13721,7 +13869,9 @@
   "http://www.wikidata.org/entity/Q1045165": {
    "matched": true,
    "CA": {
-    "subscription": [],
+    "subscription": [
+     "Hoopla"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -13730,8 +13880,8 @@
    },
    "US": {
     "subscription": [
-     "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "fuboTV",
+     "Paramount Plus"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -13775,6 +13925,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "fuboTV",
      "The Criterion Channel"
     ],
     "rentOrBuy": [
@@ -13848,10 +13999,9 @@
    },
    "US": {
     "subscription": [
+     "DirecTV On Demand",
      "fuboTV",
-     "FX",
-     "Peacock",
-     "Peacock Premium"
+     "FX"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -13944,8 +14094,7 @@
    },
    "US": {
     "subscription": [
-     "MGM+",
-     "Philo"
+     "MGM+"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -13976,7 +14125,9 @@
     ]
    },
    "US": {
-    "subscription": [],
+    "subscription": [
+     "DirecTV On Demand"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -14063,7 +14214,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -14134,7 +14286,6 @@
    },
    "US": {
     "subscription": [
-     "BBC America",
      "DirecTV On Demand",
      "fuboTV",
      "MGM Plus Roku Premium Channel",
@@ -14260,12 +14411,10 @@
    },
    "US": {
     "subscription": [
-     "DirecTV On Demand",
      "HBO (Via Hulu)",
      "HBO Max",
      "MAX (Via Amazon Prime)",
-     "Max Roku Channel",
-     "Philo"
+     "Max Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -14277,8 +14426,7 @@
    "GB": {
     "subscription": [
      "HBO Max",
-     "MAX (Via Amazon Prime)",
-     "Prime Video"
+     "MAX (Via Amazon Prime)"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -14312,7 +14460,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -14365,8 +14514,7 @@
    "matched": true,
    "CA": {
     "subscription": [
-     "CBC Gem Subscription",
-     "Netflix"
+     "CBC Gem Subscription"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -14379,6 +14527,7 @@
     "subscription": [
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel",
      "Peacock",
      "Peacock Premium"
     ],
@@ -14398,6 +14547,7 @@
      "Amazon",
      "AppleTV",
      "BFI Player",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -14429,7 +14579,6 @@
    "GB": {
     "subscription": [],
     "rentOrBuy": [
-     "Amazon",
      "AppleTV",
      "BFI Player",
      "Rakuten TV",
@@ -14442,7 +14591,7 @@
    "CA": {
     "subscription": [
      "Crave",
-     "Hollywood Suite"
+     "The Criterion Channel"
     ],
     "rentOrBuy": [
      "AppleTV",
@@ -14452,7 +14601,9 @@
    "US": {
     "subscription": [
      "HBO (Via Hulu)",
-     "HBO Max"
+     "HBO Max",
+     "Max Roku Channel",
+     "The Criterion Channel"
     ],
     "rentOrBuy": [
      "AppleTV",
@@ -14490,8 +14641,7 @@
    },
    "US": {
     "subscription": [
-     "MGM Plus Roku Premium Channel",
-     "MGM+"
+     "MGM Plus Roku Premium Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -14563,7 +14713,6 @@
    "US": {
     "subscription": [
      "Netflix",
-     "STARZ",
      "Starz Roku Premium Channel"
     ],
     "rentOrBuy": [
@@ -14580,6 +14729,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -14617,6 +14767,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -14627,7 +14778,8 @@
    "CA": {
     "subscription": [
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "Paramount+ (Via Amazon Prime)",
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -14670,7 +14822,8 @@
    "matched": true,
    "CA": {
     "subscription": [
-     "fuboTV"
+     "fuboTV",
+     "Hoopla"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -14680,11 +14833,7 @@
    },
    "US": {
     "subscription": [
-     "DirecTV On Demand",
-     "fuboTV",
-     "MGM Plus Roku Premium Channel",
-     "MGM+",
-     "MGM+ (Via Amazon Prime)"
+     "MGM Plus Roku Premium Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -14787,7 +14936,9 @@
    },
    "US": {
     "subscription": [
+     "Cinemax (Via Amazon Prime)",
      "DirecTV On Demand",
+     "fuboTV",
      "HBO (Via Hulu)",
      "HBO Max",
      "MAX (Via Amazon Prime)",
@@ -14812,6 +14963,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -14833,6 +14985,8 @@
    },
    "US": {
     "subscription": [
+     "Netflix",
+     "Prime Video",
      "YouTube TV"
     ],
     "rentOrBuy": [
@@ -14863,11 +15017,13 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
     "subscription": [
+     "fuboTV",
      "HBO (Via Hulu)",
      "HBO Max",
      "MAX (Via Amazon Prime)",
@@ -14880,6 +15036,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -14968,11 +15125,13 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
     "subscription": [
+     "Cinemax (Via Amazon Prime)",
      "DirecTV On Demand",
      "HBO (Via Hulu)",
      "HBO Max",
@@ -14982,6 +15141,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -15023,6 +15183,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -15109,7 +15270,8 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
@@ -15159,6 +15321,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -15179,8 +15342,7 @@
    "US": {
     "subscription": [
      "MGM Plus Roku Premium Channel",
-     "MGM+",
-     "MGM+ (Via Amazon Prime)"
+     "Wonder Project Amazon Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -15218,7 +15380,6 @@
    },
    "US": {
     "subscription": [
-     "Netflix",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)"
     ],
@@ -15226,7 +15387,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -15338,9 +15499,7 @@
     ]
    },
    "GB": {
-    "subscription": [
-     "Prime Video"
-    ],
+    "subscription": [],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -15372,7 +15531,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -15392,15 +15552,19 @@
   "http://www.wikidata.org/entity/Q56850065": {
    "matched": true,
    "CA": {
-    "subscription": [],
+    "subscription": [
+     "Club Illico"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
     "subscription": [
+     "Cinemax (Via Amazon Prime)",
      "HBO (Via Hulu)",
      "HBO Max",
      "MAX (Via Amazon Prime)",
@@ -15410,6 +15574,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -15608,17 +15773,17 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
     "subscription": [
      "Cinemax (Via Amazon Prime)",
-     "DirecTV On Demand",
      "HBO (Via Hulu)",
      "HBO Max",
      "MAX (Via Amazon Prime)",
-     "Netflix"
+     "Max Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -15655,6 +15820,7 @@
    },
    "US": {
     "subscription": [
+     "DirecTV On Demand",
      "Freeform",
      "fuboTV",
      "Hulu",
@@ -15728,7 +15894,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -15737,6 +15904,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -15783,7 +15951,6 @@
    },
    "GB": {
     "subscription": [
-     "ITVX Premium",
      "Netflix",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)",
@@ -15826,7 +15993,7 @@
    "matched": true,
    "CA": {
     "subscription": [
-     "Prime Video"
+     "Hoopla"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -15867,8 +16034,7 @@
    },
    "US": {
     "subscription": [
-     "Disney+",
-     "Hulu"
+     "Disney+"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -15879,8 +16045,7 @@
    },
    "GB": {
     "subscription": [
-     "Lionsgate+ (Via Amazon Prime)",
-     "Now TV"
+     "Lionsgate+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -15913,6 +16078,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -15977,9 +16143,7 @@
     ]
    },
    "US": {
-    "subscription": [
-     "The Roku Channel"
-    ],
+    "subscription": [],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -16017,8 +16181,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home",
-     "Google Play"
+     "Fandango at Home"
     ]
    },
    "GB": {
@@ -16083,7 +16246,6 @@
      "Cinemax (Via Amazon Prime)",
      "DirecTV On Demand",
      "HBO (Via Hulu)",
-     "HBO Max",
      "MAX (Via Amazon Prime)"
     ],
     "rentOrBuy": [
@@ -16096,8 +16258,7 @@
    },
    "GB": {
     "subscription": [
-     "Netflix",
-     "Prime Video"
+     "Netflix"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -16186,21 +16347,20 @@
      "Crave (Via Amazon Prime)"
     ],
     "rentOrBuy": [
+     "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
-    "subscription": [
-     "DirecTV On Demand",
-     "Philo",
-     "The Roku Channel"
-    ],
+    "subscription": [],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
@@ -16228,7 +16388,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -16243,6 +16404,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -16250,7 +16412,6 @@
     "subscription": [
      "Disney+",
      "Netflix",
-     "Prime Video",
      "Sky Go"
     ],
     "rentOrBuy": [
@@ -16278,7 +16439,6 @@
     "subscription": [
      "DirecTV On Demand",
      "Disney+",
-     "FX",
      "YouTube TV"
     ],
     "rentOrBuy": [
@@ -16316,19 +16476,14 @@
    },
    "US": {
     "subscription": [
-     "DirecTV On Demand",
      "fuboTV",
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)",
-     "Paramount+ Roku Channel",
-     "Philo",
-     "The Roku Channel"
+     "Paramount+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play",
      "Plex"
     ]
    },
@@ -16361,7 +16516,6 @@
    },
    "US": {
     "subscription": [
-     "Paramount Plus",
      "Paramount+ (Via Amazon Prime)",
      "Paramount+ Roku Channel"
     ],
@@ -16374,6 +16528,7 @@
    },
    "GB": {
     "subscription": [
+     "Prime Video",
      "Sky Go"
     ],
     "rentOrBuy": [
@@ -16436,13 +16591,15 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
     "subscription": [
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel",
      "Prime Video"
     ],
     "rentOrBuy": [
@@ -16450,6 +16607,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -16507,7 +16665,6 @@
     "subscription": [
      "Crave",
      "Crave (Via Amazon Prime)",
-     "Disney+",
      "Hollywood Suite",
      "Lionsgate+ (Via Amazon Prime)",
      "Netflix"
@@ -16515,7 +16672,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -16526,7 +16684,8 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
@@ -16537,6 +16696,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -16590,7 +16750,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -16621,7 +16782,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -16631,14 +16793,14 @@
      "HBO (Via Hulu)",
      "HBO Max",
      "MAX (Via Amazon Prime)",
-     "Max Roku Channel",
-     "Philo"
+     "Max Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -16647,6 +16809,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -16695,18 +16858,21 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
     "subscription": [
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -16741,11 +16907,8 @@
    "US": {
     "subscription": [
      "Cinemax (Via Amazon Prime)",
-     "DirecTV On Demand",
-     "HBO (Via Hulu)",
      "HBO Max",
      "MAX (Via Amazon Prime)",
-     "Max Roku Channel",
      "Prime Video"
     ],
     "rentOrBuy": [
@@ -16774,7 +16937,6 @@
     "subscription": [
      "Crave",
      "Crave (Via Amazon Prime)",
-     "Disney+",
      "Hollywood Suite",
      "Lionsgate+ (Via Amazon Prime)",
      "Netflix"
@@ -16782,7 +16944,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -16793,6 +16956,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -16805,6 +16969,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -16879,6 +17044,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -16924,7 +17090,6 @@
     "subscription": [
      "Crave",
      "Crave (Via Amazon Prime)",
-     "Disney+",
      "Lionsgate+ (Via Amazon Prime)",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)"
@@ -16932,7 +17097,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -16942,16 +17108,15 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
     "subscription": [
-     "Disney+",
      "ITVX Premium"
     ],
     "rentOrBuy": [
-     "Amazon",
      "AppleTV",
      "BFI Player",
      "Chili",
@@ -17030,7 +17195,6 @@
     "subscription": [
      "DirecTV On Demand",
      "fuboTV",
-     "Hoopla",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)",
      "Paramount+ Roku Channel"
@@ -17040,6 +17204,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -17059,7 +17224,9 @@
     "subscription": [
      "Crave (Via Amazon Prime)",
      "Hollywood Suite",
-     "Netflix"
+     "Hoopla",
+     "Netflix",
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -17069,6 +17236,7 @@
    },
    "US": {
     "subscription": [
+     "Hoopla",
      "Prime Video"
     ],
     "rentOrBuy": [
@@ -17102,7 +17270,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -17127,10 +17296,13 @@
     ]
    },
    "GB": {
-    "subscription": [],
+    "subscription": [
+     "Sky Go"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -17149,13 +17321,13 @@
    "US": {
     "subscription": [
      "DirecTV On Demand",
-     "Max Roku Channel",
      "Philo"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -17254,10 +17426,7 @@
    },
    "US": {
     "subscription": [
-     "DirecTV On Demand",
-     "fuboTV",
-     "Paramount+ (Via Amazon Prime)",
-     "Paramount+ Roku Channel"
+     "Paramount+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -17269,7 +17438,8 @@
    "GB": {
     "subscription": [
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "Paramount+ (Via Amazon Prime)",
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -17283,6 +17453,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "Hoopla",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)"
     ],
@@ -17295,15 +17466,13 @@
    "US": {
     "subscription": [
      "DirecTV On Demand",
-     "Freeform",
-     "fuboTV",
-     "The Roku Channel",
      "YouTube TV"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -17333,7 +17502,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -17349,6 +17519,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -17381,7 +17552,6 @@
    },
    "US": {
     "subscription": [
-     "AppleTV+",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)",
      "YouTube TV"
@@ -17391,6 +17561,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -17415,8 +17586,8 @@
      "AMC+",
      "AMC+ Amazon Channel",
      "Netflix",
-     "Shudder",
-     "Shudder (Via Amazon Prime)"
+     "Shudder (Via Amazon Prime)",
+     "The Criterion Channel"
     ],
     "rentOrBuy": [
      "AppleTV"
@@ -17433,7 +17604,8 @@
      "Philo",
      "Prime Video",
      "Shudder",
-     "Shudder (Via Amazon Prime)"
+     "Shudder (Via Amazon Prime)",
+     "The Criterion Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -17444,7 +17616,6 @@
    },
    "GB": {
     "subscription": [
-     "Shudder",
      "Shudder (Via Amazon Prime)"
     ],
     "rentOrBuy": [
@@ -17479,6 +17650,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -17512,6 +17684,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -17525,12 +17698,45 @@
     ]
    }
   },
-  "http://www.wikidata.org/entity/Q747570": {
+  "http://www.wikidata.org/entity/Q27044293": {
    "matched": true,
    "CA": {
     "subscription": [
-     "Hollywood Suite"
+     "Disney+"
     ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Cineplex"
+    ]
+   },
+   "US": {
+    "subscription": [
+     "Disney+"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Fandango at Home",
+     "Google Play"
+    ]
+   },
+   "GB": {
+    "subscription": [
+     "Disney+"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Rakuten TV",
+     "Sky Store"
+    ]
+   }
+  },
+  "http://www.wikidata.org/entity/Q747570": {
+   "matched": true,
+   "CA": {
+    "subscription": [],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -17578,7 +17784,8 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
@@ -17598,8 +17805,7 @@
    "matched": true,
    "CA": {
     "subscription": [
-     "Club Illico",
-     "Hollywood Suite"
+     "Club Illico"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -17609,7 +17815,6 @@
    },
    "US": {
     "subscription": [
-     "AppleTV+",
      "DirecTV On Demand",
      "Philo",
      "STARZ",
@@ -17704,8 +17909,7 @@
    "GB": {
     "subscription": [
      "HBO Max",
-     "MAX (Via Amazon Prime)",
-     "Sky Go"
+     "MAX (Via Amazon Prime)"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -17728,7 +17932,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -17740,6 +17945,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -17761,6 +17967,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "Club Illico",
      "Crave",
      "Crave (Via Amazon Prime)"
     ],
@@ -17788,6 +17995,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -17985,7 +18193,8 @@
     "subscription": [
      "HBO (Via Hulu)",
      "HBO Max",
-     "MAX (Via Amazon Prime)"
+     "MAX (Via Amazon Prime)",
+     "Max Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -18121,8 +18330,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home",
-     "Google Play"
+     "Fandango at Home"
     ]
    },
    "GB": {
@@ -18130,7 +18338,6 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Chili",
      "Sky Store"
     ]
    }
@@ -18152,7 +18359,6 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play",
      "Spectrum On Demand"
     ]
    },
@@ -18160,8 +18366,7 @@
     "subscription": [],
     "rentOrBuy": [
      "Amazon",
-     "AppleTV",
-     "Chili"
+     "AppleTV"
     ]
    }
   },
@@ -18182,8 +18387,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home",
-     "Google Play"
+     "Fandango at Home"
     ]
    },
    "GB": {
@@ -18231,6 +18435,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "Prime Video",
      "The Criterion Channel"
     ],
     "rentOrBuy": [
@@ -18243,8 +18448,8 @@
      "HBO Max",
      "MAX (Via Amazon Prime)",
      "Max Roku Channel",
-     "The Criterion Channel",
-     "The Roku Channel"
+     "Prime Video",
+     "The Criterion Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -18253,7 +18458,9 @@
     ]
    },
    "GB": {
-    "subscription": [],
+    "subscription": [
+     "Prime Video"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV"
@@ -18264,6 +18471,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "Hoopla",
      "MGM+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
@@ -18278,8 +18486,7 @@
      "MGM+",
      "MGM+ (Via Amazon Prime)",
      "Philo",
-     "The Criterion Channel",
-     "The Roku Channel"
+     "The Criterion Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -18304,9 +18511,7 @@
    "matched": true,
    "CA": {
     "subscription": [],
-    "rentOrBuy": [
-     "Cineplex"
-    ]
+    "rentOrBuy": []
    },
    "US": {
     "subscription": [],
@@ -18315,7 +18520,9 @@
     ]
    },
    "GB": {
-    "subscription": [],
+    "subscription": [
+     "Sky Go"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -18327,6 +18534,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "Hoopla",
      "MGM+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
@@ -18336,9 +18544,7 @@
     ]
    },
    "US": {
-    "subscription": [
-     "The Roku Channel"
-    ],
+    "subscription": [],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -18362,7 +18568,9 @@
   "http://www.wikidata.org/entity/Q152493": {
    "matched": true,
    "CA": {
-    "subscription": [],
+    "subscription": [
+     "Hoopla"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -18371,9 +18579,7 @@
    },
    "US": {
     "subscription": [
-     "DirecTV On Demand",
      "MGM Plus Roku Premium Channel",
-     "MGM+",
      "Prime Video"
     ],
     "rentOrBuy": [
@@ -18413,7 +18619,8 @@
      "DirecTV On Demand",
      "fuboTV",
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -18448,6 +18655,7 @@
    "US": {
     "subscription": [
      "DirecTV On Demand",
+     "Fandor",
      "Fandor (Via Amazon Prime)",
      "fuboTV",
      "Philo",
@@ -18520,7 +18728,8 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
@@ -18577,6 +18786,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -18670,11 +18880,7 @@
     ]
    },
    "US": {
-    "subscription": [
-     "DirecTV On Demand",
-     "MGM+",
-     "MGM+ (Via Amazon Prime)"
-    ],
+    "subscription": [],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -18703,7 +18909,6 @@
    },
    "US": {
     "subscription": [
-     "The Roku Channel",
      "YouTube TV"
     ],
     "rentOrBuy": [
@@ -18766,6 +18971,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "CBC Gem Subscription",
      "Crave (Via Amazon Prime)"
     ],
     "rentOrBuy": [
@@ -18784,6 +18990,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -18792,6 +18999,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -18801,6 +19009,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "Hoopla",
      "MGM+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
@@ -18845,6 +19054,10 @@
    },
    "US": {
     "subscription": [
+     "AMC Plus Apple TV Channel",
+     "AMC+",
+     "AMC+ Amazon Channel",
+     "DirecTV On Demand",
      "Peacock",
      "Peacock Premium"
     ],
@@ -18919,7 +19132,6 @@
    },
    "US": {
     "subscription": [
-     "Kanopy",
      "The Criterion Channel"
     ],
     "rentOrBuy": [
@@ -19010,8 +19222,7 @@
    },
    "US": {
     "subscription": [
-     "DirecTV On Demand",
-     "FX"
+     "DirecTV On Demand"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -19120,6 +19331,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -19148,8 +19360,6 @@
    "US": {
     "subscription": [
      "DirecTV On Demand",
-     "Peacock",
-     "Peacock Premium",
      "Philo",
      "STARZ",
      "STARZ (Via Amazon Prime)",
@@ -19198,6 +19408,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -19309,7 +19520,8 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
@@ -19360,9 +19572,7 @@
   "http://www.wikidata.org/entity/Q918380": {
    "matched": true,
    "CA": {
-    "subscription": [
-     "Netflix"
-    ],
+    "subscription": [],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -19372,13 +19582,15 @@
    "US": {
     "subscription": [
      "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
+     "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -19415,7 +19627,8 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
@@ -19593,10 +19806,10 @@
     "subscription": [
      "DirecTV On Demand",
      "fuboTV",
+     "MGM Plus Roku Premium Channel",
      "MGM+",
      "MGM+ (Via Amazon Prime)",
-     "MGM+ Roku Channel",
-     "Netflix"
+     "Philo"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -19672,9 +19885,7 @@
     ]
    },
    "GB": {
-    "subscription": [
-     "Netflix"
-    ],
+    "subscription": [],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -19756,7 +19967,9 @@
     ]
    },
    "GB": {
-    "subscription": [],
+    "subscription": [
+     "Prime Video"
+    ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -19783,15 +19996,14 @@
     "subscription": [
      "AppleTV+",
      "AppleTV+ Amazon Channel",
-     "Hoopla",
-     "MGM Plus Roku Premium Channel",
-     "MGM+"
+     "MGM Plus Roku Premium Channel"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -19820,14 +20032,14 @@
    "US": {
     "subscription": [
      "MGM+",
-     "Prime Video",
-     "The Roku Channel"
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -19852,25 +20064,28 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
     "subscription": [
      "DirecTV On Demand",
-     "fuboTV",
      "Hoopla",
      "MGM+",
      "MGM+ (Via Amazon Prime)",
+     "Netflix",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)",
+     "Paramount+ Roku Channel",
      "Philo",
      "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Fandango at Home"
+     "Fandango at Home",
+     "Plex"
     ]
    },
    "GB": {
@@ -19947,10 +20162,7 @@
   "http://www.wikidata.org/entity/Q646633": {
    "matched": true,
    "CA": {
-    "subscription": [
-     "Crave",
-     "Crave (Via Amazon Prime)"
-    ],
+    "subscription": [],
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
@@ -19959,7 +20171,6 @@
    },
    "US": {
     "subscription": [
-     "BBC America",
      "DirecTV On Demand",
      "Paramount Plus",
      "Paramount+ (Via Amazon Prime)",
@@ -19970,7 +20181,8 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
-     "Google Play"
+     "Google Play",
+     "Plex"
     ]
    },
    "GB": {
@@ -19990,11 +20202,13 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
     "subscription": [
+     "DirecTV On Demand",
      "Watch TCM"
     ],
     "rentOrBuy": [
@@ -20027,8 +20241,7 @@
    },
    "US": {
     "subscription": [
-     "fuboTV",
-     "The Roku Channel"
+     "fuboTV"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -20068,7 +20281,7 @@
    },
    "GB": {
     "subscription": [
-     "Prime Video"
+     "MAX (Via Amazon Prime)"
     ],
     "rentOrBuy": [
      "AppleTV",
@@ -20086,12 +20299,12 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
     "subscription": [
-     "fuboTV",
      "Paramount Plus",
      "YouTube TV"
     ],
@@ -20100,6 +20313,7 @@
      "AppleTV",
      "Fandango at Home",
      "Google Play",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -20107,8 +20321,7 @@
     "subscription": [
      "HBO Max",
      "MAX (Via Amazon Prime)",
-     "Netflix",
-     "Prime Video"
+     "Netflix"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -20125,7 +20338,8 @@
     "subscription": [
      "Crave",
      "Crave (Via Amazon Prime)",
-     "Hollywood Suite"
+     "Hollywood Suite",
+     "Hoopla"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -20140,8 +20354,7 @@
      "Hulu",
      "Hulu on Disney+",
      "MAX (Via Amazon Prime)",
-     "Prime Video",
-     "The Roku Channel"
+     "Prime Video"
     ],
     "rentOrBuy": [
      "Amazon",
@@ -20153,6 +20366,7 @@
     "subscription": [],
     "rentOrBuy": [
      "Amazon",
+     "AppleTV",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -20187,6 +20401,7 @@
      "Amazon",
      "AppleTV",
      "Fandango at Home",
+     "Plex",
      "Spectrum On Demand"
     ]
    },
@@ -20209,6 +20424,7 @@
    "matched": true,
    "CA": {
     "subscription": [
+     "Club Illico",
      "Crave",
      "Crave (Via Amazon Prime)",
      "Lionsgate+ (Via Amazon Prime)"
@@ -20216,11 +20432,13 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
     "subscription": [
+     "Prime Video",
      "YouTube TV"
     ],
     "rentOrBuy": [
@@ -20240,6 +20458,7 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
+     "Chili",
      "Rakuten TV",
      "Sky Store"
     ]
@@ -20262,7 +20481,6 @@
    },
    "US": {
     "subscription": [
-     "FX",
      "Netflix",
      "YouTube TV"
     ],
@@ -20318,6 +20536,40 @@
     ]
    }
   },
+  "http://www.wikidata.org/entity/Q170035": {
+   "matched": true,
+   "CA": {
+    "subscription": [
+     "Disney+"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Cineplex"
+    ]
+   },
+   "US": {
+    "subscription": [
+     "Disney+"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Fandango at Home"
+    ]
+   },
+   "GB": {
+    "subscription": [
+     "Disney+"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Rakuten TV",
+     "Sky Store"
+    ]
+   }
+  },
   "http://www.wikidata.org/entity/Q387601": {
    "matched": true,
    "CA": {
@@ -20336,7 +20588,6 @@
    "US": {
     "subscription": [
      "Disney+",
-     "FX",
      "Hulu"
     ],
     "rentOrBuy": [
@@ -20426,46 +20677,6 @@
     ]
    }
   },
-  "http://www.wikidata.org/entity/Q49498": {
-   "matched": true,
-   "CA": {
-    "subscription": [
-     "Hoopla",
-     "Netflix",
-     "StackTV (Via Amazon Prime)"
-    ],
-    "rentOrBuy": [
-     "Amazon",
-     "AppleTV",
-     "Cineplex"
-    ]
-   },
-   "US": {
-    "subscription": [
-     "Paramount Plus",
-     "Paramount+ (Via Amazon Prime)"
-    ],
-    "rentOrBuy": [
-     "Amazon",
-     "AppleTV",
-     "Fandango at Home",
-     "Spectrum On Demand"
-    ]
-   },
-   "GB": {
-    "subscription": [
-     "Netflix",
-     "Sky Go"
-    ],
-    "rentOrBuy": [
-     "Amazon",
-     "AppleTV",
-     "Chili",
-     "Rakuten TV",
-     "Sky Store"
-    ]
-   }
-  },
   "http://www.wikidata.org/entity/Q20856802": {
    "matched": true,
    "CA": {
@@ -20476,12 +20687,12 @@
     "rentOrBuy": [
      "Amazon",
      "AppleTV",
-     "Cineplex"
+     "Cineplex",
+     "Plex"
     ]
    },
    "US": {
     "subscription": [
-     "fuboTV",
      "Lionsgate+ (Via Amazon Prime)"
     ],
     "rentOrBuy": [
