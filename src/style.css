@@ -1,28 +1,41 @@
 @font-face {
-  font-family: 'Manrope';
+  font-family: 'Figtree';
   font-style: normal;
-  font-weight: 200 800;
+  font-weight: 300 900;
   font-display: swap;
-  src: url('fonts/manrope-variable-latin.woff2') format('woff2');
+  src: url('fonts/figtree-latin-wght-normal.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-  font-family: 'Instrument Serif';
+  font-family: 'Big Shoulders Display';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 100 900;
   font-display: swap;
-  src: url('fonts/instrument-serif-regular-latin.woff2') format('woff2');
+  src: url('fonts/big-shoulders-display-latin-wght-normal.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+/* Fallbacks scaled to the web fonts' width and line metrics (measured against Arial in Chrome), so
+   text keeps its line breaks when the web font arrives. Big Shoulders is much narrower than Arial
+   Bold, hence the small size-adjust; every display line-height is set in em, so nothing grows taller. */
 @font-face {
-  font-family: 'Instrument Serif';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url('fonts/instrument-serif-italic-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-family: 'Figtree Fallback';
+  src: local('Arial'), local('ArialMT');
+  size-adjust: 99%;
+  ascent-override: 96%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Big Shoulders Display Fallback';
+  font-weight: 100 900;
+  src: local('Arial Bold'), local('Arial-BoldMT'), local('Arial');
+  size-adjust: 69.5%;
+  ascent-override: 141%;
+  descent-override: 30%;
+  line-gap-override: 0%;
 }
 
 :root {
@@ -42,8 +55,8 @@
   --accent-glow: rgba(124, 58, 237, 0.35);
   --radius: 12px;
   --poster-ratio: 2 / 3;
-  --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-body: 'Figtree', 'Figtree Fallback', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Big Shoulders Display', 'Big Shoulders Display Fallback', 'Arial Narrow', sans-serif;
 }
 
 *,
@@ -750,15 +763,17 @@ img {
 .hero h1 {
   margin: 0 auto 16px;
   font-family: var(--font-display);
-  font-size: clamp(3.25rem, 11vw, 6.5rem);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 0.95;
+  font-size: clamp(3.75rem, 14vw, 8rem);
+  font-weight: 800;
+  letter-spacing: 0.005em;
+  line-height: 0.88;
+  text-transform: uppercase;
 }
 
+/* The headline is one weight and one colour; the emphasis is in the type itself. */
 .hero h1 em {
-  color: var(--accent-hover);
-  font-style: italic;
+  color: inherit;
+  font-style: normal;
 }
 
 .subline {
@@ -960,8 +975,9 @@ img {
   margin: 0 0 28px;
   font-family: var(--font-display);
   font-size: clamp(2.25rem, 6vw, 3.5rem);
-  font-weight: 400;
-  letter-spacing: -0.01em;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
   line-height: 1.05;
   text-align: center;
 }
@@ -987,6 +1003,7 @@ img {
   color: var(--accent-hover);
   font-family: var(--font-display);
   font-size: 4rem;
+  font-weight: 800;
   line-height: 1;
 }
 
@@ -1018,6 +1035,7 @@ img {
 .stat-number {
   margin: 0;
   font-family: var(--font-display);
+  font-weight: 800;
   font-size: clamp(3rem, 8vw, 4.5rem);
   line-height: 1;
 }

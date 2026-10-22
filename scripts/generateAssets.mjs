@@ -62,20 +62,21 @@ await writeIcon(maskable, 512, path.join(out, 'icons', 'icon-maskable-512.png'),
 await writeIcon(square, 180, path.join(out, 'icons', 'apple-touch-icon.png'), false);
 
 // Link-preview image: the mark and the wordmark side by side, then the tagline and an abstract graphic
-const manropeUri = `data:font/woff2;base64,${fs.readFileSync(path.join(out, 'fonts', 'manrope-variable-latin.woff2')).toString('base64')}`;
+const fontUri = file => `data:font/woff2;base64,${fs.readFileSync(path.join(out, 'fonts', file)).toString('base64')}`;
 const markUri = `data:image/svg+xml;base64,${Buffer.from(logo).toString('base64')}`;
 
 const ogHtml = `<!doctype html><html><head><style>
-@font-face { font-family: 'Manrope'; font-weight: 200 800; src: url(${manropeUri}) format('woff2'); }
+@font-face { font-family: 'Figtree'; font-weight: 300 900; src: url(${fontUri('figtree-latin-wght-normal.woff2')}) format('woff2'); }
+@font-face { font-family: 'Big Shoulders Display'; font-weight: 100 900; src: url(${fontUri('big-shoulders-display-latin-wght-normal.woff2')}) format('woff2'); }
 </style></head><body style="margin:0;width:1200px;height:630px;overflow:hidden;
     background:radial-gradient(900px 500px at 78% 20%, rgba(124,58,237,0.45), transparent 70%), ${DARK};
-    font-family:'Manrope',system-ui,sans-serif;color:${TEXT};position:relative">
+    font-family:'Figtree',system-ui,sans-serif;color:${TEXT};position:relative">
   <div style="position:absolute;left:84px;top:140px">
     <div style="display:flex;align-items:center;gap:24px">
       <img src="${markUri}" width="104" height="104" style="display:block">
       <div style="font-size:88px;font-weight:800;letter-spacing:-3px;line-height:1"><span style="color:${LIGHT_ACCENT}">Co</span><span style="color:${TEXT}">Cinema</span></div>
     </div>
-    <div style="margin-top:48px;font-size:40px;font-weight:700;line-height:1.3;max-width:620px">Rate a few movies.<br>Get picks that match your taste.</div>
+    <div style="margin-top:44px;font-family:'Big Shoulders Display',sans-serif;font-size:50px;font-weight:800;line-height:1.05;text-transform:uppercase;max-width:640px">Rate a few movies.<br>Get picks that match your taste.</div>
     <div style="margin-top:28px;font-size:28px;font-weight:500;color:#A9A4C0">Runs in your browser. No account.</div>
   </div>
   <svg style="position:absolute;right:60px;top:70px" width="440" height="500" viewBox="0 0 440 500">

@@ -53,18 +53,46 @@ test('the app asks for no font from another site', () => {
     assert.ok(!/fonts\.googleapis\.com|fonts\.gstatic\.com|Inter/.test(read(file)), `${file} still refers to Google Fonts or Inter`);
   }
   const css = read('../src/style.css');
-  for (const file of ['manrope-variable-latin.woff2', 'instrument-serif-regular-latin.woff2', 'instrument-serif-italic-latin.woff2']) {
+  const files = ['figtree-latin-wght-normal.woff2', 'big-shoulders-display-latin-wght-normal.woff2'];
+  for (const file of files) {
     assert.ok(css.includes(`fonts/${file}`), `${file} is not declared`);
     assert.ok(fs.existsSync(new URL(`../src/fonts/${file}`, import.meta.url)), `${file} is missing`);
     assert.ok(read('../src/sw.js').includes(`./fonts/${file}`), `${file} is not in the offline cache list`);
   }
-  assert.equal((css.match(/font-display: swap/g) || []).length, 3);
-  assert.ok(/<link rel="preload" href="fonts\/manrope-variable-latin\.woff2" as="font" type="font\/woff2" crossorigin>/.test(read('../src/index.html')));
-  assert.ok(/<link rel="preload" href="fonts\/instrument-serif-regular-latin\.woff2" as="font" type="font\/woff2" crossorigin>/.test(read('../src/index.html')));
+  assert.equal((css.match(/font-display: swap/g) || []).length, 2);
+  const html = read('../src/index.html');
+  for (const file of files) {
+    assert.ok(html.includes(`<link rel="preload" href="fonts/${file}" as="font" type="font/woff2" crossorigin>`), `${file} is not preloaded`);
+  }
+  // Only these two font files ship, and together they stay small.
+  const shipped = fs.readdirSync(new URL('../src/fonts/', import.meta.url)).filter(name => name.endsWith('.woff2'));
+  assert.deepEqual(shipped.sort(), [...files].sort());
+  const bytes = shipped.reduce((sum, name) => sum + fs.statSync(new URL(`../src/fonts/${name}`, import.meta.url)).size, 0);
+  assert.ok(bytes < 150 * 1024, `fonts weigh ${bytes} bytes`);
 });
 
-test('both font licences are in the repository', () => {
-  for (const file of ['OFL-instrument-serif.txt', 'OFL-manrope.txt']) {
+test('the old fonts are gone and the new ones have metric-matched local fallbacks', () => {
+  const css = read('../src/style.css');
+  assert.ok(!/Manrope|Instrument Serif/.test(css + read('../src/index.html') + read('../src/sw.js') + read('../scripts/generateAssets.mjs')));
+  assert.match(css, /--font-body: 'Figtree', 'Figtree Fallback',/);
+  assert.match(css, /--font-display: 'Big Shoulders Display', 'Big Shoulders Display Fallback',/);
+  for (const family of ['Figtree Fallback', 'Big Shoulders Display Fallback']) {
+    const block = new RegExp(`font-family: '${family}';[^}]*size-adjust: [0-9.]+%;[^}]*ascent-override`).exec(css);
+    assert.ok(block, `${family} needs size-adjust and metric overrides`);
+  }
+});
+
+test('the headline is one weight and one colour, with no accented italic word', () => {
+  const css = read('../src/style.css');
+  const em = /\.hero h1 em \{([^}]*)\}/.exec(css)[1];
+  assert.match(em, /color: inherit;/);
+  assert.match(em, /font-style: normal;/);
+});
+
+test('both font licences are in the repository, and only those', () => {
+  const licences = fs.readdirSync(new URL('../src/fonts/', import.meta.url)).filter(name => name.endsWith('.txt'));
+  assert.deepEqual(licences.sort(), ['OFL-big-shoulders-display.txt', 'OFL-figtree.txt']);
+  for (const file of licences) {
     const text = read(`../src/fonts/${file}`);
     assert.ok(text.includes('SIL Open Font License'), file);
     assert.ok(/Copyright \d{4}/.test(text), file);

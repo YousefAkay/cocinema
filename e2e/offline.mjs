@@ -50,9 +50,8 @@ try {
     await document.fonts.ready;
     return [...document.fonts].filter(face => face.status === 'loaded').map(face => `${face.family} ${face.style}`);
   });
-  check('offline: the self-hosted fonts still render (Manrope and both Instrument Serif styles)',
-    offlineFonts.some(name => name.startsWith('Manrope')) && offlineFonts.some(name => name.includes('Instrument Serif') && name.endsWith('normal'))
-      && offlineFonts.some(name => name.includes('Instrument Serif') && name.endsWith('italic')), offlineFonts.join('; '));
+  check('offline: the self-hosted fonts still render (Figtree and Big Shoulders Display)',
+    offlineFonts.some(name => name.startsWith('Figtree')) && offlineFonts.some(name => name.includes('Big Shoulders Display')), offlineFonts.join('; '));
   const offlineStrip = await page.evaluate(() => ({
     tiles: document.querySelectorAll('.strip-tile').length,
     broken: [...document.querySelectorAll('.strip-tile img')].filter(image => image.complete && image.naturalWidth === 0).length,

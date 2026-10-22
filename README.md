@@ -117,7 +117,7 @@ This is a snapshot, not live data. Under Watchmode's free plan the cached data m
 
 ### Offline use
 
-A service worker (`src/sw.js`) keeps one versioned cache (currently `cocinema-v12`); bumping the name on a deploy makes every phone drop the old cache. Code (HTML, JS, CSS) is network-first with a 4 second wait before falling back to the saved copy. Data files (`catalog.json`, `onboarding.json`, `availability.json`) are stale-while-revalidate. Other origins (posters) are never cached, so offline the cards show placeholders. The worker is registered only on https or 127.0.0.1, so the app works the same without it.
+A service worker (`src/sw.js`) keeps one versioned cache (currently `cocinema-v13`); bumping the name on a deploy makes every phone drop the old cache. Code (HTML, JS, CSS) is network-first with a 4 second wait before falling back to the saved copy. Data files (`catalog.json`, `onboarding.json`, `availability.json`) are stale-while-revalidate. Other origins (posters) are never cached, so offline the cards show placeholders. The worker is registered only on https or 127.0.0.1, so the app works the same without it.
 
 ### Routing
 
@@ -148,7 +148,7 @@ Run with `npm run evaluate` (fixed seed, no network). The picks beat the genre b
 
 ## Testing
 
-- **Unit tests:** `npm test` runs 256 tests (node:test) over 23 files, covering the recommender, the why lines (determinism, variety, the held-back threshold, and that every film and number named comes from the real contribution data), runtime and rating formatting, sharing links, the combined ranking, catalog integrity and the Vercel config.
+- **Unit tests:** `npm test` runs 258 tests (node:test) over 23 files, covering the recommender, the why lines (determinism, variety, the held-back threshold, and that every film and number named comes from the real contribution data), runtime and rating formatting, sharing links, the combined ranking, catalog integrity and the Vercel config.
 - **Browser tests:** `npm run test:e2e` runs twelve headless-Chrome scripts (Playwright) and reported 459 passing checks in total: the main flow, the Taster/Quick/Full choice, short sessions and the way forward when there are too few ratings to rank, the landing page, icons, co-watch, offline mode and update behaviour, an axe accessibility scan with keyboard checks, Home, Back, Continue and the dialogs, going back to a previous film, and the results cards and invite banner. One of them measures the rating screen across six consecutive films at six window sizes (1440x900 down to 360x640) and checks that it stays in place and does not scroll.
 
 ## Tech stack
@@ -222,5 +222,5 @@ npx serve . -l tcp://127.0.0.1:3000
 - Plots, posters, runtimes, directors, ratings and Rotten Tomatoes scores from the [OMDb API](https://www.omdbapi.com), whose content is licensed [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Posters come through OMDb: they are loaded from OMDb's image links, are not stored or redistributed in this repository, and belong to their respective studios and rights holders. CoCinema is a free, non-commercial portfolio project.
 - Plot embeddings by [OpenAI](https://platform.openai.com) (`text-embedding-3-small`), computed offline.
 - Streaming data by [Watchmode](https://www.watchmode.com).
-- Fonts, self-hosted under the SIL Open Font License 1.1: Instrument Serif (`src/fonts/OFL-instrument-serif.txt`) and Manrope (`src/fonts/OFL-manrope.txt`).
+- Fonts, self-hosted under the SIL Open Font License 1.1: Big Shoulders Display (`src/fonts/OFL-big-shoulders-display.txt`) and Figtree (`src/fonts/OFL-figtree.txt`).
 - Code released under the MIT license.

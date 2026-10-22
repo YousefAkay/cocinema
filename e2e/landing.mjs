@@ -48,14 +48,14 @@ try {
     await document.fonts.ready;
     return [...document.fonts].filter(face => face.status === 'loaded').map(face => `${face.family} ${face.style}`);
   });
-  check('the self-hosted fonts load (Manrope, Instrument Serif regular and italic)',
-    fontsLoaded.some(f => f.startsWith('Manrope')) && fontsLoaded.includes('"Instrument Serif" normal') || fontsLoaded.some(f => f.includes('Instrument Serif') && f.endsWith('normal')) && fontsLoaded.some(f => f.includes('Instrument Serif') && f.endsWith('italic')), fontsLoaded.join('; '));
-  check('the headline really renders in Instrument Serif and the body in Manrope', await p.evaluate(() => {
+  check('the self-hosted fonts load (Figtree and Big Shoulders Display)',
+    fontsLoaded.some(f => f.startsWith('Figtree')) && fontsLoaded.some(f => f.includes('Big Shoulders Display')), fontsLoaded.join('; '));
+  check('the headline really renders in Big Shoulders Display and the body in Figtree', await p.evaluate(() => {
     const family = selector => getComputedStyle(document.querySelector(selector)).fontFamily;
-    return family('.hero h1').startsWith('"Instrument Serif"') && family('body').startsWith('Manrope');
+    return family('.hero h1').startsWith('"Big Shoulders Display"') && family('body').startsWith('Figtree');
   }));
   const fontRequests = phone.requests.filter(url => /\.woff2?(\?|$)/.test(url));
-  check('fonts come from this site only', fontRequests.length >= 3 && fontRequests.every(url => url.startsWith(server.origin)), fontRequests.map(url => url.split('/').pop()).join(', '));
+  check('fonts come from this site only', fontRequests.length >= 2 && fontRequests.every(url => url.startsWith(server.origin)), fontRequests.map(url => url.split('/').pop()).join(', '));
   check('no request goes to fonts.googleapis.com or fonts.gstatic.com', !phone.requests.some(url => /fonts\.(googleapis|gstatic)\.com/.test(url)));
 
   // numbers come from the data

@@ -2,7 +2,7 @@
 // latest deploy; the large data files are stale-while-revalidate so they open instantly and
 // still refresh in the background. Other origins (posters, fonts) are never touched.
 
-const CACHE_NAME = 'cocinema-v12';
+const CACHE_NAME = 'cocinema-v13';
 const NETWORK_TIMEOUT_MS = 4000;
 
 // Everything the app needs to start, relative to this file (/src/).
@@ -11,8 +11,7 @@ const SHELL = [
   './main.js', './ui.js', './ratings.js', './recommend.js', './similarity.js', './why.js', './dialog.js',
   './candidates.js', './percentile.js', './format.js', './links.js', './route.js',
   './detail.js', './availability.js', './shuffle.js', './offline.js', './progress.js', './evaluation-stats.js', './landing-posters.js', './cowatch.js', './combine.js', './flags.js', './samples.js', './cowatchScreens.js',
-  './fonts/manrope-variable-latin.woff2', './fonts/instrument-serif-regular-latin.woff2',
-  './fonts/instrument-serif-italic-latin.woff2',
+  './fonts/figtree-latin-wght-normal.woff2', './fonts/big-shoulders-display-latin-wght-normal.woff2',
 ];
 // Cached when available; a miss is not fatal (availability.json may not exist yet, and the
 // manifest and icons are only for installing the app).
