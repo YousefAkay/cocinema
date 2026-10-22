@@ -1362,6 +1362,38 @@ body.rating-active .offline-notice {
   color: var(--text);
 }
 
+/* Home and Back sit together on the left; the counter keeps its place on the right. */
+.rating-nav {
+  display: flex;
+  flex: none;
+  align-items: center;
+}
+
+.back-button {
+  min-width: 44px;
+  min-height: 44px;
+  /* narrow enough that Home, Back and the counter fit a 360px screen without moving the counter */
+  padding: 0 6px;
+  border: none;
+  background: none;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.back-button:hover:not(:disabled) {
+  color: var(--text);
+}
+
+.back-button:disabled {
+  color: var(--text-muted);
+  text-decoration: none;
+  cursor: default;
+  opacity: 0.5;
+}
+
 .rating-body {
   display: flex;
   flex: 1 1 0;

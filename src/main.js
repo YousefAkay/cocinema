@@ -1,7 +1,8 @@
 import { renderRatingStep, renderResults, renderTopPick } from './ui.js';
 import { confirmDialog } from './dialog.js';
 import {
-  getAllRatings, getSkippedIds, markSkipped, savePosition, saveExtra, saveSeed, saveLength, saveFriend, getFriend, loadSavedState, clearSavedState,
+  getAllRatings, getSkippedIds, markSkipped, unmarkSkipped, removeRating, savePosition, saveExtra, saveTrail, saveSeed, saveLength, saveFriend, getFriend,
+  loadSavedState, clearSavedState,
 } from './ratings.js';
 import { recommend, explainMatch } from './recommend.js';
 import { buildWhyLines } from './why.js';
@@ -20,7 +21,7 @@ import {
 import { loadAvailability, streamingView } from './availability.js';
 import { buildSession, newSeed, isValidLength } from './shuffle.js';
 import { registerServiceWorker, watchOnlineStatus } from './offline.js';
-import { resolveStep, progressLabel } from './progress.js';
+import { resolveStep, progressLabel, nextStep, locateFilm, shownBefore } from './progress.js';
 import { EVALUATION } from './evaluation-stats.js';
 import { LANDING_POSTERS } from './landing-posters.js';
 
@@ -52,6 +53,7 @@ async function fetchJson(path) {
 let genreIndex = 0;
 let movieIndex = 0;
 let extra = null;
+let trail = []; // onboarding films shown so far, ending with the one on screen
 let started = false;
 let resultsScrollY = 0;
 let cameFromResults = false;
@@ -157,7 +159,7 @@ resultsScreen.addEventListener('click', event => {
 
 // One rating step: a fixed frame with the progress label, the movie, the rating buttons and
 // "Haven't seen it". The frame never scrolls and nothing in it moves between films.
-function showRatingStep({ label, movie, onConfirm, onSkip }) {
+function showRatingStep({ label, movie, current, onConfirm, onSkip, onBack }) {
   showOnly(ratingScreen);
   ensureGuard();
   ratingScreen.innerHTML = '';
@@ -166,28 +168,51 @@ function showRatingStep({ label, movie, onConfirm, onSkip }) {
     label,
     movie,
     genres: topGenres(movie, genreRank),
+    current,
     onConfirm,
     onSkip,
     onHome: requestHome,
+    onBack,
   });
   ratingScreen.append(frame);
   heading.focus({ preventScroll: true });
 }
 
-function skipMovie(movie) {
-  markSkipped(movie.id);
-  nextMovie();
+function scoreOf(movieId) {
+  const own = getAllRatings().find(rating => rating.id === movieId);
+  return own ? own.score : null;
 }
 
-function nextMovie() {
-  movieIndex++;
+function answers() {
+  return { rated: new Set(getAllRatings().map(rating => rating.id)), skipped: new Set(getSkippedIds()) };
+}
+
+// "Haven't seen it", also on a film the visitor came back to and had rated.
+function skipMovie(movie) {
+  removeRating(movie.id);
+  markSkipped(movie.id);
+  advance();
+}
+
+// After any answer: on to the first film not yet answered (see nextStep).
+function advance() {
+  const step = nextStep(session, answers(), id => catalogById.has(id));
+  genreIndex = step.genreIndex;
+  movieIndex = step.movieIndex;
   savePosition(genreIndex, movieIndex);
   showCurrentMovie();
 }
 
-function nextGenre() {
-  genreIndex++;
-  movieIndex = 0;
+// Back: the film shown before this one, rated or skipped. A skipped film is shown fresh; a rated
+// one keeps its score until the visitor answers again.
+function goBack() {
+  const place = trail.length > 1 ? locateFilm(session, trail[trail.length - 2]) : null;
+  if (!place) return;
+  trail.pop();
+  saveTrail(trail);
+  unmarkSkipped(trail[trail.length - 1]);
+  genreIndex = place.genreIndex;
+  movieIndex = place.movieIndex;
   savePosition(genreIndex, movieIndex);
   showCurrentMovie();
 }
@@ -209,12 +234,18 @@ function showCurrentMovie() {
     return;
   }
 
+  if (trail[trail.length - 1] !== step.movieId) {
+    trail.push(step.movieId);
+    saveTrail(trail);
+  }
   const movie = catalogById.get(step.movieId);
   showRatingStep({
     label: progressLabel(step),
     movie,
-    onConfirm: nextGenre,
+    current: scoreOf(movie.id),
+    onConfirm: advance,
     onSkip: () => skipMovie(movie),
+    onBack: trail.length > 1 && locateFilm(session, trail[trail.length - 2]) ? goBack : null,
   });
 }
 
@@ -243,11 +274,21 @@ function showNextExtra() {
   showExtraStep(movie);
 }
 
+// A film the visitor came back to with Back may already be rated: it is counted once, and
+// "Haven't seen it" takes the rating back.
 function showExtraStep(movie) {
+  const current = scoreOf(movie.id);
   showRatingStep({
-    label: `Rate more · ${extra.rated + 1} of ${EXTRA_COUNT}`,
+    label: `Rate more · ${extra.rated + (current ? 0 : 1)} of ${EXTRA_COUNT}`,
     movie,
+    current,
+    onBack: extra.shown.length > 1 ? backExtra : null,
     onConfirm: () => {
+      if (current) {
+        saveExtra(extra);
+        showNextExtra();
+        return;
+      }
       extra.rated++;
       if (extra.rated >= EXTRA_COUNT) {
         finishExtra();
@@ -257,18 +298,31 @@ function showExtraStep(movie) {
       }
     },
     onSkip: () => {
+      if (current) {
+        removeRating(movie.id);
+        extra.rated--;
+      }
       markSkipped(movie.id);
       showNextExtra();
     },
   });
 }
 
-// After a refresh: show the film that was on screen, or move on if it was already handled.
+// The film on screen leaves the shown list, so it can be suggested again later.
+function backExtra() {
+  extra.shown.pop();
+  const id = extra.shown[extra.shown.length - 1];
+  unmarkSkipped(id);
+  saveExtra(extra);
+  showExtraStep(catalogById.get(id));
+}
+
+// After a refresh: show the film that was on screen (rated if the visitor went back to it), or
+// move on if it was skipped.
 function resumeExtra() {
   const current = catalogById.get(extra.shown[extra.shown.length - 1]);
-  const handled = new Set([...getAllRatings().map(rating => rating.id), ...getSkippedIds()]);
 
-  if (!current || handled.has(current.id)) {
+  if (!current || getSkippedIds().includes(current.id)) {
     showNextExtra();
     return;
   }
@@ -644,6 +698,7 @@ function startOver() {
   genreIndex = 0;
   movieIndex = 0;
   extra = null;
+  trail = [];
   started = false;
   cameFromResults = false;
   seed = newSeed();
@@ -796,6 +851,7 @@ startButton.addEventListener('click', function() {
     genreIndex = 0;
     movieIndex = 0;
     extra = null;
+    trail = [];
     seed = newSeed();
   }
   started = true;
@@ -847,6 +903,9 @@ async function loadData() {
     extra = saved.extra;
     started = true;
     session = buildSession(onboarding, seed, sessionLength);
+    // Saves from before Back existed have no trail; rebuild it from the answers.
+    const { rated, skipped } = answers();
+    trail = saved.trail || shownBefore(session, genreIndex, movieIndex, id => rated.has(id) || skipped.has(id));
   }
   route();
 }

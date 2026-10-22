@@ -1,6 +1,6 @@
 // The rating screen is one fixed frame: it fits the visible window with no page scroll, and every
 // block stays in exactly the same place from one film to the next. Measured with bounding boxes
-// over six consecutive films at six window sizes.
+// over six consecutive films at six window sizes, including a film reached with Back.
 import path from 'node:path';
 import { chromium } from 'playwright';
 import { shots, startServer, createRecorder, chooseAndStart } from './helpers.mjs';
@@ -10,7 +10,7 @@ const { check, summary } = createRecorder();
 const browser = await chromium.launch({ channel: 'chrome' });
 
 const SIZES = [[1440, 900], [1366, 768], [1280, 720], [1024, 768], [375, 667], [360, 640]];
-const BLOCKS = ['.home-button', '.rating-step', '.poster-box', '.rating-title', '.rating-meta', '.pill-row', '.rating-widget', '.rating-hint', '.confirm-score', '.skip-button'];
+const BLOCKS = ['.home-button', '.back-button', '.rating-step', '.poster-box', '.rating-title', '.rating-meta', '.pill-row', '.rating-widget', '.rating-hint', '.confirm-score', '.skip-button'];
 const FILMS = 6;
 
 const problems = [];
@@ -29,6 +29,13 @@ async function measure(page) {
       scrollY: scrollY,
       lowest: Math.max(...Object.values(boxes).map(box => box[1] + box[3])),
       title: document.querySelector('.rating-title').textContent,
+      backDisabled: document.querySelector('.back-button').disabled,
+      // Home, Back and the counter side by side, with the counter flush right: nothing squeezed or pushed.
+      topRowFits: (() => {
+        const row = document.querySelector('.rating-top').getBoundingClientRect();
+        const [home, back, step] = ['.home-button', '.back-button', '.rating-step'].map(selector => document.querySelector(selector).getBoundingClientRect());
+        return home.right <= back.left + 0.5 && back.right < step.left && Math.abs(step.right - row.right) < 0.5 && step.width === 200;
+      })(),
       focusedIsTitle: document.activeElement === document.querySelector('.rating-title'),
       inner: document.querySelector('#rating-screen').scrollHeight <= document.querySelector('#rating-screen').clientHeight,
       smallTargets: [...document.querySelectorAll('#rating-screen button')].filter(button => {
@@ -70,6 +77,17 @@ for (const [width, height] of SIZES) {
       await page.waitForSelector('.rating-title');
       runs[film] = await measure(page);
     }
+    if (film === 4) {
+      // Back to the film just rated (its score already selected), then Confirm returns here.
+      await page.click('.back-button');
+      await page.waitForSelector('.rating-widget button.selected');
+      const revisit = await measure(page);
+      check(`${label}: going Back to a rated film moves nothing`, JSON.stringify(revisit.boxes) === JSON.stringify(runs[film].boxes) && revisit.title === runs[film - 1].title,
+        JSON.stringify(revisit.boxes));
+      await page.click('.confirm-score');
+      await page.waitForSelector('.rating-title');
+      check(`${label}: Confirm on the revisited film comes back to the film after it`, (await measure(page)).title === runs[film].title);
+    }
     await page.getByRole('button', { name: String(5 + (film % 5)), exact: true }).click();
     await page.click('.confirm-score');
   }
@@ -79,6 +97,8 @@ for (const [width, height] of SIZES) {
   check(`${label}: ${FILMS} different films were measured`, titles.size === FILMS, [...titles].join(' | '));
   check(`${label}: every block is in exactly the same place for all ${FILMS} films`, runs.every(run => JSON.stringify(run.boxes) === JSON.stringify(first.boxes)),
     JSON.stringify(runs.find(run => JSON.stringify(run.boxes) !== JSON.stringify(first.boxes)) || ''));
+  check(`${label}: Back is disabled on the first film only, and enabling it moves nothing`, runs[0].backDisabled && runs.slice(1).every(run => !run.backDisabled));
+  check(`${label}: Home, Back and the counter fit in the top row without pushing the counter`, runs.every(run => run.topRowFits));
   check(`${label}: the page does not scroll (no vertical or horizontal overflow, scroll position 0)`, runs.every(run => run.pageFits && run.scrollY === 0));
   check(`${label}: nothing scrolls inside the frame and everything sits inside the window`, runs.every(run => run.inner && run.lowest <= height + 0.5), `lowest ${first.lowest}`);
   check(`${label}: focus is on the film title after each step`, runs.every(run => run.focusedIsTitle));

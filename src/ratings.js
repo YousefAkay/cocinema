@@ -11,6 +11,7 @@ let extra = null;
 let seed = null;
 let length = null;
 let friend = null;
+let trail = null;
 
 function persist() {
   try {
@@ -22,6 +23,7 @@ function persist() {
       genreIndex: position.genreIndex,
       movieIndex: position.movieIndex,
       extra,
+      trail,
       friend: friend ? { ratings: friend.ratings.map(item => [item.id, item.score]), skipped: friend.skipped, sample: friend.sample } : null,
     }));
   } catch (e) {
@@ -34,6 +36,12 @@ export function saveRating(movieId, score) {
   persist();
 }
 
+// Takes a rating back, for a film the visitor returns to and now says they have not seen.
+export function removeRating(movieId) {
+  ratings.delete(movieId);
+  persist();
+}
+
 export function getAllRatings() {
   const entries = Array.from(ratings);
   const formatted = entries.map(([movieId, score]) => ({ id: movieId, score: score }));
@@ -42,6 +50,12 @@ export function getAllRatings() {
 
 export function markSkipped(movieId) {
   skipped.add(movieId);
+  persist();
+}
+
+// A skipped film the visitor went back to counts as not answered again.
+export function unmarkSkipped(movieId) {
+  skipped.delete(movieId);
   persist();
 }
 
@@ -85,6 +99,12 @@ export function saveExtra(state) {
   persist();
 }
 
+// The onboarding films shown so far, oldest first, ending with the one on screen. Back walks it.
+export function saveTrail(list) {
+  trail = list ? [...list] : null;
+  persist();
+}
+
 function validSeed(value) {
   return Number.isInteger(value) && value >= 0 && value <= 4294967295;
 }
@@ -109,6 +129,13 @@ function readFriend(value, validIds) {
   return { ratings: list, skipped: value.skipped, sample: value.sample || null };
 }
 
+// Like the friend, a bad trail never costs the visitor their ratings: it is dropped, and the
+// caller rebuilds it from the position. Saves from before Back existed have none.
+function readTrail(value, validIds) {
+  if (!Array.isArray(value) || value.length > 500) return null;
+  return value.every(id => typeof id === 'string' && validIds.has(id)) ? [...value] : null;
+}
+
 function validExtra(value, validIds) {
   if (value === null) return true;
   if (!value || typeof value !== 'object') return false;
@@ -118,7 +145,7 @@ function validExtra(value, validIds) {
   return value.shown.every(id => typeof id === 'string' && validIds.has(id));
 }
 
-// Returns the saved { seed, length, genreIndex, movieIndex, extra } and refills the ratings, or null
+// Returns the saved { seed, length, genreIndex, movieIndex, extra, trail } and refills the ratings, or null
 // if nothing usable was saved. Anything malformed is ignored as a whole.
 export function loadSavedState(validIds) {
   let saved;
@@ -160,9 +187,10 @@ export function loadSavedState(validIds) {
   position = { genreIndex, movieIndex };
   extra = saved.extra;
   friend = readFriend(saved.friend, validIds);
+  trail = readTrail(saved.trail, validIds);
   seed = saved.seed;
   length = saved.length;
-  return { seed, length, genreIndex, movieIndex, extra };
+  return { seed, length, genreIndex, movieIndex, extra, trail: trail ? [...trail] : null };
 }
 
 export function clearSavedState() {
@@ -173,6 +201,7 @@ export function clearSavedState() {
   seed = null;
   length = null;
   friend = null;
+  trail = null;
   try {
     localStorage.removeItem(STORAGE_KEY);
   } catch (e) {

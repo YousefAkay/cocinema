@@ -128,10 +128,12 @@ function renderPosterBox(movie) {
   return box;
 }
 
-// One rating step as a fixed frame: counter and Home button, poster, title, facts, genre pills,
-// the scores, and the Confirm and "Haven't seen it" buttons. Every block has a fixed size, so
-// nothing moves from one film to the next. Returns { frame, heading } (the film title).
-export function renderRatingStep({ label, movie, genres, onConfirm, onSkip, onHome }) {
+// One rating step as a fixed frame: counter, Home and Back buttons, poster, title, facts, genre
+// pills, the scores, and the Confirm and "Haven't seen it" buttons. Every block has a fixed size,
+// so nothing moves from one film to the next. current: the score already given to this film, if
+// the visitor came back to it. Without onBack, Back is shown but disabled.
+// Returns { frame, heading } (the film title).
+export function renderRatingStep({ label, movie, genres, current = null, onConfirm, onSkip, onHome, onBack = null }) {
   const frame = document.createElement('div');
   frame.className = 'rating-frame';
 
@@ -143,10 +145,22 @@ export function renderRatingStep({ label, movie, genres, onConfirm, onSkip, onHo
   home.className = 'home-button';
   home.textContent = 'Home';
   home.addEventListener('click', onHome);
+  const back = document.createElement('button');
+  back.type = 'button';
+  back.className = 'back-button';
+  back.textContent = 'Back';
+  back.setAttribute('aria-label', 'Back to the previous film');
+  back.disabled = !onBack;
+  if (onBack) {
+    back.addEventListener('click', onBack);
+  }
+  const nav = document.createElement('div');
+  nav.className = 'rating-nav';
+  nav.append(home, back);
   const step = document.createElement('p');
   step.className = 'rating-step';
   step.textContent = label;
-  top.append(home, step);
+  top.append(nav, step);
 
   const body = document.createElement('div');
   body.className = 'rating-body';
@@ -159,7 +173,7 @@ export function renderRatingStep({ label, movie, genres, onConfirm, onSkip, onHo
   const title = document.createElement('h1');
   title.className = 'rating-title';
   title.tabIndex = -1;
-  title.setAttribute('aria-label', `${label}, ${movie.title}`);
+  title.setAttribute('aria-label', current ? `${label}, ${movie.title}, your score ${current}` : `${label}, ${movie.title}`);
   title.textContent = movie.title;
   panel.append(title);
 
@@ -167,7 +181,7 @@ export function renderRatingStep({ label, movie, genres, onConfirm, onSkip, onHo
   meta.className = 'rating-meta';
   meta.textContent = metaParts(movie).join(' · ');
   panel.append(meta, pillRow(genres));
-  panel.append(renderRatingWidget(movie.id, null, onConfirm, onSkip));
+  panel.append(renderRatingWidget(movie.id, current, onConfirm, onSkip));
 
   body.append(renderPosterBox(movie), panel);
   frame.append(top, body);
