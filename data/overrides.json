@@ -139,7 +139,8 @@
   },
   "http://www.wikidata.org/entity/Q73895818": {
     "addGenres": ["animated"],
-    "note": "Guillermo del Toro's Pinocchio (2022) is a stop-motion animated feature; Wikidata lists it as an animated feature film but not under the animated genre"
+    "clearScore": true,
+    "note": "Guillermo del Toro's Pinocchio (2022) is a stop-motion animated feature; Wikidata lists it as an animated feature film but not under the animated genre. OMDb gives it a Rotten Tomatoes score of 27%, which is Robert Zemeckis's Pinocchio (2022), so no score is shown rather than the wrong one"
   },
   "http://www.wikidata.org/entity/Q164417": {
     "addGenres": ["animated"],

@@ -25,7 +25,9 @@ const result = catalog.map(movie => {
   // addGenres (overrides.json): a tracked genre the film plainly has but Wikidata does not list.
   const added = overrides[movie.id]?.addGenres || [];
   const genres = [...new Set([...found.genres, ...added])];
-  return { ...movie, genres, sitelinks, year };
+  // clearScore (overrides.json): OMDb gave this film another film's Rotten Tomatoes score, so show none.
+  const cleared = overrides[movie.id]?.clearScore ? { rottenTomatoes: null } : {};
+  return { ...movie, genres, sitelinks, year, ...cleared };
 });
 
 const catalogById = new Map(result.map(movie => [movie.id, movie]));

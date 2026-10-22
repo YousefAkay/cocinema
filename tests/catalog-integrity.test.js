@@ -44,7 +44,7 @@ test('runtimesAgree allows cuts of a different length up to 20 minutes, and skip
 });
 
 test('every override is for a film in the catalog, uses known options, and explains itself', () => {
-  const known = new Set(['omdbTitle', 'omdbYear', 'refreshMeta', 'allowMissingScore', 'acceptStored', 'addGenres', 'note']);
+  const known = new Set(['omdbTitle', 'omdbYear', 'refreshMeta', 'allowMissingScore', 'acceptStored', 'addGenres', 'clearScore', 'note']);
   const tracked = new Set(Object.values(GENRES));
   for (const [id, override] of Object.entries(overrides)) {
     assert.ok(byId.has(id), `${short(id)} is not in the catalog`);
@@ -52,6 +52,9 @@ test('every override is for a film in the catalog, uses known options, and expla
     assert.ok(typeof override.note === 'string' && override.note.length > 20, `${short(id)} needs a note saying why`);
     if (override.acceptStored) {
       assert.ok(/Wikidata|plot/.test(override.note), `${short(id)} is accepted by hand, so its note must give the evidence`);
+    }
+    if (override.clearScore) {
+      assert.equal(byId.get(id).rottenTomatoes, null, `${short(id)} should have its score cleared`);
     }
     for (const genre of override.addGenres || []) {
       assert.ok(tracked.has(genre), `${short(id)} adds "${genre}", which is not a tracked genre`);
