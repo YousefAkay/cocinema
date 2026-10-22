@@ -108,5 +108,45 @@
   "http://www.wikidata.org/entity/Q550232": {
     "acceptStored": true,
     "note": "Arthur and the Minimoys (2006). OMDb has no record under this title. Wikidata: 2006, 100 min, Luc Besson; the stored plot (a ten year old boy and his grandmother's house) is this film"
+  },
+  "http://www.wikidata.org/entity/Q632668": {
+    "addGenres": ["animated"],
+    "note": "Coraline (2009) is a stop-motion animated feature; Wikidata lists it as an animated feature film but not under the animated genre"
+  },
+  "http://www.wikidata.org/entity/Q322328": {
+    "addGenres": ["animated"],
+    "note": "The Nightmare Before Christmas (1993) is a stop-motion animated feature; Wikidata lists it as an animated feature film but not under the animated genre"
+  },
+  "http://www.wikidata.org/entity/Q465275": {
+    "addGenres": ["animated"],
+    "note": "Fantastic Mr. Fox (2009) is a stop-motion animated feature; Wikidata lists it as an animated feature film but not under the animated genre"
+  },
+  "http://www.wikidata.org/entity/Q156401": {
+    "addGenres": ["animated"],
+    "note": "Chicken Run (2000) is a stop-motion animated feature; Wikidata lists it as an animated feature film but not under the animated genre"
+  },
+  "http://www.wikidata.org/entity/Q318428": {
+    "addGenres": ["animated"],
+    "note": "Wallace & Gromit: The Curse of the Were-Rabbit (2005) is a stop-motion animated feature; Wikidata lists it as an animated feature film but not under the animated genre"
+  },
+  "http://www.wikidata.org/entity/Q18786471": {
+    "addGenres": ["animated"],
+    "note": "Kubo and the Two Strings (2016) is a stop-motion animated feature; Wikidata lists it as an animated feature film but not under the animated genre"
+  },
+  "http://www.wikidata.org/entity/Q28065409": {
+    "addGenres": ["animated"],
+    "note": "Isle of Dogs (2018) is a stop-motion animated feature; Wikidata lists it as an animated feature film but not under the animated genre"
+  },
+  "http://www.wikidata.org/entity/Q73895818": {
+    "addGenres": ["animated"],
+    "note": "Guillermo del Toro's Pinocchio (2022) is a stop-motion animated feature; Wikidata lists it as an animated feature film but not under the animated genre"
+  },
+  "http://www.wikidata.org/entity/Q164417": {
+    "addGenres": ["animated"],
+    "note": "Corpse Bride (2005) is a stop-motion animated feature; Wikidata lists it as an animated feature film but not under the animated genre"
+  },
+  "http://www.wikidata.org/entity/Q198028": {
+    "addGenres": ["animated"],
+    "note": "ParaNorman (2012) is a stop-motion animated feature; Wikidata lists it as an animated feature film but not under the animated genre"
   }
 }

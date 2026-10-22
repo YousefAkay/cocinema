@@ -8310,5 +8310,169 @@
    "crime",
    "drama"
   ]
+ },
+ "http://www.wikidata.org/entity/Q49498": {
+  "year": 1998,
+  "sitelinks": 46,
+  "genreIds": [
+   "Q130232",
+   "Q471839"
+  ],
+  "genres": [
+   "drama",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q20856802": {
+  "year": 2016,
+  "sitelinks": 75,
+  "genreIds": [
+   "Q130232",
+   "Q157443",
+   "Q1054574",
+   "Q842256"
+  ],
+  "genres": [
+   "drama",
+   "comedy",
+   "romance",
+   "musical"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q632668": {
+  "year": 2009,
+  "sitelinks": 57,
+  "genreIds": [
+   "Q200092",
+   "Q157394",
+   "Q2484376"
+  ],
+  "genres": [
+   "horror",
+   "fantasy",
+   "thriller"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q322328": {
+  "year": 1993,
+  "sitelinks": 64,
+  "genreIds": [
+   "Q157443",
+   "Q157394",
+   "Q842256"
+  ],
+  "genres": [
+   "comedy",
+   "fantasy",
+   "musical"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q465275": {
+  "year": 2009,
+  "sitelinks": 62,
+  "genreIds": [
+   "Q157443",
+   "Q188473"
+  ],
+  "genres": [
+   "comedy",
+   "action"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q156401": {
+  "year": 2000,
+  "sitelinks": 67,
+  "genreIds": [
+   "Q157443",
+   "Q157394",
+   "Q2143665"
+  ],
+  "genres": [
+   "comedy",
+   "fantasy",
+   "children's"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q318428": {
+  "year": 2005,
+  "sitelinks": 55,
+  "genreIds": [
+   "Q157443",
+   "Q157394",
+   "Q1200678",
+   "Q2143665"
+  ],
+  "genres": [
+   "comedy",
+   "fantasy",
+   "mystery",
+   "children's"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q18786471": {
+  "year": 2016,
+  "sitelinks": 40,
+  "genreIds": [
+   "Q157394",
+   "Q188473",
+   "Q319221"
+  ],
+  "genres": [
+   "fantasy",
+   "action",
+   "adventure"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q28065409": {
+  "year": 2018,
+  "sitelinks": 43,
+  "genreIds": [
+   "Q157443",
+   "Q471839"
+  ],
+  "genres": [
+   "comedy",
+   "science fiction"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q73895818": {
+  "year": 2022,
+  "sitelinks": 41,
+  "genreIds": [
+   "Q157394",
+   "Q842256"
+  ],
+  "genres": [
+   "fantasy",
+   "musical"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q164417": {
+  "year": 2005,
+  "sitelinks": 59,
+  "genreIds": [
+   "Q157394",
+   "Q842256",
+   "Q860626"
+  ],
+  "genres": [
+   "fantasy",
+   "musical",
+   "romantic comedy"
+  ]
+ },
+ "http://www.wikidata.org/entity/Q198028": {
+  "year": 2012,
+  "sitelinks": 39,
+  "genreIds": [
+   "Q157443",
+   "Q157394",
+   "Q319221"
+  ],
+  "genres": [
+   "comedy",
+   "fantasy",
+   "adventure"
+  ]
  }
 }

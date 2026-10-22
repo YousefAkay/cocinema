@@ -3603,5 +3603,65 @@
    "rated": "PG",
    "rottenTomatoes": "98%"
   }
+ },
+ "http://www.wikidata.org/entity/Q632668": {
+  "title": "Coraline",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2009
+ },
+ "http://www.wikidata.org/entity/Q322328": {
+  "title": "The Nightmare Before Christmas",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 1993
+ },
+ "http://www.wikidata.org/entity/Q465275": {
+  "title": "Fantastic Mr. Fox",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2009
+ },
+ "http://www.wikidata.org/entity/Q156401": {
+  "title": "Chicken Run",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2000
+ },
+ "http://www.wikidata.org/entity/Q318428": {
+  "title": "Wallace & Gromit: The Curse of the Were-Rabbit",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2005
+ },
+ "http://www.wikidata.org/entity/Q18786471": {
+  "title": "Kubo and the Two Strings",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2016
+ },
+ "http://www.wikidata.org/entity/Q28065409": {
+  "title": "Isle of Dogs",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2018
+ },
+ "http://www.wikidata.org/entity/Q73895818": {
+  "title": "Guillermo del Toro's Pinocchio",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2022
+ },
+ "http://www.wikidata.org/entity/Q164417": {
+  "title": "Corpse Bride",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2005
+ },
+ "http://www.wikidata.org/entity/Q198028": {
+  "title": "ParaNorman",
+  "status": "VERIFIED",
+  "overlap": 1,
+  "omdbYear": 2012
  }
 }

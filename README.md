@@ -78,14 +78,15 @@ When your friend opens the link and rates their own films, each person's score f
 
 - **Discovery:** the best-known films per genre from Wikidata, ranked by how many Wikipedia language editions cover them.
 - **Enrichment:** plot, poster, runtime, director, age rating and Rotten Tomatoes score from OMDb. A title guard rejects wrong matches (for example a "Making of..." featurette).
-- **Title, year and plot checks:** `scripts/verifyCatalog.js` checks every entry against OMDb. The normalised title must match and OMDb's year must be within one year of Wikidata's. The stored plot is then compared with OMDb's by shared-word overlap. Clearly different plots mean the entry holds another film's content, and `scripts/repairCatalog.js` replaces its plot, poster, metadata and embedding. In the progress file, 552 entries verified at the first check and 22 mismatches were repaired; a test asserts that every entry is verified or a repaired mismatch.
+- **Title, year and plot checks:** `scripts/verifyCatalog.js` checks every entry against OMDb. The normalised title must match and OMDb's year must be within one year of Wikidata's. The stored plot is then compared with OMDb's by shared-word overlap. Clearly different plots mean the entry holds another film's content, and `scripts/repairCatalog.js` replaces its plot, poster, metadata and embedding. In the progress file, 562 entries verified at the first check and 22 mismatches were repaired; a test asserts that every entry is verified or a repaired mismatch.
 - **Director and runtime cross-check:** `scripts/crossCheckWikidata.js` compares each entry's director (by family name) and runtime (within 20 minutes) with what Wikidata says about the same film id, as an independent check on remakes that share a title.
-- **Overrides:** `data/overrides.json` lists the few documented exceptions (for example a title OMDb spells differently, or a release year that disagrees), each with a note.
+- **Overrides:** `data/overrides.json` lists the few documented exceptions (for example a title OMDb spells differently, a release year that disagrees, or a tracked genre Wikidata leaves off, added with `addGenres`), each with a note.
+- **Extra films:** `data/extra-films.json` lists films the genre queries do not reach (Wikidata id, title, year), currently ten stop-motion features. `node scripts/buildCatalog.js --extras-only` enriches and embeds only the ones not yet in the catalog and leaves every other entry as it is; then run `fetchMeta.js`, `mergeMeta.js`, `backfill.js` and `verifyCatalog.js` as usual.
 - **Tests on the data:** the catalog test suite checks that no two films share a plot, every film has a poster, plot, year and 512-number embedding, and the streaming snapshot holds exactly the films in the catalog.
 - **Embeddings:** reduced to 512 dimensions and rounded to 4 decimals, about 5 KB per film instead of 30 KB.
 - **Resilience:** the build is resumable and stops cleanly at OMDb's daily limit. No IMDb ids are stored.
 
-Current catalog: **574 films** across 20 genres, from `data/catalog.json`. Posters come through OMDb and are loaded from `m.media-amazon.com`.
+Current catalog: **584 films** across 20 genres, from `data/catalog.json`. Posters come through OMDb and are loaded from `m.media-amazon.com`.
 
 ### Catalog schema
 
@@ -118,7 +119,7 @@ This is a snapshot, not live data. Under Watchmode's free plan the cached data m
 
 ### Offline use
 
-A service worker (`src/sw.js`) keeps one versioned cache (currently `cocinema-v15`); bumping the name on a deploy makes every phone drop the old cache. Code (HTML, JS, CSS) is network-first with a 4 second wait before falling back to the saved copy. Data files (`catalog.json`, `onboarding.json`, `availability.json`) are stale-while-revalidate. Other origins (posters) are never cached, so offline the cards show placeholders. The worker is registered only on https or 127.0.0.1, so the app works the same without it.
+A service worker (`src/sw.js`) keeps one versioned cache (currently `cocinema-v16`); bumping the name on a deploy makes every phone drop the old cache. Code (HTML, JS, CSS) is network-first with a 4 second wait before falling back to the saved copy. Data files (`catalog.json`, `onboarding.json`, `availability.json`) are stale-while-revalidate. Other origins (posters) are never cached, so offline the cards show placeholders. The worker is registered only on https or 127.0.0.1, so the app works the same without it.
 
 ### Routing
 
@@ -175,6 +176,7 @@ data/
   onboarding.json   genre pools shown on the rating screen
   availability.json dated streaming snapshot
   overrides.json    documented verification exceptions
+  extra-films.json  films added by hand that the genre queries do not reach
 src/                runtime: static files served to the browser
   main.js           screens, hash routing and the rating flows
   recommend.js, similarity.js           taste profile, ranking, cosine similarity

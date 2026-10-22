@@ -20506,6 +20506,373 @@
      "Sky Store"
     ]
    }
+  },
+  "http://www.wikidata.org/entity/Q632668": {
+   "matched": true,
+   "CA": {
+    "subscription": [],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Cineplex"
+    ]
+   },
+   "US": {
+    "subscription": [
+     "HBO (Via Hulu)",
+     "HBO Max",
+     "Hulu",
+     "Hulu on Disney+",
+     "MAX (Via Amazon Prime)",
+     "Peacock",
+     "Peacock Premium"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Fandango at Home",
+     "Spectrum On Demand"
+    ]
+   },
+   "GB": {
+    "subscription": [
+     "ITVX Premium"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Sky Store"
+    ]
+   }
+  },
+  "http://www.wikidata.org/entity/Q322328": {
+   "matched": true,
+   "CA": {
+    "subscription": [
+     "Disney+"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Cineplex"
+    ]
+   },
+   "US": {
+    "subscription": [
+     "Disney+"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Fandango at Home",
+     "Google Play"
+    ]
+   },
+   "GB": {
+    "subscription": [
+     "Disney+"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Rakuten TV",
+     "Sky Store"
+    ]
+   }
+  },
+  "http://www.wikidata.org/entity/Q465275": {
+   "matched": true,
+   "CA": {
+    "subscription": [
+     "Crave",
+     "Crave (Via Amazon Prime)",
+     "Disney+"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Cineplex"
+    ]
+   },
+   "US": {
+    "subscription": [
+     "Disney+"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Fandango at Home",
+     "Google Play"
+    ]
+   },
+   "GB": {
+    "subscription": [
+     "Prime Video",
+     "Sky Go"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Rakuten TV",
+     "Sky Store"
+    ]
+   }
+  },
+  "http://www.wikidata.org/entity/Q156401": {
+   "matched": true,
+   "CA": {
+    "subscription": [
+     "Crave",
+     "Crave (Via Amazon Prime)",
+     "Netflix"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Cineplex"
+    ]
+   },
+   "US": {
+    "subscription": [],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Fandango at Home",
+     "Google Play"
+    ]
+   },
+   "GB": {
+    "subscription": [
+     "HBO Max",
+     "MAX (Via Amazon Prime)"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "BFI Player",
+     "Sky Store"
+    ]
+   }
+  },
+  "http://www.wikidata.org/entity/Q318428": {
+   "matched": true,
+   "CA": {
+    "subscription": [
+     "Crave",
+     "Crave (Via Amazon Prime)"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Cineplex"
+    ]
+   },
+   "US": {
+    "subscription": [],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Fandango at Home",
+     "Google Play"
+    ]
+   },
+   "GB": {
+    "subscription": [
+     "Sky Go"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Chili",
+     "Rakuten TV",
+     "Sky Store"
+    ]
+   }
+  },
+  "http://www.wikidata.org/entity/Q18786471": {
+   "matched": true,
+   "CA": {
+    "subscription": [
+     "Hollywood Suite",
+     "Lionsgate+ (Via Amazon Prime)"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Cineplex"
+    ]
+   },
+   "US": {
+    "subscription": [
+     "HBO (Via Hulu)",
+     "HBO Max",
+     "Hulu",
+     "Hulu on Disney+",
+     "MAX (Via Amazon Prime)",
+     "Peacock",
+     "Peacock Premium"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Fandango at Home",
+     "Spectrum On Demand"
+    ]
+   },
+   "GB": {
+    "subscription": [
+     "ITVX Premium"
+    ],
+    "rentOrBuy": [
+     "AppleTV",
+     "Sky Store"
+    ]
+   }
+  },
+  "http://www.wikidata.org/entity/Q28065409": {
+   "matched": true,
+   "CA": {
+    "subscription": [
+     "Disney+"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Cineplex"
+    ]
+   },
+   "US": {
+    "subscription": [
+     "Cinemax (Via Amazon Prime)",
+     "DirecTV On Demand",
+     "HBO (Via Hulu)",
+     "HBO Max",
+     "MAX (Via Amazon Prime)",
+     "Max Roku Channel"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Fandango at Home",
+     "Google Play"
+    ]
+   },
+   "GB": {
+    "subscription": [
+     "Disney+"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Rakuten TV",
+     "Sky Store"
+    ]
+   }
+  },
+  "http://www.wikidata.org/entity/Q73895818": {
+   "matched": true,
+   "CA": {
+    "subscription": [
+     "Disney+",
+     "Netflix"
+    ],
+    "rentOrBuy": []
+   },
+   "US": {
+    "subscription": [
+     "Disney+",
+     "Netflix"
+    ],
+    "rentOrBuy": []
+   },
+   "GB": {
+    "subscription": [
+     "Disney+",
+     "Netflix"
+    ],
+    "rentOrBuy": []
+   }
+  },
+  "http://www.wikidata.org/entity/Q164417": {
+   "matched": true,
+   "CA": {
+    "subscription": [
+     "Crave",
+     "Crave (Via Amazon Prime)"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Cineplex",
+     "Plex"
+    ]
+   },
+   "US": {
+    "subscription": [
+     "HBO (Via Hulu)",
+     "HBO Max",
+     "MAX (Via Amazon Prime)",
+     "Max Roku Channel"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Fandango at Home",
+     "Google Play",
+     "Plex",
+     "Spectrum On Demand"
+    ]
+   },
+   "GB": {
+    "subscription": [
+     "HBO Max",
+     "MAX (Via Amazon Prime)",
+     "Sky Go"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Chili",
+     "Rakuten TV",
+     "Sky Store"
+    ]
+   }
+  },
+  "http://www.wikidata.org/entity/Q198028": {
+   "matched": true,
+   "CA": {
+    "subscription": [],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Cineplex"
+    ]
+   },
+   "US": {
+    "subscription": [
+     "HBO (Via Hulu)",
+     "HBO Max",
+     "Hulu",
+     "Hulu on Disney+",
+     "MAX (Via Amazon Prime)",
+     "Peacock",
+     "Peacock Premium"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Fandango at Home"
+    ]
+   },
+   "GB": {
+    "subscription": [
+     "ITVX Premium"
+    ],
+    "rentOrBuy": [
+     "Amazon",
+     "AppleTV",
+     "Sky Store"
+    ]
+   }
   }
  }
 }

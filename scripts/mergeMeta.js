@@ -3,10 +3,12 @@ import fs from 'fs';
 const CATALOG_PATH = 'data/catalog.json';
 const META_PATH = 'data/wikidata-meta.json';
 const ONBOARDING_PATH = 'data/onboarding.json';
+const OVERRIDES_PATH = 'data/overrides.json';
 
 const catalog = JSON.parse(fs.readFileSync(CATALOG_PATH, 'utf8'));
 const meta = JSON.parse(fs.readFileSync(META_PATH, 'utf8'));
 const onboarding = JSON.parse(fs.readFileSync(ONBOARDING_PATH, 'utf8')).flatMap(genre => genre.movies);
+const overrides = fs.existsSync(OVERRIDES_PATH) ? JSON.parse(fs.readFileSync(OVERRIDES_PATH, 'utf8')) : {};
 
 let merged = 0;
 let missing = 0;
@@ -19,7 +21,10 @@ const result = catalog.map(movie => {
     return movie;
   }
   merged++;
-  const { genres, sitelinks, year } = found;
+  const { sitelinks, year } = found;
+  // addGenres (overrides.json): a tracked genre the film plainly has but Wikidata does not list.
+  const added = overrides[movie.id]?.addGenres || [];
+  const genres = [...new Set([...found.genres, ...added])];
   return { ...movie, genres, sitelinks, year };
 });
 

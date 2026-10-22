@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { decodeEntities } from '../scripts/matching.js';
 import { directorsAgree, runtimesAgree } from '../scripts/crossCheckWikidata.js';
+import { GENRES } from '../scripts/wikidata.js';
 
 const readJson = path => JSON.parse(fs.readFileSync(new URL(path, import.meta.url), 'utf8'));
 const catalog = readJson('../data/catalog.json');
@@ -10,6 +11,7 @@ const progress = readJson('../data/verify-progress.json');
 const overrides = readJson('../data/overrides.json');
 const idFixes = readJson('../data/id-fixes.json');
 const availability = readJson('../data/availability.json');
+const extraFilms = readJson('../data/extra-films.json');
 const byId = new Map(catalog.map(movie => [movie.id, movie]));
 const short = id => id.slice(id.lastIndexOf('/') + 1);
 
@@ -42,13 +44,18 @@ test('runtimesAgree allows cuts of a different length up to 20 minutes, and skip
 });
 
 test('every override is for a film in the catalog, uses known options, and explains itself', () => {
-  const known = new Set(['omdbTitle', 'omdbYear', 'refreshMeta', 'allowMissingScore', 'acceptStored', 'note']);
+  const known = new Set(['omdbTitle', 'omdbYear', 'refreshMeta', 'allowMissingScore', 'acceptStored', 'addGenres', 'note']);
+  const tracked = new Set(Object.values(GENRES));
   for (const [id, override] of Object.entries(overrides)) {
     assert.ok(byId.has(id), `${short(id)} is not in the catalog`);
     assert.ok(Object.keys(override).every(key => known.has(key)), `${short(id)} uses an unknown option`);
     assert.ok(typeof override.note === 'string' && override.note.length > 20, `${short(id)} needs a note saying why`);
     if (override.acceptStored) {
       assert.ok(/Wikidata|plot/.test(override.note), `${short(id)} is accepted by hand, so its note must give the evidence`);
+    }
+    for (const genre of override.addGenres || []) {
+      assert.ok(tracked.has(genre), `${short(id)} adds "${genre}", which is not a tracked genre`);
+      assert.ok(byId.get(id).genres.includes(genre), `${short(id)} should carry "${genre}"`);
     }
   }
 });
@@ -114,4 +121,14 @@ test('every film in the catalog was checked: verified, or a mismatch that has be
 
 test('the streaming snapshot holds exactly the films in the catalog', () => {
   assert.deepEqual(Object.keys(availability.films).sort(), catalog.map(movie => movie.id).sort());
+});
+
+test('every extra film is in the catalog under its Wikidata year and carries the animated label', () => {
+  for (const extra of extraFilms) {
+    const movie = byId.get(extra.id);
+    assert.ok(movie, `${extra.title} is not in the catalog`);
+    assert.ok(Math.abs(movie.year - extra.year) <= 1, `${extra.title}: ${movie.year}`);
+    assert.ok(movie.genres.includes('animated'), `${extra.title} should be animated`);
+    assert.equal(progress[extra.id].status, 'VERIFIED', extra.title);
+  }
 });

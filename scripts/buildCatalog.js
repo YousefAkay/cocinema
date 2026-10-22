@@ -6,6 +6,9 @@ import { getEmbedding } from './embeddings.js';
 const RAW_PATH = 'data/movies-raw.json';
 const CATALOG_PATH = 'data/catalog.json';
 const ONBOARDING_PATH = 'data/onboarding.json';
+// Films added by hand (Wikidata id, title, year) that the genre queries do not reach.
+const EXTRAS_PATH = 'data/extra-films.json';
+const extrasOnly = process.argv.includes('--extras-only');
 const ENRICH_DELAY_MS = 500;
 const EMBEDDING_DIMS = 512;
 const SAVE_EVERY = 25;
@@ -60,13 +63,22 @@ async function main() {
   const onboardingMovies = onboarding.flatMap(genre => genre.movies);
   console.log(`Loaded ${onboardingMovies.length} onboarding movies from ${ONBOARDING_PATH}`);
 
-  const allMovies = [...movies, ...onboardingMovies];
+  const extraMovies = fs.existsSync(EXTRAS_PATH) ? JSON.parse(fs.readFileSync(EXTRAS_PATH, 'utf8')) : [];
+  console.log(`Loaded ${extraMovies.length} extra movies from ${EXTRAS_PATH}`);
+
+  // --extras-only keeps every film already in the catalog exactly as it is and only enriches
+  // the extra films that are not in it yet, so films taken out by later clean-up stay out.
+  const allMovies = extrasOnly ? extraMovies : [...movies, ...onboardingMovies, ...extraMovies];
   const uniqueMovies = Array.from(new Map(allMovies.map(movie => [movie.id, movie])).values());
   console.log(`Unique movies to enrich: ${uniqueMovies.length}`);
 
   const existingById = loadExistingCatalog();
 
   const enrichedMovies = [];
+  if (extrasOnly) {
+    const kept = JSON.parse(fs.readFileSync(CATALOG_PATH, 'utf8'));
+    enrichedMovies.push(...kept.filter(movie => !uniqueMovies.some(extra => extra.id === movie.id)));
+  }
   let reused = 0;
   let skipped = 0;
   let failed = 0;
