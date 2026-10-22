@@ -120,7 +120,7 @@ test('the committed onboarding pools follow every rule', () => {
   assert.equal(onboarding.length, 15);
   const all = onboarding.flatMap(pool => pool.movies);
   assert.equal(new Set(all.map(movie => movie.id)).size, all.length, 'a film is in two pools');
-  assert.equal(all.filter(movie => movie.handPicked).length, 46, 'the 46 hand-picked films must all be kept');
+  assert.equal(all.filter(movie => movie.handPicked).length, 49, 'the 49 hand-picked films must all be kept');
 
   for (const pool of onboarding) {
     assert.ok(pool.movies.length >= 3 && pool.movies.length <= TARGET_SIZE, `${pool.genre}: ${pool.movies.length} films`);
@@ -135,4 +135,16 @@ test('the committed onboarding pools follow every rule', () => {
       assert.ok(entry.poster && entry.plot && entry.year && entry.embedding.length > 0, `${movie.title} is incomplete`);
     }
   }
+});
+
+test('Biographical has replaced Western in onboarding, with its hand-picked films', () => {
+  const onboarding = readJson('../data/onboarding.json');
+  const genres = onboarding.map(pool => pool.genre);
+  assert.deepEqual(genres, ['Comedy', 'Horror', 'Sci-fi', 'Drama', 'Action', 'Thriller', 'Romance', 'Animation', 'Adventure', 'Fantasy', 'Crime', 'War', 'Biographical', 'Mystery', 'Musical']);
+  const biographical = onboarding.find(pool => pool.genre === 'Biographical');
+  const picked = biographical.movies.filter(movie => movie.handPicked).map(movie => movie.id.split('/').pop());
+  assert.deepEqual(picked, ['Q185888', 'Q1392744', 'Q208108', 'Q108839994', 'Q164103', 'Q48673898', 'Q160060']);
+  // Western films leave onboarding only: they stay in the catalog and can still be recommended.
+  const catalog = readJson('../data/catalog.json');
+  assert.ok(catalog.filter(movie => (movie.genres || []).includes('western')).length > 10);
 });

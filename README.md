@@ -107,7 +107,7 @@ Each entry in `data/catalog.json`:
 
 ### Onboarding pools
 
-`data/onboarding.json` holds 15 genre pools of up to 8 films. The original hand-picked films stay; `node scripts/buildOnboarding.js` tops each pool up with the best-known verified catalog films that have a poster, plot, year and embedding and a title that appears only once. Rerun it after catalog changes.
+`data/onboarding.json` holds 15 genre pools of up to 8 films: comedy, horror, sci-fi, drama, action, thriller, romance, animation, adventure, fantasy, crime, war, biographical, mystery and musical (westerns stay in the catalog but are not asked about). The original hand-picked films stay; `node scripts/buildOnboarding.js` tops each pool up with the best-known verified catalog films that have a poster, plot, year and embedding and a title that appears only once. Rerun it after catalog changes.
 
 ### Streaming availability
 

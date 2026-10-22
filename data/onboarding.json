@@ -170,24 +170,24 @@
         "year": 1989
       },
       {
-        "id": "http://www.wikidata.org/entity/Q164103",
-        "title": "A Beautiful Mind",
-        "year": 2001
-      },
-      {
         "id": "http://www.wikidata.org/entity/Q25139",
         "title": "American Beauty",
         "year": 1999
       },
       {
-        "id": "http://www.wikidata.org/entity/Q160060",
-        "title": "The King's Speech",
-        "year": 2010
+        "id": "http://www.wikidata.org/entity/Q2345",
+        "title": "12 Angry Men",
+        "year": 1957
       },
       {
-        "id": "http://www.wikidata.org/entity/Q3023357",
-        "title": "12 Years a Slave",
-        "year": 2013
+        "id": "http://www.wikidata.org/entity/Q220394",
+        "title": "The Birth of a Nation",
+        "year": 1915
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q302490",
+        "title": "The Mission",
+        "year": 1986
       }
     ]
   },
@@ -233,9 +233,9 @@
         "year": 2017
       },
       {
-        "id": "http://www.wikidata.org/entity/Q220780",
-        "title": "Raging Bull",
-        "year": 1980
+        "id": "http://www.wikidata.org/entity/Q571032",
+        "title": "Django Unchained",
+        "year": 2012
       }
     ]
   },
@@ -266,14 +266,9 @@
         "year": 2005
       },
       {
-        "id": "http://www.wikidata.org/entity/Q108839994",
-        "title": "Oppenheimer",
-        "year": 2023
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q59653",
-        "title": "Argo",
-        "year": 2012
+        "id": "http://www.wikidata.org/entity/Q244315",
+        "title": "There Will Be Blood",
+        "year": 2007
       }
     ]
   },
@@ -309,11 +304,6 @@
         "year": 1997
       },
       {
-        "id": "http://www.wikidata.org/entity/Q15079318",
-        "title": "The Theory of Everything",
-        "year": 2014
-      },
-      {
         "id": "http://www.wikidata.org/entity/Q25136757",
         "title": "Call Me by Your Name",
         "year": 2017
@@ -322,6 +312,11 @@
         "id": "http://www.wikidata.org/entity/Q207954",
         "title": "Pretty Woman",
         "year": 1990
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q892735",
+        "title": "The Great Gatsby",
+        "year": 2013
       }
     ]
   },
@@ -398,6 +393,11 @@
         "id": "http://www.wikidata.org/entity/Q106428",
         "title": "Apollo 13",
         "year": 1995
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q326114",
+        "title": "True Grit",
+        "year": 2010
       },
       {
         "id": "http://www.wikidata.org/entity/Q329709",
@@ -491,6 +491,11 @@
         "year": 2002
       },
       {
+        "id": "http://www.wikidata.org/entity/Q104137",
+        "title": "Unforgiven",
+        "year": 1992
+      },
+      {
         "id": "http://www.wikidata.org/entity/Q109135",
         "title": "Trainspotting",
         "year": 1996
@@ -504,11 +509,6 @@
         "id": "http://www.wikidata.org/entity/Q135465",
         "title": "Rashomon",
         "year": 1950
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q188000",
-        "title": "Crash",
-        "year": 2004
       }
     ]
   },
@@ -534,11 +534,6 @@
         "handPicked": true
       },
       {
-        "id": "http://www.wikidata.org/entity/Q483941",
-        "title": "Schindler's List",
-        "year": 1993
-      },
-      {
         "id": "http://www.wikidata.org/entity/Q105702",
         "title": "Dr. Strangelove",
         "year": 1964
@@ -549,63 +544,71 @@
         "year": 1957
       },
       {
-        "id": "http://www.wikidata.org/entity/Q14918344",
-        "title": "The Imitation Game",
-        "year": 2014
-      },
-      {
         "id": "http://www.wikidata.org/entity/Q21935651",
         "title": "Dunkirk",
         "year": 2017
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q201674",
+        "title": "The Deer Hunter",
+        "year": 1978
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q243439",
+        "title": "Full Metal Jacket",
+        "year": 1987
       }
     ]
   },
   {
-    "genre": "Western",
+    "genre": "Biographical",
     "movies": [
       {
-        "id": "http://www.wikidata.org/entity/Q571032",
-        "title": "Django Unchained",
-        "year": 2012,
+        "id": "http://www.wikidata.org/entity/Q185888",
+        "title": "The Social Network",
+        "year": 2010,
         "handPicked": true
       },
       {
-        "id": "http://www.wikidata.org/entity/Q41483",
-        "title": "The Good, the Bad and the Ugly",
-        "year": 1966,
+        "id": "http://www.wikidata.org/entity/Q1392744",
+        "title": "The Wolf of Wall Street",
+        "year": 2013,
         "handPicked": true
       },
       {
-        "id": "http://www.wikidata.org/entity/Q232000",
-        "title": "Butch Cassidy and the Sundance Kid",
-        "year": 1969,
+        "id": "http://www.wikidata.org/entity/Q208108",
+        "title": "Catch Me If You Can",
+        "year": 2002,
         "handPicked": true
       },
       {
-        "id": "http://www.wikidata.org/entity/Q245208",
-        "title": "High Noon",
-        "year": 1952,
+        "id": "http://www.wikidata.org/entity/Q108839994",
+        "title": "Oppenheimer",
+        "year": 2023,
         "handPicked": true
       },
       {
-        "id": "http://www.wikidata.org/entity/Q76479",
-        "title": "A Fistful of Dollars",
-        "year": 1964
+        "id": "http://www.wikidata.org/entity/Q164103",
+        "title": "A Beautiful Mind",
+        "year": 2001,
+        "handPicked": true
       },
       {
-        "id": "http://www.wikidata.org/entity/Q153677",
-        "title": "For a Few Dollars More",
-        "year": 1965
+        "id": "http://www.wikidata.org/entity/Q48673898",
+        "title": "Green Book",
+        "year": 2018,
+        "handPicked": true
       },
       {
-        "id": "http://www.wikidata.org/entity/Q994481",
-        "title": "The Wild Bunch",
-        "year": 1969
+        "id": "http://www.wikidata.org/entity/Q160060",
+        "title": "The King's Speech",
+        "year": 2010,
+        "handPicked": true
       },
       {
-        "id": "http://www.wikidata.org/entity/Q251997",
-        "title": "Cimarron",
-        "year": 1931
+        "id": "http://www.wikidata.org/entity/Q3023357",
+        "title": "12 Years a Slave",
+        "year": 2013
       }
     ]
   },
@@ -634,11 +637,6 @@
         "id": "http://www.wikidata.org/entity/Q103474",
         "title": "2001: A Space Odyssey",
         "year": 1968
-      },
-      {
-        "id": "http://www.wikidata.org/entity/Q24815",
-        "title": "Citizen Kane",
-        "year": 1941
       },
       {
         "id": "http://www.wikidata.org/entity/Q221202",
@@ -684,11 +682,6 @@
         "year": 1942
       },
       {
-        "id": "http://www.wikidata.org/entity/Q190956",
-        "title": "Amadeus",
-        "year": 1984
-      },
-      {
         "id": "http://www.wikidata.org/entity/Q218235",
         "title": "Charlie and the Chocolate Factory",
         "year": 2005
@@ -702,6 +695,11 @@
         "id": "http://www.wikidata.org/entity/Q15648198",
         "title": "Whiplash",
         "year": 2014
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q869741",
+        "title": "Melody Time",
+        "year": 1948
       }
     ]
   }

@@ -108,9 +108,9 @@ function main() {
   const { pools, report } = buildPools(catalog, progress, normalised);
   fs.writeFileSync(ONBOARDING_PATH, JSON.stringify(pools, null, 2) + '\n');
 
-  console.log(`${'genre'.padEnd(11)}${'hand'.padEnd(6)}${'added'.padEnd(7)}total`);
+  console.log(`${'genre'.padEnd(14)}${'hand'.padEnd(6)}${'added'.padEnd(7)}total`);
   for (const row of report) {
-    console.log(`${row.genre.padEnd(11)}${String(row.kept).padEnd(6)}${String(row.added.length).padEnd(7)}${row.size}`);
+    console.log(`${row.genre.padEnd(14)}${String(row.kept).padEnd(6)}${String(row.added.length).padEnd(7)}${row.size}`);
     if (row.added.length) console.log(`    + ${row.added.join('; ')}`);
     if (row.size < MIN_SIZE) {
       console.warn(`WARNING: ${row.genre} has only ${row.size} films (wanted ${MIN_SIZE}-${TARGET_SIZE}); rerun after verification finishes.`);

@@ -7,7 +7,7 @@ What CoCinema should become and the rules the code keeps. Reviews check the code
 1. Landing page: one "Get started" button in the middle of the screen.
 2. Onboarding: rate popular movies, one per genre, on a 1–10 scale, one movie at a time. The visitor chooses the length: Taster (5 genres), Quick (10) or Full (all 15); shorter sessions take the first genres of the same seeded order. "Haven't seen it" skips to the next movie for that genre, and Back returns to the previous one.
    If a session ends with too few ratings to rank (under 3, or all the same score), the results offer "Rate more" first, never only "Start over".
-   Genres: comedy, horror, sci-fi, drama, action, thriller, romance, animation, adventure, fantasy, crime, war, western, mystery, musical.
+   Genres: comedy, horror, sci-fi, drama, action, thriller, romance, animation, adventure, fantasy, crime, war, biographical, mystery, musical. Western left onboarding because testers rarely recognised the films; westerns stay in the catalog and can still be recommended.
 3. Results:
    - Top 3 picks in their own section above the rest, with bigger posters and titles, and a short line for each saying why it was picked.
    - Then the rest of the ranked list, in order, with poster and title, no explanation lines.
