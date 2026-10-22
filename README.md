@@ -11,7 +11,7 @@ Live: **[cocinema-pi.vercel.app](https://cocinema-pi.vercel.app)**
 <p align="center">
   <img src="docs/images/landing.webp" alt="Landing page with Pick a genre open: a grid of genres to choose from" width="190" />
   <img src="docs/images/rating.webp" alt="Rating screen: a film's poster, year, runtime, Rotten Tomatoes score and genres, with scores from 1 to 10" width="190" />
-  <img src="docs/images/results.webp" alt="Top five picks, each with a line saying which of your ratings put it there" width="190" />
+  <img src="docs/images/results.webp" alt="Your top picks: Inception, Casino Royale and The Wolf of Wall Street, each with a line saying which of your ratings put it there" width="190" />
   <img src="docs/images/film.webp" alt="Film page: where to stream it in Canada, the US and the UK" width="190" />
 </p>
 
