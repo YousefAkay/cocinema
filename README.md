@@ -4,38 +4,37 @@
 
 # CoCinema
 
-**Rate a handful of films you know. CoCinema maps your taste against 550+ movies and shows why each pick fits you, all in your browser with no account.**
+**Rate a few films you know, and I'll tell you what to watch next, and why.**
 
-🎬 **Live:** [cocinema-pi.vercel.app](https://cocinema-pi.vercel.app)
-
-<img src="docs/images/results.webp" alt="Results: the first three top picks, each with a line saying which of the person's own ratings drove it" width="100%" />
-
-<p align="center"><em>An example run: each reason is an exact breakdown of the person's own ratings.</em></p>
+Live: **[cocinema-pi.vercel.app](https://cocinema-pi.vercel.app)**
 
 <p align="center">
-  <img src="docs/images/landing.webp" alt="Landing screen: choose Quick or Full, then Get started" width="280" />
-  <img src="docs/images/rating.webp" alt="Rating screen: poster, title, year, runtime, Rotten Tomatoes, genres and the scores" width="280" />
-  <img src="docs/images/shared-list.webp" alt="Films you'd both enjoy: the shared list for two people, with each person's Top N%" width="280" />
+  <img src="docs/images/landing.webp" alt="Landing page with Pick a genre open: a grid of genres to choose from" width="190" />
+  <img src="docs/images/rating.webp" alt="Rating screen: a film's poster, year, runtime, Rotten Tomatoes score and genres, with scores from 1 to 10" width="190" />
+  <img src="docs/images/results.webp" alt="Top five picks, each with a line saying which of your ratings put it there" width="190" />
+  <img src="docs/images/film.webp" alt="Film page: where to stream it in Canada, the US and the UK" width="190" />
 </p>
-
----
 
 ## What it does
 
-- **General or one genre.** The landing first asks whether you want films from every genre or just one. Pick a genre offers every catalog genre with enough films (largest first); you rate only well-known films from that genre and get back only films from it, ranked by the same maths and filtered afterwards. "Rate 5 more" stays in the genre. Watching with a friend is General only.
-- **Taster, Quick or Full onboarding.** Nothing is pre-selected. Taster asks about 5 films (5 of the 15 genres), Quick about 10, and Full covers all 15 genres; the shorter sessions take a different set of genres each time. Choosing Taster says plainly that its picks are rougher and that at least 3 films rated with different scores are needed. Skip any film you have not seen, or go Back to change an answer. The order of genres and films is shuffled per session from a saved seed, so a refresh resumes on the same film. Each film is shown with its poster, year, runtime, Rotten Tomatoes score and genres next to the scores.
-- **Picks with reasons.** The top 5 each carry a short line naming the films you rated that drove the pick and the score you gave them ("Your 9 for X did most of the work here, with a nudge from Y (8)."), plus, on at most two cards, the one film that held the pick back when that pull is large. The wording is chosen from the film's id, so a list always reads the same way, no two top cards open or end alike, and the held-back clause appears on at most two cards. Every card also shows its year, runtime, Rotten Tomatoes score and genres. The rest follow in a compact grid. "Rate 5 more" adds five well-known unrated films, at most two per genre, to sharpen the list. If a session ends with too few ratings to rank (under 3, or all the same score), the results say how many you rated and offer "Rate 5 more" first, with Start over second.
-- **Where a film sits for you.** Top picks show a rank; other films show "Top N% for your taste", its place among the films you have not rated. It ranks films against each other and is not the chance you will like one.
-- **Film pages.** Poster, genres, runtime, director, age rating, Rotten Tomatoes score, the full plot, a breakdown of how each film you rated pushed this one up or down, a YouTube trailer search, and which services carry it (subscription, rent or buy) in Canada, the US and the UK, from a dated Watchmode snapshot, with JustWatch search links (searches, not a guarantee of availability).
-- **Watch with a friend.** A banner at the top of the results has the invite button (it copies the link, or opens the share sheet where there is one) and a "Try a sample friend" control. Your friend rates their own films and you both get one list of films that suit the two of you. There are three made-up sample friends (horror, romance, sci-fi) to try it alone.
-- **Home, Back and Start over never lose your ratings by accident.** The logo and a Home button on the rating screen go home; with at least one rating (and for the browser Back button) a dialog asks "Leave and keep your ratings?". The landing page then offers "Continue (n of N)" beside the length choice, which still has no default. "Start over" asks before it clears anything.
-- **Installable and offline.** After one visit the app works with no connection (posters excepted) and can be added to the home screen. Ratings and position are saved in the browser. The screens are checked with an automated accessibility scan (axe).
+- **Rate films** on a 1 to 10 scale, one at a time. Pick how long: Taster (5), Quick (10) or Full (15). Haven't seen one? Skip it.
+- **General or one genre.** Rate across everything, or pick a genre and get picks only from that genre.
+- **Top picks with a reason each**, built from your own ratings ("Your 9 for X did most of the work here..."), then the rest of the list.
+- **Film pages** with the plot, how your ratings pushed it up or down, and where to stream it in Canada, the US and the UK.
+- **Watch with a friend.** Send a link, your friend rates their own films, and you both get one list that suits you both.
 
 ## How it works
 
-CoCinema is a **content-based recommender**. Each film's plot is turned into an embedding (a list of numbers where similar stories get similar numbers). Your ratings are combined into one taste profile, and every film is ranked by how closely it points the same way.
+I used AI in exactly one place, offline: each film's plot was turned into an embedding (a list of numbers where similar stories get similar numbers), once, at build time.
 
-**The embedding model is used in one place, offline.** Each plot is embedded once, at build time, with OpenAI `text-embedding-3-small`. Everything live is deterministic maths in your browser: no model calls, no backend, no keys in the client.
+Everything after that is maths I wrote, running in your browser. Your ratings are mean-centred (a 7 from a harsh critic counts for more than a 7 from someone who gives everything a 9), blended into one taste profile, and every film is ranked by cosine similarity to it. No AI picks your movies, there's no account, and there's no server. Your ratings stay on your device.
+
+## The pipeline
+
+1. **Wikidata** finds the best-known films in each genre.
+2. **OMDb** adds plots, posters and details, with a title check that rejects wrong matches.
+3. **OpenAI `text-embedding-3-small`** turns each plot into 512 numbers, once.
+4. **`buildCatalog`** merges it all into one file the browser loads: 550+ films.
 
 ```mermaid
 flowchart LR
@@ -62,168 +61,32 @@ flowchart LR
     end
 ```
 
-### The taste profile and cosine similarity, in plain words
-
-1. **Mean-centre your ratings.** Each rating becomes a weight: how far it sits above or below *your own* average. A 7 from a harsh rater counts as a like; a 7 from someone who rates everything 9 counts as a dislike.
-2. **Build a taste profile.** Multiply each rated film's embedding by its weight and add them up. Films you loved pull the profile toward them; films you disliked push it away.
-3. **Rank by cosine similarity.** Compare the profile with every unrated film. Cosine similarity measures the *angle* between two vectors, so it captures what a story is about regardless of plot length.
-
-### Watch with a friend: ratings in the link
-
-Your ratings are written into the link itself, after `#/with/`, as a short encoded string (format version 1: each film's Wikidata number in base 36 plus one digit for the score, then base64-url encoded). The part after `#` is never sent to a server, so nothing is stored anywhere; anyone who has the link can read the ratings, and the app says so. A link holds at most 120 films, and bad or unknown links are handled with a plain message.
-
-When your friend opens the link and rates their own films, each person's score for every film neither has rated is turned into a rank among those same films. A film is **only as good as its weaker fit**: films are ordered by the worse of the two ranks, then by the average of the two, then by title and id so the order is the same every time. Each person's score is the same one they would see on their own results screen. Your friend's ratings are only read for this list; they are never added to your own profile.
-
-## Data quality and verification
-
-- **Discovery:** the best-known films per genre from Wikidata, ranked by how many Wikipedia language editions cover them.
-- **Enrichment:** plot, poster, runtime, director, age rating and Rotten Tomatoes score from OMDb. A title guard rejects wrong matches (for example a "Making of..." featurette).
-- **Title, year and plot checks:** `scripts/verifyCatalog.js` checks every entry against OMDb. The normalised title must match and OMDb's year must be within one year of Wikidata's. The stored plot is then compared with OMDb's by shared-word overlap. Clearly different plots mean the entry holds another film's content, and `scripts/repairCatalog.js` replaces its plot, poster, metadata and embedding. In the progress file, 562 entries verified at the first check and 22 mismatches were repaired; a test asserts that every entry is verified or a repaired mismatch.
-- **Director and runtime cross-check:** `scripts/crossCheckWikidata.js` compares each entry's director (by family name) and runtime (within 20 minutes) with what Wikidata says about the same film id, as an independent check on remakes that share a title.
-- **Overrides:** `data/overrides.json` lists the few documented exceptions (for example a title OMDb spells differently, a release year that disagrees, or a tracked genre Wikidata leaves off, added with `addGenres`), each with a note.
-- **Extra films:** `data/extra-films.json` lists films the genre queries do not reach (Wikidata id, title, year), currently ten stop-motion features. `node scripts/buildCatalog.js --extras-only` enriches and embeds only the ones not yet in the catalog and leaves every other entry as it is; then run `fetchMeta.js`, `mergeMeta.js`, `backfill.js` and `verifyCatalog.js` as usual.
-- **Tests on the data:** the catalog test suite checks that no two films share a plot, every film has a poster, plot, year and 512-number embedding, and the streaming snapshot holds exactly the films in the catalog.
-- **Embeddings:** reduced to 512 dimensions and rounded to 4 decimals, about 5 KB per film instead of 30 KB.
-- **Resilience:** the build is resumable and stops cleanly at OMDb's daily limit. No IMDb ids are stored.
-
-Current catalog: **584 films** across 20 genres, from `data/catalog.json`. Posters come through OMDb and are loaded from `m.media-amazon.com`.
-
-### Catalog schema
-
-Each entry in `data/catalog.json`:
-
-| Field | Type | Source |
-| --- | --- | --- |
-| `id` | string (Wikidata entity URL) | Wikidata |
-| `title` | string | OMDb |
-| `plot` | string | OMDb |
-| `poster` | string or null | OMDb |
-| `embedding` | number[512] | OpenAI |
-| `rottenTomatoes` | string (e.g. `"87%"`) or null | OMDb |
-| `runtime` | string (e.g. `"142 min"`) or null | OMDb |
-| `director` | string or null | OMDb |
-| `rated` | string (e.g. `"R"`) or null | OMDb |
-| `genres` | string[] (from the 20 tracked genres) | Wikidata |
-| `sitelinks` | number (Wikipedia language editions) | Wikidata |
-| `year` | number (earliest release year) | Wikidata |
-
-### Onboarding pools
-
-`data/onboarding.json` holds 15 genre pools of up to 8 films: comedy, horror, sci-fi, drama, action, thriller, romance, animation, adventure, fantasy, crime, war, biographical, mystery and musical (westerns stay in the catalog but are not asked about). The original hand-picked films stay; `node scripts/buildOnboarding.js` tops each pool up with the best-known verified catalog films that have a poster, plot, year and embedding and a title that appears only once. Rerun it after catalog changes.
-
-### Streaming availability
-
-`node scripts/watchmode.js` looks up where each film can be watched in Canada, the US and the UK and writes service names to `data/availability.json`. It is resumable and stops at a credit cap (`--max-credits`, default 2000). The film page loads the file only when a film is opened; if it is missing, has no entry, or is more than 30 days old, the page shows only the JustWatch search links.
-
-This is a snapshot, not live data. Under Watchmode's free plan the cached data must be **refreshed or deleted within 30 days** of the fetch date. The current snapshot was fetched on **22 October 2026**, so refresh or delete it by **21 November 2026**. To refresh, delete `data/availability.json` and run the script. The key goes in `.env` as `WATCHMODE_API_KEY` and is never printed or committed.
-
-### Offline use
-
-A service worker (`src/sw.js`) keeps one versioned cache (currently `cocinema-v16`); bumping the name on a deploy makes every phone drop the old cache. Code (HTML, JS, CSS) is network-first with a 4 second wait before falling back to the saved copy. Data files (`catalog.json`, `onboarding.json`, `availability.json`) are stale-while-revalidate. Other origins (posters) are never cached, so offline the cards show placeholders. The worker is registered only on https or 127.0.0.1, so the app works the same without it.
-
-### Routing
-
-One HTML page, hash routes. `#/movie/<Wikidata id>` is a film page (it survives a refresh, and Back returns to the results at the same scroll position), and `#/with/<payload>` is a friend's shared taste. An unknown film id shows a "Movie not found" screen.
-
-### Known limits
-
-- Posters are linked from another site (via OMDb), which can see a visitor's IP address like any site would, and they need a connection. Fonts are self-hosted, so nothing is requested from Google. There is no account; ratings and the taste profile stay on the device.
-- Streaming availability is a dated snapshot, and the JustWatch links are searches, not guarantees.
-- Co-watch links contain the ratings in plain, encoded form; anyone with the link can read them.
-- The evaluation uses synthetic genre-based personas and says nothing about accuracy for real people.
-
-## Evaluation
-
-Run with `npm run evaluate` (fixed seed, no network). The picks beat the genre baseline by a lift of 4.6x. The headline numbers are generated into [`src/evaluation-stats.js`](src/evaluation-stats.js), which the landing page also reads, so this section and the page cannot disagree. Current values, with seed 20261007 and 1,000 synthetic users over 20 genres, each rating 12 films:
-
-| Measure | Value |
-| --- | --- |
-| Precision@10 | 0.598 |
-| Baseline (genre's share of the catalog) | 0.162 |
-| Lift over the baseline | 4.58x |
-| Held-out liked film, mean percentile | 72.6 |
-| Held-out liked film found in the top 20 | 14.4% |
-
-**Method.** For each genre with enough films, synthetic users are generated at random with a fixed seed. They rate films of that genre 9 or 10, films outside it 2 or 3, and a couple of others 5 or 6; one more film of the genre is held back. The real `recommend()` function ranks every unrated film, and the script records how much of the top 10 is in the genre, how that compares with the genre's share of the catalog, and where the held-back film lands. `node scripts/evaluate.js --compare` repeats this with different numbers of ratings.
-
-**Limitation.** These are synthetic users whose taste is defined by Wikidata genre labels, and a film can carry several labels. The numbers show that the recommender picks up a genre signal from ratings. They say nothing about accuracy for real people, and results vary a lot by genre. Testing with real people is on the roadmap.
-
-## Testing
-
-- **Unit tests:** `npm test` runs 276 tests (node:test) over 24 files, covering the recommender, the why lines (determinism, variety, the held-back threshold, and that every film and number named comes from the real contribution data), runtime and rating formatting, sharing links, the combined ranking, catalog integrity and the Vercel config.
-- **Browser tests:** `npm run test:e2e` runs thirteen headless-Chrome scripts (Playwright) and reported 504 passing checks in total: the main flow, the General or genre choice and the Taster/Quick/Full lengths, genre mode from the chips to comedy-only results, short sessions and the way forward when there are too few ratings to rank, the landing page, icons, co-watch, offline mode and update behaviour, an axe accessibility scan with keyboard checks, Home, Back, Continue and the dialogs, going back to a previous film, and the results cards and invite banner. One of them measures the rating screen across six consecutive films at six window sizes (1440x900 down to 360x640) and checks that it stays in place and does not scroll.
-
-## Tech stack
-
-- **Frontend:** plain JavaScript (ES modules), HTML, CSS. No framework, no build step.
-- **Build scripts:** Node.js
-- **Data:** Wikidata (CC0), OMDb, OpenAI embeddings, Watchmode
-- **Hosting:** Vercel (static)
-
-## Project structure
-
-```
-scripts/            build time: runs locally, uses API keys
-  wikidata.js, omdb.js, embeddings.js   discovery, enrichment, embeddings
-  buildCatalog.js   orchestrates the build -> data/catalog.json
-  verifyCatalog.js, repairCatalog.js    title, year and plot verification, and repairs
-  crossCheckWikidata.js                 director and runtime cross-check
-  buildOnboarding.js, buildLandingPosters.js   onboarding pools, landing poster strip
-  watchmode.js      streaming availability snapshot
-  evaluate.js       synthetic evaluation, writes src/evaluation-stats.js
-data/
-  catalog.json      the bridge between build time and runtime
-  onboarding.json   genre pools shown on the rating screen
-  availability.json dated streaming snapshot
-  overrides.json    documented verification exceptions
-  extra-films.json  films added by hand that the genre queries do not reach
-src/                runtime: static files served to the browser
-  main.js           screens, hash routing and the rating flows
-  recommend.js, similarity.js           taste profile, ranking, cosine similarity
-  combine.js, cowatch.js, cowatchScreens.js, samples.js, flags.js   Watch with a friend
-  why.js, dialog.js  the "why" lines, and the one confirmation dialog
-  detail.js, availability.js            film page and streaming text
-  ratings.js        the only file that touches localStorage
-  sw.js, offline.js service worker and offline notice
-  fonts/            self-hosted fonts with their licences
-tests/              node:test unit tests (npm test)
-e2e/                headless browser checks at 375px (npm run test:e2e)
-docs/               VISION.md and the README screenshots
-```
-
-## Running locally
+## Run it locally
 
 ```bash
 npm install
-
-# Only needed to rebuild the catalog. The site itself needs no keys.
-# Create a .env file in the project root:
-#   OMDB_API_KEY=your_key
-#   OPENAI_API_KEY=your_key
-#   WATCHMODE_API_KEY=your_key   (only for the availability snapshot)
-node scripts/buildCatalog.js
-
-npm test
-npm run evaluate
-npm run test:e2e
-
-# Serve the site
-npx serve . -l tcp://127.0.0.1:3000
-# then open http://127.0.0.1:3000/src/
+npx serve . -l tcp://127.0.0.1:3000   # then open http://127.0.0.1:3000/src/
 ```
 
-## Roadmap
+The site needs no keys. Only to rebuild the data, add a `.env` with `OMDB_API_KEY`, `OPENAI_API_KEY` and `WATCHMODE_API_KEY`, then run `node scripts/buildCatalog.js`.
 
-- Diversity re-ranking, so the top of a list is not all one flavour
-- Testing with real users
-- A cleaner poster source
-- Mood-based search
+## Tests and evaluation
 
-## Credits and licenses
+- **Unit:** `npm test`, 277 tests (node:test) on the recommender, why lines, sharing links and catalog integrity.
+- **Browser:** `npm run test:e2e`, 523 checks across 14 headless Chrome scripts, including an axe accessibility scan.
+- **Evaluation:** `npm run evaluate`. For 1,000 simulated fans of one genre, 59.8% of their top 10 is from that genre, against a 16.2% baseline (a lift of 4.6x). Honest caveat: those are simulated taste profiles, not real users.
+
+## Stack
+
+Plain JavaScript, HTML and CSS with no framework or build step, Node.js scripts for the data, hosted on Vercel.
+
+Want the gritty bits (verification, data repairs, streaming refresh rules, caching)? They're in [docs/DETAILS.md](docs/DETAILS.md).
+
+## Credits and licences
 
 - Film data from [Wikidata](https://www.wikidata.org) (CC0).
-- Plots, posters, runtimes, directors, ratings and Rotten Tomatoes scores from the [OMDb API](https://www.omdbapi.com), whose content is licensed [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Posters come through OMDb: they are loaded from OMDb's image links, are not stored or redistributed in this repository, and belong to their respective studios and rights holders. CoCinema is a free, non-commercial portfolio project.
+- Plots, posters, runtimes, directors, ratings and Rotten Tomatoes scores from the [OMDb API](https://www.omdbapi.com), licensed [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Posters are loaded from OMDb's image links, are not stored in this repository, and belong to their respective studios and rights holders. CoCinema is a free, non-commercial portfolio project.
 - Plot embeddings by [OpenAI](https://platform.openai.com) (`text-embedding-3-small`), computed offline.
 - Streaming data by [Watchmode](https://www.watchmode.com).
 - Fonts, self-hosted under the SIL Open Font License 1.1: Big Shoulders Display (`src/fonts/OFL-big-shoulders-display.txt`) and Figtree (`src/fonts/OFL-figtree.txt`).
-- Code released under the MIT license.
+- Code released under the MIT licence.
