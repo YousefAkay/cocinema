@@ -173,11 +173,11 @@ test('the length choice offers Taster, Quick and Full in that order, as radios w
   assert.ok(!/minute|second|hour/i.test(fieldset), 'no duration claims');
 });
 
-test('the How it works copy describes all three lengths', () => {
+test('How it works step 1 is short and leaves the counts to the length cards', () => {
   const html = read('../src/index.html');
   const how = /<section class="how[\s\S]*?<\/section>/.exec(html)[0];
-  assert.match(how, /every genre or just one/);
-  assert.match(how, /Taster asks for 5, Quick 10 and Full 15/);
+  assert.match(how, /Score films you've seen from 1 to 10, from every genre or just one\. Skip any you haven't seen\./);
+  assert.ok(!/Taster asks|Quick 10|Full 15/.test(how), 'the counts are on the length cards');
 });
 
 test('the landing asks General or Pick a genre first, with nothing chosen, and the sticky band clears the safe area', () => {
