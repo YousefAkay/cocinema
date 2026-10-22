@@ -176,5 +176,15 @@ test('the length choice offers Taster, Quick and Full in that order, as radios w
 test('the How it works copy describes all three lengths', () => {
   const html = read('../src/index.html');
   const how = /<section class="how[\s\S]*?<\/section>/.exec(html)[0];
-  assert.match(how, /Taster covers 5 genres, Quick 10 and Full all 15/);
+  assert.match(how, /Taster covers 5 genres, Quick 10 and Full 15/);
+});
+
+test('the landing has no pill label and one plain stats line filled from data, with its footnote', () => {
+  const html = read('../src/index.html');
+  assert.ok(!/class="pill"/.test(html), 'the pill label is gone');
+  const stats = /<section class="stats"[\s\S]*?<\/section>/.exec(html)[0];
+  assert.equal((stats.match(/class="stats-line"/g) || []).length, 1);
+  assert.match(stats, /<span data-fill="films">[^<]*<\/span> films &middot; <span data-fill="lift">[^<]*<\/span> better than chance at finding your genre/);
+  assert.ok(!/stat-number|data-fill="dimensions"|accounts/.test(stats), 'the four stat tiles are gone');
+  assert.match(stats, /Measured with simulated taste profiles, not a study of real viewers\./);
 });

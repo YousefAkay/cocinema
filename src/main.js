@@ -793,7 +793,7 @@ function fillLandingNumbers() {
 
 renderPosterStrip();
 // The "better than chance" figure is the lift from the latest evaluation run (src/evaluation-stats.js).
-fillLandingNumber('lift', `${EVALUATION.lift.toFixed(1)}x`);
+fillLandingNumber('lift', `${EVALUATION.lift.toFixed(1)}×`);
 
 // Scrolls a section into view (instantly when the visitor prefers reduced motion) and then
 // moves focus to its heading.

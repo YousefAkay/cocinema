@@ -65,7 +65,7 @@ try {
     const text = name => [...document.querySelectorAll(`[data-fill="${name}"]`)].map(node => node.textContent);
     return {
       films: text('films'), dims: text('dimensions'), lift: text('lift'),
-      catalogLength: catalog.length, dimensions: catalog[0].embedding.length, expectedLift: `${stats.EVALUATION.lift.toFixed(1)}x`,
+      catalogLength: catalog.length, dimensions: catalog[0].embedding.length, expectedLift: `${stats.EVALUATION.lift.toFixed(1)}×`,
       expectedLabel: (await import('./format.js')).roundedCount(catalog.length),
     };
   });
@@ -74,10 +74,9 @@ try {
       && /^\d+\+$/.test(dataNumbers.expectedLabel) && parseInt(dataNumbers.expectedLabel, 10) <= dataNumbers.catalogLength
       && parseInt(dataNumbers.expectedLabel, 10) > dataNumbers.catalogLength - 50
       && dataNumbers.films.every(text => text !== String(dataNumbers.catalogLength))
-      && dataNumbers.dims.length === 2 && dataNumbers.dims.every(text => text === String(dataNumbers.dimensions)), JSON.stringify([dataNumbers.films, dataNumbers.dims]));
-  check('the dimension count is read from the loaded data, everywhere it appears',
-    dataNumbers.dims.length === 2
-      && dataNumbers.dims.length === 2 && dataNumbers.dims.every(text => text === String(dataNumbers.dimensions)), JSON.stringify([dataNumbers.films, dataNumbers.dims]));
+      && dataNumbers.dims.length === 1 && dataNumbers.dims.every(text => text === String(dataNumbers.dimensions)), JSON.stringify([dataNumbers.films, dataNumbers.dims]));
+  check('the dimension count is read from the loaded data (it appears once, in "How it works")',
+    dataNumbers.dims.length === 1 && dataNumbers.dims.every(text => text === String(dataNumbers.dimensions)), JSON.stringify([dataNumbers.films, dataNumbers.dims]));
   check('the "better than chance" figure is the evaluation lift to one decimal', dataNumbers.lift.join() === dataNumbers.expectedLift, `${dataNumbers.lift} vs ${dataNumbers.expectedLift}`);
   const bodyText = await p.locator('#landing-screen').innerText();
   const landingHtml = await p.locator('#landing-screen').innerHTML();
@@ -85,6 +84,29 @@ try {
     !new RegExp(`\\b${dataNumbers.catalogLength}\\b`).test(bodyText + landingHtml) && !/#\d+ of \d+|\bout of \d{2,}\b/i.test(bodyText + landingHtml), dataNumbers.expectedLabel);
   check('the page makes no claim about trackers or analytics', !/tracker|tracking|analytics/i.test(bodyText));
   check('the stats footnote says the figure comes from simulated profiles', bodyText.includes('Measured with simulated taste profiles, not a study of real viewers.'));
+  const statsLine = await p.locator('.stats .stats-line').innerText();
+  check('the stats band is one line of text: films and the "better than chance" figure, nothing else',
+    statsLine === `${dataNumbers.expectedLabel} films · ${dataNumbers.expectedLift} better than chance at finding your genre*`
+      && (await p.locator('.stats p').count()) === 2 && !/dimensions|accounts|sign-ups/.test(await p.locator('.stats').innerText()), statsLine);
+
+  // Template patterns that were removed: the pill label, the glows and violet decoration.
+  const look = await p.evaluate(() => {
+    const style = selector => getComputedStyle(document.querySelector(selector));
+    return {
+      pill: document.querySelectorAll('#landing-screen .pill').length,
+      bodyImage: getComputedStyle(document.body).backgroundImage,
+      heroGlow: getComputedStyle(document.querySelector('.hero'), '::before').backgroundImage,
+      startShadow: style('#start-button').boxShadow,
+      numeral: style('.how-card .numeral').color,
+      numeralSize: parseFloat(style('.how-card .numeral').fontSize),
+      cardBox: style('.how-card').borderTopWidth + ' ' + style('.how-card').backgroundColor,
+    };
+  });
+  check('no pill label above the headline', look.pill === 0);
+  check('the page background is plain, with no glow behind the hero or under Get started',
+    look.bodyImage === 'none' && look.heroGlow === 'none' && look.startShadow === 'none', JSON.stringify(look));
+  check('"How it works" items are unboxed, with a small number that is not violet',
+    look.cardBox === '0px rgba(0, 0, 0, 0)' && look.numeralSize < 20 && look.numeral !== 'rgb(183, 156, 255)' && look.numeral !== 'rgb(124, 58, 237)', JSON.stringify(look));
 
   // poster strip
   const strip = await p.evaluate(() => {
@@ -110,7 +132,7 @@ try {
   await p.waitForFunction(() => document.getElementById('how').getBoundingClientRect().top < 120);
   check('"How it works" scrolls to the section without changing the address', (await p.evaluate(() => location.hash)) === '' && (await box(p, '#how')).y < 120);
   const cards = await p.locator('.how-card').count();
-  check('three "how it works" cards', cards === 3 && (await p.locator('.how-card h3').allInnerTexts()).join('|') === 'Rate a few films|Your taste becomes a map|Get picks with reasons');
+  check('three "how it works" items', cards === 3 && (await p.locator('.how-card h3').allInnerTexts()).join('|') === 'Rate a few films|Your taste becomes a map|Get picks with reasons');
   const small = await p.$$eval('#landing-screen a, #landing-screen button, .length-card', nodes => nodes.filter(node => node.getBoundingClientRect().height > 0 && node.getBoundingClientRect().height < 44).length);
   check('every link, button and choice card on the landing page is at least 44px tall', small === 0, `${small} too small`);
   await phone.context.close();

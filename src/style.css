@@ -74,9 +74,7 @@ body {
   /* the offline strip appearing above the page must not make the browser scroll to compensate */
   overflow-anchor: none;
   min-height: 100vh;
-  background:
-    radial-gradient(1200px 600px at 50% -200px, rgba(124, 58, 237, 0.16), transparent 70%),
-    var(--bg);
+  background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
   line-height: 1.5;
@@ -304,7 +302,6 @@ img {
   background: var(--accent-fill);
   color: #fff;
   font-weight: 700;
-  box-shadow: 0 8px 24px var(--accent-glow);
 }
 
 .rate-more:hover {
@@ -724,41 +721,6 @@ img {
   text-align: center;
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -140px;
-  left: 50%;
-  z-index: -1;
-  width: 900px;
-  max-width: 160%;
-  height: 520px;
-  transform: translateX(-50%);
-  background: radial-gradient(closest-side, rgba(124, 58, 237, 0.4), transparent);
-  pointer-events: none;
-}
-
-.pill {
-  display: inline-block;
-  margin: 0 0 18px;
-  padding: 6px 14px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: var(--surface);
-  color: var(--accent-hover);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-@media (max-width: 480px) {
-  .pill {
-    padding: 6px 12px;
-    font-size: 0.62rem;
-    letter-spacing: 0.08em;
-  }
-}
 
 .hero h1 {
   margin: 0 auto 16px;
@@ -875,7 +837,6 @@ img {
   color: #fff;
   font-size: 1.05rem;
   font-weight: 800;
-  box-shadow: 0 10px 30px var(--accent-glow);
   transition: background 0.15s, transform 0.1s;
 }
 
@@ -982,33 +943,32 @@ img {
   text-align: center;
 }
 
+/* Three plain items: a small muted number, a bold title and one sentence. Stacked on a phone. */
 .how-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
+  gap: 28px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.how-card {
-  padding: 24px;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  background: var(--surface);
+@media (min-width: 720px) {
+  .how-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
 }
 
 .how-card .numeral {
   display: block;
-  color: var(--accent-hover);
-  font-family: var(--font-display);
-  font-size: 4rem;
-  font-weight: 800;
-  line-height: 1;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
 }
 
 .how-card h3 {
-  margin: 12px 0 8px;
+  margin: 4px 0 6px;
   font-size: 1.2rem;
   font-weight: 800;
 }
@@ -1019,42 +979,21 @@ img {
 }
 
 .stats {
-  padding: 44px 0 28px;
+  padding: 28px 0;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   background: var(--band);
 }
 
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 28px 24px;
+.stats-line {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
   text-align: center;
 }
 
-.stat-number {
-  margin: 0;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(3rem, 8vw, 4.5rem);
-  line-height: 1;
-}
-
-.stat-number sup {
-  margin-left: 2px;
-  color: var(--accent-hover);
-  font-size: 0.4em;
-  vertical-align: super;
-}
-
-.stat-caption {
-  margin: 6px 0 0;
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-}
-
 .stats-footnote {
-  margin: 28px 0 0;
+  margin: 8px 0 0;
   color: var(--text-muted);
   font-size: 0.8rem;
   text-align: center;
