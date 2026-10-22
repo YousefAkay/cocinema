@@ -120,7 +120,7 @@ test('the committed onboarding pools follow every rule', () => {
   assert.equal(onboarding.length, 15);
   const all = onboarding.flatMap(pool => pool.movies);
   assert.equal(new Set(all.map(movie => movie.id)).size, all.length, 'a film is in two pools');
-  assert.equal(all.filter(movie => movie.handPicked).length, 49, 'the 49 hand-picked films must all be kept');
+  assert.equal(all.filter(movie => movie.handPicked).length, 53, 'the 53 hand-picked films must all be kept');
 
   for (const pool of onboarding) {
     assert.ok(pool.movies.length >= 3 && pool.movies.length <= TARGET_SIZE, `${pool.genre}: ${pool.movies.length} films`);
@@ -147,4 +147,14 @@ test('Biographical has replaced Western in onboarding, with its hand-picked film
   // Western films leave onboarding only: they stay in the catalog and can still be recommended.
   const catalog = readJson('../data/catalog.json');
   assert.ok(catalog.filter(movie => (movie.genres || []).includes('western')).length > 10);
+});
+
+test('Thriller and Mystery are topped up to full pools with recognisable hand-picked films', () => {
+  const onboarding = readJson('../data/onboarding.json');
+  const titles = genre => onboarding.find(pool => pool.genre === genre).movies;
+  assert.equal(titles('Thriller').length, TARGET_SIZE);
+  assert.equal(titles('Mystery').length, TARGET_SIZE);
+  const picked = genre => titles(genre).filter(movie => movie.handPicked).map(movie => movie.title);
+  for (const title of ['Dr. No', 'The Dark Knight Rises', 'Spectre']) assert.ok(picked('Thriller').includes(title), title);
+  assert.ok(picked('Mystery').includes('The Prestige'));
 });

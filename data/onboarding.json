@@ -261,6 +261,24 @@
         "handPicked": true
       },
       {
+        "id": "http://www.wikidata.org/entity/Q102754",
+        "title": "Dr. No",
+        "year": 1962,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q189330",
+        "title": "The Dark Knight Rises",
+        "year": 2012,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q18602670",
+        "title": "Spectre",
+        "year": 2015,
+        "handPicked": true
+      },
+      {
         "id": "http://www.wikidata.org/entity/Q5890",
         "title": "V for Vendetta",
         "year": 2005
@@ -630,6 +648,12 @@
       {
         "id": "http://www.wikidata.org/entity/Q160560",
         "title": "The Da Vinci Code",
+        "year": 2006,
+        "handPicked": true
+      },
+      {
+        "id": "http://www.wikidata.org/entity/Q46551",
+        "title": "The Prestige",
         "year": 2006,
         "handPicked": true
       },
