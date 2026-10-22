@@ -84,6 +84,24 @@ function showOnly(screen) {
   if (screen === landingScreen) {
     updateContinue();
   }
+  try {
+    sessionStorage.setItem(TAB_KEY, onLanding ? 'landing' : 'app');
+  } catch (e) {
+    // Storage unavailable (private mode): every load counts as a fresh visit.
+  }
+}
+
+// This tab's marker, which survives a refresh but not a new tab, window or the installed app.
+// A refresh resumes the screen the visitor was on; a fresh visit opens on the landing screen,
+// where Continue offers the saved session.
+const TAB_KEY = 'cocinema:tab';
+
+function resumesInThisTab() {
+  try {
+    return sessionStorage.getItem(TAB_KEY) === 'app';
+  } catch (e) {
+    return false;
+  }
 }
 
 // ---- Going home ----
@@ -1017,7 +1035,7 @@ function updateContinue() {
   }
   const step = stepAt();
   if (step.done) {
-    continueButton.textContent = 'See my picks';
+    continueButton.textContent = 'See your last picks';
   } else {
     continueButton.textContent = isGenreMode()
       ? `Continue ${genreNameInText(chosenGenre)}, ${step.n} of ${step.of}`
@@ -1111,6 +1129,10 @@ async function loadData() {
     // Saves from before Back existed have no trail; rebuild it from the answers.
     const { rated, skipped } = answers();
     trail = saved.trail || (isGenreMode() ? [] : shownBefore(session, genreIndex, movieIndex, id => rated.has(id) || skipped.has(id)));
+    // Film pages and friend links open as they always have; only the home flow waits on the landing screen.
+    if (parseHash(location.hash).type === 'home' && !resumesInThisTab()) {
+      onLanding = true;
+    }
   }
   route();
 }

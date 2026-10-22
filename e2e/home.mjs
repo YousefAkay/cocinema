@@ -112,10 +112,13 @@ try {
   check('Back then "Go home" shows the landing screen with the ratings kept',
     await a.page.locator('#landing-screen').isVisible() && (await saved(a.page)).ratings.length === 2);
 
-  // ---- A refresh still resumes the session (existing behaviour)
+  // ---- A refresh keeps the visitor where they were: on the landing screen, with Continue
   await a.page.reload();
+  await a.page.waitForSelector('#continue-button:not([hidden])');
+  check('a refresh on the landing screen stays there, with Continue offered', await a.page.locator('#landing-screen').isVisible());
+  await a.page.click('#continue-button');
   await a.page.waitForSelector('.rating-frame');
-  check('a refresh resumes the saved session on the same film', (await title(a.page)) === third);
+  check('Continue after the refresh resumes on the same film', (await title(a.page)) === third);
 
   // ---- Logo link from the results, a film page and the rating screen
   for (let i = 0; i < 40 && await a.page.locator('#rating-screen').isVisible(); i++) {
@@ -135,7 +138,7 @@ try {
   await a.page.getByRole('button', { name: 'Go home' }).click();
   await a.page.waitForSelector('#landing-screen', { state: 'visible' });
   check('from a film page, "Go home" shows the landing screen with Continue offered',
-    await a.page.locator('#landing-screen').isVisible() && /^(Continue|See my picks)/.test(await a.page.locator('#continue-button').innerText()),
+    await a.page.locator('#landing-screen').isVisible() && /^(Continue|See your last picks)/.test(await a.page.locator('#continue-button').innerText()),
     await a.page.locator('#continue-button').innerText());
   await a.page.click('#continue-button');
   await a.page.waitForSelector('.top-pick');
